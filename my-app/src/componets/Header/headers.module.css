@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    background-color: #7DA1FD;
+    padding: 10px;
+}
+
+.foto {
+    min-width: 200px;
+}
+
+.blogSearch {
+    width: 300px;
+    margin-top: 40px;
+
+}
+
+.search {
+    border: 0;
+    outline: none;
+    padding: 5px;
+    width: 215px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    width: 550px;
+}
+
+.blogMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatarka {
+    margin-left: auto;
+}
