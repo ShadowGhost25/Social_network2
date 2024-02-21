@@ -5,11 +5,11 @@
 }
 
 .foto {
-    min-width: 200px;
+    min-width: 150px;
 }
 
 .blogSearch {
-    width: 300px;
+    width: 320px;
     margin-top: 40px;
 
 }
@@ -18,7 +18,7 @@
     border: 0;
     outline: none;
     padding: 5px;
-    width: 215px;
+    width: 245px;
     font-size: 20px;
     border-radius: 5px;
 }
