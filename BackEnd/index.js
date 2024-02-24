@@ -3,12 +3,11 @@ import mongoose from 'mongoose';
 import multer from 'multer';
 import cors from 'cors'
 
-// import { loginValidator, registerValidator, postCreateValidator } from './validations.js'
+import { loginValidator, registerValidator, postCreateValidator } from './validations.js'
 
-// import { postController, userController } from './controller/Controller.js'
+import { postController, userController } from './controller/Controller.js'
 
-// import { handleValidationEror, cheakAuth } from './utils/Utils.js';
-import { test } from './test.js';
+import { handleValidationEror, cheakAuth } from './utils/Utils.js';
 
 mongoose
   .connect('mongodb+srv://admin:wwwwww@practic.gpq4sx8.mongodb.net/blog?retryWrites=true&w=majority')
@@ -32,10 +31,9 @@ app.use(express.json());
 app.use(cors())
 app.use('/uploads', express.static('uploads'))
 
-app.get('/', test)
 
-// app.post('/auth/login', loginValidator, handleValidationEror, userController.login)
-// app.post('/auth/register', registerValidator, handleValidationEror, userController.register)
+app.post('/auth/login', loginValidator, handleValidationEror, userController.login)
+app.post('/auth/register', registerValidator, handleValidationEror, userController.register)
 
 // app.get('/auth/me', cheakAuth, userController.getMe)
 

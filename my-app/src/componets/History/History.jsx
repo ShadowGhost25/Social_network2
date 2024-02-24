@@ -1,8 +1,8 @@
-import s from './main.module.css'
+import s from './History.module.css'
 import plus from './img/Plus.png'
-const Main = () => {
+const History = () => {
     return (
-        <div className={s.main}>
+        <div className={s.History}>
             <div className={s.blogHistory}>
                 <img src={plus} alt="no foto" />
                 <div className={s.text}>Создать историю</div>
@@ -11,4 +11,4 @@ const Main = () => {
     )
 }
 
-export default Main
+export default History

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Register = (props) => {
     return (
         <div className={s.login}>
-            <div className={s.loginMain}>
+            <div className={s.loginHistory}>
                 <div className={s.test}>
                     <img className={s.logo} src={logo} alt="no logo" />
                     <div>
@@ -37,7 +37,7 @@ const Register = (props) => {
                             <br />
                             <input type="password" placeholder='Повторный пароль'/>
                             <br />
-                            <button>
+                            <button className={s.buttonRegister}>
                                 Войти
                             </button>
                             <Link href=""></Link>

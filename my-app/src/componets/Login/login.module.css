@@ -8,7 +8,7 @@
     color: white;
 }
 
-.loginMain {
+.loginHistory {
     display: flex;
     flex-direction: row;
     max-width: 1500px;
@@ -86,7 +86,7 @@ input {
     font-size: 20px;
     border-radius: 20px;
 }
-button{
+.buttonLogin{
     width: 260px;
     background-color: white;
     border: 0;
@@ -96,7 +96,7 @@ button{
     border-radius: 10px;
     transition: 0.5s;   
 }
-button:active{
+.buttonLogin:active{
     transition: 0.5s;
     background-color: rgb(223, 223, 223);
 }

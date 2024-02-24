@@ -7,6 +7,7 @@ import menuFour from './img/Groups.png'
 import menuFive from './img/Music.png'
 import menuSix from './img/Settings.png'
 import ava from './img/Ava.png'
+import { Link } from 'react-router-dom'
 const Header = () => {
     return (
         <div className={s.header}>
@@ -14,7 +15,7 @@ const Header = () => {
                 <img src={logo} alt="no foto" />
             </div>
             <div className={s.blogSearch}>
-                <input className={s.search} type="search" placeholder='Поиск'/>
+                <input className={s.search} type="search" placeholder='Поиск' />
             </div>
             <div className={s.menu}>
                 <div className={s.blogMenu}>
@@ -37,7 +38,7 @@ const Header = () => {
                 </div>
             </div>
             <div className={s.avatarka}>
-                <img src={ava} alt="" />
+                <Link to="/profile"> <img src={ava} alt="" /></Link>
             </div>
         </div>
     )

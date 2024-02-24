@@ -1,12 +1,16 @@
 import Header from "../Header/Header";
-import Main from "../Main/Main";
+import History from "../History/History";
+import Posts from "../Posts/Posts";
 
 
 const Home = () => {
   return (
     <div>
       <Header />
-      <Main />
+      <History />
+      <Posts />
+      <Posts />
+      <Posts />
     </div>
   );
 }

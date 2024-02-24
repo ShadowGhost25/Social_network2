@@ -1,9 +1,11 @@
-.main{
-    width: 1000px;
-    margin: 0px auto;
+.History{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .blogHistory{
     display: flex;
+    width: 1000px;
     flex-direction: row;
     background-color: white;
     border-radius: 20px;

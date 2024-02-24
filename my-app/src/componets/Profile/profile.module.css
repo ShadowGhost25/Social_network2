@@ -1,0 +1,38 @@
+.headerProfile {
+    width: 1000px;
+    height: 200px;
+    background-color: white;
+    margin: 30px auto;
+    border-radius: 20px;
+}
+
+.blogAva {
+    height: 100px;
+    background-image: url('./img/fon.png');
+    border-radius: 20px 20px 0px 0px;
+}
+
+.blogAva2 {
+    height: 100px;
+}
+
+.buttonProfile {
+    float: right;
+    text-align: center;
+    background-color: black;
+    border-radius: 10px;
+    border: 0;
+    outline: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    padding: 5px 10px   ;
+    margin: 10px;
+}
+
+.textH3 {
+    margin: 0px;
+    display: inline;
+    padding-right: 10px;
+}
