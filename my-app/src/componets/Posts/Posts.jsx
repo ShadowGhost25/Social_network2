@@ -19,7 +19,7 @@ const Posts = () => {
                     </div>
                 </div>
                 <div className={s.postsMain}>
-                    <img src={posts} alt="" />
+                    <img className={s.postsFoto} src={posts} alt="" />
                 </div>
                 <div className={s.buttonFotter}>
                 <button className={s.buttonClick}><img src={like} alt="" /><span className={s.textButton}> Нравится</span></button>
