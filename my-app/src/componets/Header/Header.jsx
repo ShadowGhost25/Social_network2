@@ -19,16 +19,16 @@ const Header = () => {
             </div>
             <div className={s.menu}>
                 <div className={s.blogMenu}>
-                    <img src={menuOne} alt="no img" />
+                    <Link to='/'> <img src={menuOne} alt="no img" /> </Link>
                 </div>
                 <div className={s.blogMenu}>
-                    <img src={menuTwo} alt="no img" />
+                    <Link to='/message'> <img src={menuTwo} alt="no img" /> </Link>
                 </div>
                 <div className={s.blogMenu}>
-                    <img src={menuThree} alt="no img" />
+                  <Link to='/friends'> <img src={menuThree} alt="no img" /> </Link>
                 </div>
                 <div className={s.blogMenu}>
-                    <img src={menuFour} alt="no img" />
+                <Link to='/group'>  <img src={menuFour} alt="no img" /> </Link>
                 </div>
                 <div className={s.blogMenu}>
                     <img src={menuFive} alt="no img" />

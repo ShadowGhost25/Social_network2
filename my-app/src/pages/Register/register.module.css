@@ -75,7 +75,7 @@ p {
     width: 100%;
 }
 
-input {
+.input {
     width: 295px;
     height: 30px;
     margin-top: 10px;
@@ -86,7 +86,7 @@ input {
     font-size: 20px;
     border-radius: 20px;
 }
-.buttonLogin{
+.buttonRegister{
     width: 260px;
     background-color: white;
     border: 0;
@@ -96,7 +96,7 @@ input {
     border-radius: 10px;
     transition: 0.5s;   
 }
-.buttonLogin:active{
+.buttonRegister:active{
     transition: 0.5s;
     background-color: rgb(223, 223, 223);
 }

@@ -21,6 +21,9 @@
     padding-bottom: 10px;
 }
 
+.foto{
+    width: 90%;
+}
 .postsMain {
     margin: 0px auto;
 }
@@ -58,7 +61,7 @@
 
 .textButton {
     margin-left: 10px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .text {

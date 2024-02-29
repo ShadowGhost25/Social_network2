@@ -1,8 +1,22 @@
-import s from './register.module.css'
-import logo from '../Header/img/Logo.png'
+import s from './login.module.css'
+import logo from '../../componets/Header/img/Logo.png'
 import i from './img/i.png'
 import { Link } from 'react-router-dom'
-const Register = (props) => {
+// import { useDispatch } from 'react-redux'
+const Login = () => {
+    // const dispatch = useDispatch()
+
+    // const handleSubmit = useForm({
+    //     defaultValues:{
+    //         email: 'test2@gmail.com',
+    //         password: '12345',
+    //     },
+    //     mode: 'onChange'
+    // })
+
+    // const onSubmit = async (values) =>{
+    //     const data = await dispatch
+    // }
     return (
         <div className={s.login}>
             <div className={s.loginHistory}>
@@ -21,27 +35,17 @@ const Register = (props) => {
                 </div>
                 <div className={s.formLogin}>
                     <div>
-                        <form action="">
-                            <h2>Регистрация</h2>
-                            <input type="text" placeholder='Имя'/>
+                        {/* <form onSubmit={handleSubmit(onSubmit)}> */}
+                            <h2>Авторизация</h2>
+                            <input className={s.input} type="email" placeholder='Почта'/>
                             <br />
-                            <input type="text" placeholder='Фамилия'/>
+                            <input className={s.input} type="password" placeholder='Пароль'/>
                             <br />
-                            <input type="text" placeholder='Логин'/>
-                            <br />
-                            <input type="text" placeholder='Почта'/>
-                            <br />
-                            <input type="text" placeholder='Телефон'/>
-                            <br />
-                            <input type="password" placeholder='Пароль'/>
-                            <br />
-                            <input type="password" placeholder='Повторный пароль'/>
-                            <br />
-                            <button className={s.buttonRegister}>
+                            <button className={s.buttonLogin}>
                                 Войти
                             </button>
                             <Link href=""></Link>
-                        </form>
+                        {/* </form>  */}
                     </div>
 
                 </div>
@@ -50,4 +54,4 @@ const Register = (props) => {
     )
 }
 
-export default Register
+export default Login

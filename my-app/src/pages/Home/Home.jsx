@@ -1,6 +1,7 @@
-import Header from "../Header/Header";
-import History from "../History/History";
-import Posts from "../Posts/Posts";
+
+import Header from "../../componets/Header/Header";
+import History from "../../componets/History/History";
+import Posts from "../../componets/Posts/Posts";
 import s from "./home.module.css"
 
 

@@ -32,6 +32,7 @@
 .textH3 {
     margin: 0px;
     padding-right: 10px;
+    font-size: 18px;
 }
 
 .i1 {
@@ -85,33 +86,40 @@
     width: 350px;
     height: 100%;
 }
-.mainFoto{
+
+.mainFoto {
     background-color: white;
     padding: 10px;
     border-radius: 20px;
 }
-.mainFriends{
+
+.mainFriends {
     margin-top: 30px;
     text-align: center;
     background-color: white;
     padding: 10px;
     border-radius: 20px;
 }
+
 .main2 {
     width: 590px;
 }
-.h3Foto{
+
+.h3Foto {
     margin: 0px;
 }
-.fotografi{
+
+.fotografi {
     width: 100%;
 }
-hr{
+
+hr {
     height: 2px;
     border: 0;
     background-color: #7DA1FD;
 }
-.friends{
+
+.friends {
     width: 320px;
     background-color: #1E1E1E;
     padding: 5px;
@@ -120,21 +128,24 @@ hr{
     margin-top: 10px;
     position: relative;
 }
-.test{
+
+.test {
     float: left;
     width: 40px;
 }
-.friendsName{
+
+.friendsName {
     padding: 10px 0px 0px 10px;
     color: white;
     float: left;
 }
 
-.ellipse{
+.ellipse {
     position: absolute;
     top: 20px;
     right: 15px;
 }
-.posts{
+
+.posts {
     margin-bottom: 30px;
 }

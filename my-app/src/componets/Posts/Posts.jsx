@@ -11,7 +11,7 @@ const Posts = () => {
             <div className={s.posts}>
                 <div className={s.postsHeader}>
                     <div>
-                        <img src={foto} alt="" />
+                        <img className={s.foto} src={foto} alt="" />
                     </div>
                     <div className={s.name}>
                         <h2 className={s.h2}>Saturn</h2>
