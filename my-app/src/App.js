@@ -8,6 +8,7 @@ import Group from './pages/Group/Group';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Friends from './pages/Friends/Friends';
+import Music from './pages/Music/Music';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/message" element={<Message />} />
         <Route path="/group" element={<Group />} />
         <Route path='/friends' element={<Friends />} />
+        <Route path='/music' element={<Music />} />
       </Routes>
     </>
   );  

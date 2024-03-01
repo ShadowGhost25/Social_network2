@@ -77,12 +77,12 @@ const Friends = () => {
                                 <img style={{ float: "right", marginTop: "2px" }} src={up} alt="" />
                             </div>
                         </div>
-                        <div style={{ float: "left", textAlign: "left", height: "100%"}}>
+                        <h3 style={{ margin: "20px 0px 10px 0px" }}>Пол</h3>
+                        <div style={{ margin: "left", textAlign: "left", height: "100%" }}>
                             <input type="radio" /> Мужчина <br />
                             <input type="radio" /> Девушка <br />
                             <input type="radio" /> Любой <br />
                         </div>
-                        <h3 style={{ margin: "20px 0px 10px 0px" }}>Пол</h3>
                     </div>
                 </div>
             </div >

@@ -25,13 +25,13 @@ const Header = () => {
                     <Link to='/message'> <img src={menuTwo} alt="no img" /> </Link>
                 </div>
                 <div className={s.blogMenu}>
-                  <Link to='/friends'> <img src={menuThree} alt="no img" /> </Link>
+                    <Link to='/friends'> <img src={menuThree} alt="no img" /> </Link>
                 </div>
                 <div className={s.blogMenu}>
-                <Link to='/group'>  <img src={menuFour} alt="no img" /> </Link>
+                    <Link to='/group'> <img src={menuFour} alt="no img" /> </Link>
                 </div>
                 <div className={s.blogMenu}>
-                    <img src={menuFive} alt="no img" />
+                    <Link to='/music'> <img src={menuFive} alt="no img" /> </Link>
                 </div>
                 <div className={s.blogMenu}>
                     <img src={menuSix} alt="no img" />
