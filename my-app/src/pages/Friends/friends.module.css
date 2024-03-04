@@ -81,41 +81,6 @@
     justify-content: space-between;
 }
 
-.card {
-    width: 200px;
-    margin-top: 30px;
-    background-color: white;
-    border-radius: 20px;
-    position: relative;
-}
-
-.cardHeader {
-    height: 100px;
-    border-radius: 20px 20px 0px 0px;
-    background: linear-gradient(100deg, rgba(49, 163, 207, 1), 35%, rgba(249, 198, 246, 1))
-}
-
-.ava {
-    position: absolute;
-    width: 70px;
-    top: 65px;
-    left: 65px;
-}
-
-.cardFooter {
-    padding: 10px;
-}
-
-.name {
-    margin-top: 30px;
-    margin-bottom: 10px;
-}
-
-.button2 {
-    display: block;
-    margin: 0px auto 10px;
-}
-
 .parametersBlog {
     padding: 10px;
     margin-top: 30px;

@@ -1,11 +1,12 @@
 .header {
     display: flex;
     background-color: #7DA1FD;
-    padding: 10px;
 }
 
 .foto {
     min-width: 150px;
+    display: flex;
+    align-items: center;
 }
 
 .blogSearch {
@@ -21,6 +22,7 @@
     width: 245px;
     font-size: 20px;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .search[type="search"]::-webkit-search-cancel-button {
@@ -35,15 +37,53 @@
 .menu {
     display: flex;
     justify-content: space-between;
-    width: 550px;
+    width: 600px;
 }
-
-.blogMenu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.news, .message, .friends, .group, .music{
+    width:70px;
+    height: 100%;
+    background-image: url(./img/News.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.7s;
+}
+.message{
+    background-image: url(./img/Messages.png);
+}
+.friends{
+    background-image: url(./img/Friends.png);
+}
+.group{
+    background-image: url(./img/Groups.png);
+}
+.music{
+    background-image: url(./img/Music.png);
+}
+.news:hover, .message:hover, .friends:hover, .group:hover, .music:hover{
+    background-color: white;
+    transition: 0.7s;
+    background-image: url(./img/NewsBlack.png);
+}
+.message:hover{
+    background-image: url(./img/MessagesBlack.png);
+}
+.friends:hover{
+    background-image: url(./img/FriendsBlack.png);
+}
+.group:hover{
+    background-image: url(./img/GroupBlack.png);
+}
+.music:hover{
+    background-image: url(./img/MusicBlack.png)
 }
 
 .avatarka {
     margin-left: auto;
+    display: flex;
+    align-items: center;
+    transition: 0.7s;
+}
+.avatarka:hover{
+    background-color: white ;
+    transition: 0.7s;
 }

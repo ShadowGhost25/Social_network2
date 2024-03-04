@@ -5,7 +5,7 @@ const History = () => {
         <div className={s.History}>
             <div className={s.blogHistory}>
                 <img src={plus} alt="no foto" />
-                <div className={s.text}>Создать историю</div>
+                <div className={s.text}>Создать пост</div>
             </div>
         </div>
     )

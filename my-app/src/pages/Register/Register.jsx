@@ -11,36 +11,40 @@ const Register = (props) => {
                     <div>
                         <h1>Недавние входы</h1>
                         <p>Нажмите на изображение или добавьте аккаунты.</p>
-                        <div className={s.blogAuth}>
-                            <img className={s.imgI} src={i} alt="" />
-                            <text>
-                                Илья
-                            </text>
-                        </div>
+                        <Link to="/">
+                            <div className={s.blogAuth}>
+                                <img className={s.imgI} src={i} alt="" />
+                                <text>
+                                    Илья
+                                </text>
+                            </div>
+                        </Link>
                     </div>
                 </div>
                 <div className={s.formLogin}>
                     <div>
                         <form action="">
                             <h2>Регистрация</h2>
-                            <input className={s.input} type="text" placeholder='Имя'/>
+                            <input className={s.input} type="text" placeholder='Имя' />
                             <br />
-                            <input className={s.input} type="text" placeholder='Фамилия'/>
+                            <input className={s.input} type="text" placeholder='Фамилия' />
                             <br />
-                            <input className={s.input} type="text" placeholder='Логин'/>
+                            <input className={s.input} type="text" placeholder='Логин' />
                             <br />
-                            <input className={s.input} type="text" placeholder='Почта'/>
+                            <input className={s.input} type="text" placeholder='Почта' />
                             <br />
-                            <input className={s.input} type="text" placeholder='Телефон'/>
+                            <input className={s.input} type="text" placeholder='Телефон' />
                             <br />
-                            <input className={s.input} type="password" placeholder='Пароль'/>
+                            <input className={s.input} type="password" placeholder='Пароль' />
                             <br />
-                            <input className={s.input} type="password" placeholder='Повторный пароль'/>
+                            <input className={s.input} type="password" placeholder='Повторный пароль' />
                             <br />
                             <button className={s.buttonRegister}>
                                 Войти
                             </button>
-                            <Link href=""></Link>
+                            <div>
+                                <Link className={s.autho} to='/login'>Авторизоваться</Link>
+                            </div>
                         </form>
                     </div>
 

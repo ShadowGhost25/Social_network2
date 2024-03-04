@@ -25,26 +25,30 @@ const Login = () => {
                     <div>
                         <h1>Недавние входы</h1>
                         <p>Нажмите на изображение или добавьте аккаунты.</p>
-                        <div className={s.blogAuth}>
-                            <img className={s.imgI} src={i} alt="" />
-                            <text>
-                                Илья
-                            </text>
-                        </div>
+                        <Link to="/">
+                            <div className={s.blogAuth}>
+                                <img className={s.imgI} src={i} alt="" />
+                                <text>
+                                    Илья
+                                </text>
+                            </div>
+                        </Link>
                     </div>
                 </div>
                 <div className={s.formLogin}>
                     <div>
                         {/* <form onSubmit={handleSubmit(onSubmit)}> */}
-                            <h2>Авторизация</h2>
-                            <input className={s.input} type="email" placeholder='Почта'/>
-                            <br />
-                            <input className={s.input} type="password" placeholder='Пароль'/>
-                            <br />
-                            <button className={s.buttonLogin}>
-                                Войти
-                            </button>
-                            <Link href=""></Link>
+                        <h2>Авторизация</h2>
+                        <input className={s.input} type="email" placeholder='Почта' />
+                        <br />
+                        <input className={s.input} type="password" placeholder='Пароль' />
+                        <br />
+                        <button className={s.buttonLogin}>
+                            Войти
+                        </button>
+                        <div>
+                            <Link className={s.register} to='/register'>Зарегистрироваться</Link>
+                        </div>
                         {/* </form>  */}
                     </div>
 

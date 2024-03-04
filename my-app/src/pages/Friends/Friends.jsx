@@ -1,9 +1,9 @@
 import Header from "../../componets/Header/Header";
 import s from "./friends.module.css";
-import ava from "./img/ava.png";
 import vector from "./img/Vector.png";
 import down from "./img/Down.png";
 import up from "./img/Up.png";
+import FriendsBLock from "../../componets/FriendsBlock/FriendsBlock";
 
 const Friends = () => {
     return (
@@ -15,46 +15,11 @@ const Friends = () => {
                         <button className={s.button}>Все друзья</button>
                         <button className={s.button}>Друзья онлайн <div className={s.ellips}></div></button>
                         <div className={s.searchBlog}>
-                            <input className={s.search} style={{ color: "white" }} type="search" placeholder="Поиск" />
+                        <input className={s.search} style={{ color: "white" }} type="search" placeholder="Поиск" />
                         </div>
                     </div>
                     <div className={s.cardBlog}>
-                        <div className={s.card}>
-                            <div className={s.cardHeader}></div>
-                            <img className={s.ava} src={ava} alt="" />
-                            <div className={s.cardFooter}>
-                                <h3 className={s.name}>Саша Тарасов1</h3>
-                                <span>Пензенский колледж информационных и промышленных технологий (ИТ-колледж)</span>
-                            </div>
-                            <button className={s.button2}>Написать</button>
-                        </div>
-                        <div className={s.card}>
-                            <div className={s.cardHeader}></div>
-                            <img className={s.ava} src={ava} alt="" />
-                            <div className={s.cardFooter}>
-                                <h3 className={s.name}>Саша Тарасов2</h3>
-                                <span>Пензенский колледж информационных и промышленных технологий (ИТ-колледж)</span>
-                            </div>
-                            <button className={s.button2}>Написать</button>
-                        </div>
-                        <div className={s.card}>
-                            <div className={s.cardHeader}></div>
-                            <img className={s.ava} src={ava} alt="" />
-                            <div className={s.cardFooter}>
-                                <h3 className={s.name}>Саша Тарасов3</h3>
-                                <span>Пензенский колледж информационных и промышленных технологий (ИТ-колледж)</span>
-                            </div>
-                            <button className={s.button2}>Написать</button>
-                        </div>
-                        <div className={s.card}>
-                            <div className={s.cardHeader}></div>
-                            <img className={s.ava} src={ava} alt="" />
-                            <div className={s.cardFooter}>
-                                <h3 className={s.name}>Саша Тарасов4</h3>
-                                <span>Пензенский колледж информационных и промышленных технологий (ИТ-колледж)</span>
-                            </div>
-                            <button className={s.button2}>Написать</button>
-                        </div>
+                        <FriendsBLock />
                     </div>
                 </div>
                 <div className={s.mainBlog2}>

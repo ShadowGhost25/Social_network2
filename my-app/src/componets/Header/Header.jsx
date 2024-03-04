@@ -1,44 +1,37 @@
 import s from './headers.module.css'
 import logo from './img/Logo.png'
-import menuOne from './img/News.png'
-import menuTwo from './img/Messages.png'
-import menuThree from './img/Friends.png'
-import menuFour from './img/Groups.png'
-import menuFive from './img/Music.png'
-import menuSix from './img/Settings.png'
 import ava from './img/Ava.png'
 import { Link } from 'react-router-dom'
 const Header = () => {
     return (
         <div className={s.header}>
             <div className={s.foto}>
-                <img src={logo} alt="no foto" />
+                <Link to='/'>
+                    <img style={{margin: "0px 10px"}} src={logo} alt="no foto" />
+                </Link>
             </div>
             <div className={s.blogSearch}>
-                <input className={s.search} type="search" placeholder='Поиск' />
+                <input className={s.search} type="search" placeholder='Поиск...' />
             </div>
             <div className={s.menu}>
-                <div className={s.blogMenu}>
-                    <Link to='/'> <img src={menuOne} alt="no img" /> </Link>
-                </div>
-                <div className={s.blogMenu}>
-                    <Link to='/message'> <img src={menuTwo} alt="no img" /> </Link>
-                </div>
-                <div className={s.blogMenu}>
-                    <Link to='/friends'> <img src={menuThree} alt="no img" /> </Link>
-                </div>
-                <div className={s.blogMenu}>
-                    <Link to='/group'> <img src={menuFour} alt="no img" /> </Link>
-                </div>
-                <div className={s.blogMenu}>
-                    <Link to='/music'> <img src={menuFive} alt="no img" /> </Link>
-                </div>
-                <div className={s.blogMenu}>
-                    <img src={menuSix} alt="no img" />
-                </div>
+                <Link to='/'>
+                    <div className={s.news}></div>
+                </Link>
+                <Link to='/message'>
+                    <div className={s.message}></div>
+                </Link>
+                <Link to='/friends'>
+                    <div className={s.friends}></div>
+                </Link>
+                <Link to='/group'>
+                    <div className={s.group}></div>
+                </Link>
+                <Link to='/music'>
+                    <div className={s.music}></div>
+                </Link>
             </div>
             <div className={s.avatarka}>
-                <Link to="/profile"> <img src={ava} alt="" /></Link>
+                <Link to="/profile"> <img style={{margin: "0px 10px"}} src={ava} alt="" /></Link>
             </div>
         </div>
     )

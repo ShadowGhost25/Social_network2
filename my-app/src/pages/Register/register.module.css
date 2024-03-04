@@ -86,7 +86,8 @@ p {
     font-size: 20px;
     border-radius: 20px;
 }
-.buttonRegister{
+
+.buttonRegister {
     width: 260px;
     background-color: white;
     border: 0;
@@ -94,9 +95,15 @@ p {
     height: 50px;
     font-size: 25px;
     border-radius: 10px;
-    transition: 0.5s;   
+    transition: 0.5s;
+    margin-bottom: 10px;
 }
-.buttonRegister:active{
+
+.buttonRegister:active {
     transition: 0.5s;
     background-color: rgb(223, 223, 223);
+}
+.autho{
+    color: white;
+    text-decoration: none;
 }

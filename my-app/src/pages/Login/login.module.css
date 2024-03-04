@@ -94,9 +94,16 @@ p {
     height: 50px;
     font-size: 25px;
     border-radius: 10px;
-    transition: 0.5s;   
+    transition: 0.5s;  
+    margin-bottom: 10px; 
 }
 .buttonLogin:active{
     transition: 0.5s;
     background-color: rgb(223, 223, 223);
+}
+.register{
+    margin-top: 8px;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
 }
