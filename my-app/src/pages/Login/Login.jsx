@@ -2,6 +2,8 @@ import s from './login.module.css'
 import logo from '../../componets/Header/img/Logo.png'
 import i from './img/i.png'
 import { Link } from 'react-router-dom'
+import React from 'react'
+import axios from '../../axios'
 // import { useDispatch } from 'react-redux'
 const Login = () => {
     // const dispatch = useDispatch()
@@ -17,6 +19,7 @@ const Login = () => {
     // const onSubmit = async (values) =>{
     //     const data = await dispatch
     // }
+
     return (
         <div className={s.login}>
             <div className={s.loginHistory}>

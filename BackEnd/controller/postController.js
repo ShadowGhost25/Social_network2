@@ -1,16 +1,16 @@
-// import PostModel from "../models/Post.js"
+import PostModel from "../models/Post.js"
 
-// export const getAll = async (req, res) => {
-//   try {
-//     const posts = await PostModel.find().populate(({ path: "user", select: ["fullName", "avatarUrl"] })).exec();
-//     res.json(posts)
-//   } catch (error) {
-//     console.log("err => ", error)
-//     res.status(500).json({
-//       message: "Не удалось получить статьи"
-//     })
-//   }
-// }
+export const getAll = async (req, res) => {
+  try {
+    const posts = await PostModel.find().populate(({ path: "user", select: ["fullName", "avatarUrl"] })).exec();
+    res.json(posts)
+  } catch (error) {
+    console.log("err => ", error)
+    res.status(404).json({
+      message: "Не удалось получить статьи"
+    })
+  }
+}
 
 // export const getOne = async (req, res) => {
 //   try {

@@ -14,7 +14,6 @@ const Group = () => {
                         <GroupBlock />
                         <GroupBlock />
                         <GroupBlock />
-                        
                     </div>
                 </div>
             </div>
