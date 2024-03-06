@@ -9,8 +9,16 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Friends from './pages/Friends/Friends';
 import Music from './pages/Music/Music';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAuthMe, selectIsAuth } from './redux/slices/login';
 
 function App() {
+  const dispatch = useDispatch()
+  const isAuth = useSelector(selectIsAuth)
+
+  React.useEffect(() =>{
+    dispatch(fetchAuthMe())
+  }, [])
   return (
     <>
       <Routes>

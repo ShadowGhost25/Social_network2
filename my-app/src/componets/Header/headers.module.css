@@ -56,7 +56,9 @@
 .message,
 .friends,
 .group,
-.music {
+.music,
+.ava,
+.avaActive {
     width: 70px;
     height: 83px;
     margin: 0px 10px;
@@ -68,6 +70,10 @@
 
 .message {
     background-image: url(./img/Messages.png);
+}
+
+.ava {
+    background-image: url(./img/User.png);
 }
 
 .friends {
@@ -82,11 +88,17 @@
     background-image: url(./img/Music.png);
 }
 
+.avaActive {
+    background-image: url(./img/Ava.png);
+}
+
 .news:hover,
 .message:hover,
 .friends:hover,
 .group:hover,
-.music:hover {
+.music:hover,
+.ava:hover,
+.avaActive:hover {
     background-color: white;
     transition: 0.7s;
     background-image: url(./img/NewsBlack.png);
@@ -107,14 +119,10 @@
 .music:hover {
     background-image: url(./img/MusicBlack.png)
 }
-
-.avatarka {
-    display: flex;
-    align-items: center;
+.ava:hover {
+    background-image: url(./img/UserBlack.png);
     transition: 0.7s;
 }
-
-.avatarka:hover {
-    background-color: white;
-    transition: 0.7s;
+.avaActive:hover {
+    background-image: url(./img/Ava.png);
 }

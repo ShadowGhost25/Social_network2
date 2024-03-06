@@ -32,10 +32,10 @@ app.use(cors())
 app.use('/uploads', express.static('uploads'))
 
 
-app.post('/auth/login', loginValidator, handleValidationEror, userController.login)
-app.post('/auth/register', registerValidator, handleValidationEror, userController.register)
+app.post('/login', loginValidator, handleValidationEror, userController.login)
+app.post('/register', registerValidator, handleValidationEror, userController.register)
+app.get('/me', cheakAuth, userController.getMe)
 
-// app.get('/auth/me', cheakAuth, userController.getMe)
 
 // app.post('/upload', cheakAuth, upload.single('image'), (req, res) => {
 //   res.json({

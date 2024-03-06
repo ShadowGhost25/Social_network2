@@ -52,7 +52,7 @@
     min-width: 700px;
 }
 
-text {
+.name {
     color: black;
     font-size: 25px;
 }

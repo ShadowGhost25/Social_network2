@@ -1,7 +1,11 @@
-import axios from 'axios'
+import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'http://localhost:3000'
-})
+  baseURL: "http://localhost:3000",
+});
 
-export default instance
+instance.interceptors.request.use((config) => {
+  config.headers.Authorization = window.localStorage.getItem("token");
+    return config
+});
+export default instance;
