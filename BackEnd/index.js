@@ -45,7 +45,7 @@ app.get('/me', cheakAuth, userController.getMe)
 
 // app.post('/posts', cheakAuth, postCreateValidator, handleValidationEror, postController.create)
 app.get('/posts', postController.getAll)
-// app.get('/posts/:id', postController.getOne)
+app.get('/posts/:id', postController.getOne)
 // app.delete('/posts/:id', cheakAuth, postController.remove)
 // app.patch('/posts/:id', cheakAuth, postCreateValidator, handleValidationEror, postController.update)
 

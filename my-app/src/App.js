@@ -11,12 +11,14 @@ import Friends from './pages/Friends/Friends';
 import Music from './pages/Music/Music';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAuthMe, selectIsAuth } from './redux/slices/login';
+import FullPosts from './componets/Posts/FullPosts/FullPosts';
+import Posts from './componets/Posts/Posts';
 
-function App() {
+function App({id}) {
   const dispatch = useDispatch()
-  const isAuth = useSelector(selectIsAuth)
-
+  const test = '/posts'
   React.useEffect(() =>{
+    // console.log(posts)
     dispatch(fetchAuthMe())
   }, [])
   return (
@@ -30,6 +32,7 @@ function App() {
         <Route path="/group" element={<Group />} />
         <Route path='/friends' element={<Friends />} />
         <Route path='/music' element={<Music />} />
+        <Route path={`${test}`} element={<FullPosts />} />
       </Routes>
     </>
   );  

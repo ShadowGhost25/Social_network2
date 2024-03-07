@@ -12,29 +12,29 @@ export const getAll = async (req, res) => {
   }
 }
 
-// export const getOne = async (req, res) => {
-//   try {
-//     const postId = req.params.id;
-//     const post = await PostModel.findByIdAndUpdate({
-//       _id: postId
-//     }, {
-//       $inc: { viewsCount: 1 },
-//     }, {
-//       returnDocument: 'after'
-//     },)
-//     if (!post) {
-//       return res.status(404).json({
-//         message: "Статья не найдена"
-//       })
-//     }
-//     res.json(post)
-//   } catch (error) {
-//     console.log("err => ", error)
-//     res.status(500).json({
-//       message: "Не удалось получить статью"
-//     })
-//   }
-// }
+export const getOne = async (req, res) => {
+  try {
+    const postId = req.params.id;
+    const post = await PostModel.findByIdAndUpdate({
+      _id: postId
+    }, {
+      $inc: { viewsCount: 1 },
+    }, {
+      returnDocument: 'after'
+    },)
+    if (!post) {
+      return res.status(404).json({
+        message: "Статья не найдена"
+      })
+    }
+    res.json(post)
+  } catch (error) {
+    console.log("err => ", error)
+    res.status(500).json({
+      message: "Не удалось получить статью"
+    })
+  }
+}
 
 // export const remove = async (req, res) => {
 //   try {

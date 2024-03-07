@@ -1,17 +1,25 @@
 import s from "./posts.module.css";
 import foto from "./img/groupAva.png";
-import posts from "./img/posts.png";
 import like from "./img/like.png";
 import share from "./img/share.png";
 import comment from "./img/comment.png";
 import { useDispatch, useSelector } from "react-redux";
 import React from "react";
 import { fetchPosts } from "../../redux/slices/posts";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "../../axios";
+import FullPosts from "./FullPosts/FullPosts";
+import App from "./../../App";
 
 const Posts = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { posts } = useSelector((state) => state.posts);
 
+  const onClickPost = async (id) => {
+    // debugger
+    <FullPosts id={id} />;
+  };
   const isPostsLoading = posts.status === "loading";
   React.useEffect(() => {
     dispatch(fetchPosts());
@@ -22,7 +30,13 @@ const Posts = () => {
         isPostsLoading ? (
           "loaded"
         ) : (
-          <div key={obj._id} className={s.mainPosts}>
+          <div
+            key={obj._id}
+            className={s.mainPosts}
+            onClick={() => {
+              onClickPost(obj._id);
+            }}
+          >
             <div className={s.posts}>
               <div className={s.postsHeader}>
                 <div>
@@ -35,7 +49,11 @@ const Posts = () => {
                 </div>
               </div>
               <div className={s.postsMain}>
-                <img className={s.postsFoto} src={obj.imageUrl} alt="no img" />
+                <img
+                  className={s.postsFoto}
+                  src={`http://localhost:3000${obj.imageUrl}`}
+                  alt="no img"
+                />
               </div>
               <div className={s.buttonFotter}>
                 <button className={s.buttonClick}>
@@ -58,5 +76,4 @@ const Posts = () => {
     </>
   );
 };
-
 export default Posts;
