@@ -12,9 +12,9 @@ const Register = (props) => {
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
-      Name: "Ilya",
-      Surname: "Vavilin",
-      Login: "Shadow",
+      fullName: "Ilya",
+      surName: "Vavilin",
+      login: "Shadow",
       email: "ilyushavavi@gmail.com",
       phone: "+79968011887",
       password: "12345",
@@ -24,7 +24,7 @@ const Register = (props) => {
 
   const onClickRegister = async (values) => {
     const data = await dispatch(fetchRegister(values));
-    console.log('values => ', values)
+    console.log("values => ", values);
     if (!data.payload) {
       alert("Неудалось авторизоваться");
       console.log(data.payload);
@@ -32,13 +32,12 @@ const Register = (props) => {
     if (data.payload) {
       console.log(data.payload);
       window.localStorage.setItem("token", data.payload.token);
+      window.location.reload();
     }
   };
-
   if (isAuth) {
     return <Navigate to="/" />;
   }
-
   return (
     <div className={s.login}>
       <div className={s.loginHistory}>
@@ -60,14 +59,14 @@ const Register = (props) => {
             <form onSubmit={handleSubmit(onClickRegister)}>
               <h2>Регистрация</h2>
               <input
-                {...register("Name", { required: "Укажите Имя" })}
+                {...register("fullName", { required: "Укажите Имя" })}
                 className={s.input}
                 type="text"
                 placeholder="Имя"
               />
               <br />
               <input
-                {...register("Surname", { required: "Укажите Имя" })}
+                {...register("surName", { required: "Укажите Имя" })}
                 className={s.input}
                 type="text"
                 placeholder="Фамилия"
@@ -102,7 +101,9 @@ const Register = (props) => {
               />
               <br />
               <br />
-              <button type="submit" className={s.buttonRegister}>Войти</button>
+              <button type="submit" className={s.buttonRegister}>
+                Войти
+              </button>
               <div>
                 <Link className={s.autho} to="/login">
                   Авторизоваться
