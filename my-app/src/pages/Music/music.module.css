@@ -1,0 +1,94 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.musicMain {
+    width: 1000px;
+    height: auto;
+    background-color: white;
+    padding: 5px 15px;
+    margin: 30px 0px;
+    border-radius: 20px;
+}
+
+.search {
+    padding: 5px 5px 5px 10px;
+    border-radius: 5px;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    color: rgb(255, 255, 255);
+    background-color: #1e1e1e;
+    font-size: 18px;
+}
+
+.search::placeholder {
+    color: rgb(255, 255, 255);
+}
+
+.search[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    background-color: rgb(255, 255, 255);
+    color: rgb(253, 253, 253);
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+    background-size: 20px 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.button {
+    padding: 5px;
+    background-color: #1e1e1e;
+    outline: 0;
+    border: 0;
+    border-radius: 5px;
+    background-image: url(./img/Vector.png);
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: center;
+    width: 40px;
+    height: 40px;
+}
+
+.flexBlog {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.musicBlog {
+    width: 500px;
+    border-right: 3px solid #1e1e1e;
+}
+
+.musicMainBlog {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 10px 0px;
+}
+
+.blogDown {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #1e1e1e;
+    color: white;
+    padding: 5px 10px;
+    margin-left: 160px;
+    border-radius: 5px;
+}
+
+.music{
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: #1e1e1e;
+    color: white;
+    border-radius: 5px;
+    margin: 10px 10px 10px 0px;
+}

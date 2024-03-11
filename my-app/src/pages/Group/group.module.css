@@ -1,0 +1,41 @@
+.main{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mainBlog{
+    width: 1000px;
+    height: 100%;
+    margin: 30px 0px;
+}
+.search {
+    padding: 5px 5px 5px 10px;
+    border-radius: 5px;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+}
+
+.search::placeholder {
+    color: rgb(0, 0, 0);
+}
+
+.search[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    background-color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+    background-size: 20px 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.mainGroup{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

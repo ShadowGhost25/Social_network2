@@ -1,0 +1,68 @@
+.mainPosts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.posts {
+  display: flex;
+  width: 1000px;
+  background-color: white;
+  border-radius: 20px;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.postsHeader {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 10px;
+}
+
+.foto{
+  width: 90%;
+}
+.postsMain {
+  margin: 0px auto;
+}
+.postsFoto{
+  width: 100%;
+}
+
+.h2 {
+  font-size: 25px;
+  margin-bottom: 4px;
+}
+
+.name {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.buttonFotter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.buttonClick {
+  width: 200px;
+  height: 30px;
+  margin: 0px 10px;
+  border-radius: 20px;
+  border: 0;
+  outline: none;
+  background-color: black;
+  color: white;
+}
+
+.textButton {
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+.text {
+  text-decoration: underline;
+}
