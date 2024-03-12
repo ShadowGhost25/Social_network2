@@ -1,4 +1,4 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import Header from "../../componets/Header/Header";
 import s from "./addposts.module.css";
 import { useSelector } from "react-redux";
@@ -7,14 +7,19 @@ import React from "react";
 import axios from "../../axios";
 
 const AddPosts = () => {
+  const { id } = useParams()
+  // console.log(id)
   const isAuth = useSelector(selectIsAuth);
   const navigate = useNavigate();
+  const isEdditing = Boolean(id);
+  // console.log(isEdditing)
   const [isLoading, setLoading] = React.useState(false);
   const [title, setTitle] = React.useState("");
   const [tags, setTags] = React.useState("");
   const [text, setText] = React.useState("");
-  const [imgUrl, setImgUrl] = React.useState("");
+  const [imageUrl, setImgUrl] = React.useState("");
   const inputRef = React.useRef("");
+
   const handleChangeFile = async (event) => {
     try {
       const formData = new FormData();
@@ -30,6 +35,7 @@ const AddPosts = () => {
   const deleteImg = () => {
     setImgUrl("");
   };
+
   const onSubmit = async () => {
     try {
       setLoading(true);
@@ -38,21 +44,38 @@ const AddPosts = () => {
         title,
         tags,
         text,
-        imgUrl,
+        imageUrl,
       };
 
-      const { data } = await axios.post("/add-posts", fields);
-      const id = data._id;
-      console.log(data)
-      navigate(`/`)
+      const { data } = isEdditing 
+      ? await axios.patch(`/posts/${id}`, fields)
+      : await axios.post("/add-posts", fields)
+      const _id = isEdditing ? id : data._id;
+      
+      navigate(`/posts/${_id}`)
     } catch (error) {
       console.warn(error);
     }
   };
 
+  React.useEffect(() =>{
+    if (id) {
+      axios.get(`/posts/${id}`).then(({data}) =>{
+        setTitle(data.title)
+        setText(data.text)  
+        setTags(data.tags)
+        setImgUrl(data.imageUrl)
+        setTags(data.tags.join(','))
+      }).catch (error => {
+        console.warn(error);
+      })
+    }
+  }, [])
+
   if (!window.localStorage.getItem("token") && !isAuth) {
     return <Navigate to="/" />;
   }
+
   return (
     <div>
       <Header />
@@ -81,11 +104,10 @@ const AddPosts = () => {
               ref={inputRef}
               onChange={handleChangeFile}
               type="file"
-              placeholder="Картинка поста"
             />
-            <img src={`http://localhost:3002${imgUrl}`} alt="" />
+            <img src={`http://localhost:3002${imageUrl}`} alt="" />
             <button onClick={deleteImg}>Удалить</button>
-            <button onClick={onSubmit}>Опубликовать</button>
+            <button onClick={onSubmit}>{isEdditing ? "Сохранить" : "Опубликовать"}</button>
           </div>
         </div>
       </div>

@@ -47,7 +47,7 @@ app.post('/add-posts', cheakAuth, postCreateValidator, handleValidationEror, pos
 app.get('/posts', postController.getAll)
 app.get('/posts/:id', postController.getOne)
 app.delete('/posts/:id', cheakAuth, postController.remove)
-// app.patch('/posts/:id', cheakAuth, postCreateValidator, handleValidationEror, postController.update)
+app.patch('/posts/:id', cheakAuth, postCreateValidator, handleValidationEror, postController.update)
 
 app.listen(3002, (err) => {
   if (err) {
