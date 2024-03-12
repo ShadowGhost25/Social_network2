@@ -1,0 +1,16 @@
+.mainPosts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.whiteBlock{
+    width: 1000px;
+    height: 100px;
+    margin-top: 30px;
+    padding: 10px;
+}
+.postsBlock{
+    background-color: white;
+    width: 1000px;
+    height: 100px;
+}

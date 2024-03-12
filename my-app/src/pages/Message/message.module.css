@@ -1,0 +1,32 @@
+.mainMessage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainFriends{
+    width: 1000px;
+    margin-top: 30px;
+    background-color: white;   
+    border-radius: 20px;
+}
+
+.headerMessage{
+    height: 50px;
+    border-radius: 20px 20px 0px 0px;
+    background: linear-gradient( 100deg, rgba(49, 163, 207, 1), rgba(249, 198, 246, 1))
+}
+.foterMessage{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.textMessage{
+    margin-left: 20px;
+    width: 100%;
+}
+.h3{
+    margin-top: 20px;
+    margin-bottom: 0px;
+}

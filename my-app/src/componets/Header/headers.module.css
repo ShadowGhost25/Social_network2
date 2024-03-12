@@ -1,0 +1,129 @@
+.header {
+    display: flex;
+    background-color: #7DA1FD;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerMain {
+    width: 1000px;
+    display: flex;
+}
+
+.foto {
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+}
+
+.blogSearch {
+    display: flex;
+    align-items: end;
+    margin-bottom: 10px;
+}
+
+.search {
+    vertical-align: bottom;
+    border: 0;
+    height: 30px;
+    outline: none;
+    padding: 5px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.search[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    background-color: black;
+    color: white;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+    background-size: 20px 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.menu {
+    width: 100%;
+}
+
+.navBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.news,
+.message,
+.friends,
+.group,
+.music,
+.ava,
+.avaActive {
+    width: 70px;
+    height: 83px;
+    margin: 0px 10px;
+    background-image: url(./img/News.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.7s;
+}
+
+.message {
+    background-image: url(./img/Messages.png);
+}
+
+.ava {
+    background-image: url(./img/User.png);
+}
+
+.friends {
+    background-image: url(./img/Friends.png);
+}
+
+.group {
+    background-image: url(./img/Groups.png);
+}
+
+.music {
+    background-image: url(./img/Music.png);
+}
+
+.avaActive {
+    margin: 0px 0px 0px 10px;
+    background-image: url(./img/Ava.png);
+}
+
+.news:hover,
+.message:hover,
+.friends:hover,
+.group:hover,
+.music:hover,
+.ava:hover,
+.avaActive:hover {
+    background-color: white;
+    transition: 0.7s;
+    background-image: url(./img/NewsBlack.png);
+}
+
+.message:hover {
+    background-image: url(./img/MessagesBlack.png);
+}
+
+.friends:hover {
+    background-image: url(./img/FriendsBlack.png);
+}
+
+.group:hover {
+    background-image: url(./img/GroupBlack.png);
+}
+
+.music:hover {
+    background-image: url(./img/MusicBlack.png)
+}
+.ava:hover {
+    background-image: url(./img/UserBlack.png);
+    transition: 0.7s;
+}
+.avaActive:hover {
+    background-image: url(./img/Ava.png);
+}

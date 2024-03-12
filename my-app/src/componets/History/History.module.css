@@ -1,0 +1,30 @@
+.History{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.blogHistory{
+    display: flex;
+    width: 1000px;
+    flex-direction: row;
+    border-radius: 20px;
+    font-size: 25px;
+    padding: 0px 10px;
+
+}
+.whiteblog{
+    display: flex;
+    width: 1000px;
+    flex-direction: row;
+    border-radius: 20px;
+    font-size: 25px;
+    padding: 10px;
+    background-color: white;
+    margin-top: 30px;
+}
+.text{
+    text-align: center;
+    color: #7DA1FD;
+    padding-top: 5px;
+    padding-left: 10px;
+}
