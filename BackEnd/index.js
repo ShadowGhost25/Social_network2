@@ -3,9 +3,9 @@ import mongoose from 'mongoose';
 import multer from 'multer';
 import cors from 'cors'
 
-import { loginValidator, registerValidator, postCreateValidator } from './validations.js'
+import { loginValidator, registerValidator, postCreateValidator, userStatusValidatior, groupCreateValidator } from './validations.js'
 
-import { postController, userController } from './controller/Controller.js'
+import { groupController, postController, userController } from './controller/Controller.js'
 
 import { handleValidationEror, cheakAuth } from './utils/Utils.js';
 
@@ -33,15 +33,16 @@ app.use('/uploads', express.static('uploads'))
 
 
 app.post('/login', loginValidator, handleValidationEror, userController.login)
+app.post('/user/:id', userStatusValidatior, handleValidationEror, userController.updateUser)
 app.post('/register', registerValidator, handleValidationEror, userController.register)
 app.get('/me', cheakAuth, userController.getMe)
-
 
 app.post('/upload', cheakAuth, upload.single('image'), (req, res) => {
   res.json({
     url: `/uploads/${req.file.originalname}`
   })
 })
+app.post('/add-group', cheakAuth, groupCreateValidator, handleValidationEror, groupController.create)
 
 app.post('/add-posts', cheakAuth, postCreateValidator, handleValidationEror, postController.create)
 app.get('/posts', postController.getAll)

@@ -14,7 +14,6 @@
 }
 .whiteblog{
     display: flex;
-    width: 1000px;
     flex-direction: row;
     border-radius: 20px;
     font-size: 25px;

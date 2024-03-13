@@ -1,13 +1,13 @@
 .header {
     display: flex;
     background-color: #7DA1FD;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
 }
 
 .headerMain {
     width: 1000px;
     display: flex;
+    margin: 0px auto;
 }
 
 .foto {

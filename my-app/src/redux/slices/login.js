@@ -16,6 +16,7 @@ export const fetchAuthMe = createAsyncThunk("login/fetchAuthMe", async () => {
 
 const initialState = {
   data: null,
+  id: null,
   status: "loadnig",
 };
 
@@ -47,6 +48,7 @@ const loginSlice = createSlice({
       })
       .addCase(fetchAuthMe.fulfilled, (state, action) => {
         state.data = action.payload;
+        state.id = action.payload._id;
         state.status = "loaded";
       })
       .addCase(fetchAuthMe.rejected, (state) => {

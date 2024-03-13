@@ -16,7 +16,6 @@ import AddPosts from './pages/AddPosts/AddPosts';
 
 function App() {
   const dispatch = useDispatch()
-  const {state} = useLocation()
   
   React.useEffect(() =>{
     dispatch(fetchAuthMe())
@@ -32,7 +31,7 @@ function App() {
         <Route path="/group" element={<Group />} />
         <Route path='/friends' element={<Friends />} />
         <Route path='/music' element={<Music />} />
-        <Route path='/posts/:id' element={<FullPosts state={state}/>} />
+        <Route path='/posts/:id' element={<FullPosts/>} />
         <Route path='/posts/:id/edit' element={<AddPosts />} />
         <Route path='/add-posts' element={<AddPosts />} />
       </Routes>

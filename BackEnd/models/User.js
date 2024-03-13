@@ -29,6 +29,9 @@ const UserSchema = new mongoose.Schema({
   avatarUrl: {
     type:String,
   },
+  status: {
+    type:String,
+  }
 }, {
   timestamps: true,
 })

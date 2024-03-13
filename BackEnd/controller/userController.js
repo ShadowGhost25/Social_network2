@@ -1,10 +1,9 @@
-import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken';
-import userModel from '../models/User.js'
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import userModel from "../models/User.js";
 
 export const register = async (req, res) => {
   try {
-
     const salt = await bcrypt.genSalt(10);
     const password = await bcrypt.hash(req.body.password, salt);
 
@@ -17,79 +16,110 @@ export const register = async (req, res) => {
       phone: req.body.phone,
       avatarUrl: req.body.avatarUrl,
       password,
-    })
+    });
     const user = await doc.save();
 
-    const token = jwt.sign({
-      _id: user._id,
-    }, 'secret123', {
-      expiresIn: '30d',
-    })
+    const token = jwt.sign(
+      {
+        _id: user._id,
+      },
+      "secret123",
+      {
+        expiresIn: "30d",
+      }
+    );
 
-    const { passwordHash, ...userData } = user._doc
+    const { passwordHash, ...userData } = user._doc;
 
-    res.json({ ...userData, token })
+    res.json({ ...userData, token });
   } catch (error) {
-    console.log("err => ", error)
+    console.log("err => ", error);
     res.status(500).json({
-      message: "не удалось зарегистрироваться"
-    })
-    return
+      message: "не удалось зарегистрироваться",
+    });
+    return;
   }
-}
+};
+
+export const updateUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    await userModel.updateOne(
+      {
+        _id: userId,
+      },
+      {
+        status: req.body.status,
+      }
+    );
+    res.json("статус создан");
+  } catch (error) {
+    console.log("err => ", error);
+    res.status(500).json({
+      message: "Не удалось написать статус",
+    });
+  }
+};
 
 export const login = async (req, res) => {
   try {
-    const user = await userModel.findOne({ email: req.body.email })
+    const user = await userModel.findOne({ email: req.body.email });
 
     if (!user) {
       return res.status(400).json({
-        message: 'Неверные логин или пароль'
-      })
+        message: "Неверные логин или пароль",
+      });
     }
 
-    const isValidationPass = await bcrypt.compare(req.body.password, user._doc.password)
+    const isValidationPass = await bcrypt.compare(
+      req.body.password,
+      user._doc.password
+    );
 
     if (!isValidationPass) {
       return res.status(400).json({
-        message: 'Неверные логин или пароль'
-      })
+        message: "Неверные логин или пароль",
+      });
     }
 
-    const token = jwt.sign({
-      _id: user._id,
-    }, 'secret123', {
-      expiresIn: '30d',
-    })
+    const token = jwt.sign(
+      {
+        _id: user._id,
+      },
+      "secret123",
+      {
+        expiresIn: "30d",
+      }
+    );
 
-    const { passwordHash, ...userData } = user._doc
+    const { passwordHash, ...userData } = user._doc;
 
-    res.json({ ...userData, token })
+    res.json({ ...userData, token });
   } catch (error) {
-    console.log("err => ", error)
+    console.log("err => ", error);
     res.status(500).json({
-      message: "Не удалось авторизироваться"
-    })
+      message: "Не удалось авторизироваться",
+    });
   }
-}
+};
 
 export const getMe = async (req, res) => {
   try {
-    const user = await userModel.findById(req.userId)
+    const user = await userModel.findById(req.userId);
 
     if (!user) {
       return res.status(404).json({
-        message: 'Пользователь не найден'
-      })
+        message: "Пользователь не найден",
+      });
     }
-    const { passwordHash, ...userData } = user._doc
+    const { passwordHash, ...userData } = user._doc;
 
-    res.json(userData)
+    res.json(userData);
   } catch (error) {
-    console.log("err => ", error)
+    console.log("err => ", error);
     res.status(400).json({
-      message: "Нет доступа"
-    })
-    return
+      message: "Нет доступа",
+    });
+    return;
   }
-}
+};
