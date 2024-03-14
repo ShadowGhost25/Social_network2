@@ -43,6 +43,9 @@ app.post('/upload', cheakAuth, upload.single('image'), (req, res) => {
   })
 })
 app.post('/add-group', cheakAuth, groupCreateValidator, handleValidationEror, groupController.create)
+app.get('/group', groupController.getAll)
+app.get('/group/:id', groupController.getOne)
+app.patch('/group/:id', cheakAuth, groupCreateValidator, handleValidationEror, groupController.update)
 
 app.post('/add-posts', cheakAuth, postCreateValidator, handleValidationEror, postController.create)
 app.get('/posts', postController.getAll)

@@ -1,42 +1,26 @@
 // import s from './app.module.css'
-import React from 'react';
-import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
-import Profile from './componets/Profile/Profile';
-import Message from './pages/Message/Message';
-import Home from './pages/Home/Home';
-import Group from './pages/Group/Group';
-import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
-import Friends from './pages/Friends/Friends';
-import Music from './pages/Music/Music';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchAuthMe, selectIsAuth } from './redux/slices/login';
-import FullPosts from './componets/Posts/FullPosts/FullPosts';
-import AddPosts from './pages/AddPosts/AddPosts';
+import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchAuthMe } from "./redux/slices/login";
+import { route } from "./Route/route";
 
 function App() {
-  const dispatch = useDispatch()
-  
-  React.useEffect(() =>{
-    dispatch(fetchAuthMe())
-  }, [])
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(fetchAuthMe());
+  }, []);
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/message" element={<Message />} />
-        <Route path="/group" element={<Group />} />
-        <Route path='/friends' element={<Friends />} />
-        <Route path='/music' element={<Music />} />
-        <Route path='/posts/:id' element={<FullPosts/>} />
-        <Route path='/posts/:id/edit' element={<AddPosts />} />
-        <Route path='/add-posts' element={<AddPosts />} />
+        {route.map(({ path, element }) => 
+          <Route key={path} path={path} element={element} exact />
+        )}
+        <Route path="*" element={<Navigate to='/' />} />
       </Routes>
     </>
-  );  
+  );
 }
 
 export default App;

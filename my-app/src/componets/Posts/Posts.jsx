@@ -4,9 +4,8 @@ import like from "./img/like.png";
 import share from "./img/share.png";
 import comment from "./img/comment.png";
 import { useDispatch, useSelector } from "react-redux";
-import React, { useState } from "react";
-import { fetchDelete, fetchPosts } from "../../redux/slices/posts";
-import { Link, useNavigate } from "react-router-dom";
+import { fetchDelete} from "../../redux/slices/posts";
+import { useNavigate } from "react-router-dom";
 import { selectIsAuth } from "../../redux/slices/login";
 
 const Posts = () => {
@@ -39,7 +38,6 @@ const Posts = () => {
               <div
                 onClick={() => {
                   onClickPost(obj);
-                  console.log(obj);
                 }}
                 className={s.postsHeader}
               >

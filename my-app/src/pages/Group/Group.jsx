@@ -1,23 +1,38 @@
-import { useParams } from "react-router-dom";
+import React from "react";
 import GroupBlock from "../../componets/GroupBlock/GroupBlock";
 import Header from "../../componets/Header/Header";
 import History from "../../componets/History/History";
 import s from "./group.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchGroup } from "../../redux/slices/group";
+import Loading from "../../componets/Loading/Loading";
 
 const Group = () => {
+  const dispatch = useDispatch();
+  const { group } = useSelector((state) => state.group);
+  const isGroupLoading = group.status === "loaded";
+  React.useEffect(() => {
+    dispatch(fetchGroup());
+  }, []);
   return (
     <>
-      <Header />
-      <History />
-      <div className={s.main}>
-        <div className={s.mainBlog}>
-          <input className={s.search} type="search" placeholder="Поиск" />
-          <h3 style={{ fontSize: "26px" }}>Ваши сообщества</h3>
-          <div className={s.mainGroup}>
-            <GroupBlock />
+      {!isGroupLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <Header />
+          <History />
+          <div className={s.main}>
+            <div className={s.mainBlog}>
+              <input className={s.search} type="search" placeholder="Поиск" />
+              <h3 style={{ fontSize: "25px" }}>Группы</h3>
+              <div className={s.mainGroup}>
+                <GroupBlock />
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </>
   );
 };

@@ -1,13 +1,23 @@
-.continuous {
-    width: 120px;
-    height:20px;
-    background: 
-      linear-gradient(90deg,#0001 33%,#0005 50%,#0001 66%)
-      #f2f2f2;
-    background-size:300% 100%;
-    animation: ct1 1s infinite linear;
-  }
-  
-  @keyframes ct1 {
-    0% {background-position: right}
-  }
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.spinner{
+  width: 200px;
+  aspect-ratio: 1;
+  --_c: radial-gradient(farthest-side,#7DA1FD 92%,#0000);
+  --_d: radial-gradient(farthest-side,#ffffff 92%,#0000);
+  background: 
+    var(--_c) top,
+    var(--_d) left,
+    var(--_d) right,
+    var(--_c) bottom;
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  animation: s7 1s infinite;
+}
+@keyframes s7 {to{transform: rotate(.5turn)}}
