@@ -17,7 +17,7 @@ function App() {
         {route.map(({ path, element }) => 
           <Route key={path} path={path} element={element} exact />
         )}
-        <Route path="*" element={<Navigate to='/' />} />
+        <Route path="*" element={<Navigate to='/error' />} />
       </Routes>
     </>
   );

@@ -3,7 +3,6 @@ import s from "./History.module.css";
 import plus from "./img/Plus.png";
 const History = () => {
   const url = window.location.pathname;
-  console.log('history =>', url)
   return (
     <div className={s.History}>
       <div className={s.blogHistory}>

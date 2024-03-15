@@ -12,6 +12,7 @@ const AddElement = () => {
   const url = window.location.pathname;
   const navigate = useNavigate();
   const isEdditing = Boolean(id);
+  console.log("isEdditing =>", isEdditing);
   const [isLoading, setLoading] = React.useState(false);
   const [title, setTitle] = React.useState("");
   const [tags, setTags] = React.useState("");
@@ -38,6 +39,7 @@ const AddElement = () => {
   const onSubmit = async () => {
     try {
       setLoading(true);
+      let data;
 
       const fields = {
         title,
@@ -45,18 +47,31 @@ const AddElement = () => {
         text,
         imageUrl,
       };
-
-      const { data } = isEdditing
-      ? await axios.patch(`/group/${id}`, fields)
-      : await axios.post("/add-posts", fields)
-      ? await axios.patch(`/posts/${id}`, fields)
-      : (await axios.post("/add-posts", fields))
-      console.log(data)
-      const _id = isEdditing ? id : data._id;
-      if(`/posts/${id}/edit` === url){
-        navigate(`/posts/${_id}`);
-      } else{
-        navigate(`/group/${_id}`)
+      if (`/group/${id}/edit` === url) {
+        ({ data } = await axios.patch(`/group/${id}`, fields)); // Используем data
+        navigate(`/group`);
+      }
+      if (`/posts/${id}/edit` === url) {
+        ({ data } = await axios.patch(`/posts/${id}`, fields)); // Используем data
+      }
+      if (!isEdditing) {
+        data = await axios.post(`${url.split("/")[1]}`, fields);
+        switch (`${url.split("/")[1]}`) {
+          case "add-posts":
+            navigate(`/posts/${data.data._id}`);
+            break;
+          case "add-group":
+            navigate(`/group/${data.data._id}`);
+            break;
+          default:
+            break;
+        }
+        console.log(`${url.split("/")[1]}`);
+      } else if (url === "/add-posts" || `/posts/${id}/edit` === url) {
+        console.log(id);
+        navigate(`/posts/${id}`);
+      } else if (url === "/add-group" || `/group/${id}/edit` === url) {
+        navigate(`/group/${id}`);
       }
     } catch (error) {
       console.warn(error);
@@ -77,7 +92,7 @@ const AddElement = () => {
         .catch((error) => {
           console.warn(error);
         });
-    } else {
+    } else if (`/group/${id}/edit` === url) {
       axios
         .get(`/group/${id}`)
         .then(({ data }) => {
@@ -87,6 +102,7 @@ const AddElement = () => {
         .catch((error) => {
           console.warn(error);
         });
+      <Navigate to="/group" />;
     }
   }, []);
 
@@ -104,20 +120,32 @@ const AddElement = () => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               type="text"
-              placeholder="Название поста"
+              placeholder={
+                url === `/group/${id}/edit` || url === "/add-group"
+                  ? "Название группы"
+                  : "Название поста"
+              }
             />
             <input
               value={text}
               onChange={(e) => setText(e.target.value)}
               type="text"
-              placeholder="Текст поста"
+              placeholder={
+                url === `/group/${id}/edit` || url === "/add-group"
+                  ? "Текст группы"
+                  : "Текст поста"
+              }
             />
-            <input
-              value={tags}
-              onChange={(e) => setTags(e.target.value)}
-              type="text"
-              placeholder="Тэги поста"
-            />
+            {url === `/group/${id}/edit` || url === "/add-group" ? (
+              <div></div>
+            ) : (
+              <input
+                value={tags}
+                onChange={(e) => setTags(e.target.value)}
+                type="text"
+                placeholder="Тэги поста"
+              />
+            )}
             <input ref={inputRef} onChange={handleChangeFile} type="file" />
             <img src={`http://localhost:3002${imageUrl}`} alt="" />
             <button onClick={deleteImg}>Удалить</button>

@@ -41,7 +41,7 @@ const FullPosts = () => {
               <div className={s.postsMain}>
                 <img
                   className={s.postsFoto}
-                  src={`http://localhost:3000${data.imageUrl}`}
+                  src={`http://localhost:3002${data.imageUrl}`}
                   alt="no img"
                 />
               </div>

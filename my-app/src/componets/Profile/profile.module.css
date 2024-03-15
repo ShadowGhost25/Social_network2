@@ -83,6 +83,7 @@
 
 .main {
     display: flex;
+    position: relative;
     flex-direction: row;
     justify-content: space-between;
     margin: 0px auto;
@@ -90,6 +91,7 @@
 }
 
 .main1 {
+    position: fixed;
     width: 350px;
     height: 100%;
 }
@@ -110,6 +112,7 @@
 
 .main2 {
     width: 590px;
+    margin-left: auto;
 }
 
 .h3Foto {

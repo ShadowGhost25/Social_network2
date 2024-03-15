@@ -1,6 +1,7 @@
 import FullPosts from "../componets/Posts/FullPosts/FullPosts";
 import Profile from "../componets/Profile/Profile";
 import AddElement from "../pages/AddElement/AddElement";
+import Error from "../pages/Error/Error";
 import Friends from "../pages/Friends/Friends";
 import Group from "../pages/Group/Group";
 import Home from "../pages/Home/Home";
@@ -65,5 +66,9 @@ export const route = [
     {
         path: '/add-group',
         element: <AddElement />
+    },
+    {
+        path: '/error',
+        element: <Error />
     }
 ]

@@ -11,7 +11,6 @@ const Home = () => {
   const { posts } = useSelector((state) => state.posts);
   const isPostsLoading = posts.status === "loaded";
   const dispatch = useDispatch();
-  console.log(isPostsLoading);
   React.useEffect(() => {
     dispatch(fetchPosts());
   }, []);

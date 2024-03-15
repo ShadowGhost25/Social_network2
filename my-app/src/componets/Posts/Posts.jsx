@@ -28,7 +28,7 @@ const Posts = () => {
   const clickRemove = (id) => { 
     navigate(`/posts/${id}/edit`);
   };
-  
+  console.log(posts.items)
   return (
     <>
       {posts.items.map((obj, index) => {
@@ -46,7 +46,7 @@ const Posts = () => {
                 </div>
                 <div className={s.name}>
                   <h2 className={s.h2}>{obj.title}</h2>
-                  <span className={s.text}> 2 декабря 2023 в 19:10</span>
+                  <span className={s.text}>{obj.createdAt}</span>
                   <div style={{ height: "10px" }}>{obj.text}</div>
                 </div>
               </div>
