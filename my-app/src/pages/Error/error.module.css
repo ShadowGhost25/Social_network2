@@ -1,0 +1,9 @@
+.main{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(./img/404.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: #7DA1FD;
+}
