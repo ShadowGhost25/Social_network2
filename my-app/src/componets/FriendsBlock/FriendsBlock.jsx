@@ -9,6 +9,7 @@ const FriendsBLock = () => {
                 <h3 className={s.name}>Саша Тарасов1</h3>
                 <span>Пензенский колледж информационных и промышленных технологий (ИТ-колледж)</span>
             </div>
+            test
             <button className={s.button2}>Написать</button>
         </div>
     );
