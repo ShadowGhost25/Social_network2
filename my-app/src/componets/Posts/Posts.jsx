@@ -4,9 +4,10 @@ import like from "./img/like.png";
 import share from "./img/share.png";
 import comment from "./img/comment.png";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDelete} from "../../redux/slices/posts";
+import { fetchDelete, fetchPosts } from "../../redux/slices/posts";
 import { useNavigate } from "react-router-dom";
 import { selectIsAuth } from "../../redux/slices/login";
+import React from "react";
 
 const Posts = () => {
   const { posts } = useSelector((state) => state.posts);
@@ -14,10 +15,14 @@ const Posts = () => {
   const isAuth = useSelector(selectIsAuth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  React.useEffect(() => {
+    dispatch(fetchPosts());
+  }, []);
 
   const clickDelete = (id) => {
     if (window.confirm("Вы действительно хотите удалить пост ?")) {
       dispatch(fetchDelete(id));
+      
     }
   };
 
@@ -25,10 +30,9 @@ const Posts = () => {
     navigate(`/posts/${obj._id}`);
   };
 
-  const clickRemove = (id) => { 
+  const clickRemove = (id) => {
     navigate(`/posts/${id}/edit`);
   };
-  console.log(posts.items)
   return (
     <>
       {posts.items.map((obj, index) => {
@@ -58,7 +62,7 @@ const Posts = () => {
                 {obj.tags}
               </div>
 
-              {id === obj.user._id && isAuth? (
+              {id === obj.user._id && isAuth ? (
                 <div>
                   <button
                     className={s.buttonDelete}
@@ -66,15 +70,16 @@ const Posts = () => {
                       clickDelete(obj._id);
                     }}
                   >
-                    Удалить
+                    <span className={s.textButton}>Удалить</span>
                   </button>
                   <button
+                  style={{marginBottom: "10px"}}
                     className={s.buttonRemove}
                     onClick={() => {
                       clickRemove(obj._id);
                     }}
                   >
-                    Редактировать
+                    <span  className={s.textButton}>Редактировать</span>
                   </button>
                 </div>
               ) : (
@@ -94,11 +99,11 @@ const Posts = () => {
                   <span className={s.textButton}> Нравится</span>
                 </button>
                 <button className={s.buttonClick}>
-                  <img src={share} alt="" />
+                  <img src={comment} alt="" />
                   <span className={s.textButton}> Комментарий</span>
                 </button>
                 <button className={s.buttonClick}>
-                  <img src={comment} alt="" />
+                  <img src={share} alt="" />
                   <span className={s.textButton}> Поделиться</span>
                 </button>
               </div>

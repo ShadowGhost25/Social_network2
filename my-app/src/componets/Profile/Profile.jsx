@@ -12,12 +12,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, selectIsAuth } from "../../redux/slices/login";
 import { Navigate } from "react-router-dom";
 import Loading from "../Loading/Loading";
+import { fetchPosts } from "../../redux/slices/posts";
 const Profile = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
   const { status, data } = useSelector((state) => state.login);
   const isProfileLoading = status === "loaded";
-  console.log(data);
+  // console.log(data);
   const onClickLogout = () => {
     if (window.confirm("Вы действительно хотите выйти.")) {
       dispatch(logout());
@@ -48,10 +49,10 @@ const Profile = () => {
                   <span className={s.textH3}>Редактировать профиль</span>{" "}
                   <img src={vector} alt="no foto" />
                 </button>
-                <span className={s.fio}>{data.fullName} {data.surName}</span>
-                <span className={s.status}>
-                  {data.status}
+                <span className={s.fio}>
+                  {data.fullName} {data.surName}
                 </span>
+                <span className={s.status}>{data.status}</span>
                 <button className={s.buttonFoter}>
                   <img className={s.vector2} src={vector2} alt="" />
                   Подробнее...

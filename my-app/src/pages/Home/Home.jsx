@@ -10,23 +10,14 @@ import { fetchPosts } from "../../redux/slices/posts";
 const Home = () => {
   const { posts } = useSelector((state) => state.posts);
   const isPostsLoading = posts.status === "loaded";
-  const dispatch = useDispatch();
-  React.useEffect(() => {
-    dispatch(fetchPosts());
-  }, []);
+  console.log(isPostsLoading);
   return (
     <>
-      {!isPostsLoading ? (
-        <Loading />
-      ) : (
-        <>
-          <Header />
-          <History />
-          <div className={s.mainHome}>
-            <Posts />
-          </div>
-        </>
-      )}
+      <Header />
+      <History />
+      <div className={s.mainHome}>
+        <Posts />
+      </div>
     </>
   );
 };

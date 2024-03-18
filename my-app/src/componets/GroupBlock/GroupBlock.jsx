@@ -10,7 +10,6 @@ const GroupBlock = () => {
   return (
     <>
       {group.items.map((obj, index) => {
-        console.log(index);
         return (
           <div
             key={obj._id}
