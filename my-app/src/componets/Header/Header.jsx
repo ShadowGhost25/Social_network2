@@ -33,17 +33,19 @@ const Header = () => {
             <Link to="/music">
               <div className={s.music}></div>
             </Link>
+            <Link to="/setings">
+              <div className={s.setings}></div>
+            </Link>
           </div>
         </div>
         <div className={s.avatarka}>
           {isAuth ? (
-            <Link to="/profile">
-              {" "}
-              <div className={s.avaActive}></div>
+            <Link className={s.tegA} to="/profile">
+                <span>Shadow</span>
+                <div className={s.avaActive}></div>
             </Link>
           ) : (
             <Link to="/login">
-              {" "}
               <div className={s.ava}></div>
             </Link>
           )}

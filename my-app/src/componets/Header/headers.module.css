@@ -5,7 +5,7 @@
 }
 
 .headerMain {
-    width: 1000px;
+    width: 1400px;
     display: flex;
     margin: 0px auto;
 }
@@ -44,20 +44,46 @@
 
 .menu {
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .navBar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    width: 700px;
 }
 
+
+
+.profile {
+    display: flex;
+    flex-direction: row;
+}
+.tegA{  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    transition: 0.7s;
+    margin-left: 10px;
+}
+.tegA:hover{
+    color: black;
+    transition: 0.7s;
+    background-color: white;
+}
 .news,
 .message,
 .friends,
 .group,
 .music,
 .ava,
+.setings,
 .avaActive {
     width: 70px;
     height: 83px;
@@ -88,9 +114,17 @@
     background-image: url(./img/Music.png);
 }
 
+.setings {
+    background-image: url(./img/Setings.png);
+}
+
 .avaActive {
+    display: flex;
+    flex-direction: row;
+    background-position: right;
     margin: 0px 0px 0px 10px;
     background-image: url(./img/Ava.png);
+    transition: 0.7s;
 }
 
 .news:hover,
@@ -99,6 +133,7 @@
 .group:hover,
 .music:hover,
 .ava:hover,
+.setings:hover,
 .avaActive:hover {
     background-color: white;
     transition: 0.7s;
@@ -120,10 +155,16 @@
 .music:hover {
     background-image: url(./img/MusicBlack.png)
 }
+
+.setings:hover {
+    background-image: url(./img/SetingsBlack.png);
+}
+
 .ava:hover {
     background-image: url(./img/UserBlack.png);
     transition: 0.7s;
 }
+
 .avaActive:hover {
     background-image: url(./img/Ava.png);
 }
