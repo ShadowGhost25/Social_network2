@@ -1,31 +1,40 @@
 import { useSelector } from "react-redux";
 import Header from "../../componets/Header/Header";
 import History from "../../componets/History/History";
-import Posts from "../../componets/Posts/Posts";
+import foto from "./img/qwe.png"
 import s from "./home.module.css";
 import React from "react";
 
 const Home = () => {
-  const { posts } = useSelector((state) => state.posts);
-  const isPostsLoading = posts.status === "loaded";
-  console.log(isPostsLoading);
+  const {data} = useSelector((state) => state.login)
+  console.log(data);
   return (
     <>
       <Header />
       <div className={s.main}>
-        <div>
-          <div></div>
+        <div className={s.leftBlock}>
+          <div className={s.background}></div>
+          <img className={s.fotoProfile} src={foto} alt="" />
+          <span className={s.name}>Илья Вавилин</span>
+          <span className={s.status}>Статус</span>
+          <hr />
+          <span className={s.friends}>Друзья</span>
+          <span className={s.kolFriends}>1234</span>
+          <hr />
+          <button className={s.profileButton}> Профиль</button>
         </div>
-        <div>
+        <div className={s.mainBlock}>
           <History />
-          <div className={s.mainHome}>
+          {/* <div className={s.mainHome}>
             <Posts />
-          </div>
+          </div> */}
         </div>
-        <div>
-
+        <div className={s.rightBlock}>
+          <div>Реклама</div>
         </div>
       </div>
     </>
   );
 };
+
+export default Home;

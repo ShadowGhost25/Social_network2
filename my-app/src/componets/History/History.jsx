@@ -7,7 +7,7 @@ const History = () => {
     <div className={s.History}>
       <div className={s.blogHistory}>
         <Link
-          style={{ textDecoration: "none", width: "1000px" }}
+          style={{ textDecoration: "none"}}
           to={url === "/" ? "/add-posts" : "/add-group"}
         >
           <div className={s.whiteblog}>
