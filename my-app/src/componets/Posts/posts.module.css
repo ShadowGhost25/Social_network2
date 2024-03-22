@@ -11,9 +11,9 @@
     max-width: 1000px;
     min-width: 100%;
     background-color: white;
-    border-radius: 20px;
     flex-direction: column;
     padding: 10px;
+    position: relative;
 }
 
 .postsHeader {
@@ -23,13 +23,9 @@
     width: 100%;
 }
 
-.foto {
-    width: 90%;
-}
 
 .postsMain {
     width: 100%;
-    height: 430px;
     padding-bottom: 13px;
 }
 
@@ -37,48 +33,57 @@
     width: 100%;
     height: 100%;
 }
-
-.h2 {
+.h2{
+    margin: 0px;
     font-size: 25px;
-    margin-bottom: 4px;
 }
 
 .name {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
+    width: 100%;
 }
-
-.buttonFotter {
+.buttonFotter{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
+    width: 100%;
 }
-
-.buttonClick, .buttonDelete, .buttonRemove {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
+.buttonDelete, .buttonRemove {
+    width: 150px;
     height: 30px;
-    margin: 0px 10px;
-    border-radius: 20px;
+    border-radius: 5px;
     border: 0;
     outline: none;
     background-color: black;
     color: white;
 }
+.buttonClick{
+    border-radius: 100px;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    outline: none;
+    background-color: black;
+    color: white;
 
-.textButton {
-    margin-left: 10px;
-    font-size: 18px;
-    display: block;
 }
-
+.textButton{
+    font-size: 18px;
+}
+.imgCLick{
+    margin-top: 4px;
+}
+.imgCLick2{
+    margin-top: 2px;
+    margin-right: 2px;
+}
 .text {
     text-decoration: underline;
 }
-
-.buttonDelete {
-    margin: 10px;
+.buttonDelete{
+    margin-left: 10px;
+}
+.removeDelete{
+    margin-left: auto;
+    position: absolute;
+    right: 10px;
+    display: flex;
 }
