@@ -5,10 +5,11 @@ import foto from "./img/qwe.png";
 import s from "./home.module.css";
 import React from "react";
 import Posts from "./../../componets/Posts/Posts";
+import FriendsOnline from "../../componets/FriendsOnline/FriendsOnline";
+import GroupNotification from "../../componets/GroupNotification/GroupNotification";
 
 const Home = () => {
-  const { data } = useSelector((state) => state.login);
-  // console.log(data);
+  // const { data } = useSelector((state) => state.login);
   return (
     <>
       <Header />
@@ -26,74 +27,13 @@ const Home = () => {
         </div>
         <div className={s.mainBlock}>
           <History />
-          <div style={{ marginTop: "30px" }}>
+          <div className={s.postsMain}>
             <Posts />
           </div>
         </div>
         <div className={s.rightBlock}>
-          <div style={{ background: "white" }}>
-            <h3
-              style={{
-                margin: "0px",
-                padding: "16px 0px",
-                textAlign: "center",
-              }}
-            >
-              Друзья онлайн{" "}
-            </h3>
-            <hr />
-            <div style={{ display: "flex", padding: "10px" }}>
-              <img width={"60px"} src={foto} alt="" />
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <span className={s.nameFriends}>Илья Вавилин</span>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                >
-                  <span className={s.statusFriends}> Online </span>
-                  <div className={s.ellips}></div>
-                </div>
-              </div>
-            </div>
-            <div style={{ display: "flex", padding: "10px" }}>
-              <img width={"60px"} src={foto} alt="" />
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <span className={s.nameFriends}>Илья Вавилин</span>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                >
-                  <span className={s.statusFriends}> Online</span>{" "}
-                  <div className={s.ellips}></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style={{ background: "white" }}>
-            <h3
-              style={{
-                margin: "30px 0px 0px",
-                padding: "16px 0px",
-                textAlign: "center",
-              }}
-            >
-              Уведомления от групп
-            </h3>
-            <hr />
-            <div style={{ display: "flex", padding: "10px" }}>
-              <img width={"60px"} src={foto} alt="" />
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <span className={s.nameFriends}>One Piece</span>
-                  <span className={s.notifications}> +1 </span>
-              </div>
-            </div>
-          </div>
+          <FriendsOnline />
+          <GroupNotification />
         </div>
       </div>
     </>

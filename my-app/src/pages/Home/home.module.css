@@ -54,21 +54,8 @@
 .friends {
     margin-top: 0px;
 }
-.nameFriends{
-    margin-left: 5px;
-    font-size: 18px;
-    font-weight: 500;
-}
-.statusFriends{
-    margin-left: 5px;
-    font-weight: 400;
-    text-decoration: underline;
-}
-.notifications{
-    font-size: 18px;
-    margin-left: 5px;
-    color: #7DA1FD;
-}
+
+
 
 .profileButton {
     display: block;
@@ -82,10 +69,9 @@
     outline: 0;
     border: 0;
 }
-.ellips{
-    margin-left: 5px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #7DA1FD;
+
+
+
+.postsMain:nth-child(2) {
+    margin-top: 30px;
 }
