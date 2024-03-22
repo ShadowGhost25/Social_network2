@@ -133,8 +133,7 @@
 .group:hover,
 .music:hover,
 .ava:hover,
-.setings:hover,
-.avaActive:hover {
+.setings:hover {
     background-color: white;
     transition: 0.7s;
     background-image: url(./img/NewsBlack.png);

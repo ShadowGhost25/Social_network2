@@ -15,14 +15,11 @@
 
 .mainBlock {
     width: 600px;
-    height: 500px;
-    background-color: white;
 }
 
 .rightBlock {
     width: 300px;
-    height: 500px;
-    background-color: white;
+    height: 100%;
 }
 
 .background {
@@ -43,7 +40,7 @@
     display: block;
     margin-top: 70px;
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 700;
 }
 
@@ -57,10 +54,38 @@
 .friends {
     margin-top: 0px;
 }
+.nameFriends{
+    margin-left: 5px;
+    font-size: 18px;
+    font-weight: 500;
+}
+.statusFriends{
+    margin-left: 5px;
+    font-weight: 400;
+    text-decoration: underline;
+}
+.notifications{
+    font-size: 18px;
+    margin-left: 5px;
+    color: #7DA1FD;
+}
 
 .profileButton {
-    display: flex;
-    margin: 20px auto;
-    border: 0;
+    display: block;
+    width: 100px;
+    height: 30px;
+    margin: 0px auto 8px;
+    font-size: 18px;
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    color: white;
     outline: 0;
+    border: 0;
+}
+.ellips{
+    margin-left: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #7DA1FD;
 }
