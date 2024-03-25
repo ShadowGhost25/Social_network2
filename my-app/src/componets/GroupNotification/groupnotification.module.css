@@ -1,0 +1,35 @@
+.bacground {
+    background-color: white;
+}
+
+.h3 {
+    padding: 16px 0px;
+    text-align: center;
+    margin: 30px 0px 0px;
+}
+
+.positionBlock {
+    display: flex;
+    padding: 10px;
+}
+
+.positionBlock img:nth-child(1) {
+    width: 60px;
+}
+
+.positionBlockName {
+    display: flex;
+    flex-direction: column;
+}
+
+.nameFriends {
+    margin-left: 5px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.notifications {
+    font-size: 18px;
+    margin-left: 5px;
+    color: #7DA1FD;
+}

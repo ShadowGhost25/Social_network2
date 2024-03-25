@@ -31,7 +31,7 @@ const FullPosts = () => {
           <div key={data._id} className={s.mainPosts}>
             <div className={s.posts}>
               <div className={s.postsHeader}>
-                <div>{/* <img className={s.foto} src={} alt="" /> */}</div>
+                <div>{/* <img className={s.foto} src={} alt="no img" /> */}</div>
                 <div className={s.name}>
                   <h2 className={s.h2}>{data.title}</h2>
                   <span className={s.text}> 2 декабря 2023 в 19:10</span>
@@ -47,15 +47,15 @@ const FullPosts = () => {
               </div>
               <div className={s.buttonFotter}>
                 <button className={s.buttonClick}>
-                  {/* <img src={like} alt="" /> */}
+                  {/* <img src={like} alt="no img" /> */}
                   <span className={s.textButton}> Нравится</span>
                 </button>
                 <button className={s.buttonClick}>
-                  {/* <img src={share} alt="" /> */}
+                  {/* <img src={share} alt="no img" /> */}
                   <span className={s.textButton}> Комментарий</span>
                 </button>
                 <button className={s.buttonClick}>
-                  {/* <img src={comment} alt="" /> */}
+                  {/* <img src={comment} alt="no img" /> */}
                   <span className={s.textButton}> Поделиться</span>
                 </button>
               </div>

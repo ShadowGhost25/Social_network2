@@ -20,7 +20,7 @@ const Music = () => {
                         <div className={s.blogDown}>
                             <span>По умолчанию</span>
                             <div>
-                                <img style={{ marginLeft: "7px", display: "block" }} src={down} alt="" />
+                                <img style={{ marginLeft: "7px", display: "block" }} src={down} alt="no img" />
                             </div>
                         </div>
                         <div>
@@ -31,7 +31,7 @@ const Music = () => {
                         <div className={s.musicBlog}>
                             <div className={s.music}>
                                 <div style={{ display: "flex", alignItems: "center" }}>
-                                    <img src={icon} alt="" />
+                                    <img src={icon} alt="no img" />
                                 </div>
                                 <div style={{ margin: "5px 10px 0px" }}>
                                     <h3 style={{ margin: "2px" }}> Старый я </h3>
@@ -45,7 +45,7 @@ const Music = () => {
                         <div style={{border: "0", marginLeft: "10px"}} className={s.musicBlog}>
                             <div className={s.music}>
                                 <div style={{ display: "flex", alignItems: "center" }}>
-                                    <img src={alex} alt="" />
+                                    <img src={alex} alt="no img" />
                                 </div>
                                 <div style={{ margin: "5px 10px 0px" }}>
                                     <h3 style={{ margin: "2px" }}> Саша </h3>

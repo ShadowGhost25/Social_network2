@@ -3,6 +3,7 @@ import foto from "./img/groupAva.png";
 import like from "./img/like.png";
 import share from "./img/share.png";
 import comment from "./img/comment.png";
+import eyes from "./img/eyes.png"
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDelete, fetchPosts } from "../../redux/slices/posts";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +12,7 @@ import React from "react";
 
 const Posts = () => {
   const { posts } = useSelector((state) => state.posts);
+  console.log(posts)
   const { id } = useSelector((state) => state.login);
   const isAuth = useSelector(selectIsAuth);
   const dispatch = useDispatch();
@@ -22,7 +24,6 @@ const Posts = () => {
   const clickDelete = (id) => {
     if (window.confirm("Вы действительно хотите удалить пост ?")) {
       dispatch(fetchDelete(id));
-      
     }
   };
 
@@ -40,30 +41,32 @@ const Posts = () => {
           <div key={obj._id} className={s.mainPosts}>
             <div className={s.posts}>
               <div
+                className={s.postsHeader}
                 onClick={() => {
                   onClickPost(obj);
                 }}
-                className={s.postsHeader}
               >
-                <div>
-                  <img className={s.foto} src={foto} alt="" />
-                </div>
+                <img
+                  style={{ width: "50px", height: "50px" }}
+                  src={foto}
+                  alt="no img"
+                />
                 <div className={s.name}>
                   <h2 className={s.h2}>{obj.title}</h2>
                   <span className={s.text}>{obj.createdAt}</span>
-                  <div style={{ height: "10px" }}>{obj.text}</div>
                 </div>
               </div>
-              <div
-                onClick={() => {
-                  test(obj.tags[0]);
-                }}
-              >
-                {obj.tags}
-              </div>
-
               {id === obj.user._id && isAuth ? (
-                <div>
+                <div className={s.removeDelete}>
+                  <button
+                    style={{ marginBottom: "10px" }}
+                    className={s.buttonRemove}
+                    onClick={() => {
+                      clickRemove(obj._id);
+                    }}
+                  >
+                    <span className={s.textButton}>Редактировать</span>
+                  </button>
                   <button
                     className={s.buttonDelete}
                     onClick={() => {
@@ -72,19 +75,24 @@ const Posts = () => {
                   >
                     <span className={s.textButton}>Удалить</span>
                   </button>
-                  <button
-                  style={{marginBottom: "10px"}}
-                    className={s.buttonRemove}
-                    onClick={() => {
-                      clickRemove(obj._id);
-                    }}
-                  >
-                    <span  className={s.textButton}>Редактировать</span>
-                  </button>
                 </div>
               ) : (
                 <div></div>
               )}
+              <div style={{ textAlign: "justify" }}>
+                {obj.text} Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit. Exercitationem amet doloremque, at nihil corrupti quis,
+                doloribus corporis maxime, ea iusto nam laudantium quaerat! Iste
+                pariatur, id exercitationem possimus voluptate iure.
+              </div>
+              <div
+                onClick={() => {
+                  test(obj.tags[0]);
+                }}
+                style={{ marginBottom: "10px" }}
+              >
+                {obj.tags}
+              </div>
 
               <div className={s.postsMain}>
                 <img
@@ -94,18 +102,23 @@ const Posts = () => {
                 />
               </div>
               <div className={s.buttonFotter}>
-                <button className={s.buttonClick}>
-                  <img src={like} alt="" />
-                  <span className={s.textButton}> Нравится</span>
-                </button>
-                <button className={s.buttonClick}>
-                  <img src={comment} alt="" />
-                  <span className={s.textButton}> Комментарий</span>
-                </button>
-                <button className={s.buttonClick}>
-                  <img src={share} alt="" />
-                  <span className={s.textButton}> Поделиться</span>
-                </button>
+                <div>
+                  <button className={s.buttonClick}>
+                    <img className={s.imgCLick} src={like} alt="no img" />
+                  </button>
+                  <button style={{marginLeft: "10px"}} className={s.buttonClick}>
+                    <img src={comment} alt="no img" />
+                  </button>
+                </div>
+                <div style={{ marginLeft: "auto", display: "flex", alignItems: "center"}}>
+                  <div style={{marginRight: "3px"}}>
+                  {obj.viewsCount}
+                  </div>
+                  <img  src={eyes} alt="no img" />
+                  <button style={{display: "block", marginLeft: "10px"}} className={s.buttonClick}>
+                    <img className={s.imgCLick2} src={share} alt="no img" />
+                  </button>
+                </div>
               </div>
             </div>
           </div>

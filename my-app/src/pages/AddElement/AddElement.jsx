@@ -147,7 +147,7 @@ const AddElement = () => {
               />
             )}
             <input ref={inputRef} onChange={handleChangeFile} type="file" />
-            <img src={`http://localhost:3002${imageUrl}`} alt="" />
+            <img src={`http://localhost:3002${imageUrl}`} alt="no img" />
             <button onClick={deleteImg}>Удалить</button>
             <button onClick={onSubmit}>
               {isEdditing ? "Сохранить" : "Опубликовать"}

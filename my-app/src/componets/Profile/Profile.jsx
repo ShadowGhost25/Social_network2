@@ -54,7 +54,7 @@ const Profile = () => {
                 </span>
                 <span className={s.status}>{data.status}</span>
                 <button className={s.buttonFoter}>
-                  <img className={s.vector2} src={vector2} alt="" />
+                  <img className={s.vector2} src={vector2} alt="no img" />
                   Подробнее...
                 </button>
                 <button type="submit" onClick={onClickLogout}>
@@ -72,17 +72,17 @@ const Profile = () => {
                   <h3 className={s.h3Foto}>Друзья онлайн</h3>
                   <hr />
                   <div className={s.friends}>
-                    <img className={s.test} src={alex} alt="" />
+                    <img className={s.test} src={alex} alt="no img" />
                     <span className={s.friendsName}>Саша</span>
                     <img className={s.ellipse} src={ellipse} alt="no img" />
                   </div>
                   <div className={s.friends}>
-                    <img className={s.test} src={alex} alt="" />
+                    <img className={s.test} src={alex} alt="no img" />
                     <span className={s.friendsName}>Саша</span>
                     <img className={s.ellipse} src={ellipse} alt="no img" />
                   </div>
                   <div className={s.friends}>
-                    <img className={s.test} src={alex} alt="" />
+                    <img className={s.test} src={alex} alt="no img" />
                     <span className={s.friendsName}>Саша</span>
                     <img className={s.ellipse} src={ellipse} alt="no img" />
                   </div>
