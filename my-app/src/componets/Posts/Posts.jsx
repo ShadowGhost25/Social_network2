@@ -49,7 +49,7 @@ const Posts = () => {
                 <img
                   style={{ width: "50px", height: "50px" }}
                   src={foto}
-                  alt=""
+                  alt="no img"
                 />
                 <div className={s.name}>
                   <h2 className={s.h2}>{obj.title}</h2>
@@ -98,25 +98,25 @@ const Posts = () => {
                 <img
                   className={s.postsFoto}
                   src={`http://localhost:3002${obj.imageUrl}`}
-                  alt=""
+                  alt="no img"
                 />
               </div>
               <div className={s.buttonFotter}>
                 <div>
                   <button className={s.buttonClick}>
-                    <img className={s.imgCLick} src={like} alt="" />
+                    <img className={s.imgCLick} src={like} alt="no img" />
                   </button>
                   <button style={{marginLeft: "10px"}} className={s.buttonClick}>
-                    <img src={comment} alt="" />
+                    <img src={comment} alt="no img" />
                   </button>
                 </div>
                 <div style={{ marginLeft: "auto", display: "flex", alignItems: "center"}}>
                   <div style={{marginRight: "3px"}}>
                   {obj.viewsCount}
                   </div>
-                  <img  src={eyes} alt="" />
+                  <img  src={eyes} alt="no img" />
                   <button style={{display: "block", marginLeft: "10px"}} className={s.buttonClick}>
-                    <img className={s.imgCLick2} src={share} alt="" />
+                    <img className={s.imgCLick2} src={share} alt="no img" />
                   </button>
                 </div>
               </div>

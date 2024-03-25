@@ -11,7 +11,7 @@ const Message = () => {
                     <div className={s.headerMessage}></div>
                     <div className={s.foterMessage}>
                         <div className={s.img}>
-                            <img className={s} src={ava} alt="" />
+                            <img className={s} src={ava} alt="no img" />
                         </div>
                         <div className={s.textMessage}>
                             <h3 className={s.h3}>Саша Тарасов</h3>
@@ -26,7 +26,7 @@ const Message = () => {
                     <div className={s.headerMessage}></div>
                     <div className={s.foterMessage}>
                         <div className={s.img}>
-                            <img className={s} src={ava} alt="" />
+                            <img className={s} src={ava} alt="no img" />
                         </div>
                         <div className={s.textMessage}>
                             <h3 className={s.h3}>Саша Тарасов</h3>

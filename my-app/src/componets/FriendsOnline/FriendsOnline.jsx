@@ -1,6 +1,5 @@
 import foto from "./img/qwe.png";
 import s from "./friendsonline.module.css";
-// style={{ display: "flex", padding: "10px" }}
 const FriendsOnline = () => {
   return (
     <div className={s.bacground}>

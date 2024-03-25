@@ -41,7 +41,7 @@ const Login = () => {
             <p>Нажмите на изображение или добавьте аккаунты.</p>
             <Link to="/">
               <div className={s.blogAuth}>
-                <img className={s.imgI} src={i} alt="" />
+                <img className={s.imgI} src={i} alt="no img" />
                 <p className={s.name}>Илья</p>
               </div>
             </Link>

@@ -16,7 +16,7 @@ const Home = () => {
       <div className={s.main}>
         <div className={s.leftBlock}>
           <div className={s.background}></div>
-          <img className={s.fotoProfile} src={foto} alt="" />
+          <img className={s.fotoProfile} src={foto} alt="no img" />
           <span className={s.name}>Илья Вавилин</span>
           <span className={s.status}>Статус</span>
           <hr />
