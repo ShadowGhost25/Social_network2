@@ -4,16 +4,15 @@ import s from "./profile.module.css";
 import vector from "./img/Vector.png";
 import ava from "./img/ava.png";
 import alex from "./img/alex.png";
-import box from "./img/box.png";
-import info from "./img/info.png";
 import i from "./img/i.webp";
-import foto from "./img/foto.png";
 import ellipse from "./img/Ellipse 6.png";
 import Posts from "../../componets/Posts/Posts";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectIsAuth } from "../../redux/slices/login";
 import { Navigate } from "react-router-dom";
 import Loading from "../../componets/Loading/Loading";
+import CustomButton from "../../componets/CustomButton/CustomButton";
+import { navigationButtons } from "../../Route/route";
 const Profile = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
@@ -76,18 +75,9 @@ const Profile = () => {
                   </span>
                   <span className={s.status}>{data.status}</span>
                   <div className={s.imgDisplay}>
-                    <div className={s.blokImg}>
-                      <img className={s.box} src={box} alt="no img box" />
-                      <span className={s.input}>Посты</span>
-                    </div>
-                    <div className={s.blokImg}>
-                      <img className={s.foto} src={foto} alt="no img foto" />
-                      <span>Фотографии</span>
-                    </div>
-                    <div className={s.blokImg}>
-                      <img className={s.info} src={info} alt="no img info" />
-                      <span>Прочее</span>
-                    </div>
+                    {navigationButtons.map((obj, index) => (
+                      <CustomButton key={index} imageName={obj.imageName} title={obj.title} alt={obj.alt}/>
+                    ))}
                   </div>
                 </div>
                 <Posts />

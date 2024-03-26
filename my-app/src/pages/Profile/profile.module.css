@@ -57,15 +57,8 @@
     display: flex;
     margin-top: 10px ;
 }
-.blokImg{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-right: 20px;
-}
-.input{
-    display: block;
-}
+
+
 .main {
     display: flex;
     position: relative;
@@ -124,7 +117,7 @@
 .main3{
     text-align: center;
     width: 350px;
-    height:500px;
+    height: 100%;
     padding: 10px;
     background-color: white;
 }
