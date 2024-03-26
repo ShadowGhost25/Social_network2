@@ -6,7 +6,7 @@ import ava from "./img/ava.png";
 import alex from "./img/alex.png";
 import box from "./img/box.png";
 import info from "./img/info.png";
-import i from "./img/i.webp"
+import i from "./img/i.webp";
 import foto from "./img/foto.png";
 import ellipse from "./img/Ellipse 6.png";
 import Posts from "../../componets/Posts/Posts";
@@ -110,10 +110,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-{
-  /* <button className={s.buttonProfile}>
-  <span className={s.textH3}>Редактировать профиль</span>
-  <img src={vector} alt="no foto" />
-</button> */
-}

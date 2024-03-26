@@ -1,11 +1,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import multer from 'multer';
-import cors from 'cors'
+import cors from 'cors';
 
-import { loginValidator, registerValidator, postCreateValidator, userStatusValidatior, groupCreateValidator } from './validations.js'
+import { loginValidator, registerValidator, postCreateValidator, userStatusValidatior, groupCreateValidator } from './validations.js';
 
-import { groupController, postController, userController } from './controller/Controller.js'
+import { groupController, postController, userController } from './controller/Controller.js';
 
 import { handleValidationEror, cheakAuth } from './utils/Utils.js';
 

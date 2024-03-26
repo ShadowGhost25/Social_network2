@@ -1,5 +1,5 @@
 import FullPosts from "../componets/Posts/FullPosts/FullPosts";
-import Profile from "../pages/Profile/Profile"
+import Profile from "../pages/Profile/Profile";
 import AddElement from "../pages/AddElement/AddElement";
 import Error from "../pages/Error/Error";
 import Friends from "../pages/Friends/Friends";
