@@ -12,7 +12,6 @@ import React from "react";
 
 const Posts = () => {
   const { posts } = useSelector((state) => state.posts);
-  console.log(posts)
   const { id } = useSelector((state) => state.login);
   const isAuth = useSelector(selectIsAuth);
   const dispatch = useDispatch();
