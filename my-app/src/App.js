@@ -6,11 +6,7 @@ import { fetchAuthMe } from "./redux/slices/login";
 import { route } from "./Route/route";
 
 function App() {
-  const dispatch = useDispatch();
 
-  React.useEffect(() => {
-    dispatch(fetchAuthMe());
-  }, []);
   return (
     <>
       <Routes>
