@@ -4,13 +4,12 @@
 }
 
 .mainBlog1 {
-    width: 700px;
+    width: 1070px;
     margin-right: 30px;
 }
 
 .mainBlog2 {
     width: 300px;
-    border-radius: 20px;
     height: 100%;
 }
 
@@ -18,12 +17,10 @@
     padding: 10px 15px;
     margin-top: 30px;
     background-color: white;
-    border-radius: 20px;
 }
 
-.button,
-.button2,
-.button3 {
+.button,    
+.button2{
     padding: 5px 10px 5px 10px;
     font-size: 18px;
     background-color: #1e1e1e;
@@ -75,45 +72,7 @@
 }
 
 .cardBlog {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.parametersBlog {
-    padding: 10px;
-    margin-top: 30px;
-    border-radius: 20px;
-    background-color: white;
-    text-align: center;
-    height: 100%
-}
-
-.button3 {
-    display: flex;
-    align-items: center;
-    margin: 0px auto;
-    width: 100%;
-}
-
-.test {
-    width: 100%;
-}
-
-.text {
-    display: block;
-    width: 100%;
-}
-
-.blogDown, .blogUp {
-    width: 80px;
-    float: left;
-    background-color: #1e1e1e;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-.blogUp{
-    float: right;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 210px);
+    justify-items: center;
 }
