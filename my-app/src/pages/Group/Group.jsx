@@ -28,7 +28,7 @@ const Group = () => {
               <div className={s.mainBlog}>
                 <input className={s.search} type="search" placeholder="Поиск" />
                 {window.localStorage.getItem("token")  ? (
-                  <h3 style={{ fontSize: "25px" }}>Мои группы</h3>
+                  <h3 className={s.h3}>Мои группы</h3>
                 ) : (
                   <></>
                 )}
@@ -36,28 +36,24 @@ const Group = () => {
                 <div className={s.mainGroup}>
                   {group.items.map((obj) =>
                     obj.user._id === id &&
-                    window.localStorage.getItem("token") ? (
+                    window.localStorage.getItem("token") && (
                       <GroupBlock
                         key={obj._id}
                         id={obj._id}
                         title={obj.title}
                       />
-                    ) : (
-                      <></>
                     )
                   )}
                 </div>
-                <h3 style={{ fontSize: "25px" }}>Рекомендуемые группы</h3>
+                <h3 className={s.h3}>Рекомендуемые группы</h3>
                 <div className={s.mainGroup}>
                   {group.items.map((obj) =>
-                    obj.user._id === id ? (
-                      <></>
-                    ) : (
+                    obj.user._id !== id  && (
                       <GroupBlock
-                        key={obj._id}
-                        id={obj._id}
-                        title={obj.title}
-                      />
+                      key={obj._id}
+                      id={obj._id}
+                      title={obj.title}
+                    />
                     )
                   )}
                 </div>
