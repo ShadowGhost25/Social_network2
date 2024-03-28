@@ -1,14 +1,23 @@
-.main{
-    color: white;
+.main {
     display: flex;
     justify-content: center;
-    align-items: center;
 }
-.mainBlog{
-    width: 1000px;
-    height: 100%;
+
+.mainDisplay {
+    width: 1400px;
+    margin-top: 30px;
+}
+
+.mainBlog {
     margin: 30px 0px;
 }
+
+.mainGroup {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 350px);
+    justify-items: center;
+}
+
 .search {
     padding: 5px 5px 5px 10px;
     border-radius: 5px;
@@ -31,11 +40,4 @@
     background-size: 20px 20px;
     height: 20px;
     width: 20px;
-}
-
-.mainGroup{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    flex-wrap: wrap;
 }

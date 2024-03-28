@@ -1,7 +1,7 @@
 
 .group{
-    width: 320px;
-    height: 250px;
+    width: 325px;
+    height: 270px;
     background-color: white;
     margin-bottom: 30px;
     color: black;
@@ -13,5 +13,5 @@
     height: 133px;
     background-image: url(./img/onePiece.png);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 }
