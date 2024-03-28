@@ -6,18 +6,18 @@
 }
 
 .headerProfile {
-    width: 1000px;
+    width: 1400px;
     height: 220px;
     background-color: white;
-    border-radius: 20px;
     position: relative;
-    margin: 30px 0px;
+    margin: 30px 0px 0px;
 }
 
 .blogAva {
-    height: 100px;
+    height: 100%;
     background-image: url('./img/fon.png');
-    border-radius: 20px 20px 0px 0px;
+    background-repeat: no-repeat;
+    background-size: cover  ;
 }
 
 .buttonProfile {
@@ -42,44 +42,22 @@
     font-size: 18px;
 }
 
-.i1 {
+.ava {
     position: absolute;
-    top: 25px;
-    left: 30px;
+    top: -80px;
+    left: 100px;
     width: 150px;
 }
-
-.fio {
-    display: block;
-    padding-top: 15px;
-    margin-top: 0px;
-    font-size: 25px;
-    font-weight: 700;
-    margin-left: 200px;
-}
-
 .status {
     display: block;
-    margin-left: 200px;
+    font-size: 18px;
+    font-weight: 400;
 }
-
-.vector2 {
-    padding-right: 5px;
-}
-
-.buttonFoter {
-    text-align: center;
-    border-radius: 10px;
-    border: 0;
-    outline: none;
-    color: black;
+.imgDisplay{
     display: flex;
-    align-items: center;
-    justify-self: center;
-    padding: 5px 10px;
-    margin: 10px 0px 0px 200px;
-    cursor: pointer;
+    margin-top: 10px ;
 }
+
 
 .main {
     display: flex;
@@ -87,7 +65,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 0px auto;
-    width: 1000px;
+    width: 1400px;
 }
 
 .main1 {
@@ -97,25 +75,37 @@
     height: 100%;
 }
 
-.mainFoto {
+.blogProfileUser {
     background-color: white;
     padding: 10px;
-    border-radius: 20px;
 }
 
 .mainFriends {
+    position: relative;
     margin-top: 30px;
     text-align: center;
     background-color: white;
     padding: 10px;
-    border-radius: 20px;
+}
+.friendsName {
+    padding: 10px 0px 0px 10px;
+    color: white;
+    float: left;
 }
 
 .main2 {
     width: 590px;
-    margin-left: auto;
 }
-
+.user{
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.userFio{
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+}
 .h3Foto {
     margin: 0px;
 }
@@ -124,14 +114,31 @@
     width: 100%;
 }
 
+.main3{
+    text-align: center;
+    width: 350px;
+    height: 100%;
+    padding: 10px;
+    background-color: white;
+}
 hr {
     height: 2px;
     border: 0;
     background-color: #7DA1FD;
 }
-
+.friendsInput, .kolFriends{
+    display: block;
+    margin-top: 60px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+}
+.kolFriends{
+    margin-top: 0px;
+    font-size: 18px;
+    font-weight: 400;
+}
 .friends {
-    width: 320px;
     background-color: #1E1E1E;
     padding: 5px;
     height: 40px;
@@ -139,16 +146,22 @@ hr {
     margin-top: 10px;
     position: relative;
 }
-
+.profileButton {
+    display: block;
+    width: 100px;
+    height: 30px;
+    margin: 0px auto 8px;
+    font-size: 18px;
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    color: white;
+    outline: 0;
+    border: 0;
+}
 .test {
     float: left;
     width: 40px;
-}
-
-.friendsName {
-    padding: 10px 0px 0px 10px;
-    color: white;
-    float: left;
+    border-radius: 5px;
 }
 
 .ellipse {
