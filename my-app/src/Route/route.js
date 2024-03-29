@@ -86,6 +86,14 @@ export const route = [
   {
     path: "/settings/friends",
     element: <Settings />
+  },
+  {
+    path: "/settings/password",
+    element: <Settings />
+  },
+  {
+    path: "/settings/delete",
+    element: <Settings />
   }
 ];
 export const navigationButtons = [
