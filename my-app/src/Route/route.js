@@ -76,7 +76,15 @@ export const route = [
     element: <Error />,
   },
   {
-    path: "/setings",
+    path: "/settings",
+    element: <Settings />
+  },
+  {
+    path: "/settings/notifications",
+    element: <Settings />
+  },
+  {
+    path: "/settings/friends",
     element: <Settings />
   }
 ];
