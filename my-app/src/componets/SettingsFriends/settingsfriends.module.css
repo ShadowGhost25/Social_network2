@@ -17,7 +17,7 @@
 .textName {
   display: block;
   font-size: 20px;
-  margin-right: 10px;
+  margin-left: 10px;
   font-weight: 500;
 }
 .com {
@@ -45,4 +45,18 @@
 }
 .scrollableDiv::-webkit-scrollbar-track {
   background-color: #f8f8f8;
+}
+
+.plus {
+  border-radius: 0xp;
+  background-color: #7da1fd;
+  border: 0px;
+  outline: none;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+}
+.imgPlus {
+  display: block; /* Устанавливаем изображение как блочный элемент */
+  margin: auto;
 }
