@@ -12,6 +12,7 @@ import Register from "../pages/Register/Register";
 import box from "../pages/Profile/img/box.png";
 import foto from "../pages/Profile/img/foto.png";
 import info from "../pages/Profile/img/info.png";
+import Settings from "../pages/Settings/Settings";
 
 export const route = [
   {
@@ -74,6 +75,18 @@ export const route = [
     path: "/error",
     element: <Error />,
   },
+  {
+    path: "/settings",
+    element: <Settings />
+  },
+  {
+    path: "/settings/notifications",
+    element: <Settings />
+  },
+  {
+    path: "/settings/friends",
+    element: <Settings />
+  }
 ];
 export const navigationButtons = [
   {
@@ -92,3 +105,21 @@ export const navigationButtons = [
     alt: "no img info",
   },
 ];
+
+export const buttonSettings = [
+  {
+    title: "Настройки профиля",
+  },
+  {
+    title: "Уведомления",
+  },
+  {
+    title: "Запросы в друзья",
+  },
+  {
+    title: "Изменить пароль",
+  },
+  {
+    title: "Удалить аккаунт",
+  }
+]
