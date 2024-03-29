@@ -33,7 +33,7 @@ const Header = () => {
             <Link to="/music">
               <div className={s.music}></div>
             </Link>
-            <Link to="/setings">
+            <Link to="/settings">
               <div className={s.setings}></div>
             </Link>
           </div>
@@ -41,8 +41,8 @@ const Header = () => {
         <div className={s.avatarka}>
           {isAuth ? (
             <Link className={s.tegA} to="/profile">
-                <span>Shadow</span>
-                <div className={s.avaActive}></div>
+              <span>Shadow</span>
+              <div className={s.avaActive}></div>
             </Link>
           ) : (
             <Link to="/login">

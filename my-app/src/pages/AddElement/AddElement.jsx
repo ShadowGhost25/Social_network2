@@ -66,9 +66,7 @@ const AddElement = () => {
           default:
             break;
         }
-        console.log(`${url.split("/")[1]}`);
       } else if (url === "/add-posts" || `/posts/${id}/edit` === url) {
-        console.log(id);
         navigate(`/posts/${id}`);
       } else if (url === "/add-group" || `/group/${id}/edit` === url) {
         navigate(`/group/${id}`);
