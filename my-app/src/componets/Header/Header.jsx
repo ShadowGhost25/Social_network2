@@ -3,6 +3,7 @@ import logo from "./img/Logo.png";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectIsAuth } from "../../redux/slices/login";
+import Search from "../Search/Search";
 const Header = () => {
   const isAuth = useSelector(selectIsAuth);
   return (
@@ -13,9 +14,7 @@ const Header = () => {
             <img src={logo} alt="no foto" />
           </Link>
         </div>
-        <div className={s.blogSearch}>
-          <input className={s.search} type="search" placeholder="Поиск..." />
-        </div>
+          <Search />
         <div className={s.menu}>
           <div className={s.navBar}>
             <Link to="/">
