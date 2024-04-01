@@ -12,7 +12,7 @@ const SettingsProfile = () => {
             className={s.input}
             type="text"
             name="fullName"
-          // value={title}
+            // value={title}
           />
         </label>
         <label className={s.label} htmlFor="surName">
@@ -21,7 +21,7 @@ const SettingsProfile = () => {
             className={s.input}
             type="text"
             name="surName"
-          // value={data.surName}
+            // value={data.surName}
           />
         </label>
         <label className={s.label} htmlFor="email">
@@ -30,7 +30,7 @@ const SettingsProfile = () => {
             className={s.input}
             type="text"
             name="email"
-          // value={data.email}
+            // value={data.email}
           />
         </label>
         <label className={s.label} htmlFor="phone">
@@ -39,7 +39,7 @@ const SettingsProfile = () => {
             className={s.input}
             type="text"
             name="phone"
-          // value={data.phone}
+            // value={data.phone}
           />
         </label>
         <label className={s.label} htmlFor="status">
@@ -48,9 +48,10 @@ const SettingsProfile = () => {
             className={s.input}
             type="text"
             name="status"
-          // value={data.status}
+            // value={data.status}
           />
         </label>
+        <button className={s.button}>Сохранить</button>
       </form>
     </>
   );
