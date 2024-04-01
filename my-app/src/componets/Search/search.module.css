@@ -30,7 +30,7 @@
   .blockSearch{
     position: relative;
     height: 83px;
-    width: auto ;
+    width: 400px;
     background-color: #7DA1FD;
     display: flex;
     justify-content: center;

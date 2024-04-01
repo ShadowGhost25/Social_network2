@@ -6,8 +6,60 @@
 
 .mainMessage {
     width: 1400px;
-    height: auto;
+    height: 700px;
     margin-top: 30px;
+    display: flex;
+    flex-direction: row;
     background-color: white;
 }
 
+
+.userFriends{
+    width: 400px;
+    height: auto;
+}
+
+.messageFriends{
+    width: 970px;
+    height: auto;
+}
+.positionBlock {
+    display: flex;
+    padding: 10px;
+}
+
+.positionBlock img:nth-child(1) {
+    width: 60px;
+}
+
+.positionBlockName {
+    display: flex;
+    flex-direction: column;
+}
+
+.nameFriends {
+    margin-left: 5px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.positionBlockStatus {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.statusFriends {
+    margin-left: 5px;
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+.ellips {
+    margin-top: 3px;
+    margin-left: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #7DA1FD;
+}
