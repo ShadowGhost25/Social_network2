@@ -2,39 +2,29 @@ import { useState } from "react";
 import search from "./img/search.png";
 import s from "./search.module.css";
 const Search = () => {
-  const [isImageVisible, setImageVisible] = useState(true);
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event) => {
     const value = event.target.value;
-    setInputValue(value);
-    if (value.trim() === "") {
-      setImageVisible(true);
-    } else {
-      setImageVisible(false);
+    if (value === " " && inputValue === "") {
+      return;
     }
+    setInputValue(value);
   };
 
-  const handleKeyDown = (event) => {
-    if (event.key === " " && inputValue.trim() === "") {
-      setInputValue("");
-      event.preventDefault();
-    }
-  };
   return (
-    <>
+    <div className={s.blockSearch}>
       <input
         placeholder="Поиск"
         className={s.search}
         type="search"
         value={inputValue}
         onChange={handleInputChange}
-        onKeyDown={handleKeyDown}
       />
-      {isImageVisible && (
+      {!inputValue && (
         <img src={search} alt="no img search" className={s.inputImage} />
       )}
-    </>
+    </div>
   );
 };
 

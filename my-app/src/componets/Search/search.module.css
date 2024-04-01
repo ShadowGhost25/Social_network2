@@ -1,6 +1,5 @@
 
 .search {
-    display: block;
     border: 0;
     height: 35px;
     outline: none;
@@ -21,9 +20,19 @@
 }
 .inputImage {
     position: absolute;
-    top: 37px;
+    top: 31px;
     right: 37px;
-    width: 20px; /* Подставьте нужную вам ширину */
-    height: auto; /* Подставьте нужную вам высоту */
-    pointer-events: none; /* Это предотвращает щелчки на изображении */
+    width: 20px;    
+    height: auto;
+    pointer-events: none;
   }
+
+  .blockSearch{
+    position: relative;
+    height: 83px;
+    width: auto ;
+    background-color: #7DA1FD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
