@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import { selectIsAuth } from "../../redux/slices/login";
 import React from "react";
 import axios from "../../axios";
+import SimpleMDE from "react-simplemde-editor";
+import "easymde/dist/easymde.min.css";
 
 const AddElement = () => {
   const { id } = useParams();
@@ -20,6 +22,23 @@ const AddElement = () => {
   const [imageUrl, setImgUrl] = React.useState("");
   const inputRef = React.useRef("");
 
+  const onChange = React.useCallback((value) =>{
+    setText(value)
+  }, [])
+
+  const options = React.useMemo(()=>({
+    spellCheker: false,
+    maxHeight: '400px',
+    autofocus: true,
+    placeholder: 'Введите текст ...',
+    status: false,
+    autoSave: {
+      enable: true,
+      delay: 1000,
+    },
+  }),
+  [],
+  )
   const handleChangeFile = async (event) => {
     try {
       const formData = new FormData();
@@ -124,7 +143,7 @@ const AddElement = () => {
                   : "Название поста"
               }
             />
-            <input
+            {/* <input
               value={text}
               onChange={(e) => setText(e.target.value)}
               type="text"
@@ -133,7 +152,7 @@ const AddElement = () => {
                   ? "Текст группы"
                   : "Текст поста"
               }
-            />
+            /> */}
             {url === `/group/${id}/edit` || url === "/add-group" ? (
               <div></div>
             ) : (
@@ -150,6 +169,7 @@ const AddElement = () => {
             <button onClick={onSubmit}>
               {isEdditing ? "Сохранить" : "Опубликовать"}
             </button>
+            <SimpleMDE className={s.editor} value={text} onChange={onChange} options={options}/>
           </div>
         </div>
       </div>

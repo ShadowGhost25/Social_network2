@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "../../../axios";
 import s from "./fullposts.module.css";
 import Loading from "../../Loading/Loading";
+import Markdown from 'react-markdown'
 
 const FullPosts = () => {
   const [data, setData] = React.useState();
@@ -35,7 +36,7 @@ const FullPosts = () => {
                 <div className={s.name}>
                   <h2 className={s.h2}>{data.title}</h2>
                   <span className={s.text}> 2 декабря 2023 в 19:10</span>
-                  <div>{data.text}</div>
+                  <Markdown>{data.text}</Markdown>
                 </div>
               </div>
               <div className={s.postsMain}>
