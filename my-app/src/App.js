@@ -8,15 +8,25 @@ import { route } from "./Route/route";
 function App() {
   const dispatch = useDispatch();
   React.useEffect(() => {
-      dispatch(fetchAuthMe());
-    }, []);
+    dispatch(fetchAuthMe());
+  }, []);
+  const images = document.querySelectorAll('img');
+
+  // Проходим по каждому изображению
+  images.forEach(image => {
+    // Проверяем значение атрибута alt
+    if (image.alt.toLowerCase() === 'no img') {
+      // Удаляем изображение
+      image.remove();
+    }
+  });
   return (
     <>
       <Routes>
-        {route.map(({ path, element }) => 
+        {route.map(({ path, element }) => (
           <Route key={path} path={path} element={element} exact />
-        )}
-        <Route path="*" element={<Navigate to='/error' />} />
+        ))}
+        <Route path="*" element={<Navigate to="/error" />} />
       </Routes>
     </>
   );
