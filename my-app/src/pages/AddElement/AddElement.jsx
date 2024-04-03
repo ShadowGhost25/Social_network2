@@ -20,25 +20,41 @@ const AddElement = () => {
   const [tags, setTags] = React.useState("");
   const [text, setText] = React.useState("");
   const [imageUrl, setImgUrl] = React.useState("");
-  const inputRef = React.useRef("");
+  const inputRef = React.useRef(""); 
 
-  const onChange = React.useCallback((value) =>{
-    setText(value)
-  }, [])
+  const onChange = React.useCallback((value) => {
+    setText(value);
+  }, []);
 
-  const options = React.useMemo(()=>({
-    spellCheker: false,
-    maxHeight: '400px',
-    autofocus: true,
-    placeholder: 'Введите текст ...',
-    status: false,
-    autoSave: {
-      enable: true,
-      delay: 1000,
-    },
-  }),
-  [],
-  )
+  const option = React.useMemo(
+    () => ({
+      spellChecker: false,
+      maxHeight: "400px",
+      autofocus: false,
+      placeholder:
+        url === `/group/${id}/edit` || url === "/add-group"
+          ? "Текст группы"
+          : "Текст поста",
+      status: true,
+      autoSave: {
+        enable: true,
+        delay: 1000,
+      },
+      toolbar: [
+        "bold",
+        "italic",
+        "heading",
+        "|",
+        "ordered-list",
+        "preview",
+        "|",
+      ],
+      previewRender: function (plainText) {
+        return "<p>" + plainText.replace(/\n/g, "</p><p>") + "</p>";
+      },
+    }),
+    []
+  );
   const handleChangeFile = async (event) => {
     try {
       const formData = new FormData();
@@ -128,52 +144,57 @@ const AddElement = () => {
   }
 
   return (
-    <div>
+    <>
       <Header />
       <div className={s.mainPosts}>
-        <div className={s.whiteBlock}>
-          <div className={s.postsBlock}>
+        <div className={s.postsBlock}>
+          <input
+            className={s.inputTitle}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            type="text"
+            placeholder={
+              url === `/group/${id}/edit` || url === "/add-group"
+                ? "Название группы"
+                : "Название поста"
+            }
+          />
+          {url === `/group/${id}/edit` || url === "/add-group" ? (
+            <div></div>
+          ) : (
             <input
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              className={s.inputTags}
+              value={tags}
+              onChange={(e) => setTags(e.target.value)}
               type="text"
-              placeholder={
-                url === `/group/${id}/edit` || url === "/add-group"
-                  ? "Название группы"
-                  : "Название поста"
-              }
+              placeholder="Тэги поста"
             />
-            {/* <input
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              type="text"
-              placeholder={
-                url === `/group/${id}/edit` || url === "/add-group"
-                  ? "Текст группы"
-                  : "Текст поста"
-              }
-            /> */}
-            {url === `/group/${id}/edit` || url === "/add-group" ? (
-              <div></div>
-            ) : (
-              <input
-                value={tags}
-                onChange={(e) => setTags(e.target.value)}
-                type="text"
-                placeholder="Тэги поста"
-              />
-            )}
-            <input ref={inputRef} onChange={handleChangeFile} type="file" />
-            <img src={`http://localhost:3002${imageUrl}`} alt="no img" />
-            <button onClick={deleteImg}>Удалить</button>
-            <button onClick={onSubmit}>
-              {isEdditing ? "Сохранить" : "Опубликовать"}
-            </button>
-            <SimpleMDE className={s.editor} value={text} onChange={onChange} options={options}/>
-          </div>
+          )}
+          <label className={s.inputFile}>
+            <input
+              name="file"
+              className={s.inputFileBtn}
+              ref={inputRef}
+              onChange={handleChangeFile}
+              type="file"
+            />
+            <span className={s.inputFileBtn}>Выберите файл</span>
+          </label>
+            <img className={s.imgFile} src={`http://localhost:3002${imageUrl}`} alt="no img" />
+
+          <button  className={s.inputFileBtn} onClick={deleteImg}>Удалить</button>
+          <SimpleMDE
+            className={s.editor}
+            value={text}
+            onChange={onChange}
+            options={option}
+          />
+          <button className={s.inputFileBtn} onClick={onSubmit}>
+            {isEdditing ? "Сохранить" : "Опубликовать"}
+          </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
