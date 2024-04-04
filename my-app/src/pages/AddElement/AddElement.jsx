@@ -20,7 +20,7 @@ const AddElement = () => {
   const [text, setText] = React.useState("");
   const [imageUrl, setImgUrl] = React.useState("");
   const inputRef = React.useRef("");
-  const imageUrlTrue = Boolean(imageUrl);
+  const isImageUrl = !!imageUrl;
 
   const onChange = React.useCallback((value) => {
     setText(value);
@@ -90,7 +90,6 @@ const AddElement = () => {
         ({ data } = await axios.patch(`/posts/${id}`, fields));
       }
       if (!isEdditing) {
-        debugger;
         data = await axios.post(`${url.split("/")[1]}`, fields);
         switch (`${url.split("/")[1]}`) {
           case "add-posts":
@@ -182,12 +181,12 @@ const AddElement = () => {
             <span className={s.inputFileBtn}>Выберите файл</span>
           </label>
 
-          {imageUrlTrue && (
+          {isImageUrl && (
             <div className={s.fon}>
               <img
                 className={s.imgFile}
                 src={`http://localhost:3002${imageUrl}`}
-                alt="no img"
+                alt="select image"
               />
             </div>
           )}
