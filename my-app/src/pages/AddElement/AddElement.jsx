@@ -14,13 +14,13 @@ const AddElement = () => {
   const url = window.location.pathname;
   const navigate = useNavigate();
   const isEdditing = Boolean(id);
-  console.log("isEdditing =>", isEdditing);
   const [isLoading, setLoading] = React.useState(false);
   const [title, setTitle] = React.useState("");
   const [tags, setTags] = React.useState("");
   const [text, setText] = React.useState("");
   const [imageUrl, setImgUrl] = React.useState("");
-  const inputRef = React.useRef(""); 
+  const inputRef = React.useRef("");
+  const imageUrlTrue = Boolean(imageUrl);
 
   const onChange = React.useCallback((value) => {
     setText(value);
@@ -83,13 +83,14 @@ const AddElement = () => {
         imageUrl,
       };
       if (`/group/${id}/edit` === url) {
-        ({ data } = await axios.patch(`/group/${id}`, fields)); // Используем data
+        ({ data } = await axios.patch(`/group/${id}`, fields));
         navigate(`/group`);
       }
       if (`/posts/${id}/edit` === url) {
-        ({ data } = await axios.patch(`/posts/${id}`, fields)); // Используем data
+        ({ data } = await axios.patch(`/posts/${id}`, fields));
       }
       if (!isEdditing) {
+        debugger;
         data = await axios.post(`${url.split("/")[1]}`, fields);
         switch (`${url.split("/")[1]}`) {
           case "add-posts":
@@ -180,9 +181,20 @@ const AddElement = () => {
             />
             <span className={s.inputFileBtn}>Выберите файл</span>
           </label>
-            <img className={s.imgFile} src={`http://localhost:3002${imageUrl}`} alt="no img" />
 
-          <button  className={s.inputFileBtn} onClick={deleteImg}>Удалить</button>
+          {imageUrlTrue && (
+            <div className={s.fon}>
+              <img
+                className={s.imgFile}
+                src={`http://localhost:3002${imageUrl}`}
+                alt="no img"
+              />
+            </div>
+          )}
+
+          <button className={s.inputFileBtn} onClick={deleteImg}>
+            Удалить
+          </button>
           <SimpleMDE
             className={s.editor}
             value={text}
