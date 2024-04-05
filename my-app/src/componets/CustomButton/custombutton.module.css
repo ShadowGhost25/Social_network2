@@ -1,9 +1,66 @@
-.blokImg{
+.blokImg {
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-right: 20px;
+    outline: none;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0);
+    cursor: pointer;
+    padding: 0px;
 }
-.input{
+
+.profileButton {
     display: block;
+    margin: 0px auto 8px;
+    font-size: 18px;
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    color: white;
+    outline: 0;
+    border: 0;
+}
+
+.buttonFriends {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    color: white;
+    margin-right: 20px;
+    outline: 0;
+    border: 0;
+}
+
+.buttonOptions {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 18px;
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    color: white;
+    outline: 0;
+    border: 0;
+}
+
+.city {
+    margin-left: auto;
+}
+
+.ellips {
+    display: inline-block;
+    margin-left: auto;
+    width: 10px;
+    height: 10px;
+    margin-left: 10px;
+    border-radius: 50%;
+    background-color: #7DA1FD;
+}
+
+.input {
+    display: block;
+    padding: 3px 5px;
 }

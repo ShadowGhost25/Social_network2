@@ -7,9 +7,9 @@ import React from "react";
 import Posts from "./../../componets/Posts/Posts";
 import FriendsOnline from "../../componets/FriendsOnline/FriendsOnline";
 import GroupNotification from "../../componets/GroupNotification/GroupNotification";
+import CustomButton from "../../componets/CustomButton/CustomButton";
 
 const Home = () => {
-  // const { data } = useSelector((state) => state.login);
   return (
     <>
       <Header />
@@ -23,7 +23,7 @@ const Home = () => {
           <span className={s.friends}>Друзья</span>
           <span className={s.kolFriends}>14</span>
           <hr />
-          <button className={s.profileButton}> Профиль</button>
+          <CustomButton title="Профиль" typeStyle="primary" />
         </div>
         <div className={s.mainBlock}>
           <History />

@@ -1,3 +1,4 @@
+
 import FullPosts from "../componets/Posts/FullPosts/FullPosts";
 import Profile from "../pages/Profile/Profile";
 import AddElement from "../pages/AddElement/AddElement";
@@ -9,9 +10,7 @@ import Login from "../pages/Login/Login";
 import Message from "../pages/Message/Message";
 import Music from "../pages/Music/Music";
 import Register from "../pages/Register/Register";
-import box from "../pages/Profile/img/box.png";
-import foto from "../pages/Profile/img/foto.png";
-import info from "../pages/Profile/img/info.png";
+
 import Settings from "../pages/Settings/Settings";
 
 export const route = [
@@ -96,21 +95,26 @@ export const route = [
     element: <Settings />
   }
 ];
+
 export const navigationButtons = [
   {
-    imageName: box,
+    typeStyle: "navBar",
+    position: true,
+    imageName: 'box',
     title: "Посты",
     alt: "no img box",
   },
   {
-    imageName: foto,
+    typeStyle: "navBar",
+    position: true,
+    imageName: 'foto',
     title: "Фотографии",
-    alt: "no img foto",
   },
   {
-    imageName: info,
+    typeStyle: "navBar",
+    position: true,
+    imageName: 'info',
     title: "Прочее",
-    alt: "no img info",
   },
 ];
 
@@ -130,4 +134,8 @@ export const buttonSettings = [
   {
     title: "Удалить аккаунт",
   }
+]
+
+export const styleButton = [
+
 ]

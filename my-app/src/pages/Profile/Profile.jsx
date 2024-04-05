@@ -50,13 +50,18 @@ const Profile = () => {
                   <span className={s.friendsInput}>Друзья</span>
                   <span className={s.kolFriends}>14</span>
                   <hr />
-                  <button
+                  <CustomButton
+                    title="Выйти"
+                    click={onClickLogout}
+                    typeStyle="primary"
+                  />
+                  {/* <button
                     className={s.profileButton}
                     type="submit"
                     onClick={onClickLogout}
                   >
                     Выйти
-                  </button>
+                  </button> */}
                 </div>
                 <div className={s.mainFriends}>
                   <h3 className={s.h3Foto}>Друзья онлайн</h3>
@@ -76,7 +81,14 @@ const Profile = () => {
                   <span className={s.status}>{data.status}</span>
                   <div className={s.imgDisplay}>
                     {navigationButtons.map((obj, index) => (
-                      <CustomButton key={index} imageName={obj.imageName} title={obj.title} alt={obj.alt}/>
+                      <CustomButton
+                        key={index}
+                        centerImage={obj.position}
+                        typeStyle={obj.typeStyle}
+                        imageName={obj.imageName}
+                        title={obj.title}
+                        alt={obj.alt}
+                      />
                     ))}
                   </div>
                 </div>

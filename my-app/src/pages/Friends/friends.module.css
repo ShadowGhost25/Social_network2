@@ -13,14 +13,20 @@
     height: 100%;
 }
 
+.position {
+    display: flex;
+    align-items: center;
+}
+
 .searchFriends {
+
     padding: 10px 15px;
     margin-top: 30px;
     background-color: white;
 }
 
-.button,    
-.button2{
+.button,
+.button2 {
     padding: 5px 10px 5px 10px;
     font-size: 18px;
     background-color: #1e1e1e;
@@ -32,15 +38,6 @@
 
 }
 
-.ellips {
-    float: right;
-    margin-top: 5px;
-    margin-left: 5px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #7DA1FD;
-}
 
 .searchBlog {
     margin-top: 10px;
