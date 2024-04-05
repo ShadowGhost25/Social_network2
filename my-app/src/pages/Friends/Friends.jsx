@@ -12,11 +12,16 @@ const Friends = () => {
         <div className={s.mainBlog1}>
           <div className={s.searchFriends}>
             <div className={s.position}>
-              <CustomButton title="Все друзья" typeStyle="friends" />
+              <CustomButton
+                title="Все друзья"
+                typeStyle="primary"
+                size="small"
+              />
               <CustomButton
                 title="Друзья онлайн "
-                typeStyle="friends"
+                typeStyle="primary"
                 rightBlock={true}
+                size="average"
               />
             </div>
             <div className={s.searchBlog}>

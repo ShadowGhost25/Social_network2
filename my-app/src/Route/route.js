@@ -117,7 +117,35 @@ export const navigationButtons = [
     title: "Прочее",
   },
 ];
-
+export const assessmentPosts = [
+  {
+    typeStyle: "assessment",
+    position: true,
+    imageName: "like"
+  },
+  {
+    typeStyle: "assessment",
+    position: true,
+    imageName: "comment"
+  },
+]
+export const measurementAge = [
+  {
+    typeStyle: "primary",
+    size: "small",
+    position:true,
+    title: "От",
+    imageName: "down",
+  },
+  {
+    size: "small",
+    typeStyle: "primary",
+    position:true,
+    title: "До",
+    imageName: "up",
+  }
+]
+// export const 
 export const buttonSettings = [
   {
     title: "Настройки профиля",

@@ -5,7 +5,7 @@ const FriendsBLock = () => {
   return (
     <div className={s.card}>
       <div className={s.cardHeader}></div>
-      <img className={s.ava} src={ava} alt="no img" />
+      <img className={s.ava} src={ava} alt="ava" />
       <div className={s.displayFriends}>
         <h3 className={s.name}>Саша Тарасов1</h3>
         <span>
@@ -13,7 +13,10 @@ const FriendsBLock = () => {
           (ИТ-колледж)
         </span>
       </div>
-      <CustomButton title="Написать" typeStyle="primary" />
+      <div className={s.center}>
+
+      <CustomButton title="Написать" typeStyle="primary" size="small"/>
+      </div>
     </div>
   );
 };

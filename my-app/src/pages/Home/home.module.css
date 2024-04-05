@@ -24,7 +24,7 @@
 
 .background {
     height: 130px;
-    background: linear-gradient(100deg, rgb(39, 153, 35), 35%, rgb(51, 63, 52))
+    background: linear-gradient(100deg, rgb(39, 153, 35), 35%, rgb(51, 63, 52));
 }
 
 .fotoProfile {
@@ -55,11 +55,11 @@
     margin-top: 0px;
 }
 
-
-
-
-
-
+.displayButton {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+}
 
 .postsMain:nth-child(2) {
     margin-top: 30px;

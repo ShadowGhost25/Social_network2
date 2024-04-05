@@ -55,13 +55,6 @@ const Profile = () => {
                     click={onClickLogout}
                     typeStyle="primary"
                   />
-                  {/* <button
-                    className={s.profileButton}
-                    type="submit"
-                    onClick={onClickLogout}
-                  >
-                    Выйти
-                  </button> */}
                 </div>
                 <div className={s.mainFriends}>
                   <h3 className={s.h3Foto}>Друзья онлайн</h3>

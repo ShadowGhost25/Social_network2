@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import Header from "../../componets/Header/Header";
 import History from "../../componets/History/History";
 import foto from "./img/qwe.png";
@@ -23,7 +22,9 @@ const Home = () => {
           <span className={s.friends}>Друзья</span>
           <span className={s.kolFriends}>14</span>
           <hr />
-          <CustomButton title="Профиль" typeStyle="primary" />
+          <div className={s.displayButton}>
+          <CustomButton title="Профиль" typeStyle="primary" size="small" />
+          </div>
         </div>
         <div className={s.mainBlock}>
           <History />
