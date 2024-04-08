@@ -1,4 +1,3 @@
-
 .parametersBlog {
     padding: 10px;
     margin-top: 30px;
@@ -7,72 +6,27 @@
     height: 100%
 }
 
-.button3 {
-    display: flex;
-    align-items: center;
-    margin: 0px auto;
-    width: 100%;
-}
-
-.test {
-    width: 100%;
-}
-
-.text {
-    display: block;
-    width: 100%;
-}
-
-.blogDown, .blogUp {
-    width: 80px;
-    float: left;
-    background-color: #1e1e1e;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-}
-.blogUp{
-    float: right;
-}
-.button3 {
-    padding: 5px 10px 5px 10px;
-    font-size: 18px;
-    background-color: #1e1e1e;
-    border-radius: 5px;
-    color: white;
-    margin-right: 20px;
-    outline: 0;
-    border: 0;
-
-}
-
-.h3{
+.h3 {
     margin: 0px 0px 10px 0px;
 }
-.city{
-    float: right;
+
+.age,
+.floor {
+    margin: 10px;
 }
-.age, .floor{
-    margin: 20px 0px 10px 0px;
+
+.positionUpDown {
+    display: flex;
+    justify-content: space-between;
 }
-.displayAge{
+
+.displayAge {
     width: 100%;
     height: 30px;
 }
-.displayFloor{
+
+.displayFloor {
     margin: left;
     text-align: left;
     height: 100%;
-}
-.from{
-    float: left;
-}
-.imgDown, .up{
-    float: right;
-    margin: 2px;
-}
-.before{
-    float: left;
 }

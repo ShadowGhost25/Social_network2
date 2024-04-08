@@ -1,14 +1,13 @@
 import s from "./posts.module.css";
 import foto from "./img/groupAva.png";
-import like from "./img/like.png";
-import share from "./img/share.png";
-import comment from "./img/comment.png";
-import eyes from "./img/eyes.png"
+import eyes from "./img/eyes.png";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDelete, fetchPosts } from "../../redux/slices/posts";
 import { useNavigate } from "react-router-dom";
 import { selectIsAuth } from "../../redux/slices/login";
 import React from "react";
+import CustomButton from "../CustomButton/CustomButton";
+import { assessmentPosts } from "../../Route/route";
 
 const Posts = () => {
   const { posts } = useSelector((state) => state.posts);
@@ -45,11 +44,7 @@ const Posts = () => {
                   onClickPost(obj);
                 }}
               >
-                <img
-                  style={{ width: "50px", height: "50px" }}
-                  src={foto}
-                  alt="no img"
-                />
+                <img className={s.ava} src={foto} alt="ava" />
                 <div className={s.name}>
                   <h2 className={s.h2}>{obj.title}</h2>
                   <span className={s.text}>{obj.createdAt}</span>
@@ -57,28 +52,27 @@ const Posts = () => {
               </div>
               {id === obj.user._id && isAuth ? (
                 <div className={s.removeDelete}>
-                  <button
-                    style={{ marginBottom: "10px" }}
-                    className={s.buttonRemove}
-                    onClick={() => {
+                  <CustomButton
+                    click={() => {
                       clickRemove(obj._id);
                     }}
-                  >
-                    <span className={s.textButton}>Редактировать</span>
-                  </button>
-                  <button
-                    className={s.buttonDelete}
-                    onClick={() => {
+                    title="Редактировать"
+                    typeStyle="primary"
+                    size="average"
+                  />
+                  <CustomButton
+                    click={() => {
                       clickDelete(obj._id);
                     }}
-                  >
-                    <span className={s.textButton}>Удалить</span>
-                  </button>
+                    title="Удалить"
+                    typeStyle="primary"
+                    size="average"
+                  />
                 </div>
               ) : (
                 <div></div>
               )}
-              <div style={{ textAlign: "justify" }}>
+              <div className={s.textPosts}>
                 {obj.text} Lorem ipsum dolor sit amet, consectetur adipisicing
                 elit. Exercitationem amet doloremque, at nihil corrupti quis,
                 doloribus corporis maxime, ea iusto nam laudantium quaerat! Iste
@@ -101,22 +95,28 @@ const Posts = () => {
                 />
               </div>
               <div className={s.buttonFotter}>
-                <div>
-                  <button className={s.buttonClick}>
-                    <img className={s.imgCLick} src={like} alt="no img" />
-                  </button>
-                  <button style={{marginLeft: "10px"}} className={s.buttonClick}>
-                    <img src={comment} alt="no img" />
-                  </button>
-                </div>
-                <div style={{ marginLeft: "auto", display: "flex", alignItems: "center"}}>
-                  <div style={{marginRight: "3px"}}>
-                  {obj.viewsCount}
+                {assessmentPosts.map((obj, index) => {
+                  return (
+                    <div className={s.marginBox}>
+                      <CustomButton
+                        key={index}
+                        imageName={obj.imageName}
+                        typeStyle={obj.typeStyle}
+                        centerImage={obj.position}
+                      />
+                    </div>
+                  );
+                })}
+                <div className={s.position}>
+                  <div className={s.positionViewsCount}>
+                    <div>{obj.viewsCount}</div>
+                    <img src={eyes} alt="eyes" />
                   </div>
-                  <img  src={eyes} alt="no img" />
-                  <button style={{display: "block", marginLeft: "10px"}} className={s.buttonClick}>
-                    <img className={s.imgCLick2} src={share} alt="no img" />
-                  </button>
+                  <CustomButton
+                    typeStyle="assessment"
+                    centerImage={true}
+                    imageName="share"
+                  />
                 </div>
               </div>
             </div>

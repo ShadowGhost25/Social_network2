@@ -1,3 +1,4 @@
+import CustomButton from "../CustomButton/CustomButton";
 import s from "./settingsdelete.module.css";
 const SettingsDelete = () => {
   return (
@@ -24,7 +25,9 @@ const SettingsDelete = () => {
             // value={data.surName}
           />
         </label>
-        <button className={s.button}>Сохранить</button>
+        <div className={s.positionButton}>
+          <CustomButton title="Удалить" typeStyle="primary" size="small"/>
+        </div>
       </form>
     </>
   );

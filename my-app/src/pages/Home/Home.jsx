@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import Header from "../../componets/Header/Header";
 import History from "../../componets/History/History";
 import foto from "./img/qwe.png";
@@ -7,9 +6,9 @@ import React from "react";
 import Posts from "./../../componets/Posts/Posts";
 import FriendsOnline from "../../componets/FriendsOnline/FriendsOnline";
 import GroupNotification from "../../componets/GroupNotification/GroupNotification";
+import CustomButton from "../../componets/CustomButton/CustomButton";
 
 const Home = () => {
-  // const { data } = useSelector((state) => state.login);
   return (
     <>
       <Header />
@@ -23,7 +22,9 @@ const Home = () => {
           <span className={s.friends}>Друзья</span>
           <span className={s.kolFriends}>14</span>
           <hr />
-          <button className={s.profileButton}> Профиль</button>
+          <div className={s.displayButton}>
+          <CustomButton title="Профиль" typeStyle="primary" size="small" />
+          </div>
         </div>
         <div className={s.mainBlock}>
           <History />

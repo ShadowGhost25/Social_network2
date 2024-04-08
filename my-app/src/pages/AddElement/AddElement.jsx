@@ -186,7 +186,7 @@ const AddElement = () => {
               <img
                 className={s.imgFile}
                 src={`http://localhost:3002${imageUrl}`}
-                alt="select image"
+                alt="select"
               />
             </div>
           )}

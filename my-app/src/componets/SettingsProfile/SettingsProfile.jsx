@@ -1,3 +1,4 @@
+import CustomButton from "../CustomButton/CustomButton";
 import s from "./settingsprofile.module.css";
 const SettingsProfile = () => {
   return (
@@ -51,7 +52,9 @@ const SettingsProfile = () => {
             // value={data.status}
           />
         </label>
-        <button className={s.button}>Сохранить</button>
+        <div className={s.positionButton}>
+          <CustomButton title="Сохранить" size="small" typeStyle="primary"/>
+        </div>
       </form>
     </>
   );

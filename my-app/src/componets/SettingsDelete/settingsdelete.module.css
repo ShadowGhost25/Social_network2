@@ -4,6 +4,9 @@
   font-size: 20px;
   margin: 8px 20px;
 }
+.positionButton{
+  margin: 20px;
+}
 .input {
   border: 2px solid #7da1fd;
   padding: 5px;

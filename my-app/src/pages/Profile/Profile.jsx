@@ -1,7 +1,5 @@
-import React, { useState } from "react";
 import Header from "../../componets/Header/Header";
 import s from "./profile.module.css";
-import vector from "./img/Vector.png";
 import ava from "./img/ava.png";
 import alex from "./img/alex.png";
 import i from "./img/i.webp";
@@ -37,10 +35,9 @@ const Profile = () => {
           <div className={s.profileMain}>
             <div className={s.headerProfile}>
               <div className={s.blogAva}>
-                <button className={s.buttonProfile}>
-                  <span className={s.textH3}>Изменить обложку</span>
-                  <img src={vector} alt="no foto" />
-                </button>
+                <div className={s.positionButton2}>
+                <CustomButton typeStyle="primary" title="Изменить обложку" size="average" imageName="pencil" rightImage={true}/>
+                </div>
               </div>
             </div>
             <div className={s.main}>
@@ -50,13 +47,14 @@ const Profile = () => {
                   <span className={s.friendsInput}>Друзья</span>
                   <span className={s.kolFriends}>14</span>
                   <hr />
-                  <button
-                    className={s.profileButton}
-                    type="submit"
-                    onClick={onClickLogout}
-                  >
-                    Выйти
-                  </button>
+                  <div className={s.positionButton}>
+                    <CustomButton
+                      title="Выйти"
+                      size="small"
+                      click={onClickLogout}
+                      typeStyle="primary"
+                    />
+                  </div>
                 </div>
                 <div className={s.mainFriends}>
                   <h3 className={s.h3Foto}>Друзья онлайн</h3>
@@ -76,7 +74,14 @@ const Profile = () => {
                   <span className={s.status}>{data.status}</span>
                   <div className={s.imgDisplay}>
                     {navigationButtons.map((obj, index) => (
-                      <CustomButton key={index} imageName={obj.imageName} title={obj.title} alt={obj.alt}/>
+                      <CustomButton
+                        key={index}
+                        centerImage={obj.position}
+                        typeStyle={obj.typeStyle}
+                        imageName={obj.imageName}
+                        title={obj.title}
+                        alt={obj.alt}
+                      />
                     ))}
                   </div>
                 </div>

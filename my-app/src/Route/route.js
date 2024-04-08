@@ -1,3 +1,4 @@
+
 import FullPosts from "../componets/Posts/FullPosts/FullPosts";
 import Profile from "../pages/Profile/Profile";
 import AddElement from "../pages/AddElement/AddElement";
@@ -9,9 +10,7 @@ import Login from "../pages/Login/Login";
 import Message from "../pages/Message/Message";
 import Music from "../pages/Music/Music";
 import Register from "../pages/Register/Register";
-import box from "../pages/Profile/img/box.png";
-import foto from "../pages/Profile/img/foto.png";
-import info from "../pages/Profile/img/info.png";
+
 import Settings from "../pages/Settings/Settings";
 
 export const route = [
@@ -96,38 +95,82 @@ export const route = [
     element: <Settings />
   }
 ];
+
 export const navigationButtons = [
   {
-    imageName: box,
+    typeStyle: "navBar",
+    position: true,
+    imageName: 'box',
     title: "Посты",
     alt: "no img box",
   },
   {
-    imageName: foto,
+    typeStyle: "navBar",
+    position: true,
+    imageName: 'foto',
     title: "Фотографии",
-    alt: "no img foto",
   },
   {
-    imageName: info,
+    typeStyle: "navBar",
+    position: true,
+    imageName: 'info',
     title: "Прочее",
-    alt: "no img info",
   },
 ];
-
+export const assessmentPosts = [
+  {
+    typeStyle: "assessment",
+    position: true,
+    imageName: "like"
+  },
+  {
+    typeStyle: "assessment",
+    position: true,
+    imageName: "comment"
+  },
+]
+export const measurementAge = [
+  {
+    typeStyle: "primary",
+    size: "small",
+    position:true,
+    title: "От",
+    noCenter: "left",
+    imageName: "down",
+  },
+  {
+    size: "small",
+    typeStyle: "primary",
+    position:true,
+    noCenter: "left", 
+    title: "До",
+    imageName: "up",
+  }
+]
 export const buttonSettings = [
   {
     title: "Настройки профиля",
+    typeStyle: "settings",
   },
   {
     title: "Уведомления",
+    typeStyle: "settings",
+
   },
   {
     title: "Запросы в друзья",
+    typeStyle: "settings",
   },
   {
     title: "Изменить пароль",
+    typeStyle: "settings",
   },
   {
     title: "Удалить аккаунт",
+    typeStyle: "settings",
   }
+]
+
+export const styleButton = [
+
 ]

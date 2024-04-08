@@ -54,7 +54,11 @@
   outline: none;
   width: 40px;
   height: 40px;
+
+}
+.positionButton{
   margin-left: auto;
+
 }
 .imgPlus {
   display: block; /* Устанавливаем изображение как блочный элемент */

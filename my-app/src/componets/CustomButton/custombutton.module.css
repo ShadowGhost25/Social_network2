@@ -1,9 +1,96 @@
-.blokImg{
+.blokImg {
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-right: 20px;
+    outline: none;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0);
+    cursor: pointer;
+    padding: 0px;
 }
-.input{
+
+.profileButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    color: white;
+    outline: 0;
+    border: 0;
+    transition: 0.7s;
+}
+.profileButton:hover{
+    background-color: #7da1fd;
+    color: white;
+    transition: 0.7s;
+}
+
+.buttonAssessment{
+    border-radius: 100px;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    outline: none;
+    background-color: black;
+    color: white;
+}
+.buttonSettings {
+    background-color: white;
+    border: 0px;
+    font-size: 24px;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 2px solid black;
+    transition: 0.5s;
+  }
+  
+  .buttonSettings:hover {
+    transition: 0.5s;
+    color: #7da1fd;
+    border-bottom: 2px solid #7da1fd;
+  }
+
+.city {
+    margin-left: auto;
+}
+
+.ellips {
+    display: inline-block;
+    margin-left: auto;
+    width: 10px;
+    height: 10px;
+    margin-left: 10px;
+    border-radius: 50%;
+    background-color: #7DA1FD;
+}
+
+.input {
     display: block;
+    margin: 0px auto;
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Скрываем все, что не помещается */
+    text-overflow: ellipsis;
+}
+.sizeA{
+    width: 180px;
+    height: 30px;
+}
+.sizeM{
+    width: 115px;
+    height: 30px;
+}
+.sizeF{
+    width: 100%;
+}
+.positionSpan{
+    margin: 0px;
+}
+
+.sizeB{
+    width: 40px;
+    height: 40px;
 }

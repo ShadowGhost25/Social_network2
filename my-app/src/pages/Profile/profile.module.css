@@ -17,25 +17,20 @@
     height: 100%;
     background-image: url('./img/fon.png');
     background-repeat: no-repeat;
-    background-size: cover  ;
+    background-size: cover;
 }
 
-.buttonProfile {
-    float: right;
-    text-align: center;
-    background-color: black;
-    border-radius: 10px;
-    border: 0;
-    outline: none;
-    color: white;
+.positionButton {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-self: center;
-    padding: 5px 10px;
-    margin: 10px;
-    cursor: pointer;
 }
 
+.positionButton2 {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 20px;
+}
 .textH3 {
     margin: 0px;
     padding-right: 10px;
@@ -48,14 +43,16 @@
     left: 100px;
     width: 150px;
 }
+
 .status {
     display: block;
     font-size: 18px;
     font-weight: 400;
 }
-.imgDisplay{
+
+.imgDisplay {
     display: flex;
-    margin-top: 10px ;
+    margin-top: 10px;
 }
 
 
@@ -87,6 +84,7 @@
     background-color: white;
     padding: 10px;
 }
+
 .friendsName {
     padding: 10px 0px 0px 10px;
     color: white;
@@ -96,16 +94,19 @@
 .main2 {
     width: 590px;
 }
-.user{
+
+.user {
     width: 100%;
     margin-top: 30px;
     margin-bottom: 30px;
 }
-.userFio{
+
+.userFio {
     display: block;
     font-size: 20px;
     font-weight: 700;
 }
+
 .h3Foto {
     margin: 0px;
 }
@@ -114,30 +115,35 @@
     width: 100%;
 }
 
-.main3{
+.main3 {
     text-align: center;
     width: 350px;
     height: 100%;
     padding: 10px;
     background-color: white;
 }
+
 hr {
     height: 2px;
     border: 0;
     background-color: #7DA1FD;
 }
-.friendsInput, .kolFriends{
+
+.friendsInput,
+.kolFriends {
     display: block;
     margin-top: 60px;
     text-align: center;
     font-size: 20px;
     font-weight: 700;
 }
-.kolFriends{
+
+.kolFriends {
     margin-top: 0px;
     font-size: 18px;
     font-weight: 400;
 }
+
 .friends {
     background-color: #1E1E1E;
     padding: 5px;
@@ -146,18 +152,8 @@ hr {
     margin-top: 10px;
     position: relative;
 }
-.profileButton {
-    display: block;
-    width: 100px;
-    height: 30px;
-    margin: 0px auto 8px;
-    font-size: 18px;
-    background-color: #1e1e1e;
-    border-radius: 5px;
-    color: white;
-    outline: 0;
-    border: 0;
-}
+
+
 .test {
     float: left;
     width: 40px;
