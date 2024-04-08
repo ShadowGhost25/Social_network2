@@ -1,8 +1,5 @@
 import s from "./posts.module.css";
 import foto from "./img/groupAva.png";
-import like from "./img/like.png";
-import share from "./img/share.png";
-import comment from "./img/comment.png";
 import eyes from "./img/eyes.png";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDelete, fetchPosts } from "../../redux/slices/posts";

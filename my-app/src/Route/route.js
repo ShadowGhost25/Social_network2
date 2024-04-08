@@ -135,32 +135,39 @@ export const measurementAge = [
     size: "small",
     position:true,
     title: "От",
+    noCenter: "left",
     imageName: "down",
   },
   {
     size: "small",
     typeStyle: "primary",
     position:true,
+    noCenter: "left", 
     title: "До",
     imageName: "up",
   }
 ]
-// export const 
 export const buttonSettings = [
   {
     title: "Настройки профиля",
+    typeStyle: "settings",
   },
   {
     title: "Уведомления",
+    typeStyle: "settings",
+
   },
   {
     title: "Запросы в друзья",
+    typeStyle: "settings",
   },
   {
     title: "Изменить пароль",
+    typeStyle: "settings",
   },
   {
     title: "Удалить аккаунт",
+    typeStyle: "settings",
   }
 ]
 

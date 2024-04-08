@@ -12,21 +12,6 @@
   flex-direction: column;
 }
 
-.buttonSettings {
-  background-color: white;
-  border: 0px;
-  font-size: 24px;
-  width: 100%;
-  padding: 20px;
-  border-bottom: 2px solid black;
-  transition: 0.5s;
-}
-
-.buttonSettings:hover {
-  transition: 0.5s;
-  color: #7da1fd;
-  border-bottom: 2px solid #7da1fd;
-}
 .block2 {
   background-color: white;
   width: 970px;

@@ -20,22 +20,17 @@
     background-size: cover;
 }
 
-.buttonProfile {
-    float: right;
-    text-align: center;
-    background-color: black;
-    border-radius: 10px;
-    border: 0;
-    outline: none;
-    color: white;
+.positionButton {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-self: center;
-    padding: 5px 10px;
-    margin: 10px;
-    cursor: pointer;
 }
 
+.positionButton2 {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 20px;
+}
 .textH3 {
     margin: 0px;
     padding-right: 10px;

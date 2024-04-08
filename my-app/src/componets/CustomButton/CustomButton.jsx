@@ -2,12 +2,14 @@ import s from "./custombutton.module.css";
 import box from "../../pages/Profile/img/box.png";
 import foto from "../../pages/Profile/img/foto.png";
 import info from "../../pages/Profile/img/info.png";
+import plus from "../SettingsFriends/img/plus.png";
 import city from "../Options/img/Vector.png";
 import like from "../Posts/img/like.png";
 import share from "../Posts/img/share.png";
 import comment from "../Posts/img/comment.png";
 import up from "../Options/img/Up.png";
 import down from "../Options/img/Down.png";
+import pencil from "../../pages/Profile/img/Vector.png";
 
 const CustomButton = ({
   click,
@@ -19,14 +21,15 @@ const CustomButton = ({
   rightImage,
   leftImage,
   rightBlock,
+  position,
   size,
 }) => {
   const buttonStyles = (typeStyle) => {
     switch (typeStyle) {
       case "primary":
         return s.profileButton;
-      case "options":
-        return s.buttonOptions;
+      case "settings":
+        return s.buttonSettings;
       case "assessment":
         return s.buttonAssessment;
       case "navBar":
@@ -52,8 +55,12 @@ const CustomButton = ({
         return up;
       case "down":
         return down;
+      case "plus":
+        return plus;
       case "comment":
         return comment;
+      case "pencil":
+        return pencil;
       default:
     }
   };
@@ -65,6 +72,16 @@ const CustomButton = ({
         return s.sizeA;
       case "full":
         return s.sizeF;
+      case "button":
+        return s.sizeB;
+      default:
+    }
+  };
+
+  const positionSpan = () => {
+    switch (position) {
+      case "left":
+        return s.positionSpan;
       default:
     }
   };
@@ -75,8 +92,10 @@ const CustomButton = ({
       key={index}
       className={`${buttonStyles(typeStyle)} ${sizeButton(size)}`}
     >
-      {leftImage && <img src={imageName} alt={imageName} />}
-      {title && <span className={s.input}>{title}</span>}
+      {leftImage && <img src={imgName()} alt={imageName} />}
+      {title && (
+        <span className={`${s.input} ${positionSpan(position)}`}>{title}</span>
+      )}
       {rightBlock && <div className={s.ellips}></div>}
       {rightImage && <img className={s.city} src={imgName()} alt={imageName} />}
       {centerImage && <img src={imgName()} alt={imageName} />}

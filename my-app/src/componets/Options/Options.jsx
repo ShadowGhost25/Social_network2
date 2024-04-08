@@ -9,6 +9,7 @@ const Options = () => {
         title="Выбрать город"
         typeStyle="primary"
         imageName="city"
+        position="left"
         size="full"
         rightImage={true}
       />
@@ -21,7 +22,9 @@ const Options = () => {
               title={obj.title}
               typeStyle={obj.typeStyle}
               size={obj.size}
+              position={obj.noCenter}
               rightImage={obj.position}
+              imageName={obj.imageName}
             />
           );
         })}

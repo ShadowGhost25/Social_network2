@@ -13,6 +13,7 @@
 .profileButton {
     display: flex;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
     font-size: 18px;
     background-color: #1e1e1e;
@@ -20,20 +21,14 @@
     color: white;
     outline: 0;
     border: 0;
+    transition: 0.7s;
+}
+.profileButton:hover{
+    background-color: #7da1fd;
+    color: white;
+    transition: 0.7s;
 }
 
-.buttonFriends {
-    display: flex;
-    align-items: center;
-    justify-content: center ;
-    font-size: 18px;
-    background-color: #1e1e1e;
-    border-radius: 5px;
-    color: white;
-    margin-right: 20px;
-    outline: 0;
-    border: 0;
-}
 .buttonAssessment{
     border-radius: 100px;
     width: 50px;
@@ -43,6 +38,21 @@
     background-color: black;
     color: white;
 }
+.buttonSettings {
+    background-color: white;
+    border: 0px;
+    font-size: 24px;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 2px solid black;
+    transition: 0.5s;
+  }
+  
+  .buttonSettings:hover {
+    transition: 0.5s;
+    color: #7da1fd;
+    border-bottom: 2px solid #7da1fd;
+  }
 
 .city {
     margin-left: auto;
@@ -60,11 +70,13 @@
 
 .input {
     display: block;
-    padding: 3px 5px;
     margin: 0px auto;
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Скрываем все, что не помещается */
+    text-overflow: ellipsis;
 }
 .sizeA{
-    width: 200px;
+    width: 180px;
     height: 30px;
 }
 .sizeM{
@@ -73,4 +85,12 @@
 }
 .sizeF{
     width: 100%;
+}
+.positionSpan{
+    margin: 0px;
+}
+
+.sizeB{
+    width: 40px;
+    height: 40px;
 }

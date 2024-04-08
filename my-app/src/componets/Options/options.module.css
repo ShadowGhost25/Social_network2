@@ -6,27 +6,9 @@
     height: 100%
 }
 
-
-
-.blogDown,
-.blogUp {
-    width: 80px;
-    background-color: #1e1e1e;
-    color: white;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-}
-
-.blogUp {
-    float: right;
-}
-
 .h3 {
     margin: 0px 0px 10px 0px;
 }
-
-
 
 .age,
 .floor {
@@ -47,18 +29,4 @@
     margin: left;
     text-align: left;
     height: 100%;
-}
-
-.from {
-    float: left;
-}
-
-.imgDown,
-.up {
-    float: right;
-    margin: 2px;
-}
-
-.before {
-    float: left;
 }

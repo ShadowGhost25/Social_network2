@@ -8,33 +8,32 @@ import { Navigate, useNavigate } from "react-router-dom";
 import SettingsProfile from "../../componets/SettingsProfile/SettingsProfile";
 import SettingsNotifications from "../../componets/SettingsNotifications/SettingsNotifications";
 import SettingsFriends from "../../componets/SettingsFriends/SettingsFriends";
-import { fetchAuthMe, selectIsAuth } from "../../redux/slices/login";
+import { selectIsAuth } from "../../redux/slices/login";
 import SettingsPassword from "../../componets/SettingsPassword/SettingsPassword";
 import SettingsDelete from "../../componets/SettingsDelete/SettingsDelete";
+import CustomButton from "../../componets/CustomButton/CustomButton";
 const Settings = () => {
-  const { data, status } = useSelector((state) => state.login);
+  const {  status } = useSelector((state) => state.login);
   const urlSite = window.location.pathname;
   const isAuth = useSelector(selectIsAuth);
   const isSettingsLoading = status === "loaded";
   const navigate = useNavigate();
   const test = (event) => {
-    const nameSettings = event.target.name;
-    if (nameSettings === "Уведомления") {
+    if (event === "Уведомления") {
       navigate("/settings/notifications");
-    } else if (nameSettings === "Запросы в друзья") {
+    } else if (event === "Запросы в друзья") {
       navigate("/settings/friends");
-    } else if (nameSettings === "Изменить пароль") {
+    } else if (event === "Изменить пароль") {
       navigate("/settings/password");
-    } else if (nameSettings === "Удалить аккаунт") {
+    } else if (event === "Удалить аккаунт") {
       navigate("/settings/delete");
-    } else if (nameSettings === "Настройки профиля") {
+    } else if (event === "Настройки профиля") {
       navigate("/settings");
     }
   };
-  if (!isAuth) {
+  if (!isAuth && isSettingsLoading) {
     return <Navigate to="/" />;
   }
-  // const [title, setTitle] = React.useState('')
   return (
     <>
       {!isSettingsLoading ? (
@@ -44,16 +43,16 @@ const Settings = () => {
           <Header />
           <div className={s.main}>
             <div className={s.block1}>
-              {buttonSettings.map(({ title }) => {
+              {buttonSettings.map((obj, index) => {
                 return (
-                  <button
-                    name={title}
-                    onClick={test}
-                    key={title}
-                    className={s.buttonSettings}
-                  >
-                    {title}
-                  </button>
+                  <CustomButton
+                    key={index}
+                    title={obj.title}
+                    click={() => {
+                      test(obj.title);
+                    }}
+                    typeStyle={obj.typeStyle}
+                  />
                 );
               })}
             </div>
