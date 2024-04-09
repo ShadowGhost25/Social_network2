@@ -43,8 +43,10 @@
     margin-bottom: 10px;
 }
 .mix{
-    margin-left: 10px;
+    margin: 0 10px;
     font-size: 18px;
+    transition: 0.7s;
+    z-index: 1;
 }
 
 .flexBlog {
@@ -60,7 +62,9 @@
     overflow: hidden;
     position: relative;
 }
-
+.displayBlock > button:hover {
+background-color: #1e1e1e;
+}
 .displayBlock::before {
     content: '';
     position: absolute;
@@ -82,17 +86,13 @@
     transition: 0.1s;
     color:  white; /* Изменяем цвет текста на черный при наведении */
 }
-.mix{
-    transition: 0.7s;
-    z-index: 1;
-}
 
 .musicMainBlog {
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin: 10px 0px;
+    margin: 10px 0;
 }
 
 .blogDown {

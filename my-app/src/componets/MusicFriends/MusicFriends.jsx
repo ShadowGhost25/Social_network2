@@ -3,7 +3,7 @@ import alex from "../../pages/Music/img/alex.png";
 const MusicFriends = () => {
     return ( 
         <div className={s.music}>
-            <img src={alex} alt="no img" />
+            <img src={alex} alt="avatar" />
           <div className={s.positionName}>
             <h3 className={s.h3}> Саша </h3>
           </div>
