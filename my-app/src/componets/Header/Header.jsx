@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectIsAuth } from "../../redux/slices/login";
 import Search from "../Search/Search";
+import CustomButton from "../CustomButton/CustomButton";
+import { buttonHeader } from "../../Route/route";
 const Header = () => {
   const isAuth = useSelector(selectIsAuth);
   return (
@@ -16,28 +18,12 @@ const Header = () => {
         </div>
           <Search />
         <div className={s.menu}>
-          <div className={s.navBar}>
-            <Link to="/">
-              <div className={s.news}></div>
-            </Link>
-            <Link to="/message">
-              <div className={s.message}></div>
-            </Link>
-            <Link to="/friends">
-              <div className={s.friends}></div>
-            </Link>
-            <Link to="/group">
-              <div className={s.group}></div>
-            </Link>
-            <Link to="/music">
-              <div className={s.music}></div>
-            </Link>
-            <Link to="/settings">
-              <div className={s.setings}></div>
-            </Link>
-          </div>
+            {buttonHeader.map((obj, index)=>{
+            return(<Link className={s.link} key={index} to={obj.url}>
+              <CustomButton key={index} typeStyle={obj.typeStyle} imageName={obj.imageName} centerImage={obj.centerImage} size="full"/>
+            </Link>)
+            })}
         </div>
-        <div className={s.avatarka}>
           {isAuth ? (
             <Link className={s.tegA} to="/profile">
               <span>Shadow</span>
@@ -48,7 +34,6 @@ const Header = () => {
               <div className={s.ava}></div>
             </Link>
           )}
-        </div>
       </div>
     </div>
   );

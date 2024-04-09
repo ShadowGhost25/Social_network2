@@ -10,6 +10,12 @@ import comment from "../Posts/img/comment.png";
 import up from "../Options/img/Up.png";
 import down from "../Options/img/Down.png";
 import pencil from "../../pages/Profile/img/Vector.png";
+import news from "../Header/img/News.png";
+import message from "../Header/img/Messages.png";
+import friends from "../Header/img/Friends.png";
+import group from "../Header/img/Groups.png";
+import music from "../Header/img/Music.png";
+import settings from "../Header/img/Setings.png";
 
 const CustomButton = ({
   click,
@@ -26,7 +32,7 @@ const CustomButton = ({
 }) => {
   const buttonStyles = (typeStyle) => {
     switch (typeStyle) {
-      case "primary":
+      case "primary": 
         return s.profileButton;
       case "settings":
         return s.buttonSettings;
@@ -61,7 +67,20 @@ const CustomButton = ({
         return comment;
       case "pencil":
         return pencil;
+        case "news":
+          return news;
+        case "message":
+          return message;
+        case "friends":
+          return friends;
+        case "group":
+          return group;
+        case "music":
+          return music;
+        case "settings":
+          return settings;
       default:
+
     }
   };
   const sizeButton = () => {

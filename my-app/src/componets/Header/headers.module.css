@@ -20,13 +20,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-}
-
-.navBar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 700px;
+    justify-content: space-evenly;
 }
 .profile {
     display: flex;
@@ -39,7 +33,7 @@
     text-decoration: none;
     color: white;
     font-size: 20px;
-    width: 100%;
+    padding: 0px 10px;
     transition: 0.7s;
 }
 .tegA:hover{
@@ -47,13 +41,7 @@
     transition: 0.7s;
     background-color: white;
 }
-.news,
-.message,
-.friends,
-.group,
-.music,
-.ava,
-.setings,
+
 .avaActive {
     width: 70px;
     height: 83px;
@@ -63,31 +51,6 @@
     background-position: center;
     transition: 0.7s;
 }
-
-.message {
-    background-image: url(./img/Messages.png);
-}
-
-.ava {
-    background-image: url(./img/User.png);
-}
-
-.friends {
-    background-image: url(./img/Friends.png);
-}
-
-.group {
-    background-image: url(./img/Groups.png);
-}
-
-.music {
-    background-image: url(./img/Music.png);
-}
-
-.setings {
-    background-image: url(./img/Setings.png);
-}
-
 .avaActive {
     display: flex;
     flex-direction: row;
@@ -97,43 +60,10 @@
     transition: 0.7s;
 }
 
-.news:hover,
-.message:hover,
-.friends:hover,
-.group:hover,
-.music:hover,
-.ava:hover,
-.setings:hover {
-    background-color: white;
-    transition: 0.7s;
-    background-image: url(./img/NewsBlack.png);
-}
-
-.message:hover {
-    background-image: url(./img/MessagesBlack.png);
-}
-
-.friends:hover {
-    background-image: url(./img/FriendsBlack.png);
-}
-
-.group:hover {
-    background-image: url(./img/GroupBlack.png);
-}
-
-.music:hover {
-    background-image: url(./img/MusicBlack.png)
-}
-
-.setings:hover {
-    background-image: url(./img/SetingsBlack.png);
-}
-
-.ava:hover {
-    background-image: url(./img/UserBlack.png);
-    transition: 0.7s;
-}
-
 .avaActive:hover {
     background-image: url(./img/Ava.png);
+}
+.link{
+    height: 100%;
+    width: 80px;
 }
