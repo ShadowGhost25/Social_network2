@@ -1,3 +1,4 @@
+import CustomButton from "../CustomButton/CustomButton";
 import s from "./settingspassword.module.css";
 const SettingsPassword = () => {
   return (
@@ -24,7 +25,9 @@ const SettingsPassword = () => {
             // value={data.surName}
           />
         </label>
-        <button className={s.button}>Сохранить</button>
+        <div className={s.positionButton}> 
+        <CustomButton title="Сохранить" typeStyle="primary" size="small"/>
+        </div>
       </form>
     </>
   );

@@ -71,8 +71,8 @@
 .input {
     display: block;
     margin: 0px auto;
-    white-space: nowrap; /* Запрещаем перенос строк */
-    overflow: hidden; /* Скрываем все, что не помещается */
+    white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
 }
 .sizeA{

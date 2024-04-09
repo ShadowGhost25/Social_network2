@@ -3,16 +3,18 @@
     justify-content: center;
     align-items: center;
 }
-
-.musicMain {
-    width: 1000px;
-    height: auto;
-    background-color: white;
-    padding: 5px 15px;
-    margin: 30px 0px;
-    border-radius: 20px;
+.positionButton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+.musicMain {
+    width: 1370px;
+    padding: 5px 15px;
+    background-color: white;
+    margin: 30px 0px;
 
+}
 .search {
     padding: 5px 5px 5px 10px;
     border-radius: 5px;
@@ -37,38 +39,59 @@
     height: 20px;
     width: 20px;
 }
-
-.button {
-    padding: 5px;
-    background-color: #1e1e1e;
-    outline: 0;
-    border: 0;
-    border-radius: 5px;
-    background-image: url(./img/Vector.png);
-    background-repeat: no-repeat;
-    background-size: 70%;
-    background-position: center;
-    width: 40px;
-    height: 40px;
+.h3{
+    margin-bottom: 10px;
+}
+.mix{
+    margin-left: 10px;
+    font-size: 18px;
 }
 
 .flexBlog {
     display: flex;
-    align-items: center;
     flex-direction: row;
+    justify-content: space-between;
+}
+.displayBlock {
+    display: flex;
+    align-items: center;
+    padding-right: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
 }
 
-.musicBlog {
-    width: 500px;
-    border-right: 3px solid #1e1e1e;
+.displayBlock::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 35px;
+    width: 0%;
+    height: 100%;
+    color: white;
+    background-color: #1e1e1e; 
+    transition: 0.7s; /* Плавная анимация изменения ширины */
+}
+
+.displayBlock:hover::before {
+    color: white;
+    width: 100%; /* При наведении курсора полностью раскрываем градиент вправо */
+}
+
+.displayBlock:hover {
+    transition: 0.1s;
+    color:  white; /* Изменяем цвет текста на черный при наведении */
+}
+.mix{
+    transition: 0.7s;
+    z-index: 1;
 }
 
 .musicMainBlog {
     width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     margin: 10px 0px;
 }
 
@@ -83,12 +106,16 @@
     border-radius: 5px;
 }
 
-.music{
-    padding: 5px 10px;
+
+.mainBlock{
     display: flex;
-    flex-direction: row;
-    background-color: #1e1e1e;
-    color: white;
-    border-radius: 5px;
-    margin: 10px 10px 10px 0px;
+justify-content: space-between;
+}
+.main1{
+    width: 100%;
+    padding-right: 10px;
+}
+.main2{
+    padding-left: 10px;
+    width: 100%;
 }

@@ -1,0 +1,26 @@
+.music {
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: #1e1e1e;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.img{
+    display: flex;
+    align-items: center;
+}
+.positionName{
+    margin: 5px 10px 0px;
+}
+.h3{
+    margin: 2px;
+}
+.positionMusic{
+    margin-left: auto;
+}
+.h4{
+    margin: 7px 0px 0px;
+    text-align: right;
+}
