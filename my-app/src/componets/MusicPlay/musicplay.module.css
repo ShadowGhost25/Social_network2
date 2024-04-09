@@ -1,0 +1,23 @@
+.music {
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: #1e1e1e;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.nameMusic{
+    display: flex;
+    align-items: center;
+}
+.marginBlock{
+    margin: 5px 10px 0px;
+}
+.h3{
+    margin: 2px;
+}
+.positionTime{
+    margin-left: auto;
+}

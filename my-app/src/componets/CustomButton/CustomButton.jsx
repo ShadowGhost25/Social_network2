@@ -10,6 +10,7 @@ import comment from "../Posts/img/comment.png";
 import up from "../Options/img/Up.png";
 import down from "../Options/img/Down.png";
 import pencil from "../../pages/Profile/img/Vector.png";
+import vector from "../../pages/Music/img/Vector.png";
 
 const CustomButton = ({
   click,
@@ -61,6 +62,8 @@ const CustomButton = ({
         return comment;
       case "pencil":
         return pencil;
+      case "vector":
+        return vector;
       default:
     }
   };
