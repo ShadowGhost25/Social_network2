@@ -1,4 +1,3 @@
-
 import FullPosts from "../componets/Posts/FullPosts/FullPosts";
 import Profile from "../pages/Profile/Profile";
 import AddElement from "../pages/AddElement/AddElement";
@@ -76,44 +75,44 @@ export const route = [
   },
   {
     path: "/settings",
-    element: <Settings />
+    element: <Settings />,
   },
   {
     path: "/settings/notifications",
-    element: <Settings />
+    element: <Settings />,
   },
   {
     path: "/settings/friends",
-    element: <Settings />
+    element: <Settings />,
   },
   {
     path: "/settings/password",
-    element: <Settings />
+    element: <Settings />,
   },
   {
     path: "/settings/delete",
-    element: <Settings />
-  }
+    element: <Settings />,
+  },
 ];
 
 export const navigationButtons = [
   {
     typeStyle: "navBar",
     position: true,
-    imageName: 'box',
+    imageName: "box",
     title: "Посты",
     alt: "no img box",
   },
   {
     typeStyle: "navBar",
     position: true,
-    imageName: 'foto',
+    imageName: "foto",
     title: "Фотографии",
   },
   {
     typeStyle: "navBar",
     position: true,
-    imageName: 'info',
+    imageName: "info",
     title: "Прочее",
   },
 ];
@@ -121,19 +120,19 @@ export const assessmentPosts = [
   {
     typeStyle: "assessment",
     position: true,
-    imageName: "like"
+    imageName: "like",
   },
   {
     typeStyle: "assessment",
     position: true,
-    imageName: "comment"
+    imageName: "comment",
   },
-]
+];
 export const measurementAge = [
   {
     typeStyle: "primary",
     size: "small",
-    position:true,
+    position: true,
     title: "От",
     noCenter: "left",
     imageName: "down",
@@ -141,12 +140,12 @@ export const measurementAge = [
   {
     size: "small",
     typeStyle: "primary",
-    position:true,
-    noCenter: "left", 
+    position: true,
+    noCenter: "left",
     title: "До",
     imageName: "up",
-  }
-]
+  },
+];
 export const buttonSettings = [
   {
     title: "Настройки профиля",
@@ -155,7 +154,6 @@ export const buttonSettings = [
   {
     title: "Уведомления",
     typeStyle: "settings",
-
   },
   {
     title: "Запросы в друзья",
@@ -168,9 +166,44 @@ export const buttonSettings = [
   {
     title: "Удалить аккаунт",
     typeStyle: "settings",
-  }
-]
+  },
+];
 
-export const styleButton = [
-
-]
+export const buttonHeader = [
+  {
+    url: "/",
+    imageName: "news",
+    centerImage: true,
+    typeStyle: "navBar",
+  },
+  {
+    url: "/message",
+    imageName: "message",
+    centerImage: true,
+    typeStyle: "navBar",
+  },
+  {
+    url: "/friends",
+    imageName: "friends",
+    centerImage: true,
+    typeStyle: "navBar",
+  },
+  {
+    url: "/group",
+    imageName: "group",
+    centerImage: true,
+    typeStyle: "navBar",
+  },
+  {
+    url: "/music",
+    imageName: "music",
+    centerImage: true,
+    typeStyle: "navBar",
+  },
+  {
+    url: "/settings",
+    imageName: "settings",
+    centerImage: true,
+    typeStyle: "navBar",
+  },
+];
