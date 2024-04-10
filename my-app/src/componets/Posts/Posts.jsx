@@ -8,13 +8,17 @@ import { selectIsAuth } from "../../redux/slices/login";
 import React from "react";
 import CustomButton from "../CustomButton/CustomButton";
 import { assessmentPosts } from "../../Route/route";
+import Markdown from "react-markdown";
+import Loading from "./../Loading/Loading";
 
 const Posts = () => {
   const { posts } = useSelector((state) => state.posts);
   const { id } = useSelector((state) => state.login);
   const isAuth = useSelector(selectIsAuth);
+  console.log(posts.status);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isLoadingPosts = posts.status === "loading";
   React.useEffect(() => {
     dispatch(fetchPosts());
   }, []);
@@ -73,27 +77,25 @@ const Posts = () => {
                 <div></div>
               )}
               <div className={s.textPosts}>
-                {obj.text} Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit. Exercitationem amet doloremque, at nihil corrupti quis,
-                doloribus corporis maxime, ea iusto nam laudantium quaerat! Iste
-                pariatur, id exercitationem possimus voluptate iure.
+                <Markdown>{obj.text}</Markdown>
               </div>
-              <div
-                onClick={() => {
-                  test(obj.tags[0]);
-                }}
-                style={{ marginBottom: "10px" }}
-              >
-                {obj.tags}
-              </div>
+              {obj.tags[0] && <div className={s.displayTags}>
+                {obj.tags.map((tags) => {
+                  return <span className={s.tags}>#{tags}</span>;
+                })}
+              </div>}
 
-              <div className={s.postsMain}>
-                <img
-                  className={s.postsFoto}
-                  src={`http://localhost:3002${obj.imageUrl}`}
-                  alt="no img"
-                />
-              </div>
+
+              {obj.imageUrl && (
+                <div className={s.postsMain}>
+                  <img
+                    className={s.postsFoto}
+                    src={`http://localhost:3002${obj.imageUrl}`}
+                    alt="posts"
+                  />
+                </div>
+              )}
+
               <div className={s.buttonFotter}>
                 {assessmentPosts.map((obj, index) => {
                   return (

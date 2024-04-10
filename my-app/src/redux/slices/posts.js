@@ -14,7 +14,7 @@ export const fetchDelete = createAsyncThunk('posts/fetchDelete', async (id) => {
 const initialState = {
     posts: {
         items: [],
-        status: 'loadibg',
+        status: 'loaded',
     }
 }
 
@@ -26,11 +26,11 @@ const postsSlice = createSlice({
         builder
             .addCase(fetchPosts.pending, (state) => {
                 state.posts.items = []
-                state.posts.status = 'loading'
+                state.posts.status = 'loaded'
             })
             .addCase(fetchPosts.fulfilled, (state, action) => {
                 state.posts.items = action.payload
-                state.posts.status = 'loaded'
+                state.posts.status = 'loading'
             })
             .addCase(fetchPosts.rejected, (state) => {
                 state.posts.items = []

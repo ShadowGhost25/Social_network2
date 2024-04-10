@@ -31,19 +31,6 @@ const CustomButton = ({
   position,
   size,
 }) => {
-  const buttonStyles = (typeStyle) => {
-    switch (typeStyle) {
-      case "primary": 
-        return s.profileButton;
-      case "settings":
-        return s.buttonSettings;
-      case "assessment":
-        return s.buttonAssessment;
-      case "navBar":
-        return s.blokImg;
-      default:
-    }
-  };
   const imgName = () => {
     switch (imageName) {
       case "box":
@@ -54,7 +41,7 @@ const CustomButton = ({
         return info;
       case "city":
         return city;
-      case "like":
+        case "like":
         return like;
       case "share":
         return share;
@@ -80,8 +67,23 @@ const CustomButton = ({
           return music;
         case "settings":
           return settings;
+        case "vector":
+          return vector;
       default:
 
+    }
+  };
+  const buttonStyles = (typeStyle) => {
+    switch (typeStyle) {
+      case "primary": 
+        return s.profileButton;
+      case "settings":
+        return s.buttonSettings;
+      case "assessment":
+        return s.buttonAssessment;
+      case "navBar":
+        return s.blokImg;
+      default:
     }
   };
   const sizeButton = () => {

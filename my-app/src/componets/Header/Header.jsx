@@ -11,7 +11,6 @@ const Header = () => {
   const isAuth = useSelector(selectIsAuth);
   const { data, status } = useSelector((state) => state.login);
   const isLoadingHeader = status === "loaded";
-  console.log(data);
   return (
     <>
     
