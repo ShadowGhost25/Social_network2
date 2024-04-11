@@ -10,16 +10,6 @@ function App() {
   React.useEffect(() => {
     dispatch(fetchAuthMe());
   }, []);
-  const images = document.querySelectorAll('img');
-
-  // Проходим по каждому изображению
-  images.forEach(image => {
-    // Проверяем значение атрибута alt
-    if (image.alt.toLowerCase() === 'no img') {
-      // Удаляем изображение
-      image.remove();
-    }
-  });
   return (
     <>
       <Routes>

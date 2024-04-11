@@ -9,16 +9,13 @@ import React from "react";
 import CustomButton from "../CustomButton/CustomButton";
 import { assessmentPosts } from "../../Route/route";
 import Markdown from "react-markdown";
-import Loading from "./../Loading/Loading";
 
 const Posts = () => {
   const { posts } = useSelector((state) => state.posts);
   const { id } = useSelector((state) => state.login);
   const isAuth = useSelector(selectIsAuth);
-  console.log(posts.status);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isLoadingPosts = posts.status === "loading";
   React.useEffect(() => {
     dispatch(fetchPosts());
   }, []);
@@ -54,16 +51,18 @@ const Posts = () => {
                   <span className={s.text}>{obj.createdAt}</span>
                 </div>
               </div>
-              {id === obj.user._id && isAuth ? (
+              {id === obj.user._id && isAuth && (
                 <div className={s.removeDelete}>
-                  <CustomButton
-                    click={() => {
-                      clickRemove(obj._id);
-                    }}
-                    title="Редактировать"
-                    typeStyle="primary"
-                    size="average"
-                  />
+                  <div className={s.edit}>
+                    <CustomButton
+                      click={() => {
+                        clickRemove(obj._id);
+                      }}
+                      title="Редактировать"
+                      typeStyle="primary"
+                      size="average"
+                    />
+                  </div>
                   <CustomButton
                     click={() => {
                       clickDelete(obj._id);
@@ -73,26 +72,27 @@ const Posts = () => {
                     size="average"
                   />
                 </div>
-              ) : (
-                <div></div>
               )}
               <div className={s.textPosts}>
                 <Markdown>{obj.text}</Markdown>
               </div>
-              {obj.tags[0] && <div className={s.displayTags}>
-                {obj.tags.map((tags) => {
-                  return <span className={s.tags}>#{tags}</span>;
-                })}
-              </div>}
-
 
               {obj.imageUrl && (
-                <div className={s.postsMain}>
-                  <img
-                    className={s.postsFoto}
-                    src={`http://localhost:3002${obj.imageUrl}`}
-                    alt="posts"
-                  />
+                <div className={s.blur}>
+                  <div className={s.postsMain}>
+                    <img
+                      className={s.postsFoto}
+                      src={`http://localhost:3002${obj.imageUrl}`}
+                      alt="posts"
+                    />
+                  </div>
+                </div>
+              )}
+              {obj.tags[0] && (
+                <div className={s.displayTags}>
+                  {obj.tags.map((tags) => {
+                    return <span className={s.tags}>#{tags}</span>;
+                  })}
                 </div>
               )}
 
