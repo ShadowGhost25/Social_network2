@@ -7,7 +7,7 @@ import click from "./img/click.png";
 
 const Message = () => {
   const userFriendsElements = [];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) {
     userFriendsElements.push(
       <div key={i} className={s.positionBlock}>
         <img className={s.imgStyle} src={ava} alt="no img" />
@@ -49,7 +49,7 @@ const Message = () => {
           <div className={s.messageFriends}>
             <div className={s.friends}>
               <div className={s.positionBlock}>
-                <img src={ava} alt="no img" />
+                <img src={ava} alt="ava user" />
                 <div className={s.positionBlockName}>
                   <span className={s.nameFriends}>Илья Вавилин</span>
                   <div className={s.positionBlockStatus}>
@@ -59,11 +59,11 @@ const Message = () => {
                 </div>
               </div>
             </div>
-              <div className={s.blockText}>
+            <div className={s.blockMessage}>              
             <div className={s.messageAll}>
               <div className={s.positionBlock}>
                 <div>
-                  <img src={ava} alt="no img" />
+                  <img src={ava} alt="ava friends" />
                 </div>
                 <div className={s.messageBlock}>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
@@ -78,13 +78,15 @@ const Message = () => {
               </div>
               {messageFriendsElements}
             </div>
+            </div>
+            <div className={s.blockText}>
                 <input
                   placeholder="Type..."
                   className={s.inputText}
                   type="text"
                 />
                 <button className={s.click}>
-                  <img src={click} alt="" />
+                  <img src={click} alt="button" />
                 </button>
               </div>
           </div>

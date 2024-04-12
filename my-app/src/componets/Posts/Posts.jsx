@@ -78,7 +78,6 @@ const Posts = () => {
               </div>
 
               {obj.imageUrl && (
-                <div className={s.blur}>
                   <div className={s.postsMain}>
                     <img
                       className={s.postsFoto}
@@ -86,7 +85,6 @@ const Posts = () => {
                       alt="posts"
                     />
                   </div>
-                </div>
               )}
               {obj.tags[0] && (
                 <div className={s.displayTags}>

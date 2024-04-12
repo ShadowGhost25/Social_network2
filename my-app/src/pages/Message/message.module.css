@@ -2,12 +2,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 84vh;
+    padding: 30px 0px;
 }
 
 .mainMessage {
     width: 1400px;
-    height: 700px;
+    min-height: 100%;
     margin-top: 30px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: row;
     background-color: white;
@@ -123,7 +126,7 @@
     display: flex;
     align-items: center;
     position: absolute;
-    bottom: 0;
+    bottom: 0;  
     background-color: #7DA1FD;
 }
 
@@ -148,13 +151,13 @@
 }
   .messageAll {
     position: absolute; /* Устанавливаем абсолютное позиционирование */
-    bottom: 100%; /* Прикрепляем блок к верху блока .blockText */
+    bottom: 70px; /* Прикрепляем блок к верху блока .blockText */
     left: 0; /* Выравниваем по левому краю */
     width: 100%;
     overflow: auto;
     display: flex;
     flex-direction: column-reverse;
-    height: 548px;
+    height: 100%;
   }
   .messageAll::-webkit-scrollbar {
     width: 5px;
@@ -164,4 +167,7 @@
   }
   .messageAll::-webkit-scrollbar-track {
     background-color: #f8f8f8;
+  }.blockMessage{
+    width: 1000px;
+    height: 100%;
   }
