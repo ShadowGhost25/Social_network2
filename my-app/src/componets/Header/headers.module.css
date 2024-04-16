@@ -67,3 +67,14 @@
     height: 100%;
     width: 80px;
 }
+
+.blockSearch{
+    position: relative;
+    height: 83px;
+    width: 500px;
+    padding-right: 15px;
+    background-color: #7DA1FD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

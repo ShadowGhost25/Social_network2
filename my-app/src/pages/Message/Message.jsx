@@ -10,7 +10,7 @@ const Message = () => {
   for (let i = 0; i < 5; i++) {
     userFriendsElements.push(
       <div key={i} className={s.positionBlock}>
-        <img className={s.imgStyle} src={ava} alt="no img" />
+        <img className={s.imgStyle} src={ava} alt="ava friends" />
         <div className={s.displayBlock}>
           <div className={s.positionBlockName}>
             <div className={s.positionBlockStatus}>
@@ -21,8 +21,8 @@ const Message = () => {
           </div>
           <div className={s.time}>15:12</div>
         </div>
-      </div>,
-      <hr key={`hr-${i}`} className={s.hr} /> //`hr-${i}` такое обозночение нужно что бы ключи не совподали, в данном примере не совподали с <div key={i} className={s.positionBlock}>
+      </div>
+    
     );
   }
   const messageFriendsElements = [];
@@ -30,7 +30,7 @@ const Message = () => {
     messageFriendsElements.push(
       <div key={i} className={s.positionBlockMe}>
       <div>
-        <img src={ava} alt="no img" />
+        <img src={ava} alt="ava me" />
       </div>
       <div className={s.messageBlock}>Lorem ipsum</div>
     </div>
@@ -43,7 +43,9 @@ const Message = () => {
       <div className={s.main}>
         <div className={s.mainMessage}>
           <div className={s.userFriends}>
+            <div className={s.blockSearch}>
             <Search />
+            </div>
             {userFriendsElements}
           </div>
           <div className={s.messageFriends}>

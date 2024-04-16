@@ -11,10 +11,12 @@ const Music = () => {
       <div className={s.main}>
         <div className={s.musicMain}>
           <div className={s.positionButton}>
-            <h3>Моя музыка</h3>
+            <h3 className={s.h3}>Моя музыка</h3>
             <CustomButton title="Главная" typeStyle="primary" size="small" />
           </div>
-          <input className={s.search} type="search" placeholder="Поиск..." />
+          <div className={s.positionSearch}>
+          <Search />
+          </div>
           <div className={s.mainBlock}>
             <div className={s.main1}>
               <h3 className={s.h3}>Треки</h3>
@@ -44,7 +46,7 @@ const Music = () => {
             </div>
             <div className={s.main2}>
               <div>
-                <h3>Друзья</h3>
+                <h3 className={s.h3}>Друзья</h3>
               </div>
               <MusicFriends />
               <MusicFriends />

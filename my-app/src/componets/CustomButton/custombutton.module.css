@@ -106,13 +106,11 @@
 }
 
 .ellips {
-    display: inline-block;
-    margin-left: auto;
     width: 10px;
     height: 10px;
-    margin-left: 10px;
+    margin-right: 5px;
     border-radius: 50%;
-    background-color: #7DA1FD;
+    background-color: #ffffff;
 }
 
 .input {

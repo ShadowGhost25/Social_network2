@@ -13,8 +13,7 @@ const Header = () => {
   const isLoadingHeader = status === "loaded";
   return (
     <>
-    
-      {!isLoadingHeader && window.localStorage.getItem("token")? (
+      {!isLoadingHeader && window.localStorage.getItem("token") ? (
         <Loading />
       ) : (
         <div className={s.header}>
@@ -24,7 +23,9 @@ const Header = () => {
                 <img src={logo} alt="no foto" />
               </Link>
             </div>
-            <Search />
+            <div className={s.blockSearch}>
+              <Search />
+            </div>
             <div className={s.menu}>
               {buttonHeader.map((obj, index) => {
                 return (
@@ -42,7 +43,7 @@ const Header = () => {
             </div>
             {isAuth ? (
               <Link className={s.tegA} to="/profile">
-                <span>{data.login ? (data.login):(data.fullName)}</span>
+                <span>{data.login ? data.login : data.fullName}</span>
                 <div className={s.avaActive}></div>
               </Link>
             ) : (

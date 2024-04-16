@@ -151,13 +151,14 @@
 }
   .messageAll {
     position: absolute; /* Устанавливаем абсолютное позиционирование */
-    bottom: 70px; /* Прикрепляем блок к верху блока .blockText */
+    bottom: 53px; /* Прикрепляем блок к верху блока .blockText */
     left: 0; /* Выравниваем по левому краю */
     width: 100%;
-    overflow: auto;
+    padding: 0px;
+    overflow:   scroll;
     display: flex;
     flex-direction: column-reverse;
-    height: 100%;
+    height: 637px;
   }
   .messageAll::-webkit-scrollbar {
     width: 5px;
@@ -171,3 +172,14 @@
     width: 1000px;
     height: 100%;
   }
+  .blockSearch{
+    position: relative;
+    height: 82px;
+    width: 370px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #7DA1FD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

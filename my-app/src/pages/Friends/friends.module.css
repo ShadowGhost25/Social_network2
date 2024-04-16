@@ -41,7 +41,16 @@
 
 
 .searchBlog {
-    margin-top: 10px;
+    margin-top: 15px;
+    position: relative;
+    border-radius: 5px;
+    height: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #7DA1FD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .search {
