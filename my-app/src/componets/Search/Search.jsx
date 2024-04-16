@@ -13,7 +13,7 @@ const Search = () => {
   };
 
   return (
-    <div className={s.blockSearch}>
+    <>
       <input
         placeholder="Поиск"
         className={s.search}
@@ -24,7 +24,7 @@ const Search = () => {
       {!inputValue && (
         <img src={search} alt="no img search" className={s.inputImage} />
       )}
-    </div>
+    </>
   );
 };
 

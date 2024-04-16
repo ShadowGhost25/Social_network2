@@ -10,7 +10,7 @@ const FullPosts = () => {
   const [data, setData] = React.useState();
   const [isLoading, setLoading] = React.useState();
   const { id } = useParams();
-
+console.log(data)
   React.useEffect(() => {
     axios
       .get(`/posts/${id}`)
@@ -32,10 +32,10 @@ const FullPosts = () => {
           <div key={data._id} className={s.mainPosts}>
             <div className={s.posts}>
               <div className={s.postsHeader}>
-                <div>{/* <img className={s.foto} src={} alt="no img" /> */}</div>
                 <div className={s.name}>
                   <h2 className={s.h2}>{data.title}</h2>
                   <span className={s.text}> 2 декабря 2023 в 19:10</span>
+                <div><img className={s.foto} src={data.imageUrl} alt="no img" /></div>
                   <Markdown>{data.text}</Markdown>
                 </div>
               </div>

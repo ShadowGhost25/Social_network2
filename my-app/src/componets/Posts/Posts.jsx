@@ -8,6 +8,7 @@ import { selectIsAuth } from "../../redux/slices/login";
 import React from "react";
 import CustomButton from "../CustomButton/CustomButton";
 import { assessmentPosts } from "../../Route/route";
+import Markdown from "react-markdown";
 
 const Posts = () => {
   const { posts } = useSelector((state) => state.posts);
@@ -50,16 +51,18 @@ const Posts = () => {
                   <span className={s.text}>{obj.createdAt}</span>
                 </div>
               </div>
-              {id === obj.user._id && isAuth ? (
+              {id === obj.user._id && isAuth && (
                 <div className={s.removeDelete}>
-                  <CustomButton
-                    click={() => {
-                      clickRemove(obj._id);
-                    }}
-                    title="Редактировать"
-                    typeStyle="primary"
-                    size="average"
-                  />
+                  <div className={s.edit}>
+                    <CustomButton
+                      click={() => {
+                        clickRemove(obj._id);
+                      }}
+                      title="Редактировать"
+                      typeStyle="primary"
+                      size="average"
+                    />
+                  </div>
                   <CustomButton
                     click={() => {
                       clickDelete(obj._id);
@@ -69,31 +72,28 @@ const Posts = () => {
                     size="average"
                   />
                 </div>
-              ) : (
-                <div></div>
               )}
               <div className={s.textPosts}>
-                {obj.text} Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit. Exercitationem amet doloremque, at nihil corrupti quis,
-                doloribus corporis maxime, ea iusto nam laudantium quaerat! Iste
-                pariatur, id exercitationem possimus voluptate iure.
-              </div>
-              <div
-                onClick={() => {
-                  test(obj.tags[0]);
-                }}
-                style={{ marginBottom: "10px" }}
-              >
-                {obj.tags}
+                <Markdown>{obj.text}</Markdown>
               </div>
 
-              <div className={s.postsMain}>
-                <img
-                  className={s.postsFoto}
-                  src={`http://localhost:3002${obj.imageUrl}`}
-                  alt="no img"
-                />
-              </div>
+              {obj.imageUrl && (
+                  <div className={s.postsMain}>
+                    <img
+                      className={s.postsFoto}
+                      src={`http://localhost:3002${obj.imageUrl}`}
+                      alt="posts"
+                    />
+                  </div>
+              )}
+              {obj.tags[0] && (
+                <div className={s.displayTags}>
+                  {obj.tags.map((tags) => {
+                    return <span className={s.tags}>#{tags}</span>;
+                  })}
+                </div>
+              )}
+
               <div className={s.buttonFotter}>
                 {assessmentPosts.map((obj, index) => {
                   return (

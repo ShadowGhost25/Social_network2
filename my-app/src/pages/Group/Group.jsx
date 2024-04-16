@@ -6,6 +6,7 @@ import s from "./group.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGroup } from "../../redux/slices/group";
 import Loading from "../../componets/Loading/Loading";
+import Search from "../../componets/Search/Search";
 
 const Group = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,9 @@ const Group = () => {
             <div className={s.mainDisplay}>
               <History />
               <div className={s.mainBlog}>
-                <input className={s.search} type="search" placeholder="Поиск" />
+                <div className={s.positionSearch}>
+                <Search />
+                </div>
                 {window.localStorage.getItem("token")  ? (
                   <h3 className={s.h3}>Мои группы</h3>
                 ) : (

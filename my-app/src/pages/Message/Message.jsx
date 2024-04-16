@@ -7,10 +7,10 @@ import click from "./img/click.png";
 
 const Message = () => {
   const userFriendsElements = [];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) {
     userFriendsElements.push(
       <div key={i} className={s.positionBlock}>
-        <img className={s.imgStyle} src={ava} alt="no img" />
+        <img className={s.imgStyle} src={ava} alt="ava friends" />
         <div className={s.displayBlock}>
           <div className={s.positionBlockName}>
             <div className={s.positionBlockStatus}>
@@ -21,8 +21,8 @@ const Message = () => {
           </div>
           <div className={s.time}>15:12</div>
         </div>
-      </div>,
-      <hr key={`hr-${i}`} className={s.hr} /> //`hr-${i}` такое обозночение нужно что бы ключи не совподали, в данном примере не совподали с <div key={i} className={s.positionBlock}>
+      </div>
+    
     );
   }
   const messageFriendsElements = [];
@@ -30,7 +30,7 @@ const Message = () => {
     messageFriendsElements.push(
       <div key={i} className={s.positionBlockMe}>
       <div>
-        <img src={ava} alt="no img" />
+        <img src={ava} alt="ava me" />
       </div>
       <div className={s.messageBlock}>Lorem ipsum</div>
     </div>
@@ -43,13 +43,15 @@ const Message = () => {
       <div className={s.main}>
         <div className={s.mainMessage}>
           <div className={s.userFriends}>
+            <div className={s.blockSearch}>
             <Search />
+            </div>
             {userFriendsElements}
           </div>
           <div className={s.messageFriends}>
             <div className={s.friends}>
               <div className={s.positionBlock}>
-                <img src={ava} alt="no img" />
+                <img src={ava} alt="ava user" />
                 <div className={s.positionBlockName}>
                   <span className={s.nameFriends}>Илья Вавилин</span>
                   <div className={s.positionBlockStatus}>
@@ -59,11 +61,11 @@ const Message = () => {
                 </div>
               </div>
             </div>
-              <div className={s.blockText}>
+            <div className={s.blockMessage}>              
             <div className={s.messageAll}>
               <div className={s.positionBlock}>
                 <div>
-                  <img src={ava} alt="no img" />
+                  <img src={ava} alt="ava friends" />
                 </div>
                 <div className={s.messageBlock}>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
@@ -78,13 +80,15 @@ const Message = () => {
               </div>
               {messageFriendsElements}
             </div>
+            </div>
+            <div className={s.blockText}>
                 <input
                   placeholder="Type..."
                   className={s.inputText}
                   type="text"
                 />
                 <button className={s.click}>
-                  <img src={click} alt="" />
+                  <img src={click} alt="button" />
                 </button>
               </div>
           </div>

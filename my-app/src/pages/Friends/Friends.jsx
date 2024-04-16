@@ -3,6 +3,7 @@ import s from "./friends.module.css";
 import FriendsBLock from "../../componets/FriendsBlock/FriendsBlock";
 import Options from "../../componets/Options/Options";
 import CustomButton from "../../componets/CustomButton/CustomButton";
+import Search from "../../componets/Search/Search";
 
 const Friends = () => {
   return (
@@ -25,7 +26,7 @@ const Friends = () => {
               />
             </div>
             <div className={s.searchBlog}>
-              <input className={s.search} type="search" placeholder="Поиск" />
+              <Search />
             </div>
           </div>
           <div className={s.cardBlog}>
