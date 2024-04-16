@@ -150,15 +150,13 @@
     padding: 0px;
 }
   .messageAll {
-    position: absolute; /* Устанавливаем абсолютное позиционирование */
-    bottom: 53px; /* Прикрепляем блок к верху блока .blockText */
-    left: 0; /* Выравниваем по левому краю */
     width: 100%;
     padding: 0px;
     overflow:   scroll;
     display: flex;
     flex-direction: column-reverse;
-    height: 637px;
+    max-height: 637px;
+    /* min-height: 400px; */
   }
   .messageAll::-webkit-scrollbar {
     width: 5px;
@@ -170,7 +168,6 @@
     background-color: #f8f8f8;
   }.blockMessage{
     width: 1000px;
-    height: 100%;
   }
   .blockSearch{
     position: relative;
