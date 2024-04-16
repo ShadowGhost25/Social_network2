@@ -36,7 +36,13 @@ const Profile = () => {
             <div className={s.headerProfile}>
               <div className={s.blogAva}>
                 <div className={s.positionButton2}>
-                <CustomButton typeStyle="primary" title="Изменить обложку" size="average" imageName="pencil" rightImage={true}/>
+                  <CustomButton
+                    typeStyle="primary"
+                    title="Изменить обложку"
+                    size="average"
+                    imageName="pencil"
+                    rightImage={true}
+                  />
                 </div>
               </div>
             </div>
@@ -74,18 +80,22 @@ const Profile = () => {
                   <span className={s.status}>{data.status}</span>
                   <div className={s.imgDisplay}>
                     {navigationButtons.map((obj, index) => (
-                      <CustomButton
-                        key={index}
-                        centerImage={obj.position}
-                        typeStyle={obj.typeStyle}
-                        imageName={obj.imageName}
-                        title={obj.title}
-                        alt={obj.alt}
-                      />
+                      <div className={s.positionBlock}>
+                        <CustomButton
+                          key={index}
+                          centerImage={obj.position}
+                          typeStyle={obj.typeStyle}
+                          imageName={obj.imageName}
+                          title={obj.title}
+                          alt={obj.alt}
+                        />
+                      </div>
                     ))}
                   </div>
                 </div>
+                <div className={s.postsPosition}>
                 <Posts />
+                </div>
               </div>
               <div className={s.main3}>
                 <h3 className={s.h3Foto}>Новые уведомления групп</h3>

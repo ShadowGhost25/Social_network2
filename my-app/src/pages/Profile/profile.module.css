@@ -5,6 +5,11 @@
     min-height: 100vh;
 }
 
+.postsPosition {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 .headerProfile {
     width: 1400px;
     height: 220px;
@@ -31,6 +36,7 @@
     flex-direction: row-reverse;
     padding: 20px;
 }
+
 .textH3 {
     margin: 0px;
     padding-right: 10px;
@@ -87,7 +93,9 @@
 
 .friendsName {
     padding: 10px 0px 0px 10px;
-    color: white;
+    color: black;
+    font-weight: 500;
+    font-size: 18px;
     float: left;
 }
 
@@ -145,12 +153,21 @@ hr {
 }
 
 .friends {
-    background-color: #1E1E1E;
     padding: 5px;
     height: 40px;
+    transition: 0.7s;
     border-radius: 5px;
     margin-top: 10px;
     position: relative;
+}
+
+.friends:hover{
+    background-color: #1E1E1E;
+    transition: 0.7s;
+}
+.friends:hover > span{
+    color: white;
+    transition: 0.7s;
 }
 
 
@@ -168,4 +185,17 @@ hr {
 
 .posts {
     margin-bottom: 30px;
+}
+
+.positionBlock {
+    margin-right: 15px;
+    width: 120px;
+    transition: 0.7s;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.positionBlock:hover{
+    transition: 0.7s;
+    background-color: #1E1E1E;
 }

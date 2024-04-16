@@ -31,3 +31,6 @@
 .displayFriends {
     padding: 10px;
 }
+.centerImage{
+    z-index: 3;
+}

@@ -70,7 +70,7 @@ background-color: #1e1e1e;
     content: '';
     position: absolute;
     top: 0;
-    left: 35px;
+    left: 0px;
     width: 0%;
     height: 100%;
     color: white;
@@ -122,6 +122,18 @@ justify-content: space-between;
 }
 .positionSearch{
     margin-top: 15px;
+    position: relative;
+    border-radius: 5px;
+    height: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #7DA1FD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.positionSearch2{
+    margin: 15px 0px;
     position: relative;
     border-radius: 5px;
     height: 50px;

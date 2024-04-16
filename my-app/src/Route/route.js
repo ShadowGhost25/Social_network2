@@ -97,20 +97,19 @@ export const route = [
 
 export const navigationButtons = [
   {
-    typeStyle: "navBar",
+    typeStyle: "navBarProfile",
     position: true,
     imageName: "box",
     title: "Посты",
-    alt: "no img box",
   },
   {
-    typeStyle: "navBar",
+    typeStyle: "navBarProfile",
     position: true,
     imageName: "foto",
     title: "Фотографии",
   },
   {
-    typeStyle: "navBar",
+    typeStyle: "navBarProfile",
     position: true,
     imageName: "info",
     title: "Прочее",

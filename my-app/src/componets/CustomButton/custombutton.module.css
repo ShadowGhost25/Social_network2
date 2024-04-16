@@ -1,19 +1,39 @@
 .blokImg {
     display: flex;
+    z-index: 2;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    background-color: rgba(255, 0, 0, 0);
     outline: none;
     border: 0;
-    background-color: rgba(255, 255, 255, 0);
+    font-size: 18px;
     cursor: pointer;
     padding: 0px;
     transition: 0.7s;
     height: 100%;
 }
 .blokImg:hover{
-    background-color: #1e1e1e;
     transition: 0.7s;
+    filter: invert(1);
+    background-color: #000000;
+}
+.navBarProfile{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(255, 0, 0, 0);
+    outline: none;
+    border: 0;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0px;
+    transition: 0.7s;
+    height: 100%;
+    width: 100%;
+}
+.navBarProfile:hover{
     filter: invert(1);
 }
 .profileButton {
@@ -103,6 +123,9 @@
 
 .city {
     margin-left: auto;
+}
+.centerImage{
+    z-index: 1;
 }
 
 .ellips {

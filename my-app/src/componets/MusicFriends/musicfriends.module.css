@@ -2,10 +2,15 @@
     padding: 5px 10px;
     display: flex;
     flex-direction: row;
-    background-color: #1e1e1e;
+    background-color: #7da1fd;
     color: white;
+    transition: 0.7s;
     border-radius: 5px;
     margin-bottom: 10px;
+}
+.music:hover{
+    transition: 0.7s;
+    background-color: #1e1e1e;
 }
 .img{
     display: flex;

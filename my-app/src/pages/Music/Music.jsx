@@ -15,7 +15,7 @@ const Music = () => {
             <CustomButton title="Главная" typeStyle="primary" size="small" />
           </div>
           <div className={s.positionSearch}>
-          <Search />
+            <Search />
           </div>
           <div className={s.mainBlock}>
             <div className={s.main1}>
@@ -40,13 +40,16 @@ const Music = () => {
                 />
               </div>
               <div className={s.musicMainBlog}>
-                  <MusicPlay />
-                  <MusicPlay />
+                <MusicPlay />
+                <MusicPlay />
               </div>
             </div>
             <div className={s.main2}>
               <div>
                 <h3 className={s.h3}>Друзья</h3>
+                <div className={s.positionSearch2}>
+                  <Search />
+                </div>
               </div>
               <MusicFriends />
               <MusicFriends />

@@ -1,12 +1,16 @@
-.music {
+.music{
     padding: 5px 10px;
     display: flex;
     flex-direction: row;
-    background-color: #1e1e1e;
+    background-color: #7da1fd;
+    transition: 0.7s;
     color: white;
     border-radius: 5px;
     margin-bottom: 10px;
-    width: 100%;
+}
+.music:hover{
+    background-color: #1e1e1e;
+    transition: 0.7s;
 }
 .nameMusic{
     display: flex;
@@ -16,8 +20,12 @@
     margin: 5px 10px 0px;
 }
 .h3{
-    margin: 2px;
+    margin: 0px;
 }
 .positionTime{
     margin-left: auto;
+}
+.h4{
+    margin: 7px 0px 0px;
+    text-align: right;
 }

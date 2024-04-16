@@ -83,6 +83,8 @@ const CustomButton = ({
         return s.buttonAssessment;
       case "navBar":
         return s.blokImg;
+        case "navBarProfile":
+          return s.navBarProfile
       default:
     }
   };
@@ -120,7 +122,7 @@ const CustomButton = ({
       )}
       {rightBlock && <div className={s.ellips}></div>}
       {rightImage && <img className={s.city} src={imgName()} alt={imageName} />}
-      {centerImage && <img src={imgName()} alt={imageName} />}
+      {centerImage && <img className={s.centerImage} src={imgName()} alt={imageName} />}
     </button>
   );
 };
