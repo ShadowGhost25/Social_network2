@@ -65,6 +65,7 @@ const Profile = () => {
                 <div className={s.mainFriends}>
                   <h3 className={s.h3Foto}>Друзья онлайн</h3>
                   <hr />
+                  test
                   <div className={s.friends}>
                     <img className={s.test} src={alex} alt="no img" />
                     <span className={s.friendsName}>Саша</span>
