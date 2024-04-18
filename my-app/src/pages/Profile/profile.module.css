@@ -5,6 +5,10 @@
     min-height: 100vh;
 }
 
+.margin {
+    margin-top: 30px;
+}
+
 .postsPosition {
     display: flex;
     flex-direction: column-reverse;
@@ -83,21 +87,9 @@
     padding: 10px;
 }
 
-.mainFriends {
-    position: relative;
-    margin-top: 30px;
-    text-align: center;
-    background-color: white;
-    padding: 10px;
-}
 
-.friendsName {
-    padding: 10px 0px 0px 10px;
-    color: black;
-    font-weight: 500;
-    font-size: 18px;
-    float: left;
-}
+
+
 
 .main2 {
     width: 590px;
@@ -115,21 +107,12 @@
     font-weight: 700;
 }
 
-.h3Foto {
-    margin: 0px;
-}
 
 .fotografi {
     width: 100%;
 }
 
-.main3 {
-    text-align: center;
-    width: 350px;
-    height: 100%;
-    padding: 10px;
-    background-color: white;
-}
+
 
 hr {
     height: 2px;
@@ -152,36 +135,16 @@ hr {
     font-weight: 400;
 }
 
-.friends {
-    padding: 5px;
-    height: 40px;
-    transition: 0.7s;
-    border-radius: 5px;
-    margin-top: 10px;
-    position: relative;
-}
 
-.friends:hover{
-    background-color: #1E1E1E;
-    transition: 0.7s;
-}
-.friends:hover > span{
+.friends:hover>span {
     color: white;
     transition: 0.7s;
 }
 
 
-.test {
-    float: left;
-    width: 40px;
-    border-radius: 5px;
-}
 
-.ellipse {
-    position: absolute;
-    top: 20px;
-    right: 15px;
-}
+
+
 
 .posts {
     margin-bottom: 30px;
@@ -195,7 +158,7 @@ hr {
     border-radius: 5px;
 }
 
-.positionBlock:hover{
+.positionBlock:hover {
     transition: 0.7s;
     background-color: #1E1E1E;
 }

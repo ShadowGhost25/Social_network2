@@ -13,12 +13,14 @@
     transition: 0.7s;
     height: 100%;
 }
-.blokImg:hover{
+
+.blokImg:hover {
     transition: 0.7s;
     filter: invert(1);
     background-color: #000000;
 }
-.navBarProfile{
+
+.navBarProfile {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -33,9 +35,11 @@
     height: 100%;
     width: 100%;
 }
-.navBarProfile:hover{
+
+.navBarProfile:hover {
     filter: invert(1);
 }
+
 .profileButton {
     display: flex;
     align-items: center;
@@ -49,15 +53,17 @@
     border: 0;
     transition: 0.7s;
 }
-.profileButton:hover{
+
+.profileButton:hover {
     background-color: #1e1e1e;
     color: white;
     transition: 0.7s;
 }
+
 /* //////////////////////////////// 
 Решил не убирать комментарии т.к. не до конца понимаю как работает анимации кнопки  
 */
-.buttonAssessment{
+.buttonAssessment {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -72,39 +78,50 @@
     background-color: #7da1fd;
     color: white;
 }
-  /* Псевдоэлементы для анимации покраски */
-  .buttonAssessment::before,
-  .buttonAssessment::after {
+
+/* Псевдоэлементы для анимации покраски */
+.buttonAssessment::before,
+.buttonAssessment::after {
     content: '';
     position: absolute;
     border-radius: 50%;
     top: 50%;
     left: 50%;
-    width: 50%; /* Изначально половина ширины кнопки */
-    height: 50%; /* Изначально половина высоты кнопки */
+    width: 50%;
+    /* Изначально половина ширины кнопки */
+    height: 50%;
+    /* Изначально половина высоты кнопки */
     background-color: black;
-    transition: width 0.3s ease, height 0.3s ease, transform 0.3s ease; /* Анимация изменения ширины, высоты и масштаба */
-    transform: translate(-50%, -50%) scale(0); /* Сдвигаем в центр кнопки и изначально устанавливаем масштаб 0 */
-  }
-  
-  /* При нажатии кнопки */
-  .buttonAssessment:hover::before,
-  .buttonAssessment:hover::after {
-    width: 200%; /* Увеличиваем ширину */
-    height: 200%; /* Увеличиваем высоту */
-    transform: translate(-50%, -50%) scale(1); /* Устанавливаем масштаб 1 */
-  }
-  .buttonAssessment:active::before,
-  .buttonAssessment:active::after{
+    transition: width 0.3s ease, height 0.3s ease, transform 0.3s ease;
+    /* Анимация изменения ширины, высоты и масштаба */
+    transform: translate(-50%, -50%) scale(0);
+    /* Сдвигаем в центр кнопки и изначально устанавливаем масштаб 0 */
+}
+
+/* При нажатии кнопки */
+.buttonAssessment:hover::before,
+.buttonAssessment:hover::after {
+    width: 200%;
+    /* Увеличиваем ширину */
+    height: 200%;
+    /* Увеличиваем высоту */
+    transform: translate(-50%, -50%) scale(1);
+    /* Устанавливаем масштаб 1 */
+}
+
+.buttonAssessment:active::before,
+.buttonAssessment:active::after {
     background-color: rgb(117, 116, 116);
     transition: 0.1s;
-  }
+}
+
 /* //////////////////////////////// */
-.buttonAssessment > img {
+.buttonAssessment>img {
     width: 26px;
     height: 24px;
     z-index: 1;
 }
+
 .buttonSettings {
     background-color: white;
     border: 0px;
@@ -113,18 +130,19 @@
     padding: 20px;
     border-bottom: 2px solid black;
     transition: 0.5s;
-  }
-  
-  .buttonSettings:hover {
+}
+
+.buttonSettings:hover {
     transition: 0.5s;
     color: #7da1fd;
     border-bottom: 2px solid #7da1fd;
-  }
+}
 
 .city {
     margin-left: auto;
 }
-.centerImage{
+
+.centerImage {
     z-index: 1;
 }
 
@@ -143,22 +161,26 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.sizeA{
+
+.sizeA {
     width: 180px;
     height: 30px;
 }
-.sizeM{
+
+.sizeM {
     width: 115px;
     height: 30px;
 }
-.sizeF{
+
+.sizeF {
     width: 100%;
 }
-.positionSpan{
+
+.positionSpan {
     margin: 0px;
 }
 
-.sizeB{
+.sizeB {
     width: 40px;
     height: 40px;
 }

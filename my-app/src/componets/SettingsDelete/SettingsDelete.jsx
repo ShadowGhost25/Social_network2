@@ -6,13 +6,13 @@ const SettingsDelete = () => {
       <span className={s.text}>Удалить аккаунт</span>
       <hr className={s.hr} />
       <form className={s.colums}>
-        <label className={s.label} htmlFor="fullName">
+        <label className={s.label} htmlFor="email">
           Почта
           <input
             // onChange={(e) => setTitle(e.target.value)}
             className={s.input}
             type="text"
-            name="fullName"
+            name="email"
             // value={title}
           />
         </label>
@@ -26,7 +26,7 @@ const SettingsDelete = () => {
           />
         </label>
         <div className={s.positionButton}>
-          <CustomButton title="Удалить" typeStyle="primary" size="small"/>
+          <CustomButton title="Удалить" typeStyle="primary" size="small" />
         </div>
       </form>
     </>

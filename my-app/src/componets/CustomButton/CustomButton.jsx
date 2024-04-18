@@ -17,6 +17,8 @@ import group from "../Header/img/Groups.png";
 import music from "../Header/img/Music.png";
 import settings from "../Header/img/Setings.png";
 import vector from "../../pages/Music/img/Vector.png";
+import user from "../Header/img/user.svg";
+import me from "../Header/img/Ava.png";
 
 const CustomButton = ({
   click,
@@ -41,7 +43,7 @@ const CustomButton = ({
         return info;
       case "city":
         return city;
-        case "like":
+      case "like":
         return like;
       case "share":
         return share;
@@ -55,27 +57,30 @@ const CustomButton = ({
         return comment;
       case "pencil":
         return pencil;
-        case "news":
-          return news;
-        case "message":
-          return message;
-        case "friends":
-          return friends;
-        case "group":
-          return group;
-        case "music":
-          return music;
-        case "settings":
-          return settings;
-        case "vector":
-          return vector;
+      case "news":
+        return news;
+      case "message":
+        return message;
+      case "friends":
+        return friends;
+      case "group":
+        return group;
+      case "music":
+        return music;
+      case "settings":
+        return settings;
+      case "vector":
+        return vector;
+      case "user":
+        return user;
+      case "me":
+        return me;
       default:
-
     }
   };
   const buttonStyles = (typeStyle) => {
     switch (typeStyle) {
-      case "primary": 
+      case "primary":
         return s.profileButton;
       case "settings":
         return s.buttonSettings;
@@ -83,8 +88,8 @@ const CustomButton = ({
         return s.buttonAssessment;
       case "navBar":
         return s.blokImg;
-        case "navBarProfile":
-          return s.navBarProfile
+      case "navBarProfile":
+        return s.navBarProfile;
       default:
     }
   };
@@ -122,7 +127,9 @@ const CustomButton = ({
       )}
       {rightBlock && <div className={s.ellips}></div>}
       {rightImage && <img className={s.city} src={imgName()} alt={imageName} />}
-      {centerImage && <img className={s.centerImage} src={imgName()} alt={imageName} />}
+      {centerImage && (
+        <img className={s.centerImage} src={imgName()} alt={imageName} />
+      )}
     </button>
   );
 };

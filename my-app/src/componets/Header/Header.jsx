@@ -40,17 +40,27 @@ const Header = () => {
                   </Link>
                 );
               })}
+              {isAuth ? (
+                <Link className={s.link} to="/profile">
+                  <CustomButton
+                    typeStyle="navBar"
+                    centerImage={true}
+                    imageName="me"
+                    size="full"
+                  />
+                </Link>
+              ) : (
+                <Link className={s.link} to="/login">
+                  <CustomButton
+                    typeStyle="navBar"
+                    // title={data}
+                    centerImage={true}
+                    imageName="user"
+                    size="full"
+                  />
+                </Link>
+              )}
             </div>
-            {isAuth ? (
-              <Link className={s.tegA} to="/profile">
-                <span>{data.login ? data.login : data.fullName}</span>
-                <div className={s.avaActive}></div>
-              </Link>
-            ) : (
-              <Link to="/login">
-                <div className={s.ava}></div>
-              </Link>
-            )}
           </div>
         </div>
       )}

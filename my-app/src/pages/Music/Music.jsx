@@ -39,10 +39,9 @@ const Music = () => {
                   imageName="down"
                 />
               </div>
-              <div className={s.musicMainBlog}>
-                <MusicPlay />
-                <MusicPlay />
-              </div>
+
+              <MusicPlay />
+              <MusicPlay />
             </div>
             <div className={s.main2}>
               <div>

@@ -1,35 +1,45 @@
-.bacground {
+.main3 {
+    text-align: center;
+    width: 280px;
+    height: 100%;
+    padding: 10px;
     background-color: white;
 }
 
-.h3 {
-    padding: 16px 0px;
-    text-align: center;
-    margin: 30px 0px 0px;
+.h3Foto {
+    margin: 0px;
 }
 
-.positionBlock {
-    display: flex;
-    padding: 10px;
+.friends {
+    padding: 5px;
+    height: 40px;
+    transition: 0.7s;
+    border-radius: 5px;
+    margin-top: 10px;
+    position: relative;
 }
 
-.positionBlock img:nth-child(1) {
-    width: 60px;
+.friends:hover {
+    background-color: #1E1E1E;
+    transition: 0.7s;
 }
 
-.positionBlockName {
-    display: flex;
-    flex-direction: column;
+.test {
+    float: left;
+    width: 40px;
+    border-radius: 5px;
 }
 
-.nameFriends {
-    margin-left: 5px;
-    font-size: 18px;
+.friendsName {
+    padding: 10px 0px 0px 10px;
+    color: black;
     font-weight: 500;
+    font-size: 18px;
+    float: left;
 }
 
-.notifications {
-    font-size: 18px;
-    margin-left: 5px;
-    color: #7DA1FD;
+.ellipse {
+    position: absolute;
+    top: 20px;
+    right: 15px;
 }

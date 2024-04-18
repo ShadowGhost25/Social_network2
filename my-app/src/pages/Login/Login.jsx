@@ -5,7 +5,11 @@ import { Link, Navigate } from "react-router-dom";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import { fetchAuthMe, fetchLogin, selectIsAuth } from "../../redux/slices/login";
+import {
+  fetchAuthMe,
+  fetchLogin,
+  selectIsAuth,
+} from "../../redux/slices/login";
 const Login = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
@@ -21,11 +25,11 @@ const Login = () => {
   const onSubmit = async (values) => {
     const data = await dispatch(fetchLogin(values));
     if (!data.payload) {
-        alert('Неудалось авторизоваться')
-    }    
+      alert("Неудалось авторизоваться");
+    }
     if (data.payload) {
-        window.localStorage.setItem('token', data.payload.token)
-        dispatch(fetchAuthMe());
+      window.localStorage.setItem("token", data.payload.token);
+      dispatch(fetchAuthMe());
     }
   };
   if (isAuth) {

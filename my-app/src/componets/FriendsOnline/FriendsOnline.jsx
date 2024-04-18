@@ -1,22 +1,19 @@
 import foto from "./img/qwe.png";
+import alex from "../../pages/Profile/img/alex.png";
+import ellipse from "../../pages/Profile/img/Ellipse 6.png";
 import s from "./friendsonline.module.css";
 const FriendsOnline = () => {
   return (
-    <div className={s.bacground}>
-      <h3 className={s.h3}>Друзья онлайн </h3>
+    <div className={s.mainFriends}>
+      <h3 className={s.h3Foto}>Друзья онлайн</h3>
       <hr />
-      <div className={s.positionBlock}>
-        <img src={foto} alt="no img" />
-        <div className={s.positionBlockName}>
-          <span className={s.nameFriends}>Илья Вавилин</span>
-          <div className={s.positionBlockStatus}>
-            <span className={s.statusFriends}> Online </span>
-            <div className={s.ellips}></div>
-          </div>
-        </div>
+      <div className={s.friends}>
+        <img className={s.test} src={alex} alt="no img" />
+        <span className={s.friendsName}>Саша</span>
+        <img className={s.ellipse} src={ellipse} alt="no img" />
       </div>
     </div>
-  );    
+  );
 };
 
 export default FriendsOnline;

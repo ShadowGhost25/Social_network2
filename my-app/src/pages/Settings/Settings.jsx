@@ -13,11 +13,16 @@ import SettingsPassword from "../../componets/SettingsPassword/SettingsPassword"
 import SettingsDelete from "../../componets/SettingsDelete/SettingsDelete";
 import CustomButton from "../../componets/CustomButton/CustomButton";
 const Settings = () => {
-  const {  status } = useSelector((state) => state.login);
-  const urlSite = window.location.pathname;
-  const isAuth = useSelector(selectIsAuth);
-  const isSettingsLoading = status === "loaded";
+  const { status } = useSelector((state) => state.login);
   const navigate = useNavigate();
+  const isAuth = useSelector(selectIsAuth);
+  const urlSite = window.location.pathname;
+  const isSettingsLoading = status === "loaded";
+
+  if (!window.localStorage.getItem("token") && !isAuth) {
+    return <Navigate to="/" />;
+  }
+
   const test = (event) => {
     if (event === "Уведомления") {
       navigate("/settings/notifications");
@@ -31,7 +36,7 @@ const Settings = () => {
       navigate("/settings");
     }
   };
-  if (!isAuth && isSettingsLoading) {
+  if (!isAuth) {
     return <Navigate to="/" />;
   }
   return (

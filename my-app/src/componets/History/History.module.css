@@ -1,25 +1,57 @@
-.History{
+.History {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
+    position: relative;
 }
-.blogHistory{
+
+.History::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 0%;
+    height: 100%;
+    background-color: #1e1e1e;
+    transition: 0.7s;
+    /* Плавная анимация изменения ширины */
+}
+
+.History:hover::before {
+    width: 100%;
+    /* При наведении курсора полностью раскрываем градиент вправо */
+}
+
+.History:hover {
+    transition: 0.1s;
+}
+
+.History>.blogHistory:hover {
+    transition: 0.7s;
+    color: white;
+}
+
+.blogHistory {
+    z-index: 2;
     display: flex;
     flex-direction: row;
     font-size: 25px;
-    background-color: white;
     width: 100%;
+    color: #1e1e1e;
+    transition: 0.7s;
 }
-.whiteblog{
+
+.whiteblog {
     display: flex;
     flex-direction: row;
     font-size: 25px;
     padding: 10px;
     width: 100%;
 }
-.text{
+
+.text {
     text-align: center;
-    color: #7DA1FD;
     padding-top: 5px;
     padding-left: 10px;
 }

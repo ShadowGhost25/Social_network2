@@ -4,13 +4,18 @@ import { useParams } from "react-router-dom";
 import axios from "../../../axios";
 import s from "./fullposts.module.css";
 import Loading from "../../Loading/Loading";
-import Markdown from 'react-markdown'
+import Markdown from "react-markdown";
+import eyes from "../img/eyes.png";
+import moment from "moment";
+import "moment/locale/ru";
+import { assessmentPosts } from "../../../Route/route";
+import CustomButton from "../../CustomButton/CustomButton";
 
 const FullPosts = () => {
   const [data, setData] = React.useState();
   const [isLoading, setLoading] = React.useState();
+  const [isActive, setIsActive] = React.useState(true);
   const { id } = useParams();
-console.log(data)
   React.useEffect(() => {
     axios
       .get(`/posts/${id}`)
@@ -22,6 +27,9 @@ console.log(data)
         console.log(err);
       });
   }, []);
+  const handleClick = () => {
+    setIsActive(!isActive);
+  };
   return (
     <>
       {!isLoading ? (
@@ -34,31 +42,49 @@ console.log(data)
               <div className={s.postsHeader}>
                 <div className={s.name}>
                   <h2 className={s.h2}>{data.title}</h2>
-                  <span className={s.text}> 2 декабря 2023 в 19:10</span>
-                <div><img className={s.foto} src={data.imageUrl} alt="no img" /></div>
-                  <Markdown>{data.text}</Markdown>
+                  <span className={s.text}>
+                    {moment(data.createdAt).locale("ru").fromNow()}
+                  </span>
+
+                  <div
+                    onClick={() => {
+                      handleClick(false);
+                    }}
+                    className={isActive && s.orienter}
+                  >
+                    <Markdown>{data.text}</Markdown>
+                  </div>
                 </div>
               </div>
-              <div className={s.postsMain}>
-                <img
-                  className={s.postsFoto}
-                  src={`http://localhost:3002${data.imageUrl}`}
-                  alt="no img"
-                />
-              </div>
+              {data.imageUrl && (
+                <div className={s.postsMain}>
+                  <img
+                    className={s.postsFoto}
+                    src={`http://localhost:3002${data.imageUrl}`}
+                    alt="posts"
+                  />
+                </div>
+              )}
               <div className={s.buttonFotter}>
-                <button className={s.buttonClick}>
-                  {/* <img src={like} alt="no img" /> */}
-                  <span className={s.textButton}> Нравится</span>
-                </button>
-                <button className={s.buttonClick}>
-                  {/* <img src={share} alt="no img" /> */}
-                  <span className={s.textButton}> Комментарий</span>
-                </button>
-                <button className={s.buttonClick}>
-                  {/* <img src={comment} alt="no img" /> */}
-                  <span className={s.textButton}> Поделиться</span>
-                </button>
+                {assessmentPosts.map((obj, index) => {
+                  return (
+                    <div className={s.marginBox}>
+                      <CustomButton
+                        key={index}
+                        imageName={obj.imageName}
+                        typeStyle={obj.typeStyle}
+                        centerImage={obj.position}
+                      />
+                    </div>
+                  );
+                })}
+                <div className={s.position}>
+                  <CustomButton
+                    typeStyle="assessment"
+                    centerImage={true}
+                    imageName="share"
+                  />
+                </div>
               </div>
             </div>
           </div>

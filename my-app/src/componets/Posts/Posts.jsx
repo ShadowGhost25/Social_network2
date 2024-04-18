@@ -6,6 +6,7 @@ import { fetchDelete, fetchPosts } from "../../redux/slices/posts";
 import { useNavigate } from "react-router-dom";
 import { selectIsAuth } from "../../redux/slices/login";
 import React from "react";
+import moment from "moment";
 import CustomButton from "../CustomButton/CustomButton";
 import { assessmentPosts } from "../../Route/route";
 import Markdown from "react-markdown";
@@ -40,44 +41,47 @@ const Posts = () => {
           <div key={obj._id} className={s.mainPosts}>
             <div className={s.posts}>
               <div
-                className={s.postsHeader}
                 onClick={() => {
                   onClickPost(obj);
                 }}
+                className={s.postsHeader}
               >
-                <img className={s.ava} src={foto} alt="ava" />
-                <div className={s.name}>
-                  <h2 className={s.h2}>{obj.title}</h2>
-                  <span className={s.text}>{obj.createdAt}</span>
+                <div className={s.clickPosts}>
+                  <img className={s.ava} src={foto} alt="ava" />
+                  <div className={s.name}>
+                    <h2 className={s.h2}>{obj.title}</h2>
+                    <span className={s.text}>
+                      {moment(obj.createdAt).locale("ru").fromNow()}
+                    </span>
+                  </div>
                 </div>
-              </div>
-              {id === obj.user._id && isAuth && (
-                <div className={s.removeDelete}>
-                  <div className={s.edit}>
+                {id === obj.user._id && isAuth && (
+                  <div className={s.removeDelete}>
+                    <div className={s.edit}>
+                      <CustomButton
+                        click={() => {
+                          clickRemove(obj._id);
+                        }}
+                        title="Редактировать"
+                        typeStyle="primary"
+                        size="average"
+                      />
+                    </div>
                     <CustomButton
                       click={() => {
-                        clickRemove(obj._id);
+                        clickDelete(obj._id);
                       }}
-                      title="Редактировать"
+                      title="Удалить"
                       typeStyle="primary"
                       size="average"
                     />
                   </div>
-                  <CustomButton
-                    click={() => {
-                      clickDelete(obj._id);
-                    }}
-                    title="Удалить"
-                    typeStyle="primary"
-                    size="average"
-                  />
+                )}
+                <div className={s.textPosts}>
+                  <Markdown>{obj.text}</Markdown>
                 </div>
-              )}
-              <div className={s.textPosts}>
-                <Markdown>{obj.text}</Markdown>
-              </div>
 
-              {obj.imageUrl && (
+                {obj.imageUrl && (
                   <div className={s.postsMain}>
                     <img
                       className={s.postsFoto}
@@ -85,7 +89,8 @@ const Posts = () => {
                       alt="posts"
                     />
                   </div>
-              )}
+                )}
+              </div>
               {obj.tags[0] && (
                 <div className={s.displayTags}>
                   {obj.tags.map((tags) => {

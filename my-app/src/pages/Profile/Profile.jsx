@@ -11,6 +11,8 @@ import { Navigate } from "react-router-dom";
 import Loading from "../../componets/Loading/Loading";
 import CustomButton from "../../componets/CustomButton/CustomButton";
 import { navigationButtons } from "../../Route/route";
+import GroupNotification from "../../componets/GroupNotification/GroupNotification";
+import FriendsOnline from "../../componets/FriendsOnline/FriendsOnline";
 const Profile = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
@@ -62,15 +64,8 @@ const Profile = () => {
                     />
                   </div>
                 </div>
-                <div className={s.mainFriends}>
-                  <h3 className={s.h3Foto}>Друзья онлайн</h3>
-                  <hr />
-                  test
-                  <div className={s.friends}>
-                    <img className={s.test} src={alex} alt="no img" />
-                    <span className={s.friendsName}>Саша</span>
-                    <img className={s.ellipse} src={ellipse} alt="no img" />
-                  </div>
+                <div className={s.margin}>
+                  <FriendsOnline />
                 </div>
               </div>
               <div className={s.main2}>
@@ -95,18 +90,10 @@ const Profile = () => {
                   </div>
                 </div>
                 <div className={s.postsPosition}>
-                <Posts />
+                  <Posts />
                 </div>
               </div>
-              <div className={s.main3}>
-                <h3 className={s.h3Foto}>Новые уведомления групп</h3>
-                <hr />
-                <div className={s.friends}>
-                  <img className={s.test} src={i} alt="no img" />
-                  <span className={s.friendsName}>One Piece</span>
-                  <img className={s.ellipse} src={ellipse} alt="no img" />
-                </div>
-              </div>
+              <GroupNotification />
             </div>
           </div>
         </div>

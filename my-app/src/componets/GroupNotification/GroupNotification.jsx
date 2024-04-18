@@ -1,16 +1,17 @@
 import s from "./groupnotification.module.css";
+import i from "../../pages/Profile/img/i.webp";
+import ellipse from "../../pages/Profile/img/Ellipse 6.png";
+
 import foto from "./img/qwe.png";
 const GroupNotification = () => {
   return (
-    <div className={s.bacground}>
-      <h3 className={s.h3}>Уведомления от групп</h3>
+    <div className={s.main3}>
+      <h3 className={s.h3Foto}>Новые уведомления групп</h3>
       <hr />
-      <div className={s.positionBlock}>
-        <img src={foto} alt="no img" />
-        <div className={s.positionBlockName}>
-          <span className={s.nameFriends}>One Piece</span>
-          <span className={s.notifications}> +1 </span>
-        </div>
+      <div className={s.friends}>
+        <img className={s.test} src={i} alt="no img" />
+        <span className={s.friendsName}>One Piece</span>
+        <img className={s.ellipse} src={ellipse} alt="no img" />
       </div>
     </div>
   );

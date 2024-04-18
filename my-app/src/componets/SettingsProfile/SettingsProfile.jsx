@@ -1,5 +1,8 @@
 import CustomButton from "../CustomButton/CustomButton";
+import { useSelector } from "react-redux";
 import s from "./settingsprofile.module.css";
+import { Navigate } from "react-router-dom";
+import { selectIsAuth } from "../../redux/slices/login";
 const SettingsProfile = () => {
   return (
     <>
@@ -29,7 +32,7 @@ const SettingsProfile = () => {
           Почта
           <input
             className={s.input}
-            type="text"
+            type="email"
             name="email"
             // value={data.email}
           />
@@ -38,7 +41,7 @@ const SettingsProfile = () => {
           Телефон
           <input
             className={s.input}
-            type="text"
+            type="number"
             name="phone"
             // value={data.phone}
           />
@@ -53,7 +56,7 @@ const SettingsProfile = () => {
           />
         </label>
         <div className={s.positionButton}>
-          <CustomButton title="Сохранить" size="small" typeStyle="primary"/>
+          <CustomButton title="Сохранить" size="small" typeStyle="primary" />
         </div>
       </form>
     </>
