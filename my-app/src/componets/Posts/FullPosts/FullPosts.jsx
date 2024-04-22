@@ -5,7 +5,6 @@ import axios from "../../../axios";
 import s from "./fullposts.module.css";
 import Loading from "../../Loading/Loading";
 import Markdown from "react-markdown";
-import eyes from "../img/eyes.png";
 import moment from "moment";
 import "moment/locale/ru";
 import { assessmentPosts } from "../../../Route/route";

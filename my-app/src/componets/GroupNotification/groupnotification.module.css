@@ -23,6 +23,10 @@
     background-color: #1E1E1E;
     transition: 0.7s;
 }
+.friends:hover > .friendsName{
+    transition: 0.7s;
+    color: white;
+}
 
 .test {
     float: left;

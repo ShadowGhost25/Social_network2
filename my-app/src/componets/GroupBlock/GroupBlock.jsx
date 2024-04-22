@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 const GroupBlock = ({ id, title }) => {
   const navigate = useNavigate();
   const onClickGroup = (id) => {
-    navigate(`/group/${id}/edit`);
+    navigate(`/group/${id}`);
   };
   return (
     <div

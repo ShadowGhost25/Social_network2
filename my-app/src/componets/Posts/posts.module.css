@@ -110,6 +110,7 @@
     align-items: flex-end;
     flex-direction: column;
     justify-content: space-between;
+    z-index: 100;
 }
 
 .positionViewsCount {
@@ -135,6 +136,7 @@
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    margin-top: 10px;
 }
 
 .marginBox {

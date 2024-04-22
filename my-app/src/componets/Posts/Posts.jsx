@@ -3,7 +3,7 @@ import foto from "./img/groupAva.png";
 import eyes from "./img/eyes.png";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDelete, fetchPosts } from "../../redux/slices/posts";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { selectIsAuth } from "../../redux/slices/login";
 import React from "react";
 import moment from "moment";
@@ -40,22 +40,7 @@ const Posts = () => {
         return (
           <div key={obj._id} className={s.mainPosts}>
             <div className={s.posts}>
-              <div
-                onClick={() => {
-                  onClickPost(obj);
-                }}
-                className={s.postsHeader}
-              >
-                <div className={s.clickPosts}>
-                  <img className={s.ava} src={foto} alt="ava" />
-                  <div className={s.name}>
-                    <h2 className={s.h2}>{obj.title}</h2>
-                    <span className={s.text}>
-                      {moment(obj.createdAt).locale("ru").fromNow()}
-                    </span>
-                  </div>
-                </div>
-                {id === obj.user._id && isAuth && (
+            {id === obj.user._id && isAuth && (
                   <div className={s.removeDelete}>
                     <div className={s.edit}>
                       <CustomButton
@@ -77,6 +62,22 @@ const Posts = () => {
                     />
                   </div>
                 )}
+              <div
+                onClick={() => {
+                  onClickPost(obj);
+                }}
+                className={s.postsHeader}
+              >
+                <div className={s.clickPosts}>
+                  <img className={s.ava} src={foto} alt="ava" />
+                  <div className={s.name}>
+                    <h2 className={s.h2}>{obj.title}</h2>
+                    <span className={s.text}>
+                      {moment(obj.createdAt).locale("ru").fromNow()}
+                    </span>
+                  </div>
+                </div>
+
                 <div className={s.textPosts}>
                   <Markdown>{obj.text}</Markdown>
                 </div>

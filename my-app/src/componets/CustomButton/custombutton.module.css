@@ -16,10 +16,8 @@
 
 .blokImg:hover {
     transition: 0.7s;
-    filter: invert(1);
-    background-color: #000000;
+    background-color: #1e1e1e;
 }
-
 .navBarProfile {
     display: flex;
     align-items: center;

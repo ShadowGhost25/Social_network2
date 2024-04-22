@@ -1,9 +1,6 @@
 import Header from "../../componets/Header/Header";
 import s from "./profile.module.css";
 import ava from "./img/ava.png";
-import alex from "./img/alex.png";
-import i from "./img/i.webp";
-import ellipse from "./img/Ellipse 6.png";
 import Posts from "../../componets/Posts/Posts";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectIsAuth } from "../../redux/slices/login";

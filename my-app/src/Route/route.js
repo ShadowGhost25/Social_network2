@@ -11,6 +11,7 @@ import Music from "../pages/Music/Music";
 import Register from "../pages/Register/Register";
 
 import Settings from "../pages/Settings/Settings";
+import GroupProfile from "../pages/GroupProfile/GroupProfile";
 
 export const route = [
   {
@@ -49,10 +50,10 @@ export const route = [
     path: "/posts/:id",
     element: <FullPosts />,
   },
-  // {
-  //     path: '/group/:id',
-  //     element: <FullGroup />
-  // },
+  {
+      path: '/group/:id',
+      element: <GroupProfile />
+  },
   {
     path: "/posts/:id/edit",
     element: <AddElement />,

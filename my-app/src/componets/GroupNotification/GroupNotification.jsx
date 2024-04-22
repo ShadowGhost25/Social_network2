@@ -1,8 +1,6 @@
 import s from "./groupnotification.module.css";
 import i from "../../pages/Profile/img/i.webp";
 import ellipse from "../../pages/Profile/img/Ellipse 6.png";
-
-import foto from "./img/qwe.png";
 const GroupNotification = () => {
   return (
     <div className={s.main3}>
