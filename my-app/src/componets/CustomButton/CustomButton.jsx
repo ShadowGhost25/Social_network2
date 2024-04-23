@@ -32,6 +32,8 @@ const CustomButton = ({
   rightBlock,
   position,
   size,
+  pathName,
+  url,
 }) => {
   const imgName = () => {
     switch (imageName) {
@@ -106,7 +108,7 @@ const CustomButton = ({
       default:
     }
   };
-
+  
   const positionSpan = () => {
     switch (position) {
       case "left":
@@ -114,12 +116,16 @@ const CustomButton = ({
       default:
     }
   };
-
+  // if (pathName === url) {
+    
+  //   console.log("pat",pathName)
+  //   console.log("url",url)
+  // }
   return (
     <button
       onClick={click}
       key={index}
-      className={`${buttonStyles(typeStyle)} ${sizeButton(size)}`}
+      className={pathName === url && typeStyle === "navBar"? `${s.blockImgActive} ${sizeButton(size)}` :`${buttonStyles(typeStyle)} ${sizeButton(size)}`}
     >
       {leftImage && <img src={imgName()} alt={imageName} />}
       {title && (

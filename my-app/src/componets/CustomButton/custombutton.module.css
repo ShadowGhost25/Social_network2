@@ -18,6 +18,23 @@
     transition: 0.7s;
     background-color: #1e1e1e;
 }
+
+.blockImgActive{
+    transition: 0.7s;
+    display: flex;
+    z-index: 2;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #1e1e1e;
+    outline: none;
+    border: 0;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0px;
+    transition: 0.7s;
+    height: 100%;
+}
 .navBarProfile {
     display: flex;
     align-items: center;

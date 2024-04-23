@@ -17,6 +17,7 @@ const Settings = () => {
   const navigate = useNavigate();
   const isAuth = useSelector(selectIsAuth);
   const urlSite = window.location.pathname;
+  
   const isSettingsLoading = status === "loaded";
 
   if (!window.localStorage.getItem("token") && !isAuth) {
@@ -36,7 +37,7 @@ const Settings = () => {
       navigate("/settings");
     }
   };
-  if (!isAuth) {
+  if (!isAuth && !window.localStorage.getItem("token")) {
     return <Navigate to="/" />;
   }
   return (
@@ -53,6 +54,8 @@ const Settings = () => {
                   <CustomButton
                     key={index}
                     title={obj.title}
+                    pathName={urlSite}
+                    url={obj.url}
                     click={() => {
                       test(obj.title);
                     }}

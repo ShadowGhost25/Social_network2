@@ -154,18 +154,22 @@ export const buttonSettings = [
   {
     title: "Уведомления",
     typeStyle: "settings",
+    url: "/settings/notifications",
   },
   {
     title: "Запросы в друзья",
     typeStyle: "settings",
+    url: "/settings/friends",
   },
   {
     title: "Изменить пароль",
     typeStyle: "settings",
+    url: "/settings/password"
   },
   {
     title: "Удалить аккаунт",
     typeStyle: "settings",
+    url: "/settings/delete",
   },
 ];
 

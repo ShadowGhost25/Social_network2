@@ -11,6 +11,14 @@ const Header = () => {
   const isAuth = useSelector(selectIsAuth);
   const { data, status } = useSelector((state) => state.login);
   const isLoadingHeader = status === "loaded";
+  let urlSite = window.location.pathname; // Замените на window.location.pathname в вашем приложении
+
+  if (urlSite.startsWith("/settings")) {
+    urlSite = "/settings";
+  }
+
+  console.log(urlSite);
+
   return (
     <>
       {!isLoadingHeader && window.localStorage.getItem("token") ? (
@@ -20,7 +28,7 @@ const Header = () => {
           <div className={s.headerMain}>
             <div className={s.foto}>
               <Link to="/">
-                <img src={logo} alt="no foto" />
+                <img src={logo} alt="logo" />
               </Link>
             </div>
             <div className={s.blockSearch}>
@@ -32,6 +40,8 @@ const Header = () => {
                   <Link className={s.link} key={index} to={obj.url}>
                     <CustomButton
                       key={index}
+                      url={obj.url}
+                      pathName={urlSite}
                       typeStyle={obj.typeStyle}
                       imageName={obj.imageName}
                       centerImage={obj.centerImage}
@@ -44,6 +54,8 @@ const Header = () => {
                 <Link className={s.link} to="/profile">
                   <CustomButton
                     typeStyle="navBar"
+                    url="/profile"
+                    pathName={urlSite}
                     centerImage={true}
                     imageName="me"
                     size="full"
@@ -53,7 +65,8 @@ const Header = () => {
                 <Link className={s.link} to="/login">
                   <CustomButton
                     typeStyle="navBar"
-                    // title={data}
+                    url="/login"
+                    pathName={urlSite}
                     centerImage={true}
                     imageName="user"
                     size="full"
