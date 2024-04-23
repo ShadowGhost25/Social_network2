@@ -150,6 +150,7 @@ export const buttonSettings = [
   {
     title: "Настройки профиля",
     typeStyle: "settings",
+    url: "/settings/notifications",
   },
   {
     title: "Уведомления",

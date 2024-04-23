@@ -11,13 +11,7 @@ const Header = () => {
   const isAuth = useSelector(selectIsAuth);
   const { data, status } = useSelector((state) => state.login);
   const isLoadingHeader = status === "loaded";
-  let urlSite = window.location.pathname; // Замените на window.location.pathname в вашем приложении
-
-  if (urlSite.startsWith("/settings")) {
-    urlSite = "/settings";
-  }
-
-  console.log(urlSite);
+  let urlSite = window.location.pathname;
 
   return (
     <>

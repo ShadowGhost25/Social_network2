@@ -116,16 +116,16 @@ const CustomButton = ({
       default:
     }
   };
-  // if (pathName === url) {
+  if (pathName === url) {
     
-  //   console.log("pat",pathName)
-  //   console.log("url",url)
-  // }
+    console.log("pat",pathName)
+    console.log("url",url)
+  }
   return (
     <button
       onClick={click}
       key={index}
-      className={pathName === url && typeStyle === "navBar"? `${s.blockImgActive} ${sizeButton(size)}` :`${buttonStyles(typeStyle)} ${sizeButton(size)}`}
+      className={pathName === url && typeStyle === "navBar" || typeStyle === "settings" ? `${s.blockImgActive} ${sizeButton(size)}` :`${buttonStyles(typeStyle)} ${sizeButton(size)}`}
     >
       {leftImage && <img src={imgName()} alt={imageName} />}
       {title && (
