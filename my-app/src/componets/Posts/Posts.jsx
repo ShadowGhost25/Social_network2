@@ -2,8 +2,12 @@ import s from "./posts.module.css";
 import foto from "./img/groupAva.png";
 import eyes from "./img/eyes.png";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDelete, fetchPosts } from "../../redux/slices/posts";
-import { useNavigate, useParams } from "react-router-dom";
+import {
+  fetchDelete,
+  fetchPosts,
+  fetchPostsProfile,
+} from "../../redux/slices/posts";
+import { useNavigate } from "react-router-dom";
 import { selectIsAuth } from "../../redux/slices/login";
 import React from "react";
 import moment from "moment";
@@ -12,13 +16,15 @@ import { assessmentPosts } from "../../Route/route";
 import Markdown from "react-markdown";
 
 const Posts = () => {
-  const { posts } = useSelector((state) => state.posts);
+  const { posts, postsProfile } = useSelector((state) => state.posts);
   const { id } = useSelector((state) => state.login);
   const isAuth = useSelector(selectIsAuth);
+  const location = window.location.pathname;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   React.useEffect(() => {
     dispatch(fetchPosts());
+    dispatch(fetchPostsProfile());
   }, []);
 
   const clickDelete = (id) => {
@@ -34,34 +40,35 @@ const Posts = () => {
   const clickRemove = (id) => {
     navigate(`/posts/${id}/edit`);
   };
+  const arrayPosts = location === "/profile" ? postsProfile : posts;
   return (
     <>
-      {posts.items.map((obj, index) => {
+      {arrayPosts.items.map((obj, index) => {
         return (
           <div key={obj._id} className={s.mainPosts}>
             <div className={s.posts}>
-            {id === obj.user._id && isAuth && (
-                  <div className={s.removeDelete}>
-                    <div className={s.edit}>
-                      <CustomButton
-                        click={() => {
-                          clickRemove(obj._id);
-                        }}
-                        title="Редактировать"
-                        typeStyle="primary"
-                        size="average"
-                      />
-                    </div>
+              {id === obj.user._id && isAuth && (
+                <div className={s.removeDelete}>
+                  <div className={s.edit}>
                     <CustomButton
                       click={() => {
-                        clickDelete(obj._id);
+                        clickRemove(obj._id);
                       }}
-                      title="Удалить"
+                      title="Редактировать"
                       typeStyle="primary"
                       size="average"
                     />
                   </div>
-                )}
+                  <CustomButton
+                    click={() => {
+                      clickDelete(obj._id);
+                    }}
+                    title="Удалить"
+                    typeStyle="primary"
+                    size="average"
+                  />
+                </div>
+              )}
               <div
                 onClick={() => {
                   onClickPost(obj);
@@ -94,8 +101,12 @@ const Posts = () => {
               </div>
               {obj.tags[0] && (
                 <div className={s.displayTags}>
-                  {obj.tags.map((tags) => {
-                    return <span className={s.tags}>#{tags}</span>;
+                  {obj.tags.map((tag) => {
+                    return (
+                      <span key={tag} className={s.tags}>
+                        #{tag}
+                      </span>
+                    );
                   })}
                 </div>
               )}

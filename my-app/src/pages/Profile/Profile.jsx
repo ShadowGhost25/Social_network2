@@ -73,7 +73,7 @@ const Profile = () => {
                   <span className={s.status}>{data.status}</span>
                   <div className={s.imgDisplay}>
                     {navigationButtons.map((obj, index) => (
-                      <div className={s.positionBlock}>
+                      <div key={index} className={s.positionBlock}>
                         <CustomButton
                           key={index}
                           centerImage={obj.position}

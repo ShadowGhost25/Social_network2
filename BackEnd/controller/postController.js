@@ -13,6 +13,22 @@ export const getAll = async (req, res) => {
     });
   }
 };
+export const getAllProfile = async (req, res) => {
+  try {
+    const userIdMe = req.userId;
+    const posts = await PostModel.find().exec();
+    const filteredPosts = posts.filter(
+      (post) => post.user.toString() === userIdMe
+    );
+
+    res.json(filteredPosts);
+  } catch (error) {
+    console.log("err => ", error);
+    res.status(500).json({
+      message: "Не удалось получить пост",
+    });
+  }
+};
 
 export const getOne = async (req, res) => {
   try {

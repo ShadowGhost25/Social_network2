@@ -50,6 +50,7 @@ app.patch('/group/:id', cheakAuth, groupCreateValidator, handleValidationEror, g
 app.post('/add-posts', cheakAuth, postCreateValidator, handleValidationEror, postController.create)
 app.get('/posts', postController.getAll)
 app.get('/posts/:id', postController.getOne)
+app.get('/profile', cheakAuth, postController.getAllProfile)
 app.delete('/posts/:id', cheakAuth, postController.remove)
 app.patch('/posts/:id', cheakAuth, postCreateValidator, handleValidationEror, postController.update)
 
