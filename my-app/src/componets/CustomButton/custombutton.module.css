@@ -19,7 +19,7 @@
     background-color: #1e1e1e;
 }
 
-.blockImgActive{
+.blockImgActive {
     transition: 0.7s;
     display: flex;
     z-index: 2;
@@ -35,6 +35,7 @@
     transition: 0.7s;
     height: 100%;
 }
+
 .navBarProfile {
     display: flex;
     align-items: center;
@@ -151,6 +152,17 @@
     transition: 0.5s;
     color: #7da1fd;
     border-bottom: 2px solid #7da1fd;
+}
+
+.buttonSettingsActive {
+    background-color: #7da1fd;
+    border: 0px;
+    font-size: 24px;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 2px solid black;
+    color: white;
+    transition: 0.5s;
 }
 
 .city {

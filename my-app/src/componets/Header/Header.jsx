@@ -12,6 +12,7 @@ const Header = () => {
   const { data, status } = useSelector((state) => state.login);
   const isLoadingHeader = status === "loaded";
   let urlSite = window.location.pathname;
+  urlSite = urlSite.startsWith("/settings") ? "/settings" : urlSite;
 
   return (
     <>

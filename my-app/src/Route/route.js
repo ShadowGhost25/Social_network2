@@ -51,8 +51,8 @@ export const route = [
     element: <FullPosts />,
   },
   {
-      path: '/group/:id',
-      element: <GroupProfile />
+    path: '/group/:id',
+    element: <GroupProfile />
   },
   {
     path: "/posts/:id/edit",
@@ -150,7 +150,7 @@ export const buttonSettings = [
   {
     title: "Настройки профиля",
     typeStyle: "settings",
-    url: "/settings/notifications",
+    url: "/settings",
   },
   {
     title: "Уведомления",
