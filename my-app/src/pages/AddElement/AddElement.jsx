@@ -107,7 +107,7 @@ const AddElement = () => {
         navigate(`/group/${id}`);
       }
     } catch (error) {
-      console.warn(error);
+      alert(error.response.data[0].msg);
     }
   };
 
