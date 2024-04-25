@@ -91,3 +91,9 @@
     color: white;
     text-decoration: none;
 }
+.inputWithError{
+    border: 2px solid red;
+}
+.inputWithError::placeholder{
+    color: red;
+}

@@ -189,12 +189,12 @@ const AddElement = () => {
                 src={`http://localhost:3002${imageUrl}`}
                 alt="select"
               />
-            </div>
-          )}
-
+            </div>,
           <button className={s.inputFileBtn} onClick={deleteImg}>
             Удалить
           </button>
+          )}
+
           <SimpleMDE
             className={s.editor}
             value={text}
