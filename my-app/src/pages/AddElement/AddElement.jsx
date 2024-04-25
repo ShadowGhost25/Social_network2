@@ -177,6 +177,7 @@ const AddElement = () => {
               ref={inputRef}
               onChange={handleChangeFile}
               type="file"
+              accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .tif, .webp, .svg"
             />
             <span className={s.inputFileBtn}>Выберите файл</span>
           </label>

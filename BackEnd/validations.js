@@ -1,5 +1,4 @@
 import { body } from "express-validator";
-import path from 'path';
 export const loginValidator = [
   body('email', "Неверный email").isEmail(),
   body('password', "Пароль составляет меньше 5 символов").isLength({ min: 5 }),
@@ -25,18 +24,9 @@ export const postCreateValidator = [
   body('tags', 'Тэг составляет менее 1 символа').isLength({ min: 1 }).isString(),
   body('imageURL', "Неверная ссылка на изображение").optional().isURL(),
 ]
-const validateImageExtension = (file) => {
-  const allowedExtensions = ['.jpg', '.jpeg', '.png'];
-  const fileExtension = path.extname(file.originalname).toLowerCase();
-  return allowedExtensions.includes(fileExtension);
-};
+
 export const groupCreateValidator = [
   body('title', "Введите заголовок группы").isLength({ min: 1 }),
   body('text', "Введите текст группы").isLength({ min: 1 }).isString(),
-  body('imageURL', "Неверный формат изображения").optional().custom((value, { req }) => {
-    if (req.file && !validateImageExtension(req.file)) {
-      throw new Error('Изображение должно быть в формате .jpg, .jpeg или .png');
-    }
-    return true;
-  }),
+  body('imageURL', 'Неверная ссылка на изображение').optional().isString(),
 ]
