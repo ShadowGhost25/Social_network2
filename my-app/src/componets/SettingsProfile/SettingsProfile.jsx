@@ -1,22 +1,55 @@
+import React from "react";
 import CustomButton from "../CustomButton/CustomButton";
-import { useSelector } from "react-redux";
 import s from "./settingsprofile.module.css";
-import { Navigate } from "react-router-dom";
-import { selectIsAuth } from "../../redux/slices/login";
+import axios from "../../axios";
 const SettingsProfile = () => {
+  const [isLoading, setLoading] = React.useState(false);
+  const [fullName, setFullName] = React.useState("");
+  const [surName, setSurName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [phone, setPhone] = React.useState("");
+  const [status, setStatus] = React.useState("");
+  
+  const onSubmit = async () => {
+    try {
+      setLoading(true);
+      const fields = {
+        fullName,
+        surName,
+        email,
+        phone,
+        status,
+      };
+      await axios.patch(`/settings`, fields);
+      console.log("asd")
+    } catch (error) {
+      alert(error.response.data[0].msg);
+    }
+  };
+  React.useEffect(() => {
+    axios.get(`/me`).then(({ data }) => {
+      setFullName(data.fullName);
+      setSurName(data.surName);
+      setEmail(data.email);
+      setPhone(data.phone);
+      setStatus(data.status);
+    }).catch((error) =>{
+      console.warn(error)
+    })
+  }, []);
   return (
     <>
       <span className={s.text}>Настройки профиля</span>
       <hr className={s.hr} />
-      <form className={s.colums}>
+      <div className={s.colums}>
         <label className={s.label} htmlFor="fullName">
           Имя
           <input
-            // onChange={(e) => setTitle(e.target.value)}
             className={s.input}
             type="text"
             name="fullName"
-            // value={title}
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
           />
         </label>
         <label className={s.label} htmlFor="surName">
@@ -25,7 +58,8 @@ const SettingsProfile = () => {
             className={s.input}
             type="text"
             name="surName"
-            // value={data.surName}
+            value={surName}
+            onChange={(e) => setSurName(e.target.value)}
           />
         </label>
         <label className={s.label} htmlFor="email">
@@ -34,7 +68,8 @@ const SettingsProfile = () => {
             className={s.input}
             type="email"
             name="email"
-            // value={data.email}
+            value={email}
+            onChange={(e) => setSurName(e.target.value)}
           />
         </label>
         <label className={s.label} htmlFor="phone">
@@ -43,7 +78,8 @@ const SettingsProfile = () => {
             className={s.input}
             type="number"
             name="phone"
-            // value={data.phone}
+            value={phone}
+            onChange={(e) => setSurName(e.target.value)}
           />
         </label>
         <label className={s.label} htmlFor="status">
@@ -52,13 +88,14 @@ const SettingsProfile = () => {
             className={s.input}
             type="text"
             name="status"
-            // value={data.status}
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
           />
         </label>
         <div className={s.positionButton}>
-          <CustomButton title="Сохранить" size="small" typeStyle="primary" />
+          <CustomButton click={onSubmit} title="Сохранить" size="small" typeStyle="primary" />
         </div>
-      </form>
+      </div>
     </>
   );
 };

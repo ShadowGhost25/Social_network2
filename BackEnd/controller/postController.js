@@ -8,7 +8,7 @@ export const getAll = async (req, res) => {
     res.json(posts);
   } catch (error) {
     console.log("err => ", error);
-    res.status(404).json({
+    res.status(500).json({
       message: "Не удалось получить пост",
     });
   }

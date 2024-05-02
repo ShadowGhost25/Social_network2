@@ -49,10 +49,16 @@ export const updateUser = async (req, res) => {
         _id: userId,
       },
       {
+        fullName: req.body.fullName,
+        email: req.body.email,
+        surName: req.body.surName,
+        login: req.body.login,
+        email: req.body.email,
+        phone: req.body.phone,
         status: req.body.status,
       }
     );
-    res.json("статус создан");
+    res.json("Данные профиля обновленны");
   } catch (error) {
     console.log("err => ", error);
     res.status(500).json({

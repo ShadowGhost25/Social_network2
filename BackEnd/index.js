@@ -10,7 +10,7 @@ import { groupController, postController, userController } from './controller/Co
 import { handleValidationEror, cheakAuth } from './utils/Utils.js';
 
 mongoose
-  .connect('mongodb+srv://admin:wwwwww@practic.gpq4sx8.mongodb.net/blog?retryWrites=true&w=majority')
+  .connect('mongodb+srv://admin:wwwwww@practic.gpq4sx8.mongodb.net/blog?retryWrites=true&w=majority' )
   .then(() => { console.log('Db Ok') })
   .catch((err) => { console.log("Db err =>", err) })
 
@@ -32,8 +32,7 @@ app.use(cors())
 app.use('/uploads', express.static('uploads'))
 
 
-app.post('/login', loginValidator, handleValidationEror, userController.login)
-app.post('/user/:id', userStatusValidatior, handleValidationEror, userController.updateUser)
+app.post('/login', loginValidator, handleValidationEror, userController.login)  
 app.post('/register', registerValidator, handleValidationEror, userController.register)
 app.get('/me', cheakAuth, userController.getMe)
 
@@ -48,11 +47,13 @@ app.get('/group/:id', groupController.getOne)
 app.patch('/group/:id', cheakAuth, groupCreateValidator, handleValidationEror, groupController.update)
 
 app.post('/add-posts', cheakAuth, postCreateValidator, handleValidationEror, postController.create)
+app.get('/profile', cheakAuth, postController.getAllProfile)
 app.get('/posts', postController.getAll)
 app.get('/posts/:id', postController.getOne)
-app.get('/profile', cheakAuth, postController.getAllProfile)
+
 app.delete('/posts/:id', cheakAuth, postController.remove)
 app.patch('/posts/:id', cheakAuth, postCreateValidator, handleValidationEror, postController.update)
+app.patch('/settings/:id', cheakAuth, userStatusValidatior, handleValidationEror, userController.updateUser)
 
 app.listen(3002, (err) => {
   if (err) {

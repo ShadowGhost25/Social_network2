@@ -7,5 +7,4 @@ instance.interceptors.request.use((config) => {
   config.headers.Authorization = window.localStorage.getItem("token");
   return config
 });
-console.log(instance)
 export default instance;

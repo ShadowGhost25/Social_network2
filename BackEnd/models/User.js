@@ -6,11 +6,11 @@ const UserSchema = new mongoose.Schema({
   },
   surName:{
     type: String,
-    require: true,
+    require: true, //Это свойство обязательно при создание пользователя
   },
   login:{
     type: String,
-    require: true,
+    require: true, //Это свойство обязательно при создание пользователя
   },
   email: {
     type: String,
@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema({
   },
   phone:{
     type:String,
-    require: true
+    require: true //Это свойство обязательно при создание пользователя
   },
   password: {
     type: String,

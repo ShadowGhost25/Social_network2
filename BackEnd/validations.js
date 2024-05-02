@@ -5,7 +5,11 @@ export const loginValidator = [
 ]
 
 export const userStatusValidatior = [
-  body('status', 'Неверный статусы').isLength({min: 2}),
+  body('fullName', 'Имя пользователя составляет менее 2 символом').isLength({ min: 2 }),
+  body('surName', 'Фамилия пользователя составляет менее 2 символов').isLength({ min: 2}),
+  body('email', "Неверный email").isEmail(),
+  body('phone', "Телефон составляет меньше 10 символов").isLength({ min: 11 }),
+  body('status', 'Статус менее двух символом').optional(),
 ]
 
 export const registerValidator = [

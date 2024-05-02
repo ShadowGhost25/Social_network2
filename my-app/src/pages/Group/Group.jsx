@@ -38,6 +38,7 @@ const Group = () => {
                 )}
 
                 <div className={s.mainGroup}>
+                  {console.log(group)}
                   {group.items.map((obj) =>
                     obj.user._id === id &&
                     window.localStorage.getItem("token") && (
