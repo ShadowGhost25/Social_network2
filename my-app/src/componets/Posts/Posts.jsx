@@ -14,7 +14,6 @@ import moment from "moment";
 import CustomButton from "../CustomButton/CustomButton";
 import { assessmentPosts } from "../../Route/route";
 import Markdown from "react-markdown";
-
 const Posts = () => {
   const { posts, postsProfile } = useSelector((state) => state.posts);
   const { id } = useSelector((state) => state.login);
@@ -93,7 +92,7 @@ const Posts = () => {
                   <div className={s.postsMain}>
                     <img
                       className={s.postsFoto}
-                      src={`http://localhost:3002${obj.imageUrl}`}
+                      src={`https://social-network2.vercel.app/${obj.imageUrl}`}
                       alt="posts"
                     />
                   </div>

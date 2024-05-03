@@ -16,9 +16,9 @@ export const getAll = async (req, res) => {
 export const getAllProfile = async (req, res) => {
   try {
     const userIdMe = req.userId;
-    const posts = await PostModel.find().exec();
+    const posts = await PostModel.find().populate({ path: "user", select: ["_id"]}).exec();
     const filteredPosts = posts.filter(
-      (post) => post.user.toString() === userIdMe
+      (post) => post.user._id.toString() === userIdMe
     );
 
     res.json(filteredPosts);

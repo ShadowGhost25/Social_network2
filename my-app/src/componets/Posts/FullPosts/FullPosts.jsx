@@ -59,7 +59,7 @@ const FullPosts = () => {
                 <div className={s.postsMain}>
                   <img
                     className={s.postsFoto}
-                    src={`http://localhost:3002${data.imageUrl}`}
+                    src={`https://social-network2.vercel.app/${data.imageUrl}`}
                     alt="posts"
                   />
                 </div>
