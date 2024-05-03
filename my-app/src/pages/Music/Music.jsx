@@ -4,7 +4,11 @@ import CustomButton from "../../componets/CustomButton/CustomButton";
 import MusicPlay from "../../componets/MusicPlay/MusicPlay";
 import MusicFriends from "../../componets/MusicFriends/MusicFriends";
 import Search from "../../componets/Search/Search";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 const Music = () => {
+  const { data } = useSelector((state) => state.music);
+  // const [currentTrack, setCurrentTrack] = useState
   return (
     <>
       <Header />
@@ -39,8 +43,16 @@ const Music = () => {
                   imageName="down"
                 />
               </div>
+              {data.map((arr) => {
 
-              <MusicPlay />
+                  return<div>
+                    <audio
+                      controls
+                      src={`http://localhost:3002/music/${arr}`}
+                    ></audio>
+                  </div>
+                
+              })}
               <MusicPlay />
             </div>
             <div className={s.main2}>

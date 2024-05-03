@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import multer from 'multer';
 import cors from 'cors';
+import fs from 'fs';
 
 import { loginValidator, registerValidator, postCreateValidator, userStatusValidatior, groupCreateValidator } from './validations.js';
 
@@ -16,7 +17,7 @@ mongoose
 
 const app = express();
 
-const storage = multer.diskStorage({
+const storageImages = multer.diskStorage({
   destination: (_, __, cb) => {
     cb(null, 'uploads')
   },
@@ -25,8 +26,7 @@ const storage = multer.diskStorage({
   }
 })
 
-const upload = multer({ storage })
-
+const upload = multer({ storageImages })
 app.use(express.json());
 app.use(cors())
 app.use('/uploads', express.static('uploads'))
@@ -41,6 +41,35 @@ app.post('/upload', cheakAuth, upload.single('image'), (req, res) => {
     url: `/uploads/${req.file.originalname}`
   })
 })
+
+app.use('/music', express.static('music'));
+
+app.get('/music', (req, res) => {
+  // Чтение названия файла из папки music
+  fs.readdir('music', (err, files) => {
+    if (err || !files.length) {
+      return res.status(500).send('Ошибка чтения папки с музыкой');
+    }
+      res.json( files );
+    
+  });
+});
+
+// Обработчик для GET запроса на /music
+app.get('/music/:filename', (req, res) => {
+  const filePath = path.join(__dirname, 'music');
+
+  // Проверяем существует ли файл 
+  //fs модуль node.js для работы с файлами
+  if (fs.existsSync(filePath)) {
+    // Если файл существует, отправляем его как ответ
+    res.sendFile(filePath);
+  } else {
+    // Если файл не существует, отправляем ответ с сообщением об ошибке
+    res.status(404).json( 'Файла не существует');
+  }
+});
+
 app.post('/add-group', cheakAuth, groupCreateValidator, handleValidationEror, groupController.create)
 app.get('/group', groupController.getAll)
 app.get('/group/:id', groupController.getOne)
