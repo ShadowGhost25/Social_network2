@@ -4,11 +4,24 @@ import CustomButton from "../../componets/CustomButton/CustomButton";
 import MusicPlay from "../../componets/MusicPlay/MusicPlay";
 import MusicFriends from "../../componets/MusicFriends/MusicFriends";
 import Search from "../../componets/Search/Search";
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import axios from '../../axios';
+import { useRef } from "react";
+
+
 const Music = () => {
-  const { data } = useSelector((state) => state.music);
-  // const [currentTrack, setCurrentTrack] = useState
+  const inputRef = useRef("");
+  console.log(inputRef)
+  const handleChangeFile = async (event) => {
+    try {
+      const formData = new FormData();
+      const file = event.target.files[0];
+      formData.append("musics", file);
+      const { data } = await axios.post("/music", formData);
+      console.log(data)
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <Header />
@@ -21,6 +34,17 @@ const Music = () => {
           <div className={s.positionSearch}>
             <Search />
           </div>
+          <label className={s.inputFile}>
+            <input
+              name="file"
+              className={s.inputFileBtn}
+              ref={inputRef}
+              onChange={handleChangeFile}
+              type="file"
+              accept=".mp3"
+            />
+            <span className={s.inputFileBtn}>Выберите файл</span>
+          </label>
           <div className={s.mainBlock}>
             <div className={s.main1}>
               <h3 className={s.h3}>Треки</h3>
@@ -43,16 +67,7 @@ const Music = () => {
                   imageName="down"
                 />
               </div>
-              {data.map((arr) => {
 
-                  return<div>
-                    <audio
-                      controls
-                      src={`http://localhost:3002/music/${arr}`}
-                    ></audio>
-                  </div>
-                
-              })}
               <MusicPlay />
             </div>
             <div className={s.main2}>
@@ -62,7 +77,6 @@ const Music = () => {
                   <Search />
                 </div>
               </div>
-              <MusicFriends />
               <MusicFriends />
             </div>
           </div>

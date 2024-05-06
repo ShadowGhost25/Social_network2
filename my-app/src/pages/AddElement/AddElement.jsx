@@ -181,12 +181,12 @@ const AddElement = () => {
             />
             <span className={s.inputFileBtn}>Выберите файл</span>
           </label>
-
+          {console.log(imageUrl)}
           {isImageUrl && (
             <div className={s.fon}>
               <img
                 className={s.imgFile}
-                src={`https://social-network2.vercel.app/${imageUrl}`}
+                src={`http://localhost:3002/${imageUrl}`}
                 alt="select"
               />
             </div>,

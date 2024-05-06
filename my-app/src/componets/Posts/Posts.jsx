@@ -88,11 +88,12 @@ const Posts = () => {
                   <Markdown>{obj.text}</Markdown>
                 </div>
 
+                {console.log(obj.imageUrl)}
                 {obj.imageUrl && (
                   <div className={s.postsMain}>
                     <img
                       className={s.postsFoto}
-                      src={`https://social-network2.vercel.app/${obj.imageUrl}`}
+                      src={`http://localhost:3002${obj.imageUrl}`}
                       alt="posts"
                     />
                   </div>
