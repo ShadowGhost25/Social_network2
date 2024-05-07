@@ -33,30 +33,33 @@ mongoose
 
 const app = express();
 
-const storageImages = multer.diskStorage({
-  destination: (_, __, cb) => {
-    cb(null, "uploads");
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    let uploadPath;
+    // Проверяем тип файла
+    if (file.mimetype.startsWith('audio')) {
+      uploadPath = 'musics';
+    } else {
+      uploadPath = 'uploads';
+    }
+    // Проверяем, существует ли указанная папка
+    if (!fs.existsSync(uploadPath)) {
+      // Если папка не существует, создаем ее
+      fs.mkdirSync(uploadPath);
+    }
+    cb(null, uploadPath);
   },
   filename: (_, file, cb) => {
     cb(null, file.originalname);
   },
 });
 
-const storageMusic = multer.diskStorage({
-  destination: (_, __, cb) => {
-    cb(null, "musics");
-  },
-  filename: (_, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
-
-const upload = multer({ storageImages });
-const music = multer({ storageMusic });
+const upload = multer({ storage });
+const music = multer({ storage });
 app.use(express.json());
 app.use(cors());
 app.use("/uploads", express.static("uploads"));
-app.use("/musics", express.static("musics"));
+app.use("/music", express.static("musics"));
 
 app.post("/login", loginValidator, handleValidationEror, userController.login);
 app.post(
@@ -73,8 +76,7 @@ app.post("/upload", cheakAuth, upload.single("image"), (req, res) => {
   });
 });
 
-app.post("/music", cheakAuth, music.single("mp3"), (req, res) => {
-  // console.log(req.file.originalname)
+app.post("/music", cheakAuth, music.single("musics"), (req, res) => {
   res.json({
     url: `/musics/${req.file.originalname}`,
   });
@@ -88,21 +90,6 @@ app.get("/music", (req, res) => {
     res.json(files);
   });
 });
-
-// Обработчик для GET запроса на /music
-// app.get('/music/:filename', (req, res) => {
-//   const filePath = path.join(__dirname, 'music');
-
-//   // Проверяем существует ли файл
-//   //fs модуль node.js для работы с файлами
-//   if (fs.existsSync(filePath)) {
-//     // Если файл существует, отправляем его как ответ
-//     res.sendFile(filePath);
-//   } else {
-//     // Если файл не существует, отправляем ответ с сообщением об ошибке
-//     res.status(404).json( 'Файла не существует');
-//   }
-// });
 
 app.post(
   "/add-group",

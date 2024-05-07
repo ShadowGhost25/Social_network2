@@ -22,6 +22,7 @@ import me from "../Header/img/Ava.png";
 
 const CustomButton = ({
   click,
+  onChange,
   index,
   imageName,
   title,

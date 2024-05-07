@@ -4,11 +4,11 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true, //Это свойство обязательно при создание пользователя
   },
-  surName:{
+  surName: {
     type: String,
     require: true, //Это свойство обязательно при создание пользователя
   },
-  login:{
+  login: {
     type: String,
     require: true, //Это свойство обязательно при создание пользователя
   },
@@ -17,8 +17,8 @@ const UserSchema = new mongoose.Schema({
     required: true, //Это свойство обязательно при создание пользователя
     unique: true
   },
-  phone:{
-    type:String,
+  phone: {
+    type: String,
     require: true //Это свойство обязательно при создание пользователя
   },
   password: {
@@ -26,10 +26,13 @@ const UserSchema = new mongoose.Schema({
     required: true, //Это свойство обязательно при создание пользователя
   },
   avatarUrl: {
-    type:String,
+    type: String,
   },
   status: {
-    type:String,
+    type: String,
+  },
+  music: {
+    type: [String]
   }
 }, {
   timestamps: true,

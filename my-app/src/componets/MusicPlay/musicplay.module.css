@@ -1,4 +1,4 @@
-.music{
+.music {
     padding: 5px 10px;
     display: flex;
     flex-direction: row;
@@ -8,24 +8,36 @@
     border-radius: 5px;
     margin-bottom: 10px;
 }
-.music:hover{
+
+.music:hover {
     background-color: #1e1e1e;
     transition: 0.7s;
 }
-.nameMusic{
+
+.nameMusic {
     display: flex;
     align-items: center;
 }
-.marginBlock{
-    margin: 5px 10px 0px;
+
+.marginBlock {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
-.h3{
+
+.h3 {
     margin: 0px;
 }
-.positionTime{
+
+.positionTime {
     margin-left: auto;
 }
-.h4{
+
+.h4 {
     margin: 7px 0px 0px;
     text-align: right;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: #333;
 }

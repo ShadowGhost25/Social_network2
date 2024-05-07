@@ -184,17 +184,17 @@ const AddElement = () => {
           {console.log(imageUrl)}
           {isImageUrl && (
             <>
-            <div className={s.fon}>
-              <img
-                className={s.imgFile}
-                src={`http://localhost:3002${imageUrl}`}
-                alt="select"
-              />
-            </div>
-          <button className={s.inputFileBtn} onClick={deleteImg}>
-            Удалить
-          </button>
-          </>
+              <div className={s.fon}>
+                <img
+                  className={s.imgFile}
+                  src={`http://localhost:3002${imageUrl}`}
+                  alt="select"
+                />
+              </div>
+              <button className={s.inputFileBtn} onClick={deleteImg}>
+                Удалить
+              </button>
+            </>
           )}
 
           <SimpleMDE
