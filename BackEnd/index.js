@@ -37,10 +37,10 @@ const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     let uploadPath;
     // Проверяем тип файла
-    if (file.mimetype.startsWith('audio')) {
-      uploadPath = 'musics';
+    if (file.mimetype.startsWith("audio")) {
+      uploadPath = "musics";
     } else {
-      uploadPath = 'uploads';
+      uploadPath = "uploads";
     }
     // Проверяем, существует ли указанная папка
     if (!fs.existsSync(uploadPath)) {
@@ -76,11 +76,17 @@ app.post("/upload", cheakAuth, upload.single("image"), (req, res) => {
   });
 });
 
-app.post("/music", cheakAuth, handleValidationEror, music.single("musics"), (req, res) => {
-  res.json({
-    url: `/musics/${req.file.originalname}`,
-  });
-});
+app.post(
+  "/music",
+  cheakAuth,
+  handleValidationEror,
+  music.single("musics"),
+  (req, res) => {
+    res.json({
+      url: `/musics/${req.file.originalname}`,
+    });
+  }
+);
 app.get("/music", (req, res) => {
   // Чтение названия файла из папки music
   fs.readdir("musics", (err, files) => {
@@ -91,7 +97,13 @@ app.get("/music", (req, res) => {
   });
 });
 
-app.post("/add-music/:id", cheakAuth, handleValidationEror, userController.addMusic)
+app.post(
+  "/add-music/:id",
+  cheakAuth,
+  handleValidationEror,
+  userController.addMusic
+);
+app.post("/delete-music/:id", cheakAuth, userController.removeMusic);
 app.post(
   "/add-group",
   cheakAuth,
@@ -116,7 +128,12 @@ app.post(
   handleValidationEror,
   postController.create
 );
-app.get("/profile", cheakAuth, handleValidationEror, postController.getAllProfile);
+app.get(
+  "/profile",
+  cheakAuth,
+  handleValidationEror,
+  postController.getAllProfile
+);
 app.get("/posts", postController.getAll);
 app.get("/posts/:id", postController.getOne);
 

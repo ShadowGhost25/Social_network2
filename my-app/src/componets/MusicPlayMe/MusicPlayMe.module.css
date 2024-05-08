@@ -44,3 +44,7 @@ audio::-webkit-media-controls-panel {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.noActiveText{
+    font-size: 18px;
+    width: 100%;
+}

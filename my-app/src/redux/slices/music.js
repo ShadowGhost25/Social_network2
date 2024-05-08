@@ -11,10 +11,17 @@ export const fetchMusicMe = createAsyncThunk("music/fetchMusicMe", async (obj) =
   const { data } = await axios.post(`/add-music/:${obj.id}`, obj);
   return data;
 });
+
+export const fetchDeleteMusicMe = createAsyncThunk("music/fetchDeleteMusicMe", async (obj) => {
+  const { data } = await axios.post(`/delete-music/:${obj.id}`, obj);
+  return data;
+});
+
 const initialState = {
   data: null,
   status: "loading",
 };
+
 const musicSlice = createSlice({
   name: "music",
   initialState,

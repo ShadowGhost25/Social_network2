@@ -152,3 +152,25 @@ export const addMusic = async (req, res) => {
     });
   }
 }
+
+export const removeMusic = async (req, res)=>{
+  try {
+    const userId = req.body.id;
+    const user = await userModel.findById(userId);
+    if (!user.music.includes(req.body.music)) {
+      return res.status(400).json({ error: "Эта музыка уже удалена" });
+    }
+    await userModel.updateOne(
+      {
+        _id: userId,
+      },
+      { $pull: { music: req.body.music } }
+    );
+    res.json("Музыка успешно Удалена");
+  } catch (error) {
+    console.log("err => ", error);
+    res.status(400).json({
+      message: "Нет доступа",
+    });
+  }
+}
