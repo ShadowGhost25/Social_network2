@@ -11,7 +11,6 @@ import Search from "../../componets/Search/Search";
 const Group = () => {
   const dispatch = useDispatch();
   const { group } = useSelector((state) => state.group);
-  // console.log(group)
   const { id } = useSelector((state) => state.login);
   const isGroupLoading = group.status === "loaded";
   React.useEffect(() => {
@@ -38,7 +37,6 @@ const Group = () => {
                 )}
 
                 <div className={s.mainGroup}>
-                  {console.log(group)}
                   {group.items.map((obj) =>
                     obj.user._id === id &&
                     window.localStorage.getItem("token") && (

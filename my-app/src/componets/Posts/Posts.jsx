@@ -88,7 +88,6 @@ const Posts = () => {
                   <Markdown>{obj.text}</Markdown>
                 </div>
 
-                {console.log(obj.imageUrl)}
                 {obj.imageUrl && (
                   <div className={s.postsMain}>
                     <img

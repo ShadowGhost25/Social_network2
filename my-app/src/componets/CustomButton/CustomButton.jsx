@@ -2,7 +2,7 @@ import s from "./custombutton.module.css";
 import box from "../../pages/Profile/img/box.png";
 import foto from "../../pages/Profile/img/foto.png";
 import info from "../../pages/Profile/img/info.png";
-import plus from "../SettingsFriends/img/plus.png";
+import plus from "../SettingsFriends/img/plus.svg";
 import city from "../Options/img/Vector.png";
 import like from "../Posts/img/like.png";
 import share from "../Posts/img/share.png";
@@ -18,6 +18,7 @@ import music from "../Header/img/Music.png";
 import settings from "../Header/img/Setings.png";
 import vector from "../../pages/Music/img/Vector.png";
 import user from "../Header/img/user.svg";
+import cross from "../MusicPlayMe/img/cross.svg"
 import me from "../Header/img/Ava.png";
 
 const CustomButton = ({
@@ -78,6 +79,8 @@ const CustomButton = ({
         return user;
       case "me":
         return me;
+        case "cross":
+          return cross;
       default:
     }
   };

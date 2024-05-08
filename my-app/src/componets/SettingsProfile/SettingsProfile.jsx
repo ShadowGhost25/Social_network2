@@ -21,7 +21,6 @@ const SettingsProfile = () => {
         status,
       };
       await axios.patch(`/settings`, fields);
-      console.log("asd")
     } catch (error) {
       alert(error.response.data[0].msg);
     }

@@ -181,7 +181,6 @@ const AddElement = () => {
             />
             <span className={s.inputFileBtn}>Выберите файл</span>
           </label>
-          {console.log(imageUrl)}
           {isImageUrl && (
             <>
               <div className={s.fon}>
