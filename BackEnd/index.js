@@ -76,7 +76,7 @@ app.post("/upload", cheakAuth, upload.single("image"), (req, res) => {
   });
 });
 
-app.post("/music", cheakAuth, music.single("musics"), (req, res) => {
+app.post("/music", cheakAuth, handleValidationEror, music.single("musics"), (req, res) => {
   res.json({
     url: `/musics/${req.file.originalname}`,
   });
@@ -91,6 +91,7 @@ app.get("/music", (req, res) => {
   });
 });
 
+app.post("/add-music/:id", cheakAuth, handleValidationEror, userController.addMusic)
 app.post(
   "/add-group",
   cheakAuth,
@@ -115,7 +116,7 @@ app.post(
   handleValidationEror,
   postController.create
 );
-app.get("/profile", cheakAuth, postController.getAllProfile);
+app.get("/profile", cheakAuth, handleValidationEror, postController.getAllProfile);
 app.get("/posts", postController.getAll);
 app.get("/posts/:id", postController.getOne);
 

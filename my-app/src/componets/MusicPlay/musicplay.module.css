@@ -9,10 +9,6 @@
     margin-bottom: 10px;
 }
 
-.music:hover {
-    background-color: #1e1e1e;
-    transition: 0.7s;
-}
 
 .nameMusic {
     display: flex;

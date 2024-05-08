@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
 import axios from "../../axios";
 
 export const fetchMusic = createAsyncThunk("music/fetchMusic", async () => {
@@ -6,6 +7,10 @@ export const fetchMusic = createAsyncThunk("music/fetchMusic", async () => {
   return data;
 });
 
+export const fetchMusicMe = createAsyncThunk("music/fetchMusicMe", async (obj) => {
+  const { data } = await axios.post(`/add-music/:${obj.id}`, obj);
+  return data;
+});
 const initialState = {
   data: null,
   status: "loading",

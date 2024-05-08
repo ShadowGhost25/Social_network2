@@ -78,7 +78,7 @@ const Music = () => {
                   <Search />
                 </div>
               </div>
-              <MusicPlay data={musicList} />
+              <MusicPlay musicList={musicList} />
             </div>
           </div>
         </div>
