@@ -25,10 +25,8 @@ const MusicPlay = ({ musicList }) => {
         return (
           <div key={index} className={s.music}>
             <div className={s.marginBlock}>
-              <div className={s.activeText}>
-              {nameWithoutExtension} 
-              </div>
-              <audio src={`http://localhost:3002/music/${arr}`}></audio>
+              <div className={s.activeText}>{nameWithoutExtension}</div>
+              <audio src={`https://social-network2.vercel.app/${arr}`}></audio>
               <CustomButton
                 click={() => {
                   addMusic(arr);

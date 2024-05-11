@@ -186,7 +186,7 @@ const AddElement = () => {
               <div className={s.fon}>
                 <img
                   className={s.imgFile}
-                  src={`http://localhost:3002${imageUrl}`}
+                  src={`https://social-network2.vercel.app/${imageUrl}`}
                   alt="select"
                 />
               </div>
