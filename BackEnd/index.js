@@ -55,10 +55,10 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
-const music = multer({ storage });
+const music = multer({ storage }); //multer({ storage }): Это создает экземпляр объекта multer, который настраивается с опциями.
 app.use(express.json());
 app.use(cors());
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static("uploads")); //express.static("uploads"): Это middleware Express.js, который предоставляет статические файлы из указанной директории.
 app.use("/music", express.static("musics"));
 
 app.post("/login", loginValidator, handleValidationEror, userController.login);
