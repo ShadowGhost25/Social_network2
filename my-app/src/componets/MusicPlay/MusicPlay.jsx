@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CustomButton from "../CustomButton/CustomButton";
 import axios from "../../axios";
+import { localHost } from "../../Route/route";
 import { fetchMusicMe } from "../../redux/slices/music";
 const MusicPlay = ({ musicList }) => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const MusicPlay = ({ musicList }) => {
           <div key={index} className={s.music}>
             <div className={s.marginBlock}>
               <div className={s.activeText}>{nameWithoutExtension}</div>
-              <audio src={`https://social-network2.vercel.app/${arr}`}></audio>
+              <audio src={localHost + arr}></audio>
               <CustomButton
                 click={() => {
                   addMusic(arr);

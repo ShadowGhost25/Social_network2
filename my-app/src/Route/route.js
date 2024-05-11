@@ -212,3 +212,5 @@ export const buttonHeader = [
     typeStyle: "navBar",
   },
 ];
+
+export const localHost = "http://localhost:3002";

@@ -7,6 +7,7 @@ import React from "react";
 import axios from "../../axios";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
+import { localHost } from "../../Route/route";
 
 const AddElement = () => {
   const { id } = useParams();
@@ -186,7 +187,7 @@ const AddElement = () => {
               <div className={s.fon}>
                 <img
                   className={s.imgFile}
-                  src={`https://social-network2.vercel.app/${imageUrl}`}
+                  src={localHost + imageUrl}
                   alt="select"
                 />
               </div>
