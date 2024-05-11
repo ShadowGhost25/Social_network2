@@ -1,40 +1,52 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CustomButton from "../CustomButton/CustomButton";
 import s from "./settingsprofile.module.css";
 import axios from "../../axios";
+import { fetchSettings } from "../../redux/slices/settings";
 const SettingsProfile = () => {
+  const { id } = useSelector((state) => state.login);
+  const dispatch = useDispatch();
   const [isLoading, setLoading] = React.useState(false);
   const [fullName, setFullName] = React.useState("");
   const [surName, setSurName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [phone, setPhone] = React.useState("");
   const [status, setStatus] = React.useState("");
-  
+
   const onSubmit = async () => {
     try {
       setLoading(true);
       const fields = {
+        id,
         fullName,
         surName,
         email,
         phone,
         status,
       };
-      await axios.patch(`/settings`, fields);
+      const data = {
+        fields,
+        id,
+      };
+      dispatch(fetchSettings(data));
     } catch (error) {
       alert(error.response.data[0].msg);
     }
   };
   React.useEffect(() => {
-    axios.get(`/me`).then(({ data }) => {
-      setFullName(data.fullName);
-      setSurName(data.surName);
-      setEmail(data.email);
-      setPhone(data.phone);
-      setStatus(data.status);
-    }).catch((error) =>{
-      console.warn(error)
-    })
+    axios
+      .get(`/me`)
+      .then(({ data }) => {
+        setFullName(data.fullName);
+        setSurName(data.surName);
+        setEmail(data.email);
+        setPhone(data.phone);
+        setStatus(data.status);
+      })
+      .catch((error) => {
+        console.warn(error);
+      });
   }, []);
   return (
     <>
@@ -68,7 +80,7 @@ const SettingsProfile = () => {
             type="email"
             name="email"
             value={email}
-            onChange={(e) => setSurName(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </label>
         <label className={s.label} htmlFor="phone">
@@ -78,7 +90,7 @@ const SettingsProfile = () => {
             type="number"
             name="phone"
             value={phone}
-            onChange={(e) => setSurName(e.target.value)}
+            onChange={(e) => setPhone(e.target.value)}
           />
         </label>
         <label className={s.label} htmlFor="status">
@@ -92,7 +104,12 @@ const SettingsProfile = () => {
           />
         </label>
         <div className={s.positionButton}>
-          <CustomButton click={onSubmit} title="Сохранить" size="small" typeStyle="primary" />
+          <CustomButton
+            click={onSubmit}
+            title="Сохранить"
+            size="small"
+            typeStyle="primary"
+          />
         </div>
       </div>
     </>

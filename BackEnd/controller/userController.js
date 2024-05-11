@@ -43,7 +43,7 @@ export const register = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   try {
-    const userId = req.params.id;
+    const userId = req.body.id;
     await userModel.updateOne(
       {
         _id: userId,
@@ -153,7 +153,7 @@ export const addMusic = async (req, res) => {
   }
 }
 
-export const removeMusic = async (req, res)=>{
+export const removeMusic = async (req, res) => {
   try {
     const userId = req.body.id;
     const user = await userModel.findById(userId);
