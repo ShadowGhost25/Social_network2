@@ -15,7 +15,6 @@ import Loading from "../../componets/Loading/Loading";
 const Home = () => {
   const { data, status } = useSelector((state) => state.login);
   const isLoadingHome = status === "loaded";
-  console.log(isLoadingHome)
   const navigate = useNavigate();
   const cliclProfile = () => {
     navigate("/profile");

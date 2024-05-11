@@ -3,6 +3,7 @@ import { loginReducers } from './slices/login';
 import { postsReducers } from './slices/posts'
 import { registerReducers } from './slices/register';
 import { groupReducers } from './slices/group';
+import { musicReducers } from './slices/music';
 
 const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
         posts: postsReducers,
         register: registerReducers,
         group: groupReducers,
+        music: musicReducers,
     }
 })
 

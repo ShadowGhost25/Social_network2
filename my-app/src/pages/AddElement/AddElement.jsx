@@ -181,18 +181,19 @@ const AddElement = () => {
             />
             <span className={s.inputFileBtn}>Выберите файл</span>
           </label>
-
           {isImageUrl && (
-            <div className={s.fon}>
-              <img
-                className={s.imgFile}
-                src={`https://social-network2.vercel.app/${imageUrl}`}
-                alt="select"
-              />
-            </div>,
-          <button className={s.inputFileBtn} onClick={deleteImg}>
-            Удалить
-          </button>
+            <>
+              <div className={s.fon}>
+                <img
+                  className={s.imgFile}
+                  src={`https://social-network2.vercel.app/${imageUrl}`}
+                  alt="select"
+                />
+              </div>
+              <button className={s.inputFileBtn} onClick={deleteImg}>
+                Удалить
+              </button>
+            </>
           )}
 
           <SimpleMDE

@@ -107,7 +107,7 @@
     /* Изначально половина ширины кнопки */
     height: 50%;
     /* Изначально половина высоты кнопки */
-    background-color: black;
+    background-color: #1e1e1e;
     transition: width 0.3s ease, height 0.3s ease, transform 0.3s ease;
     /* Анимация изменения ширины, высоты и масштаба */
     transform: translate(-50%, -50%) scale(0);
@@ -144,7 +144,7 @@
     font-size: 24px;
     width: 100%;
     padding: 20px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #1e1e1e;
     transition: 0.5s;
 }
 
@@ -160,7 +160,7 @@
     font-size: 24px;
     width: 100%;
     padding: 20px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #1e1e1e;
     color: white;
     transition: 0.5s;
 }

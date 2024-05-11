@@ -1,0 +1,50 @@
+.music {
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: #7da1fd;
+    transition: 0.7s;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+
+.nameMusic {
+    display: flex;
+    align-items: center;
+}
+
+.marginBlock {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.h3 {
+    margin: 0px;
+}
+
+.positionTime {
+    margin-left: auto;
+}
+
+.h4 {
+    margin: 7px 0px 0px;
+    text-align: right;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: #333;
+}
+.activeText{
+    font-size: 18px;
+    width: 600px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.noActiveText{
+    font-size: 18px;
+    width: 100%;
+}

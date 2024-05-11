@@ -1,17 +1,46 @@
 import s from "./musicplay.module.css";
-import icon from "../../pages/Music/img/icon.png";
-const MusicPlay = () => {
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import CustomButton from "../CustomButton/CustomButton";
+import axios from "../../axios";
+import { fetchMusicMe } from "../../redux/slices/music";
+const MusicPlay = ({ musicList }) => {
+  const dispatch = useDispatch();
+  const { id } = useSelector((state) => state.login);
+  const addMusic = async (music) => {
+    const obj = {
+      music,
+      id,
+    };
+    if (window.confirm("Вы действительно хотите добавить музыку ?")) {
+      dispatch(fetchMusicMe(obj));
+      window.location.reload();
+    }
+  };
+
   return (
-    <div className={s.music}>
-      <img src={icon} alt="avatar" />
-      <div className={s.marginBlock}>
-        <h3 className={s.h3}> Старый я </h3>
-        <span>Заточка</span>
-      </div>
-      <div className={s.positionTime}>
-        <h4 className={s.h4}>3:21</h4>
-      </div>
-    </div>
+    <>
+      {musicList.map((arr, index) => {
+        const nameWithoutExtension = arr.replace(".mp3", "");
+        return (
+          <div key={index} className={s.music}>
+            <div className={s.marginBlock}>
+              <div className={s.activeText}>{nameWithoutExtension}</div>
+              <audio src={`https://social-network2.vercel.app/${arr}`}></audio>
+              <CustomButton
+                click={() => {
+                  addMusic(arr);
+                }}
+                size="button"
+                typeStyle="primary"
+                imageName="plus"
+                centerImage={true}
+              />
+            </div>
+          </div>
+        );
+      })}
+    </>
   );
 };
 

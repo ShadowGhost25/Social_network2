@@ -43,7 +43,7 @@ export const register = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   try {
-    const userId = req.params.id;
+    const userId = req.body.id;
     await userModel.updateOne(
       {
         _id: userId,
@@ -129,3 +129,48 @@ export const getMe = async (req, res) => {
     return;
   }
 };
+
+export const addMusic = async (req, res) => {
+  try {
+    const userId = req.body.id;
+    const user = await userModel.findById(userId);
+    if (user.music.includes(req.body.music)) {
+      return res.status(400).json({ error: "Эта музыка уже добавлена" });
+    }
+    await userModel.updateOne(
+      {
+        _id: userId,
+      },
+      { $push: { music: req.body.music } }
+    );
+    console.log(userId)
+    res.json("Музыка успешно добавлена");
+  } catch (error) {
+    console.log("err => ", error);
+    res.status(400).json({
+      message: "Нет доступа",
+    });
+  }
+}
+
+export const removeMusic = async (req, res) => {
+  try {
+    const userId = req.body.id;
+    const user = await userModel.findById(userId);
+    if (!user.music.includes(req.body.music)) {
+      return res.status(400).json({ error: "Эта музыка уже удалена" });
+    }
+    await userModel.updateOne(
+      {
+        _id: userId,
+      },
+      { $pull: { music: req.body.music } }
+    );
+    res.json("Музыка успешно Удалена");
+  } catch (error) {
+    console.log("err => ", error);
+    res.status(400).json({
+      message: "Нет доступа",
+    });
+  }
+}
