@@ -100,7 +100,7 @@ const Posts = () => {
                 )}
               </div>
               {obj.tags[0] && (
-                <div className={s.displayTags}>
+                <div key={obj.tags} className={s.displayTags}>
                   {obj.tags.map((tag) => {
                     return (
                       <span key={tag} className={s.tags}>

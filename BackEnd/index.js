@@ -3,6 +3,10 @@ import mongoose from "mongoose";
 import multer from "multer";
 import cors from "cors";
 import fs from "fs";
+import http from "http";
+import { WebSocketServer } from "ws";
+import { Server } from 'socket.io';
+// import WebSocket from "ws"; // Импортируем WebSocket из модуля ws
 
 import {
   loginValidator,
@@ -19,7 +23,7 @@ import {
 } from "./controller/Controller.js";
 
 import { handleValidationEror, cheakAuth } from "./utils/Utils.js";
-
+import userModel from "./models/User.js";
 mongoose
   .connect(
     "mongodb+srv://admin:wwwwww@practic.gpq4sx8.mongodb.net/blog?retryWrites=true&w=majority"
@@ -57,7 +61,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 const music = multer({ storage }); //multer({ storage }): Это создает экземпляр объекта multer, который настраивается с опциями.
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: "*", methods: ["GET", "POST", "PATCH", "DELETE"] }));
 app.use("/uploads", express.static("uploads")); //express.static("uploads"): Это middleware Express.js, который предоставляет статические файлы из указанной директории.
 app.use("/music", express.static("musics"));
 
@@ -152,10 +156,66 @@ app.patch(
   handleValidationEror,
   userController.updateUser
 );
+const server = http.createServer(app)
 
-app.listen(3002, (err) => {
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST", "PATCH", "DELETE"]
+  }
+});
+
+io.on('connection', (socket) => {
+  socket.on('join', ({ idRoom, idUser }) => {
+    socket.join(idRoom)
+  })
+  console.log('a user connected');
+});
+
+server.listen(3002, (err) => {
   if (err) {
     return console.log("=>", err);
   }
-  console.log("Server Ok");
+  console.log("Express Server Ok");
 });
+
+
+// const wss = new WebSocketServer({ port: 4000 });// Создание сервера WebSocket
+// wss.on('connection', function connection(ws) {
+//   ws.on('message', function incoming(message) {
+//     const buffer = Buffer.from(message, 'base64').toString('ascii');
+//     const isEvent = JSON.parse(buffer)
+//     switch (isEvent.event) {
+//       case 'message':
+//         broadCastMessage(isEvent);
+//         const userId = async (req, res) => {
+//           await userModel.findById(isEvent.idUser);
+//           await userModel.updateOne(
+//             {
+//               _id: isEvent.idUser
+//             },
+//             { $push: { historyMessage: isEvent } }
+//           )
+//         }
+//         userId()
+//         console.log('Получено сообщение:', isEvent.message);
+//         break;
+//       case 'connection':
+//         console.log('Новое подключение WebSocket.');
+//         broadCastMessage(isEvent);
+//         break;
+//       default:
+//         console.log('Неизвестное событие:', isEvent.event);
+//     }
+//   });
+
+//   ws.on('close', function close() {
+//     console.log('Клиент WebSocket отключился');
+//   });
+// });
+
+// function broadCastMessage(message) {
+//   wss.clients.forEach(client => {
+//     client.send(JSON.stringify(message));
+//   });
+// }

@@ -33,6 +33,9 @@ const UserSchema = new mongoose.Schema({
   },
   music: {
     type: [String]
+  },
+  historyMessage: {
+    type: [Object]
   }
 }, {
   timestamps: true,

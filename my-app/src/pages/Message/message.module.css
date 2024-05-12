@@ -47,6 +47,7 @@
 .positionBlockMe {
     display: flex;
     padding: 10px;
+    cursor: pointer;
 }
 
 .positionBlockMe {
@@ -117,7 +118,8 @@
     color: white;
     padding: 10px;
     border-radius: 10px;
-    text-align: justify;;
+    text-align: justify;
+    ;
 }
 
 .blockText {
@@ -126,13 +128,13 @@
     display: flex;
     align-items: center;
     position: absolute;
-    bottom: 0;  
+    bottom: 0;
     background-color: #7DA1FD;
 }
 
 .inputText {
     border: 0;
-    height: 35px;
+    min-height: 35px;
     outline: none;
     padding: 5px;
     font-size: 20px;
@@ -140,7 +142,8 @@
     width: 900px;
     margin: 10px;
 }
-.click{
+
+.click {
     height: 45px;
     width: 45px;
     border: 0;
@@ -148,28 +151,36 @@
     background-color: white;
     border-radius: 50%;
     padding: 0px;
+    cursor: pointer;
 }
-  .messageAll {
+
+.messageAll {
     width: 100%;
     padding: 0px;
-    overflow:   scroll;
+    overflow: scroll;
     display: flex;
     flex-direction: column-reverse;
     max-height: 637px;
     /* min-height: 400px; */
-  }
-  .messageAll::-webkit-scrollbar {
+}
+
+.messageAll::-webkit-scrollbar {
     width: 5px;
-  }
-  .messageAll::-webkit-scrollbar-thumb {
+}
+
+.messageAll::-webkit-scrollbar-thumb {
     background-color: #7da1fd;
-  }
-  .messageAll::-webkit-scrollbar-track {
+}
+
+.messageAll::-webkit-scrollbar-track {
     background-color: #f8f8f8;
-  }.blockMessage{
+}
+
+.blockMessage {
     width: 1000px;
-  }
-  .blockSearch{
+}
+
+.blockSearch {
     position: relative;
     height: 82px;
     width: 370px;
