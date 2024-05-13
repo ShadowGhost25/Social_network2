@@ -4,6 +4,7 @@ import CustomButton from "../CustomButton/CustomButton";
 import s from "./settingsprofile.module.css";
 import axios from "../../axios";
 import { fetchSettings } from "../../redux/slices/settings";
+import { Navigate, useNavigate } from "react-router-dom";
 const SettingsProfile = () => {
   const { id } = useSelector((state) => state.login);
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const SettingsProfile = () => {
   const [email, setEmail] = React.useState("");
   const [phone, setPhone] = React.useState("");
   const [status, setStatus] = React.useState("");
-
+  const navigate = useNavigate();
   const onSubmit = async () => {
     try {
       setLoading(true);
@@ -29,6 +30,7 @@ const SettingsProfile = () => {
         fields,
         id,
       };
+      navigate("/profile");
       dispatch(fetchSettings(data));
     } catch (error) {
       alert(error.response.data[0].msg);
@@ -87,7 +89,7 @@ const SettingsProfile = () => {
           Телефон
           <input
             className={s.input}
-            type="number"
+            type="tel"
             name="phone"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}

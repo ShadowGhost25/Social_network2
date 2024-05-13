@@ -10,6 +10,7 @@ import CustomButton from "../../componets/CustomButton/CustomButton";
 import { navigationButtons } from "../../Route/route";
 import GroupNotification from "../../componets/GroupNotification/GroupNotification";
 import FriendsOnline from "../../componets/FriendsOnline/FriendsOnline";
+import { useEffect } from "react";
 const Profile = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);

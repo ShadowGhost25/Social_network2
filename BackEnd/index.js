@@ -4,9 +4,8 @@ import multer from "multer";
 import cors from "cors";
 import fs from "fs";
 import http from "http";
-import { WebSocketServer } from "ws";
+// import { WebSocketServer } from "ws";
 import { Server } from 'socket.io';
-// import WebSocket from "ws"; // Импортируем WebSocket из модуля ws
 
 import {
   loginValidator,
@@ -25,15 +24,15 @@ import {
 import { handleValidationEror, cheakAuth } from "./utils/Utils.js";
 import userModel from "./models/User.js";
 mongoose
-  .connect(
-    "mongodb+srv://admin:wwwwww@practic.gpq4sx8.mongodb.net/blog?retryWrites=true&w=majority"
-  )
-  .then(() => {
-    console.log("Db Ok");
-  })
-  .catch((err) => {
-    console.log("Db err =>", err);
-  });
+.connect(
+  "mongodb+srv://admin:wwwwww@practic.gpq4sx8.mongodb.net/blog?retryWrites=true&w=majority"
+)
+.then(() => {
+  console.log("Db Ok");
+})
+.catch((err) => {
+  console.log("Db err =>", err);
+});
 
 const app = express();
 
@@ -164,12 +163,22 @@ const io = new Server(server, {
     methods: ["GET", "POST", "PATCH", "DELETE"]
   }
 });
-
 io.on('connection', (socket) => {
-  socket.on('join', ({ idRoom, idUser }) => {
-    socket.join(idRoom)
-  })
-  console.log('a user connected');
+
+  socket.on('join', ({ roomId, userId }) => {
+    // Присоединяем пользователя к комнате
+    socket.join(roomId);
+  });
+
+  socket.on('sendMessage', (message) => {
+    console.log(message)
+    // Отправляем сообщение всем пользователям в комнате, кроме отправителя
+    socket.to(message.roomId).emit('message', message);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
 });
 
 server.listen(3002, (err) => {
@@ -182,14 +191,14 @@ server.listen(3002, (err) => {
 
 // const wss = new WebSocketServer({ port: 4000 });// Создание сервера WebSocket
 // wss.on('connection', function connection(ws) {
-//   ws.on('message', function incoming(message) {
-//     const buffer = Buffer.from(message, 'base64').toString('ascii');
-//     const isEvent = JSON.parse(buffer)
-//     switch (isEvent.event) {
-//       case 'message':
-//         broadCastMessage(isEvent);
-//         const userId = async (req, res) => {
-//           await userModel.findById(isEvent.idUser);
+  //   ws.on('message', function incoming(message) {
+    //     const buffer = Buffer.from(message, 'base64').toString('ascii');
+    //     const isEvent = JSON.parse(buffer)
+    //     switch (isEvent.event) {
+      //       case 'message':
+      //         broadCastMessage(isEvent);
+      //         const userId = async (req, res) => {
+        //           await userModel.findById(isEvent.idUser);
 //           await userModel.updateOne(
 //             {
 //               _id: isEvent.idUser

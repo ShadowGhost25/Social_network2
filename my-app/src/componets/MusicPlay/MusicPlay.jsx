@@ -2,7 +2,6 @@ import s from "./musicplay.module.css";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CustomButton from "../CustomButton/CustomButton";
-import axios from "../../axios";
 import { localHost } from "../../Route/route";
 import { fetchMusicMe } from "../../redux/slices/music";
 const MusicPlay = ({ musicList }) => {

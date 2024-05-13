@@ -10,58 +10,45 @@ import { useRef, useEffect, useState } from "react";
 import io from "socket.io-client";
 
 const Message = () => {
-  const [messages, setMessage] = useState([]);
-  const [value, setValue] = useState(""); // Состояние для хранения текста сообщения
+  const [messages, setMessages] = useState([]);
+  const [value, setValue] = useState("");
   const [connected, setConnected] = useState(false);
-  const socket = useRef(); // Ссылка на объект WebSocket
+  const [roomId, setRoomId] = useState("");
+  const socket = useRef();
   const isAuth = useSelector(selectIsAuth);
   const { id, data } = useSelector((state) => state.login);
-  const soketIo = io.connect("http://localhost:3002");
-  const clickRoom = () => {
-    const room = {
-      idRoom: 1,
-      idUser: data.fullName,
-    };
-    soketIo.emit("join", room);
-  };
-  useEffect(() => {
-    // socket.current = new WebSocket("ws://localhost:3002/ws"); // Создание WebSocket при монтировании компонента
-    // // Обработчики событий WebSocket
-    // socket.current.onopen = () => {
-    //   setConnected(true);
-    //   const message = {
-    //     event: "connection",
-    //     id: Date.now,
-    //   };
-    //   socket.current.send(JSON.stringify(message));
-    //   console.log("Подключено к серверу WebSocket");
-    // };
-    // socket.current.onmessage = (event) => {
-    //   const message = JSON.parse(event.data);
-    //   setMessage((prev) => [message, ...prev]);
-    // };
-    // socket.current.onclose = () => {
-    //   console.log("Соединение с сервером WebSocket закрыто");
-    // };
-    // socket.current.onerror = (error) => {
-    //   console.error("Ошибка WebSocket соединения:", error.message);
-    // };
-    // // Отключение WebSocket при размонтировании компонента
-    // return () => {
-    //   socket.current.close();
-    // };
-  }, []);
 
+  useEffect(() => {
+    socket.current = io("http://localhost:3002"); // Подключение к серверу Socket.io
+
+    socket.current.on("connect", () => {
+      setConnected(true);
+    });
+
+    socket.current.on("message", (message) => {
+      console.log(message)
+      setMessages((prev) => [...prev, message]); // Добавляем новое сообщение в конец массива
+    });
+    
+    return () => {
+      socket.current.disconnect(); // Отключение от сервера при размонтировании компонента
+    };
+  }, []);
+  const joinRoom = (roomId) => {
+    // Отправляем на сервер запрос на присоединение к комнате с указанным ID
+    socket.current.emit("join", { roomId, userId: data.fullName }); // Замените "yourUserId" на актуальный идентификатор пользователя
+    setRoomId(roomId); // Сохраняем ID комнаты в состоянии
+  };
   const sendMessage = () => {
     const message = {
-      message: value,
-      id: Date.now(),
-      event: "message",
-      idUser: id,
+      text: value,
+      timestamp: Date.now(),
+      idUser: data.fullName,
     };
-    // socket.current.send(JSON.stringify(message));
+    socket.current.emit("sendMessage", message);
     setValue("");
   };
+  // console.log(messages)
   return (
     <>
       <Header />
@@ -71,7 +58,7 @@ const Message = () => {
             <div className={s.blockSearch}>
               <Search />
             </div>
-            <div onClick={clickRoom} className={s.positionBlock}>
+            <div onClick={() => joinRoom(1)} className={s.positionBlock}>
               <img className={s.imgStyle} src={ava} alt="ava friends" />
               <div className={s.displayBlock}>
                 <div className={s.positionBlockName}>
@@ -142,6 +129,11 @@ const Message = () => {
             </div>
           </div>
         </div>
+        <div>
+        {messages.map((msg, index) => (
+          <div key={index}>{msg.text}</div>
+        ))}
+      </div>
       </div>
     </>
   );
