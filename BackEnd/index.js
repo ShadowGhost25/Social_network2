@@ -17,6 +17,7 @@ import {
 
 import {
   groupController,
+  messagecontroller,
   postController,
   userController,
 } from "./controller/Controller.js";
@@ -24,15 +25,15 @@ import {
 import { handleValidationEror, cheakAuth } from "./utils/Utils.js";
 import userModel from "./models/User.js";
 mongoose
-.connect(
-  "mongodb+srv://admin:wwwwww@practic.gpq4sx8.mongodb.net/blog?retryWrites=true&w=majority"
-)
-.then(() => {
-  console.log("Db Ok");
-})
-.catch((err) => {
-  console.log("Db err =>", err);
-});
+  .connect(
+    "mongodb+srv://admin:wwwwww@practic.gpq4sx8.mongodb.net/blog?retryWrites=true&w=majority"
+  )
+  .then(() => {
+    console.log("Db Ok");
+  })
+  .catch((err) => {
+    console.log("Db err =>", err);
+  });
 
 const app = express();
 
@@ -155,6 +156,7 @@ app.patch(
   handleValidationEror,
   userController.updateUser
 );
+app.get("/friends", userController.friends)
 const server = http.createServer(app)
 
 const io = new Server(server, {
@@ -187,7 +189,7 @@ io.on('connection', (socket) => {
   //   socket.to(room).emit('chatroom_users', chatRoomUsers);
   //   socket.emit('chatroom_users', chatRoomUsers);
   // });
-  socket.on('connect',()=>{})
+  socket.on('connect', () => { })
   socket.on('join', ({ roomId, userName }) => {
     // Присоединяем пользователя к комнате
     socket.join(roomId);
@@ -198,7 +200,7 @@ io.on('connection', (socket) => {
   socket.on('sendMessage', (message) => {
     console.log(message)
     // Отправляем сообщение всем пользователям в комнате, кроме отправителя
-    socket.to(message.roomId).emit('message',message);
+    socket.to(message.roomId).emit('message', message);
   });
   // io.to
   socket.on('disconnect', () => {
@@ -206,21 +208,7 @@ io.on('connection', (socket) => {
   });
 });
 
-const generateRoomId = () =>{
-  const length = 6;
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  return result;
-}
-app.post('/roomId', (req, res)=>{
-  const userMe = req.body.id;
-  const userFriends = 2
-  const roomId = generateRoomId(); // Генерируем случайный ID
-  res.send({ roomId, userMe, userFriends  });
-})
+app.post('/roomId', messagecontroller.messages)
 
 server.listen(3002, (err) => {
   if (err) {
@@ -232,14 +220,14 @@ server.listen(3002, (err) => {
 
 // const wss = new WebSocketServer({ port: 4000 });// Создание сервера WebSocket
 // wss.on('connection', function connection(ws) {
-  //   ws.on('message', function incoming(message) {
-    //     const buffer = Buffer.from(message, 'base64').toString('ascii');
-    //     const isEvent = JSON.parse(buffer)
-    //     switch (isEvent.event) {
-      //       case 'message':
-      //         broadCastMessage(isEvent);
-      //         const userId = async (req, res) => {
-        //           await userModel.findById(isEvent.idUser);
+//   ws.on('message', function incoming(message) {
+//     const buffer = Buffer.from(message, 'base64').toString('ascii');
+//     const isEvent = JSON.parse(buffer)
+//     switch (isEvent.event) {
+//       case 'message':
+//         broadCastMessage(isEvent);
+//         const userId = async (req, res) => {
+//           await userModel.findById(isEvent.idUser);
 //           await userModel.updateOne(
 //             {
 //               _id: isEvent.idUser

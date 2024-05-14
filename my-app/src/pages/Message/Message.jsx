@@ -105,8 +105,9 @@ const Message = () => {
                 <span>{message.userName}: </span>
               </div>
             ))}
-            {showChat && <Chat username={data.fullName} room={roomId} socket={socket} />}
-
+            {showChat && (
+              <Chat username={data.fullName} room={roomId} socket={socket} />
+            )}
           </div>
         </div>
         <div></div>

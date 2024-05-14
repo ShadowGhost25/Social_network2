@@ -174,3 +174,14 @@ export const removeMusic = async (req, res) => {
     });
   }
 }
+export const friends = async (req, res) => {
+  try {
+    const userFriends = await userModel.find().exec();
+    res.json(userFriends);
+  } catch (error) {
+    console.log("err => ", error);
+    res.status(400).json({
+      message: "Нет доступа",
+    });
+  }
+}
