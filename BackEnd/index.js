@@ -163,23 +163,64 @@ const io = new Server(server, {
     methods: ["GET", "POST", "PATCH", "DELETE"]
   }
 });
+// const CHAT_BOT = 'ChatBot';
+// let chatRoom = '';
+// let allUsers = [];
 io.on('connection', (socket) => {
+  // socket.on('join', ( data ) => {
+  //   const { userName, roomId} = data
+  //   socket.join(roomId);
 
-  socket.on('join', ({ roomId, userId }) => {
+  //   let __createdtime__ = Date.now(); // Current timestamp
+  //   socket.to(roomId).emit('message', {
+  //     message: userName,
+  //     userName: CHAT_BOT,
+  //   __createdtime__
+  //   });
+  //   socket.emit('receive_message', {
+  //     username: CHAT_BOT,
+  //     __createdtime__
+  //   });
+  //   chatRoom = room;
+  //   allUsers.push({ id: socket.id, username, room });
+  //   chatRoomUsers = allUsers.filter((user) => user.room === room);
+  //   socket.to(room).emit('chatroom_users', chatRoomUsers);
+  //   socket.emit('chatroom_users', chatRoomUsers);
+  // });
+  socket.on('connect',()=>{})
+  socket.on('join', ({ roomId, userName }) => {
     // Присоединяем пользователя к комнате
     socket.join(roomId);
+    // const user = {roomId, userName};
+    // socket.emit("message", user)
   });
 
   socket.on('sendMessage', (message) => {
     console.log(message)
     // Отправляем сообщение всем пользователям в комнате, кроме отправителя
-    socket.to(message.roomId).emit('message', message);
+    socket.to(message.roomId).emit('message',message);
   });
-
+  // io.to
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
 });
+
+const generateRoomId = () =>{
+  const length = 6;
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+}
+app.post('/roomId', (req, res)=>{
+  const userMe = req.body.id;
+  const userFriends = 2
+  const roomId = generateRoomId(); // Генерируем случайный ID
+  res.send({ roomId, userMe, userFriends  });
+})
 
 server.listen(3002, (err) => {
   if (err) {

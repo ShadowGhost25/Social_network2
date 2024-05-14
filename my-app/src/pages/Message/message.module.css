@@ -43,12 +43,6 @@
     position: relative;
 }
 
-.positionBlock,
-.positionBlockMe {
-    display: flex;
-    padding: 10px;
-    cursor: pointer;
-}
 
 .positionBlockMe {
     display: flex;
@@ -111,15 +105,11 @@
     margin: 0px;
 }
 
-.messageBlock {
-    margin: 0px 10px;
-    max-width: 700px;
-    background-color: #7DA1FD;
-    color: white;
+.positionBlock,
+.positionBlockMe {
+    display: flex;
     padding: 10px;
-    border-radius: 10px;
-    text-align: justify;
-    ;
+    cursor: pointer;
 }
 
 .blockText {
@@ -154,31 +144,7 @@
     cursor: pointer;
 }
 
-.messageAll {
-    width: 100%;
-    padding: 0px;
-    overflow: scroll;
-    display: flex;
-    flex-direction: column-reverse;
-    max-height: 637px;
-    /* min-height: 400px; */
-}
 
-.messageAll::-webkit-scrollbar {
-    width: 5px;
-}
-
-.messageAll::-webkit-scrollbar-thumb {
-    background-color: #7da1fd;
-}
-
-.messageAll::-webkit-scrollbar-track {
-    background-color: #f8f8f8;
-}
-
-.blockMessage {
-    width: 1000px;
-}
 
 .blockSearch {
     position: relative;

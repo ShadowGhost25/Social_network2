@@ -8,47 +8,48 @@ import { useSelector } from "react-redux";
 import { selectIsAuth } from "../../redux/slices/login";
 import { useRef, useEffect, useState } from "react";
 import io from "socket.io-client";
+import Chat from "./Chat";
+import axios from "../../axios";
 
 const Message = () => {
   const [messages, setMessages] = useState([]);
-  const [value, setValue] = useState("");
   const [connected, setConnected] = useState(false);
   const [roomId, setRoomId] = useState("");
   const socket = useRef();
   const isAuth = useSelector(selectIsAuth);
-  const { id, data } = useSelector((state) => state.login);
+  const [showChat, setShowChat] = useState(false);
 
+  const { id, data } = useSelector((state) => state.login);
   useEffect(() => {
     socket.current = io("http://localhost:3002"); // Подключение к серверу Socket.io
-
+    // console.log(socket.current.io)
     socket.current.on("connect", () => {
       setConnected(true);
     });
+    socket.current.on(
+      "message",
+      (message) => {
+        setMessages((prev) => [...prev, message.text]);
+      },
+      (error) => {
+        console.error("Ошибка при получении сообщения:", error);
+      }
+    );
 
-    socket.current.on("message", (message) => {
-      console.log(message)
-      setMessages((prev) => [...prev, message]); // Добавляем новое сообщение в конец массива
-    });
-    
     return () => {
       socket.current.disconnect(); // Отключение от сервера при размонтировании компонента
     };
   }, []);
-  const joinRoom = (roomId) => {
-    // Отправляем на сервер запрос на присоединение к комнате с указанным ID
-    socket.current.emit("join", { roomId, userId: data.fullName }); // Замените "yourUserId" на актуальный идентификатор пользователя
-    setRoomId(roomId); // Сохраняем ID комнаты в состоянии
+  const joinRoom = async () => {
+    const dataId = await axios.post("/roomId", { id: id });
+    socket.current.emit("join", {
+      roomId: dataId.data.roomId,
+      userName: data.fullName,
+    }); // Замените "yourUserId" на актуальный идентификатор пользователя
+    setShowChat(true);
+    setRoomId(dataId.data.roomId); // Сохраняем ID комнаты в состоянии
   };
-  const sendMessage = () => {
-    const message = {
-      text: value,
-      timestamp: Date.now(),
-      idUser: data.fullName,
-    };
-    socket.current.emit("sendMessage", message);
-    setValue("");
-  };
-  // console.log(messages)
+
   return (
     <>
       <Header />
@@ -58,7 +59,20 @@ const Message = () => {
             <div className={s.blockSearch}>
               <Search />
             </div>
-            <div onClick={() => joinRoom(1)} className={s.positionBlock}>
+            <div onClick={() => joinRoom()} className={s.positionBlock}>
+              <img className={s.imgStyle} src={ava} alt="ava friends" />
+              <div className={s.displayBlock}>
+                <div className={s.positionBlockName}>
+                  <div className={s.positionBlockStatus}>
+                    <span className={s.nameFriends}>Илья Вавилин</span>
+                    <div className={s.ellips}></div>
+                  </div>
+                  <span className={s.statusFriends}>Вы: прикольно</span>
+                </div>
+                <div className={s.time}>15:12</div>
+              </div>
+            </div>
+            <div onClick={() => joinRoom()} className={s.positionBlock}>
               <img className={s.imgStyle} src={ava} alt="ava friends" />
               <div className={s.displayBlock}>
                 <div className={s.positionBlockName}>
@@ -85,55 +99,17 @@ const Message = () => {
                 </div>
               </div>
             </div>
-            <div className={s.blockMessage}>
-              <div className={s.messageAll}>
-                {messages.map((mess) => {
-                  return (
-                    <div key={mess.id} className={s.positionBlockMe}>
-                      <div>
-                        <img src={ava} alt="ava me" />
-                      </div>
-                      <div className={s.messageBlock}>{mess.message}</div>
-                    </div>
-                  );
-                })}
-                <div className={s.positionBlock}>
-                  <div>
-                    <img src={ava} alt="ava friends" />
-                  </div>
-                  <div className={s.messageBlock}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Unde iusto magnam deserunt, impedit perspiciatis laboriosam
-                    ullam. Provident, nesciunt nostrum! Asperiores possimus
-                    totam, consequuntur adipisci sint laudantium cumque impedit?
-                    Maxime, Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Ducimus suscipit atque doloremque quasi doloribus
-                    provident culpa itaque excepturi sequi, ab amet tempora
-                    recusandae modi nihil quidem, perspiciatis fuga. In,
-                    consequuntur? nulla.
-                  </div>
-                </div>
+            {messages.map((message, index) => (
+              <div key={index} className={s.message}>
+                {/* {console.log(message)} */}
+                <span>{message.userName}: </span>
               </div>
-            </div>
-            <div className={s.blockText}>
-              <textarea
-                placeholder="Type..."
-                className={s.inputText}
-                type="text"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-              />
-              <button className={s.click} onClick={sendMessage}>
-                <img src={click} alt="button" />
-              </button>
-            </div>
+            ))}
+            {showChat && <Chat username={data.fullName} room={roomId} socket={socket} />}
+
           </div>
         </div>
-        <div>
-        {messages.map((msg, index) => (
-          <div key={index}>{msg.text}</div>
-        ))}
-      </div>
+        <div></div>
       </div>
     </>
   );
