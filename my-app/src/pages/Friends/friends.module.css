@@ -16,7 +16,7 @@
 .position {
     display: flex;
     align-items: center;
-    width: 315px;
+    width: 255px;
     justify-content: space-between;
 }
 
@@ -79,17 +79,3 @@
     width: 20px;
 }
 
-.cardBlog {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 267px);
-    justify-items: center;
-    background-color: white;
-}
-
-.friendsText {
-    display: block;
-    margin-top: 20px;
-    padding-left: 15px;
-    font-size: 24px;
-    background-color: white;
-}

@@ -3,8 +3,17 @@ import axios from "../../axios";
 
 export const fetchFriends = createAsyncThunk(
   "friends/fetchFriends",
-  async () => {
-    const { data } = await axios.get("/friends");
+  async (id) => {
+    const { data } = await axios.post("/friends", {id:id});
+    return data;
+  }
+);
+
+export const fetchAddFriends = createAsyncThunk(
+  "friends/fetchAddFriends",
+  async (params) => {
+    const { data } = await axios.post("/add-friends", params);
+    console.log(data)
     return data;
   }
 );
@@ -19,8 +28,8 @@ const friendsSlice = createSlice({
   reducers: {
     friend: (state, action) => {
       const SubUser = action.payload;
-      const indexSubUser = state.data.indexOf((user) = user.id === SubUser.id)
-      state.data.splice(indexSubUser, 1, SubUser)
+      // const indexSubUser = state.data.indexOf((user) = user.id === SubUser.id)
+      // state.data.splice(indexSubUser, 1, SubUser)
     },
   },
   extraReducers: (friends) => {

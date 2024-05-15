@@ -36,7 +36,16 @@ const UserSchema = new mongoose.Schema({
   },
   historyMessage: {
     type: [Object]
-  }
+  },
+  subscription:{
+    type:[Object]
+  },
+  subscriber:{
+    type:[Object]
+  },
+  friend:{
+    type:[Object]
+  },
 }, {
   timestamps: true,
 })

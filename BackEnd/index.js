@@ -156,7 +156,8 @@ app.patch(
   handleValidationEror,
   userController.updateUser
 );
-app.get("/friends", userController.friends)
+app.post("/friends", userController.friends)
+app.post("/add-friends", userController.addFrinds)
 const server = http.createServer(app)
 
 const io = new Server(server, {

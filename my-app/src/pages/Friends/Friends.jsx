@@ -1,24 +1,36 @@
 import Header from "../../componets/Header/Header";
 import s from "./friends.module.css";
 import FriendsBLock from "../../componets/FriendsBlock/FriendsBlock";
-import Options from "../../componets/Options/Options";
 import CustomButton from "../../componets/CustomButton/CustomButton";
 import Search from "../../componets/Search/Search";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFriends } from "../../redux/slices/friends";
-import React from "react";
+import {fetchFriends } from "../../redux/slices/friends";
+import {useEffect} from "react";
 import Loading from "../../componets/Loading/Loading";
+import SubscriptionBlock from "../../componets/SubscriptionBlock/SubscriptionBlock";
+import { Navigate, useNavigate } from "react-router-dom";
+import { selectIsAuth } from "../../redux/slices/login";
 
 const Friends = () => {
   const dispatch = useDispatch();
-  React.useEffect(() => {
-    dispatch(fetchFriends());
-  }, []);
+  const { id } = useSelector((state)=> state.login)
+  const dataMe = useSelector((state)=> state.login)
   const { data, status } = useSelector((state) => state.friend);
-  const idLoading = "loaded" === status;
+  // console.log(dataMe.data)
+  const navigate = useNavigate()
+  const isAuth = useSelector(selectIsAuth);
+  console.log(isAuth)
+
+  const isLoading = "loaded" === status;
+  useEffect(() => {
+    {id && dispatch(fetchFriends(id))}
+  }, [id]);
+  if (!isAuth) {
+    return <Navigate to={"/"} /> 
+  }
   return (
     <>
-      {!idLoading ? (
+      {!isLoading ? (
         <Loading />
       ) : (
         <>
@@ -33,24 +45,22 @@ const Friends = () => {
                     size="small"
                   />
                   <CustomButton
-                    title="Друзья онлайн "
+                    title="Мои друзья"
                     typeStyle="primary"
-                    rightBlock={true}
-                    size="average"
+                    // rightBlock={true}
+                    size="small"
                   />
                 </div>
                 <div className={s.searchBlog}>
                   <Search />
                 </div>
               </div>
-              <span className={s.friendsText}>Поиск друзей</span>
-              <div className={s.cardBlog}>
-                <FriendsBLock data={data} />
-              </div>
+                <SubscriptionBlock data={data} userMeId={id} />
+                <FriendsBLock data={data} userMeId={id} />
             </div>
-            <div className={s.mainBlog2}>
+            {/* <div className={s.mainBlog2}>
               <Options />
-            </div>
+            </div> */}
           </div>
         </>
       )}

@@ -143,7 +143,7 @@ export const addMusic = async (req, res) => {
       },
       { $push: { music: req.body.music } }
     );
-    console.log(userId)
+    console.log(userId);
     res.json("Музыка успешно добавлена");
   } catch (error) {
     console.log("err => ", error);
@@ -151,7 +151,7 @@ export const addMusic = async (req, res) => {
       message: "Нет доступа",
     });
   }
-}
+};
 
 export const removeMusic = async (req, res) => {
   try {
@@ -173,15 +173,56 @@ export const removeMusic = async (req, res) => {
       message: "Нет доступа",
     });
   }
-}
+};
 export const friends = async (req, res) => {
   try {
     const userFriends = await userModel.find().exec();
-    res.json(userFriends);
+    const { id } = req.body;
+    const filterUser = userFriends.filter((user) => user._id.toString() !== id);
+    res.json(filterUser);
   } catch (error) {
     console.log("err => ", error);
     res.status(400).json({
-      message: "Нет доступа",
+      message: "Нет допуста к пользователям",
     });
   }
-}
+};
+export const addFrinds = async (req, res) => {
+  try {
+    const { userFriendId, userMeId } = req.body;
+    const userFriends = await userModel.find().exec();
+    const filterUserMe = userFriends.filter(
+      (user) => user._id.toString() === userMeId
+    );
+    const filterUserFriend = userFriends.filter(
+      (user) => user._id.toString() === userFriendId
+    );
+    const user = {
+      filterUserMe,
+      filterUserFriend,
+    };
+    const isInFriends = filterUserMe[0].friend.includes(userFriendId);
+    const isInSubscribers = filterUserMe[0].subscriber.includes(userFriendId);
+    const isInSubscription = filterUserMe[0].subscription.includes(userFriendId);
+    if (!(isInFriends || isInSubscribers || isInSubscription)) {
+      await userModel.updateOne(
+        {
+          _id: userMeId,
+        },
+        { $push: { subscription: userFriendId } }
+      );
+      await userModel.updateOne(
+        {
+          _id: userFriendId,
+        },
+        { $push: { subscriber: userMeId } }
+      );
+    }
+    res.json(user);
+  } catch (error) {
+    console.log("err => ", error);
+    res.status(400).json({
+      message: "Нельзя добавить в друзья",
+    });
+  }
+};
