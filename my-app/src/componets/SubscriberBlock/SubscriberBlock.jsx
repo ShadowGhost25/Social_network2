@@ -1,15 +1,13 @@
 import ava from "./img/ava.png";
-import s from "./subscriptionblock.module.css";
+import s from "./subscriberblock.module.css";
 import CustomButton from "../CustomButton/CustomButton";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAddFriends, friend } from "../../redux/slices/friends";
 import { selectIsAuth } from "../../redux/slices/login";
 import { Navigate, useNavigate } from "react-router-dom";
 
-const SubscriptionBlock = ({ data, userMeId }) => {
-  // console.log(userMeId);
+const SubscriberBlock = ({ data, userMeId }) => {
   const dispatch = useDispatch();
-  // console.log(data);
   const addFriends = (userFriendId, userMeId) => {
     // console.log(id, userMeId)
     const params = {
@@ -19,11 +17,15 @@ const SubscriptionBlock = ({ data, userMeId }) => {
     dispatch(fetchAddFriends(params));
     window.location.reload();
   };
-  const subscribers = data.filter((user) => user.subscriber.includes(userMeId));
-
+  const subscribers = data.filter((user) =>
+    user.subscription.includes(userMeId)
+  );
+  console.log(subscribers, "subscribers");
   return (
     <>
-      <span className={s.friendsText}>Ваши запросы кому-то в друзья</span>
+      <span className={s.friendsText}>
+        К вам запросы в друзья (SubscriberBlock){" "}
+      </span>
       <div className={s.cardBlog}>
         {/* <span className={s.friendsText}>Поиск друзей</span> */}
 
@@ -47,7 +49,11 @@ const SubscriptionBlock = ({ data, userMeId }) => {
                   />
                 </div>
               ) : (
-                <h4 className={s.h4}>Ждём добавление в друзья...</h4>
+                <div className={s.displayFriends}>
+                  <h3 className={s.name}>
+                    {friends.fullName} {friends.surName}
+                  </h3>
+                </div>
               )}
               {/* {console.log(userMeId)} */}
             </div>
@@ -58,4 +64,4 @@ const SubscriptionBlock = ({ data, userMeId }) => {
   );
 };
 
-export default SubscriptionBlock;
+export default SubscriberBlock;

@@ -204,6 +204,9 @@ export const addFrinds = async (req, res) => {
     const isInFriends = filterUserMe[0].friend.includes(userFriendId);
     const isInSubscribers = filterUserMe[0].subscriber.includes(userFriendId);
     const isInSubscription = filterUserMe[0].subscription.includes(userFriendId);
+    const isInFriendsUser = filterUserFriend[0].friend.includes(userMeId);
+    const isInSubscribersUser = filterUserFriend[0].subscriber.includes(userMeId);
+    const isInSubscriptionUser = filterUserFriend[0].subscription.includes(userMeId);
     if (!(isInFriends || isInSubscribers || isInSubscription)) {
       await userModel.updateOne(
         {
@@ -218,6 +221,35 @@ export const addFrinds = async (req, res) => {
         { $push: { subscriber: userMeId } }
       );
     }
+    if (isInSubscriptionUser && isInSubscribers) {
+      await userModel.updateOne(
+        {
+          _id: userMeId,
+        },
+        { $pull: { subscriber: userFriendId } }
+      );
+      await userModel.updateOne(
+        {
+          _id: userFriendId,
+        },
+        { $pull: { subscription: userMeId } }
+      );
+      await userModel.updateOne(
+        {
+          _id: userMeId,
+        },
+        { $push: { friend: userFriendId } }
+      );
+      await userModel.updateOne(
+        {
+          _id: userFriendId,
+        },
+        { $push: { friend: userMeId } }
+      );
+    }
+    console.log(!(isInFriends || isInSubscribers || isInSubscription))
+    console.log(isInSubscriptionUser && isInSubscribers)
+    console.log(userFriendId)
     res.json(user);
   } catch (error) {
     console.log("err => ", error);

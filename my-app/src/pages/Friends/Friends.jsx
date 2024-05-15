@@ -4,29 +4,31 @@ import FriendsBLock from "../../componets/FriendsBlock/FriendsBlock";
 import CustomButton from "../../componets/CustomButton/CustomButton";
 import Search from "../../componets/Search/Search";
 import { useDispatch, useSelector } from "react-redux";
-import {fetchFriends } from "../../redux/slices/friends";
-import {useEffect} from "react";
+import { fetchFriends } from "../../redux/slices/friends";
+import { useEffect } from "react";
 import Loading from "../../componets/Loading/Loading";
-import SubscriptionBlock from "../../componets/SubscriptionBlock/SubscriptionBlock";
+import SubscriberBlock from "../../componets/SubscriberBlock/SubscriberBlock";
 import { Navigate, useNavigate } from "react-router-dom";
 import { selectIsAuth } from "../../redux/slices/login";
+import SubscriptionBlock from "../../componets/SubscriptionBlock/SubscriptionBlock";
 
 const Friends = () => {
   const dispatch = useDispatch();
-  const { id } = useSelector((state)=> state.login)
-  const dataMe = useSelector((state)=> state.login)
+  const { id } = useSelector((state) => state.login);
+  const dataMe = useSelector((state) => state.login);
   const { data, status } = useSelector((state) => state.friend);
-  // console.log(dataMe.data)
-  const navigate = useNavigate()
+  console.log(dataMe.data);
+  const navigate = useNavigate();
   const isAuth = useSelector(selectIsAuth);
-  console.log(isAuth)
 
   const isLoading = "loaded" === status;
   useEffect(() => {
-    {id && dispatch(fetchFriends(id))}
+    {
+      id && dispatch(fetchFriends(id));
+    }
   }, [id]);
-  if (!isAuth) {
-    return <Navigate to={"/"} /> 
+  if (!isAuth && !window.localStorage.getItem("token")) {
+    return <Navigate to={"/"} />;
   }
   return (
     <>
@@ -55,8 +57,9 @@ const Friends = () => {
                   <Search />
                 </div>
               </div>
-                <SubscriptionBlock data={data} userMeId={id} />
-                <FriendsBLock data={data} userMeId={id} />
+              <FriendsBLock data={data} userMeId={id} />
+              <SubscriberBlock data={data} userMeId={id} />
+              <SubscriptionBlock data={data} userMeId={id} />
             </div>
             {/* <div className={s.mainBlog2}>
               <Options />

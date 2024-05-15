@@ -4,9 +4,7 @@ import CustomButton from "../CustomButton/CustomButton";
 import { useDispatch } from "react-redux";
 import { fetchAddFriends, friend } from "../../redux/slices/friends";
 const FriendsBLock = ({ data, userMeId }) => {
-  // console.log(userMeId);
   const dispatch = useDispatch();
-  // console.log(data)
   const addFriends = (userFriendId, userMeId) => {
     // console.log(id, userMeId)
     const params = {
@@ -14,14 +12,22 @@ const FriendsBLock = ({ data, userMeId }) => {
       userMeId,
     };
     dispatch(fetchAddFriends(params));
+    window.location.reload();
   };
+  const filteredUsers = data.filter(
+    (user) =>
+      !user.subscription.includes(userMeId) &&
+      !user.subscriber.includes(userMeId) &&
+      !user.friend.includes(userMeId)
+  );
+  console.log(filteredUsers, "dataFriends");
   return (
     <>
-        <span className={s.friendsText}>Запросы в друзья (Подписчик)</span>
+      <span className={s.friendsText}>Искать друзей</span>
       <div className={s.cardBlog}>
         {/* <span className={s.friendsText}>Поиск друзей</span> */}
 
-        {data.map((friends, index) => {
+        {filteredUsers.map((friends, index) => {
           return (
             <>
               <div key={index} className={s.card}>
@@ -32,25 +38,14 @@ const FriendsBLock = ({ data, userMeId }) => {
                     {friends.fullName} {friends.surName}
                   </h3>
                 </div>
-                {friends.subscriber.includes(userMeId) ? (
-                  <div className={s.center}>
-                    <CustomButton
-                      click={() => addFriends(friends._id, userMeId)}
-                      title="Подписчик"
-                      typeStyle="primary"
-                      size="average"
-                    />
-                  </div>
-                ) : (
-                  <div className={s.center}>
-                    <CustomButton
-                      click={() => addFriends(friends._id, userMeId)}
-                      title="Добавить в друзья"
-                      typeStyle="primary"
-                      size="average"
-                    />
-                  </div>
-                )}
+                <div className={s.center}>
+                  <CustomButton
+                    click={() => addFriends(friends._id, userMeId)}
+                    title="Добавить в друзья"
+                    typeStyle="primary"
+                    size="average"
+                  />
+                </div>
                 {/* {console.log(userMeId)} */}
               </div>
             </>
