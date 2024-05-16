@@ -6,10 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchFriends } from "../../redux/slices/friends";
 import { useEffect, useState } from "react";
 import Loading from "../../componets/Loading/Loading";
-import SubscriberBlock from "../../componets/SubscriberBlock/SubscriberBlock";
 import { Navigate } from "react-router-dom";
 import { selectIsAuth } from "../../redux/slices/login";
-import SubscriptionBlock from "../../componets/SubscriptionBlock/SubscriptionBlock";
 import AllFriends from "../../componets/AllFriends/AllFriends";
 import MeFriends from "../../componets/MeFriends/MeFriends";
 
@@ -76,8 +74,6 @@ const Friends = () => {
               {friends && (
                 <>
                   <AllFriends data={data} userMeId={id} />
-                  <SubscriberBlock data={data} userMeId={id} />
-                  <SubscriptionBlock data={data} userMeId={id} />
                 </>
               )}
               {meAllFriends && <MeFriends data={data} userMeId={id}  />}

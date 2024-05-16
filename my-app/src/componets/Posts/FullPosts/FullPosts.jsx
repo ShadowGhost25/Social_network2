@@ -64,6 +64,17 @@ const FullPosts = () => {
                   />
                 </div>
               )}
+              {data.tags[0] && (
+                <div key={data.tags} className={s.displayTags}>
+                  {data.tags.map((tag) => {
+                    return (
+                      <span key={tag} className={s.tags}>
+                        #{tag}
+                      </span>
+                    );
+                  })}
+                </div>
+              )}
               <div className={s.buttonFotter}>
                 {assessmentPosts.map((obj, index) => {
                   return (
