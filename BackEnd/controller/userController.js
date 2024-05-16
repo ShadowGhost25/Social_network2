@@ -187,7 +187,7 @@ export const friends = async (req, res) => {
     });
   }
 };
-export const addFrinds = async (req, res) => {
+export const addFriends = async (req, res) => {
   try {
     const { userFriendId, userMeId } = req.body;
     const userFriends = await userModel.find().exec();
@@ -247,10 +247,32 @@ export const addFrinds = async (req, res) => {
         { $push: { friend: userMeId } }
       );
     }
-    console.log(!(isInFriends || isInSubscribers || isInSubscription))
-    console.log(isInSubscriptionUser && isInSubscribers)
-    console.log(userFriendId)
+ 
     res.json(user);
+  } catch (error) {
+    console.log("err => ", error);
+    res.status(400).json({
+      message: "Нельзя добавить в друзья",
+    });
+  }
+};
+export const deleteFriends = async (req, res) => {
+  try {
+    const { userFriendId, userMeId } = req.body;
+    await userModel.updateOne(
+      {
+        _id: userMeId,
+      },
+      { $pull: { friend: userFriendId } }
+    );
+    await userModel.updateOne(
+      {
+        _id: userFriendId,
+      },
+      { $pull: { friend: userMeId } }
+    );
+    console.log(userFriendId, userMeId)
+    res.json(userFriendId);
   } catch (error) {
     console.log("err => ", error);
     res.status(400).json({

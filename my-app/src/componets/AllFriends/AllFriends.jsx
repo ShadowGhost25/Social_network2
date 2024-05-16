@@ -1,9 +1,9 @@
 import ava from "./img/ava.png";
-import s from "./friendsblock.module.css";
+import s from "./allfriends.module.css";
 import CustomButton from "../CustomButton/CustomButton";
 import { useDispatch } from "react-redux";
-import { fetchAddFriends, friend } from "../../redux/slices/friends";
-const FriendsBLock = ({ data, userMeId }) => {
+import { fetchAddFriends } from "../../redux/slices/friends";
+const AllFriends = ({ data, userMeId }) => {
   const dispatch = useDispatch();
   const addFriends = (userFriendId, userMeId) => {
     // console.log(id, userMeId)
@@ -56,4 +56,4 @@ const FriendsBLock = ({ data, userMeId }) => {
   );
 };
 
-export default FriendsBLock;
+export default AllFriends;

@@ -1,10 +1,8 @@
 import ava from "./img/ava.png";
 import s from "./subscriptionblock.module.css";
 import CustomButton from "../CustomButton/CustomButton";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAddFriends, friend } from "../../redux/slices/friends";
-import { selectIsAuth } from "../../redux/slices/login";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchAddFriends } from "../../redux/slices/friends";
 
 const SubscriptionBlock = ({ data, userMeId }) => {
   // console.log(userMeId);
@@ -54,6 +52,11 @@ const SubscriptionBlock = ({ data, userMeId }) => {
           );
         })}
       </div>
+      {subscribers.length === 0 && (
+        <span className={s.invitation}>
+          Вы никому не кинули приглашение в друзья
+        </span>
+      )}
     </>
   );
 };

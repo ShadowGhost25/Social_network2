@@ -157,7 +157,8 @@ app.patch(
   userController.updateUser
 );
 app.post("/friends", userController.friends)
-app.post("/add-friends", userController.addFrinds)
+app.post("/add-friends", userController.addFriends)
+app.post("/delete-friends", userController.deleteFriends)
 const server = http.createServer(app)
 
 const io = new Server(server, {

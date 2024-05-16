@@ -17,6 +17,14 @@ export const fetchAddFriends = createAsyncThunk(
     return data;
   }
 );
+export const fetchDeleteFriends = createAsyncThunk(
+  "friends/fetchDeleteFriends",
+  async (params) => {
+    const { data } = await axios.post("/delete-friends", params);
+    console.log(data)
+    return data;
+  }
+);
 const initialState = {
   data: null,
   status: "loadnig",

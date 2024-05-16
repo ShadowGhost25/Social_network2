@@ -4,61 +4,68 @@
     background: rgba(125, 161, 253, 0.3);
     border-radius: 20px;
     position: relative;
-}
-
-.cardHeader {
+  }
+  
+  .cardHeader {
     height: 100px;
     border-radius: 20px 20px 0px 0px;
     background: linear-gradient(100deg, rgba(49, 163, 207, 1), 35%, rgba(249, 198, 246, 1))
-}
-
-.ava {
+  }
+  
+  .ava {
     position: absolute;
     width: 70px;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.center {
+  }
+  
+  .center {
     display: flex;
     justify-content: center;
     margin: 0px 0px 8px;
-}
-
-.name {
+    z-index: 2;
+  }
+  
+  .name {
     margin-top: 15px;
     margin-bottom: 10px;
     text-align: center;
-}
-
-.displayFriends {
+  }
+  
+  .displayFriends {
     padding: 10px;
-}
-
-.centerImage {
+  }
+  
+  .centerImage {
     z-index: 3;
-}
-
-.friendsText {
+  }
+  
+  .friendsText {
     display: block;
     margin-top: 20px;
     padding-left: 15px;
     font-size: 24px;
     background-color: white;
     font-weight: 700;
-}
-.invitation{
+  }
+  
+  .cardBlog {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 267px);
+    justify-items: center;
+    background-color: white;
+  }
+  
+  .h4 {
+    text-align: center;
+    margin: 0px 0px 10px 0px;
+  }
+  .invitation{
     display: block;
     padding-left: 15px;
     font-size: 20px;
     padding-bottom: 5px;
     background-color: white;
     font-weight: 400;
-}
-.cardBlog {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 267px);
-    justify-items: center;
-    background-color: white;
-}
+  }
