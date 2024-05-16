@@ -22,7 +22,6 @@ const Friends = () => {
   const isLoading = "loaded" === status;
   useEffect(() => {
     id && dispatch(fetchFriends(id));
-
   }, [id]);
   // useEffect(() => {
   //   if (dataMe !== null) {
@@ -32,15 +31,13 @@ const Friends = () => {
   if (!isAuth && !window.localStorage.getItem("token")) {
     return <Navigate to="/" />;
   }
-  console.log()
   const allFriends = () => {
     setFriends(true);
-    setMeAllFriends(false)
+    setMeAllFriends(false);
   };
   const meFriends = () => {
     setMeAllFriends(true);
     setFriends(false);
-
   };
   return (
     <>
@@ -76,7 +73,7 @@ const Friends = () => {
                   <AllFriends data={data} userMeId={id} />
                 </>
               )}
-              {meAllFriends && <MeFriends data={data} userMeId={id}  />}
+              {meAllFriends && <MeFriends data={data} userMeId={id} />}
             </div>
             {/* <div className={s.mainBlog2}>
               <Options />

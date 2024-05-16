@@ -4,18 +4,28 @@ import ava from "./img/ava.png";
 import Posts from "../../componets/Posts/Posts";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectIsAuth } from "../../redux/slices/login";
-import { Navigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import Loading from "../../componets/Loading/Loading";
 import CustomButton from "../../componets/CustomButton/CustomButton";
 import { navigationButtons } from "../../Route/route";
 import GroupNotification from "../../componets/GroupNotification/GroupNotification";
 import FriendsOnline from "../../componets/FriendsOnline/FriendsOnline";
 import { useEffect } from "react";
+import { fetchUser } from "../../redux/slices/user";
 const Profile = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
+  const location = window.location.pathname;
+  const { id } = useParams();
   const { status, data } = useSelector((state) => state.login);
+  const dataUser = useSelector((state) => state.user);
   const isProfileLoading = status === "loaded";
+  const isUserLoading = dataUser.status === "loaded";
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchUser(id));
+    }
+  }, [location]);
   const onClickLogout = () => {
     if (window.confirm("Вы действительно хотите выйти.")) {
       dispatch(logout());
@@ -25,9 +35,12 @@ const Profile = () => {
   if (!window.localStorage.getItem("token") && !isAuth) {
     return <Navigate to="/" />;
   }
+  console.log(dataUser);
+  debugger;
+  const user = location === "/profile" ? data : dataUser.data;
   return (
     <>
-      {!isProfileLoading ? (
+      {!isProfileLoading && !isUserLoading ? (
         <Loading />
       ) : (
         <div>
@@ -69,9 +82,9 @@ const Profile = () => {
               <div className={s.main2}>
                 <div className={s.user}>
                   <span className={s.userFio}>
-                    {data.fullName} {data.surName}
+                    {user?.fullName} {user?.surName}
                   </span>
-                  <span className={s.status}>{data.status}</span>
+                  <span className={s.status}>{user?.status}</span>
                   <div className={s.imgDisplay}>
                     {navigationButtons.map((obj, index) => (
                       <div key={index} className={s.positionBlock}>

@@ -159,6 +159,7 @@ app.patch(
 app.post("/friends", userController.friends)
 app.post("/add-friends", userController.addFriends)
 app.post("/delete-friends", userController.deleteFriends)
+app.get("/profile/:id", userController.getOneUser)
 const server = http.createServer(app)
 
 const io = new Server(server, {

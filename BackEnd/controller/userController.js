@@ -40,7 +40,6 @@ export const register = async (req, res) => {
     return;
   }
 };
-
 export const updateUser = async (req, res) => {
   try {
     const userId = req.body.id;
@@ -66,7 +65,6 @@ export const updateUser = async (req, res) => {
     });
   }
 };
-
 export const login = async (req, res) => {
   try {
     const user = await userModel.findOne({ email: req.body.email });
@@ -108,7 +106,6 @@ export const login = async (req, res) => {
     });
   }
 };
-
 export const getMe = async (req, res) => {
   try {
     const user = await userModel.findById(req.userId);
@@ -129,7 +126,6 @@ export const getMe = async (req, res) => {
     return;
   }
 };
-
 export const addMusic = async (req, res) => {
   try {
     const userId = req.body.id;
@@ -152,7 +148,6 @@ export const addMusic = async (req, res) => {
     });
   }
 };
-
 export const removeMusic = async (req, res) => {
   try {
     const userId = req.body.id;
@@ -247,7 +242,7 @@ export const addFriends = async (req, res) => {
         { $push: { friend: userMeId } }
       );
     }
- 
+
     res.json(user);
   } catch (error) {
     console.log("err => ", error);
@@ -280,3 +275,25 @@ export const deleteFriends = async (req, res) => {
     });
   }
 };
+export const getOneUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const user = await userModel.findByIdAndUpdate(
+      {
+        _id: userId,
+      }
+    )
+    if (!user) {
+      return res.status(404).json({
+        message: "Пользователь не найден",
+      });
+    }
+    console.log(userId)
+    res.json(user);
+  } catch (error) {
+    console.log("err => ", error);
+    res.status(500).json({
+      message: "Не удалось получить пользователя",
+    });
+  }
+}
