@@ -9,6 +9,13 @@ export const fetchUser = createAsyncThunk(
   }
 );
 
+export const fetchJoinRoom = createAsyncThunk(
+  "user/fetchJoinRoom",
+  async (id) => {
+    const { data } = await axios.post("/roomId", { id: id });
+    return data;
+  }
+);
 const initialState = {
   data: null,
   status: "loadnig",

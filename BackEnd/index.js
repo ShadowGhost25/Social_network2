@@ -160,47 +160,26 @@ app.post("/friends", userController.friends)
 app.post("/add-friends", userController.addFriends)
 app.post("/delete-friends", userController.deleteFriends)
 app.get("/profile/:id", userController.getOneUser)
+app.post("/roomId", messagecontroller.messages)
+
 const server = http.createServer(app)
 
 const io = new Server(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST", "PATCH", "DELETE"]
-  }
+  },
+  pingInterval: 25000,
+  pingTimeout: 60000,
 });
-// const CHAT_BOT = 'ChatBot';
-// let chatRoom = '';
-// let allUsers = [];
+
 io.on('connection', (socket) => {
-  // socket.on('join', ( data ) => {
-  //   const { userName, roomId} = data
-  //   socket.join(roomId);
-
-  //   let __createdtime__ = Date.now(); // Current timestamp
-  //   socket.to(roomId).emit('message', {
-  //     message: userName,
-  //     userName: CHAT_BOT,
-  //   __createdtime__
-  //   });
-  //   socket.emit('receive_message', {
-  //     username: CHAT_BOT,
-  //     __createdtime__
-  //   });
-  //   chatRoom = room;
-  //   allUsers.push({ id: socket.id, username, room });
-  //   chatRoomUsers = allUsers.filter((user) => user.room === room);
-  //   socket.to(room).emit('chatroom_users', chatRoomUsers);
-  //   socket.emit('chatroom_users', chatRoomUsers);
-  // });
-  socket.on('connect', () => { })
+  console.log('A user connected:', socket.id);
   socket.on('join', ({ roomId, userName }) => {
-    // Присоединяем пользователя к комнате
     socket.join(roomId);
-    // const user = {roomId, userName};
-    // socket.emit("message", user)
+    console.log(`${userName} joined room: ${roomId}`);
   });
-
-  socket.on('sendMessage', (message) => {
+  socket.on('message', (message) => {
     console.log(message)
     // Отправляем сообщение всем пользователям в комнате, кроме отправителя
     socket.to(message.roomId).emit('message', message);
@@ -211,7 +190,6 @@ io.on('connection', (socket) => {
   });
 });
 
-app.post('/roomId', messagecontroller.messages)
 
 server.listen(3002, (err) => {
   if (err) {

@@ -5,13 +5,13 @@ import Posts from "../../componets/Posts/Posts";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectIsAuth } from "../../redux/slices/login";
 import { Navigate, useParams } from "react-router-dom";
-import Loading from "../../componets/Loading/Loading";
-import CustomButton from "../../componets/CustomButton/CustomButton";
-import { navigationButtons } from "../../Route/route";
-import GroupNotification from "../../componets/GroupNotification/GroupNotification";
-import FriendsOnline from "../../componets/FriendsOnline/FriendsOnline";
 import { useEffect } from "react";
 import { fetchUser } from "../../redux/slices/user";
+import { navigationButtons } from "../../Route/route";
+import Loading from "../../componets/Loading/Loading";
+import CustomButton from "../../componets/CustomButton/CustomButton";
+import GroupNotification from "../../componets/GroupNotification/GroupNotification";
+import FriendsOnline from "../../componets/FriendsOnline/FriendsOnline";
 const Profile = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
@@ -35,9 +35,11 @@ const Profile = () => {
   if (!window.localStorage.getItem("token") && !isAuth) {
     return <Navigate to="/" />;
   }
-  console.log(dataUser);
-  debugger;
-  const user = location === "/profile" ? data : dataUser.data;
+  const user = dataUser.data
+    ? location === "/profile"
+      ? data
+      : dataUser.data[0]
+    : null;
   return (
     <>
       {!isProfileLoading && !isUserLoading ? (
@@ -64,7 +66,7 @@ const Profile = () => {
                 <div className={s.blogProfileUser}>
                   <img className={s.ava} src={ava} alt="no img" />
                   <span className={s.friendsInput}>Друзья</span>
-                  <span className={s.kolFriends}>14</span>
+                  <span className={s.kolFriends}>{user?.friend.length}</span>
                   <hr />
                   <div className={s.positionButton}>
                     <CustomButton

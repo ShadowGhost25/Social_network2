@@ -277,19 +277,17 @@ export const deleteFriends = async (req, res) => {
 };
 export const getOneUser = async (req, res) => {
   try {
-    const userId = req.params.id;
-    const user = await userModel.findByIdAndUpdate(
-      {
-        _id: userId,
-      }
-    )
-    if (!user) {
+    const userIds = req.params.id.split(',');
+    const users = await userModel.find({
+      _id: { $in: userIds }
+    });
+    if (!users) {
       return res.status(404).json({
         message: "Пользователь не найден",
       });
     }
-    console.log(userId)
-    res.json(user);
+    console.log(userIds)
+    res.json(users);
   } catch (error) {
     console.log("err => ", error);
     res.status(500).json({
