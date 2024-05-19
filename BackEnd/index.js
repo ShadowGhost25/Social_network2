@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 import multer from "multer";
 import cors from "cors";
 import fs from "fs";
+import http from "http";
+// import { WebSocketServer } from "ws";
+import { Server } from 'socket.io';
 
 import {
   loginValidator,
@@ -14,12 +17,13 @@ import {
 
 import {
   groupController,
+  messagecontroller,
   postController,
   userController,
 } from "./controller/Controller.js";
 
 import { handleValidationEror, cheakAuth } from "./utils/Utils.js";
-
+import userModel from "./models/User.js";
 mongoose
   .connect(
     "mongodb+srv://admin:wwwwww@practic.gpq4sx8.mongodb.net/blog?retryWrites=true&w=majority"
@@ -57,7 +61,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 const music = multer({ storage }); //multer({ storage }): Это создает экземпляр объекта multer, который настраивается с опциями.
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: "*", methods: ["GET", "POST", "PATCH", "DELETE"] }));
 app.use("/uploads", express.static("uploads")); //express.static("uploads"): Это middleware Express.js, который предоставляет статические файлы из указанной директории.
 app.use("/music", express.static("musics"));
 
@@ -152,10 +156,45 @@ app.patch(
   handleValidationEror,
   userController.updateUser
 );
+app.post("/friends", userController.friends)
+app.post("/add-friends", userController.addFriends)
+app.post("/delete-friends", userController.deleteFriends)
+app.get("/profile/:id", userController.getOneUser)
+app.post("/roomId", messagecontroller.room)
+app.post("/add-message", messagecontroller.messages)
 
-app.listen(3002, (err) => {
+const server = http.createServer(app)
+
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST", "PATCH", "DELETE"]
+  },
+  pingInterval: 25000,
+  pingTimeout: 60000,
+});
+
+io.on('connection', (socket) => {
+  console.log('A user connected:', socket.id);
+  socket.on('join', ({ roomId, userName }) => {
+    socket.join(roomId);
+    console.log(`${userName} joined room: ${roomId}`);
+  });
+  socket.on('message', (message) => {
+    console.log(message)
+    // Отправляем сообщение всем пользователям в комнате, кроме отправителя
+    io.to(message.roomId).emit('message', message);
+  });
+  // io.to
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+});
+
+
+server.listen(3002, (err) => {
   if (err) {
     return console.log("=>", err);
   }
-  console.log("Server Ok");
+  console.log("Express Server Ok");
 });

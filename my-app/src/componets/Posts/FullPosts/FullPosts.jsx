@@ -7,7 +7,7 @@ import Loading from "../../Loading/Loading";
 import Markdown from "react-markdown";
 import moment from "moment";
 import "moment/locale/ru";
-import { assessmentPosts } from "../../../Route/route";
+import { assessmentPosts, localHost } from "../../../Route/route";
 import CustomButton from "../../CustomButton/CustomButton";
 
 const FullPosts = () => {
@@ -59,9 +59,20 @@ const FullPosts = () => {
                 <div className={s.postsMain}>
                   <img
                     className={s.postsFoto}
-                    src={`https://social-network2.vercel.app/${data.imageUrl}`}
+                    src={localHost + data.imageUrl}
                     alt="posts"
                   />
+                </div>
+              )}
+              {data.tags[0] && (
+                <div key={data.tags} className={s.displayTags}>
+                  {data.tags.map((tag) => {
+                    return (
+                      <span key={tag} className={s.tags}>
+                        #{tag}
+                      </span>
+                    );
+                  })}
                 </div>
               )}
               <div className={s.buttonFotter}>

@@ -4,6 +4,8 @@ import { fetchDeleteMusicMe } from "../../redux/slices/music";
 import s from "./MusicPlayMe.module.css";
 import Loading from "../Loading/Loading";
 import { useState } from "react";
+import axios from "../../axios";
+import { localHost } from "../../Route/route";
 
 const MusicPlayMe = () => {
   const dispatch = useDispatch();
@@ -30,9 +32,7 @@ const MusicPlayMe = () => {
               <div key={index} className={s.music}>
                 <div className={s.marginBlock}>
                   <div className={s.activeText}> {nameWithoutExtension} </div>
-                  <audio
-                    src={`https://social-network2.vercel.app/${arr}`}
-                  ></audio>
+                  <audio src={localHost + arr}></audio>
                   <CustomButton
                     click={() => {
                       deleteMusic(arr);

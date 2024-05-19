@@ -1,0 +1,60 @@
+.card {
+    width: 230px;
+    margin: 10px 15px;
+    background: rgba(125, 161, 253, 0.3);
+    border-radius: 20px;
+    position: relative;
+  }
+  
+  .cardHeader {
+    height: 100px;
+    border-radius: 20px 20px 0px 0px;
+    background: linear-gradient(100deg, rgba(49, 163, 207, 1), 35%, rgba(249, 198, 246, 1))
+  }
+  
+  .ava {
+    position: absolute;
+    width: 70px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .center {
+    display: flex;
+    justify-content: center;
+    margin: 0px 0px 8px;
+    z-index: 2;
+  }
+  
+  .name {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .displayFriends {
+    padding: 10px;
+  }
+  
+  .centerImage {
+    z-index: 3;
+  }
+  
+  .friendsText {
+    display: block;
+    margin-top: 20px;
+    padding-left: 15px;
+    font-size: 24px;
+    background-color: white;
+    font-weight: 700;
+  }
+  
+  .cardBlog {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 267px);
+    justify-items: center;
+    background-color: white;
+  }
+  
+

@@ -40,7 +40,6 @@ export const register = async (req, res) => {
     return;
   }
 };
-
 export const updateUser = async (req, res) => {
   try {
     const userId = req.body.id;
@@ -66,7 +65,6 @@ export const updateUser = async (req, res) => {
     });
   }
 };
-
 export const login = async (req, res) => {
   try {
     const user = await userModel.findOne({ email: req.body.email });
@@ -108,7 +106,6 @@ export const login = async (req, res) => {
     });
   }
 };
-
 export const getMe = async (req, res) => {
   try {
     const user = await userModel.findById(req.userId);
@@ -129,7 +126,6 @@ export const getMe = async (req, res) => {
     return;
   }
 };
-
 export const addMusic = async (req, res) => {
   try {
     const userId = req.body.id;
@@ -143,7 +139,6 @@ export const addMusic = async (req, res) => {
       },
       { $push: { music: req.body.music } }
     );
-    console.log(userId)
     res.json("Музыка успешно добавлена");
   } catch (error) {
     console.log("err => ", error);
@@ -151,8 +146,7 @@ export const addMusic = async (req, res) => {
       message: "Нет доступа",
     });
   }
-}
-
+};
 export const removeMusic = async (req, res) => {
   try {
     const userId = req.body.id;
@@ -171,6 +165,130 @@ export const removeMusic = async (req, res) => {
     console.log("err => ", error);
     res.status(400).json({
       message: "Нет доступа",
+    });
+  }
+};
+export const friends = async (req, res) => {
+  try {
+    const userFriends = await userModel.find().exec();
+    const { id } = req.body;
+    const filterUser = userFriends.filter((user) => user._id.toString() !== id);
+    res.json(filterUser);
+  } catch (error) {
+    console.log("err => ", error);
+    res.status(400).json({
+      message: "Нет допуста к пользователям",
+    });
+  }
+};
+export const addFriends = async (req, res) => {
+  try {
+    const { userFriendId, userMeId } = req.body;
+    const userFriends = await userModel.find().exec();
+    const filterUserMe = userFriends.filter(
+      (user) => user._id.toString() === userMeId
+    );
+    const filterUserFriend = userFriends.filter(
+      (user) => user._id.toString() === userFriendId
+    );
+    const user = {
+      filterUserMe,
+      filterUserFriend,
+    };
+    const isInFriends = filterUserMe[0].friend.includes(userFriendId);
+    const isInSubscribers = filterUserMe[0].subscriber.includes(userFriendId);
+    const isInSubscription = filterUserMe[0].subscription.includes(userFriendId);
+    const isInFriendsUser = filterUserFriend[0].friend.includes(userMeId);
+    const isInSubscribersUser = filterUserFriend[0].subscriber.includes(userMeId);
+    const isInSubscriptionUser = filterUserFriend[0].subscription.includes(userMeId);
+    if (!(isInFriends || isInSubscribers || isInSubscription)) {
+      await userModel.updateOne(
+        {
+          _id: userMeId,
+        },
+        { $push: { subscription: userFriendId } }
+      );
+      await userModel.updateOne(
+        {
+          _id: userFriendId,
+        },
+        { $push: { subscriber: userMeId } }
+      );
+    }
+    if (isInSubscriptionUser && isInSubscribers) {
+      await userModel.updateOne(
+        {
+          _id: userMeId,
+        },
+        { $pull: { subscriber: userFriendId } }
+      );
+      await userModel.updateOne(
+        {
+          _id: userFriendId,
+        },
+        { $pull: { subscription: userMeId } }
+      );
+      await userModel.updateOne(
+        {
+          _id: userMeId,
+        },
+        { $push: { friend: userFriendId } }
+      );
+      await userModel.updateOne(
+        {
+          _id: userFriendId,
+        },
+        { $push: { friend: userMeId } }
+      );
+    }
+
+    res.json(user);
+  } catch (error) {
+    console.log("err => ", error);
+    res.status(400).json({
+      message: "Нельзя добавить в друзья",
+    });
+  }
+};
+export const deleteFriends = async (req, res) => {
+  try {
+    const { userFriendId, userMeId } = req.body;
+    await userModel.updateOne(
+      {
+        _id: userMeId,
+      },
+      { $pull: { friend: userFriendId } }
+    );
+    await userModel.updateOne(
+      {
+        _id: userFriendId,
+      },
+      { $pull: { friend: userMeId } }
+    );
+    res.json(userFriendId);
+  } catch (error) {
+    console.log("err => ", error);
+    res.status(400).json({
+      message: "Нельзя добавить в друзья",
+    });
+  }
+};
+export const getOneUser = async (req, res) => {
+  try {
+    const userIds = req.params.id.split(',');
+    const users = await userModel.find({
+      _id: { $in: userIds }
+    });
+    if (!users) {
+      return res.status(404).json({
+        message: "Пользователь не найден",
+      });
+    }
+    res.json(users);
+  } catch (error) {
+    console.log("err => ", error);
+    res.status(500).json({
+      message: "Не удалось получить пользователя",
     });
   }
 }

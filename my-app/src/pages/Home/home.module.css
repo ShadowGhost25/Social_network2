@@ -79,4 +79,10 @@
     margin-top: 30px;
     display: flex;
     flex-direction: column-reverse;
+    overflow: auto;
+    height: 709px;
+}
+
+.postsMain::-webkit-scrollbar {
+    width: 0px;
 }

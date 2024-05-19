@@ -31,6 +31,10 @@ export const route = [
     element: <Profile />,
   },
   {
+    path: "/profile/:id",
+    element: <Profile />,
+  },
+  {
     path: "/message",
     element: <Message />,
   },
@@ -212,3 +216,5 @@ export const buttonHeader = [
     typeStyle: "navBar",
   },
 ];
+
+export const localHost = "http://localhost:3002";

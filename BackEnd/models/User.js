@@ -33,7 +33,19 @@ const UserSchema = new mongoose.Schema({
   },
   music: {
     type: [String]
-  }
+  },
+  historyMessage: {
+    type: [Object]
+  },
+  subscription: {
+    type: [Object]
+  },
+  subscriber: {
+    type: [Object]
+  },
+  friend: {
+    type: [Object]
+  },
 }, {
   timestamps: true,
 })
