@@ -15,7 +15,11 @@ const MessageSchema = new mongoose.Schema({
   },
   statusRoom: {
     type: Boolean
-  }
+  },
+  historyMessage: {
+    type: [Object]
+  },
+
 })
 
 export default mongoose.model('Messages', MessageSchema)

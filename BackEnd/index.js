@@ -160,7 +160,8 @@ app.post("/friends", userController.friends)
 app.post("/add-friends", userController.addFriends)
 app.post("/delete-friends", userController.deleteFriends)
 app.get("/profile/:id", userController.getOneUser)
-app.post("/roomId", messagecontroller.messages)
+app.post("/roomId", messagecontroller.room)
+app.post("/add-message", messagecontroller.messages)
 
 const server = http.createServer(app)
 
@@ -182,7 +183,7 @@ io.on('connection', (socket) => {
   socket.on('message', (message) => {
     console.log(message)
     // Отправляем сообщение всем пользователям в комнате, кроме отправителя
-    socket.to(message.roomId).emit('message', message);
+    io.to(message.roomId).emit('message', message);
   });
   // io.to
   socket.on('disconnect', () => {
@@ -197,44 +198,3 @@ server.listen(3002, (err) => {
   }
   console.log("Express Server Ok");
 });
-
-
-// const wss = new WebSocketServer({ port: 4000 });// Создание сервера WebSocket
-// wss.on('connection', function connection(ws) {
-//   ws.on('message', function incoming(message) {
-//     const buffer = Buffer.from(message, 'base64').toString('ascii');
-//     const isEvent = JSON.parse(buffer)
-//     switch (isEvent.event) {
-//       case 'message':
-//         broadCastMessage(isEvent);
-//         const userId = async (req, res) => {
-//           await userModel.findById(isEvent.idUser);
-//           await userModel.updateOne(
-//             {
-//               _id: isEvent.idUser
-//             },
-//             { $push: { historyMessage: isEvent } }
-//           )
-//         }
-//         userId()
-//         console.log('Получено сообщение:', isEvent.message);
-//         break;
-//       case 'connection':
-//         console.log('Новое подключение WebSocket.');
-//         broadCastMessage(isEvent);
-//         break;
-//       default:
-//         console.log('Неизвестное событие:', isEvent.event);
-//     }
-//   });
-
-//   ws.on('close', function close() {
-//     console.log('Клиент WebSocket отключился');
-//   });
-// });
-
-// function broadCastMessage(message) {
-//   wss.clients.forEach(client => {
-//     client.send(JSON.stringify(message));
-//   });
-// }

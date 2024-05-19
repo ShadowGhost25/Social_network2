@@ -11,13 +11,20 @@ export const fetchUser = createAsyncThunk(
 
 export const fetchJoinRoom = createAsyncThunk(
   "user/fetchJoinRoom",
-  async (id) => {
-    const { data } = await axios.post("/roomId", { id: id });
+  async (params) => {
+    const { data } = await axios.post("/roomId", params);
     return data;
   }
 );
+export const fetchMessage = createAsyncThunk("user/fetchMessage",
+  async (params) => {
+    const { data } = await axios.post("/add-message", params);
+    return data;
+  })
 const initialState = {
   data: null,
+  room: null,
+  message: null,
   status: "loadnig",
 };
 
@@ -37,6 +44,18 @@ const userSlice = createSlice({
       })
       .addCase(fetchUser.rejected, (state) => {
         state.data = null;
+        state.status = "error";
+      })
+      .addCase(fetchJoinRoom.pending, (state) => {
+        state.room = null;
+        state.status = "loading";
+      })
+      .addCase(fetchJoinRoom.fulfilled, (state, action) => {
+        state.room = action.payload;
+        state.status = "loaded";
+      })
+      .addCase(fetchJoinRoom.rejected, (state) => {
+        state.room = null;
         state.status = "error";
       })
   },

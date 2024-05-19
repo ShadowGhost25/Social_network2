@@ -139,7 +139,6 @@ export const addMusic = async (req, res) => {
       },
       { $push: { music: req.body.music } }
     );
-    console.log(userId);
     res.json("Музыка успешно добавлена");
   } catch (error) {
     console.log("err => ", error);
@@ -266,7 +265,6 @@ export const deleteFriends = async (req, res) => {
       },
       { $pull: { friend: userMeId } }
     );
-    console.log(userFriendId, userMeId)
     res.json(userFriendId);
   } catch (error) {
     console.log("err => ", error);
@@ -286,7 +284,6 @@ export const getOneUser = async (req, res) => {
         message: "Пользователь не найден",
       });
     }
-    console.log(userIds)
     res.json(users);
   } catch (error) {
     console.log("err => ", error);

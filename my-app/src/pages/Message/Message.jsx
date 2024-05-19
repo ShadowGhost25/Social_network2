@@ -7,23 +7,31 @@ import click from "./img/click.png";
 import { useSelector, useDispatch } from "react-redux";
 import { selectIsAuth } from "../../redux/slices/login";
 import { useRef, useEffect, useState } from "react";
-import { fetchJoinRoom, fetchUser } from "../../redux/slices/user";
+import {
+  fetchJoinRoom,
+  fetchMessage,
+  fetchUser,
+} from "../../redux/slices/user";
+import moment from "moment";
 import io from "socket.io-client";
-import Chat from "./Chat";
 import axios from "../../axios";
 import Loading from "../../componets/Loading/Loading";
 
 const Message = () => {
-  const [messages, setMessages] = useState([]);
   const [connected, setConnected] = useState(false);
   const [roomId, setRoomId] = useState("");
   const [showChat, setShowChat] = useState(false);
+  const [value, setValue] = useState("");
+  const [name, setName] = useState("");
   const { id, data } = useSelector((state) => state.login);
   const dataUser = useSelector((state) => state.user);
+  const room = useSelector((state) => state.user.room);
+  const [messages, setMessages] = useState([]);
   const socket = useRef();
+  const messagesEndRef = useRef();
+
   const dispatch = useDispatch();
   const isUserLoading = dataUser.status === "loaded";
-
   useEffect(() => {
     socket.current = io("http://localhost:3002", {
       reconnectionAttempts: Infinity, // Количество попыток переподключения
@@ -33,10 +41,6 @@ const Message = () => {
       transports: ["websocket"], // Использовать только WebSocket транспорт
       pingTimeout: 60000, // Таймаут пинга
       pingInterval: 25000, // Интервал пинга
-    });
-
-    socket.current.on("message", (message) => {
-      setMessages((prev) => [...prev, message.text]);
     });
 
     socket.current.on("connect_error", (error) => {
@@ -54,18 +58,62 @@ const Message = () => {
     }
   }, [data]);
 
-  const joinRoom = async () => {
-    dispatch(fetchJoinRoom(id));
-    console.log("roomId:", dataUser.dataId.data.roomId);
-    console.log("userName:", data.fullName);
-    // socket.current.emit("join", {
-    //   roomId: dataUser.dataId.data.roomId,
-    //   userName: data.fullName,
-    // });
-    // setShowChat(true);
-    setRoomId(dataUser.dataId.data.roomId);
-  };
+  useEffect(() => {
+    socket.current.on("message", (message) => {
+      setMessages((prev) => [...prev, message]);
+    });
+  }, [setValue]);
 
+  const joinRoom = (friend) => {
+    const params = {
+      friendId: friend._id,
+      meId: id,
+    };
+    const fullNameSurName = friend.fullName + " " + friend.surName;
+
+    if (room) {
+      console.log(room);
+      setMessages(room.historyMessage);
+    }
+    setName(fullNameSurName);
+    dispatch(fetchJoinRoom(params));
+  };
+  // console.log(room);
+  useEffect(() => {
+    if (room) {
+      setMessages(room.historyMessage);
+    }
+  }, [room]);
+  useEffect(() => {
+    if (room && room.roomId) {
+      socket.current.emit("join", {
+        roomId: room.roomId,
+        userName: data.fullName,
+      });
+      setShowChat(true);
+    }
+  }, [room, data]);
+
+  const sendMessage = (e) => {
+    const message = {
+      roomId: room.roomId,
+      meId: id,
+      text: value,
+      timestamp: new Date().toISOString(),
+      idUser: data.fullName,
+    };
+    dispatch(fetchMessage(message));
+    socket.current.emit("message", message);
+    scrollToBottom();
+    setValue("");
+  };
+  const scrollToBottom = () => {
+    console.log(messagesEndRef);
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" }); // Плавная прокрутка вниз
+  };
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
   return (
     <>
       {!isUserLoading ? (
@@ -82,7 +130,9 @@ const Message = () => {
                 {dataUser.data.map((friend) => (
                   <div
                     key={friend._id} // добавляем уникальный ключ для каждого друга
-                    onClick={joinRoom}
+                    onClick={() => {
+                      joinRoom(friend);
+                    }}
                     className={s.positionBlockUser}
                   >
                     <img className={s.imgStyle} src={ava} alt="ava friends" />
@@ -100,35 +150,94 @@ const Message = () => {
                 ))}
               </div>
               <div className={s.messageFriends}>
-                <div className={s.friends}>
-                  <div className={s.positionBlock}>
-                    <img src={ava} alt="ava user" />
-                    <div className={s.positionBlockName}>
-                      <span className={s.nameFriends}>Илья Вавилин</span>
-                      <div className={s.positionBlockStatus}>
-                        <span className={s.statusFriends}> Online </span>
-                        <div className={s.ellips}></div>
+                {showChat ? (
+                  <>
+                    <div className={s.friends}>
+                      <div className={s.positionBlock}>
+                        <img src={ava} alt="ava user" />
+                        <div className={s.positionBlockName}>
+                          <span className={s.nameFriends}>{name}</span>
+                          <div className={s.positionBlockStatus}>
+                            <span className={s.statusFriends}> Online </span>
+                            <div className={s.ellips}></div>
+                          </div>
+                        </div>
                       </div>
                     </div>
+                    <div className={s.messageAll}>
+                      {messages.map((message, index) => (
+                        <>
+                          {id === message.meId ? (
+                            <div key={index} className={s.positionBlockMe}>
+                              <div>
+                                <div className={s.positionBlockStatus}>
+                                  <span className={s.nameFriends}>
+                                    {message.idUser}
+                                  </span>
+                                </div>
+                                <img
+                                  className={s.img}
+                                  src={ava}
+                                  alt="ava friends"
+                                />
+                              </div>
+                              <div className={s.messageBlock}>
+                                {message.text}
+                                <span className={s.time}>
+                                  {moment(message.timestamp)
+                                    .locale("ru")
+                                    .fromNow()}
+                                </span>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className={s.positionBlock}>
+                              <div>
+                                <div className={s.positionBlockStatus}>
+                                  <span className={s.nameFriends}>
+                                    {message.idUser}
+                                  </span>
+                                </div>
+                                <img
+                                  className={s.img}
+                                  src={ava}
+                                  alt="ava friends"
+                                />
+                              </div>
+                              <div className={s.messageBlock}>
+                                {message.text}
+                                <span className={s.time}>
+                                  {moment(message.timestamp)
+                                    .locale("ru")
+                                    .fromNow()}
+                                </span>
+                              </div>
+                            </div>
+                          )}
+                        </>
+                      ))}
+                      <div ref={messagesEndRef} />
+                    </div>
+                    <div className={s.blockText}>
+                      <input
+                        placeholder="Написать сообщение..."
+                        className={s.inputText}
+                        type="text"
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}
+                      />
+                      <button className={s.click} onClick={sendMessage}>
+                        <img src={click} alt="button" />
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div className={s.text}>
+                    <div className={s.border}>
+                      <h3>Выберите чат</h3>
+                    </div>
                   </div>
-                </div>
-                {messages.map((message, index) => (
-                  <div key={index} className={s.message}>
-                    <span>{message.userName}: </span>
-                  </div>
-                ))}
-                {/* {showChat && (
-                  <Chat
-                    username={data.fullName}
-                    room={roomId}
-                    socket={socket}
-                  />
-                )} */}
-                <input
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  placeholder="Type a message..."
-                />
+                )}
               </div>
             </div>
             <div></div>
