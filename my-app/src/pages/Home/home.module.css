@@ -86,3 +86,55 @@
 .postsMain::-webkit-scrollbar {
     width: 0px;
 }
+
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .leftBlock,
+    .mainBlock,
+    .rightBlock {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .homeImg {
+        display: flex;
+        justify-content: center;
+    }
+
+    .fotoProfile {
+        width: 100px;
+        height: 100px;
+    }
+
+    .displayButton {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.name {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.status {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.friends,
+.kolFriends {
+    display: block;
+    text-align: center;
+}
+
+hr {
+    width: 80%;
+    margin: 10px auto;
+}

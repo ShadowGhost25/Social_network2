@@ -33,6 +33,7 @@ const Message = () => {
   const dispatch = useDispatch();
   const isUserLoading = dataUser.status === "loaded";
   useEffect(() => {
+    // socket.current = io("https://social-network2.vercel.app", {
     socket.current = io("http://localhost:3002", {
       reconnectionAttempts: Infinity, // Количество попыток переподключения
       reconnectionDelay: 1000, // Задержка перед следующей попыткой переподключения

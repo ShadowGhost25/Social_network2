@@ -1,16 +1,16 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Header from "../../componets/Header/Header";
 import History from "../../componets/History/History";
-import foto from "./img/qwe.png";
-import user from "./img/Vector.svg";
-import s from "./home.module.css";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Posts from "./../../componets/Posts/Posts";
+import Posts from "../../componets/Posts/Posts";
 import FriendsOnline from "../../componets/FriendsOnline/FriendsOnline";
 import GroupNotification from "../../componets/GroupNotification/GroupNotification";
 import CustomButton from "../../componets/CustomButton/CustomButton";
-import { useSelector } from "react-redux";
 import Loading from "../../componets/Loading/Loading";
+import foto from "./img/qwe.png";
+import user from "./img/Vector.svg";
+import s from "./home.module.css";
 
 const Home = () => {
   const { data, status } = useSelector((state) => state.login);
@@ -22,6 +22,7 @@ const Home = () => {
   const clicLogin = () => {
     navigate("/login");
   };
+
   return (
     <>
       {!isLoadingHome && window.localStorage.getItem("token") ? (

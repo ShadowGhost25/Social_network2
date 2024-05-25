@@ -1,16 +1,17 @@
 .header {
     display: flex;
     background-color: #7DA1FD;
-    width: 100%;
+    /* width: 100%; */
     justify-content: center;
 }
 
 .headerMain {
-    width: 1400px;
+    /* width: 1400px; */
     display: flex;
     justify-content: space-between;
 }
 
+/* Общие стили для всех размеров */
 .foto {
     min-width: 150px;
     display: flex;
@@ -20,7 +21,6 @@
 .menu {
     width: 100%;
     display: flex;
-    justify-content: center;
     justify-content: space-between;
 }
 
@@ -60,4 +60,40 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Медиазапросы для мобильных устройств */
+@media (max-width: 768px) {
+    .headerMain {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .foto {
+        min-width: 100px;
+        margin-bottom: 10px;
+    }
+
+    .blockSearch {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .link {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .tegA {
+        font-size: 16px;
+        padding: 10px 0;
+    }
 }

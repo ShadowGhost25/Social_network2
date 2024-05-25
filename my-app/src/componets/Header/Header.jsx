@@ -7,12 +7,14 @@ import Search from "../Search/Search";
 import CustomButton from "../CustomButton/CustomButton";
 import { buttonHeader } from "../../Route/route";
 import Loading from "../Loading/Loading";
+
 const Header = () => {
   const isAuth = useSelector(selectIsAuth);
-  const { status, id } = useSelector((state) => state.login);
+  const { status } = useSelector((state) => state.login);
   const isLoadingHeader = status === "loaded";
   let urlSite = window.location.pathname;
   urlSite = urlSite.startsWith("/settings") ? "/settings" : urlSite;
+
   return (
     <>
       {!isLoadingHeader && window.localStorage.getItem("token") ? (
@@ -74,4 +76,5 @@ const Header = () => {
     </>
   );
 };
+
 export default Header;
