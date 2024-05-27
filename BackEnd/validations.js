@@ -6,7 +6,7 @@ export const loginValidator = [
 
 export const userStatusValidatior = [
   body('fullName', 'Имя пользователя составляет менее 2 символом').isLength({ min: 2 }),
-  body('surName', 'Фамилия пользователя составляет менее 2 символов').isLength({ min: 2}),
+  body('surName', 'Фамилия пользователя составляет менее 2 символов').isLength({ min: 2 }),
   body('email', "Неверный email").isEmail(),
   body('phone', "Телефон составляет меньше 10 символов").isLength({ min: 11 }),
   body('status', 'Статус менее двух символом').optional(),
@@ -14,11 +14,10 @@ export const userStatusValidatior = [
 
 export const registerValidator = [
   body('fullName', 'Имя пользователя составляет менее 2 символом').isLength({ min: 2 }),
-  body('surName', 'Фамилия пользователя составляет менее 2 символов').isLength({ min: 2}),
+  body('surName', 'Фамилия пользователя составляет менее 2 символов').isLength({ min: 2 }),
   body('email', "Неверный email").isEmail(),
-  body('phone', "Телефон составляет меньше 10 символов").isLength({ min: 11 }),
+  body('phone', "Телефон составляет менее 11 символов").isLength({ min: 11 }),
   body('password', "Пароль составляет меньше 5 символов").isLength({ min: 5 }),
-  body('fullName', 'Имя пользователя составляет менее 3 символом').isLength({ min: 3 }),
   body('avatarURL', "Указан не верный URL адресс").optional().isURL(),
 ]
 

@@ -8,6 +8,8 @@ import axios from "../../axios";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { localHost } from "../../Route/route";
+import { toast, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddElement = () => {
   const { id } = useParams();
@@ -108,7 +110,17 @@ const AddElement = () => {
         navigate(`/group/${id}`);
       }
     } catch (error) {
-      alert(error.response.data[0].msg);
+      toast.error(error.response.data[0].msg, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
   };
 

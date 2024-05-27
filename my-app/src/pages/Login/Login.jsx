@@ -10,11 +10,18 @@ import {
   fetchLogin,
   selectIsAuth,
 } from "../../redux/slices/login";
+import { toast, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Login = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
 
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       email: "",
       password: "",
@@ -25,13 +32,24 @@ const Login = () => {
   const onSubmit = async (values) => {
     const data = await dispatch(fetchLogin(values));
     if (!data.payload) {
-      alert("Неудалось авторизоваться");
+      toast.error("Не удалось авторизоваться", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
     if (data.payload) {
       window.localStorage.setItem("token", data.payload.token);
       dispatch(fetchAuthMe());
     }
   };
+
   if (isAuth) {
     return <Navigate to="/" />;
   }
@@ -44,12 +62,14 @@ const Login = () => {
           <div>
             <h1>Недавние входы</h1>
             <p>Нажмите на изображение или добавьте аккаунты.</p>
-            <Link to="/">
-              <div className={s.blogAuth}>
-                <img className={s.imgI} src={i} alt="no img" />
-                <p className={s.name}>Илья</p>
-              </div>
-            </Link>
+            <div className={s.display}>
+              <Link to="/">
+                <div className={s.blogAuth}>
+                  <img className={s.imgI} src={i} alt="no img" />
+                  <p className={s.name}>Илья</p>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
         <div className={s.formLogin}>
@@ -58,16 +78,18 @@ const Login = () => {
               <h2>Авторизация</h2>
               <input
                 {...register("email", { required: "Укажите почту" })}
-                className={s.input}
+                className={`${s.input} ${errors.password && s.inputWithError}`}
                 type="email"
-                placeholder="Почта"
+                placeholder={errors.email ? errors.email.message : "Почта"}
               />
               <br />
               <input
                 {...register("password", { required: "Укажите пароль" })}
-                className={s.input}
+                className={`${s.input} ${errors.email && s.inputWithError}`}
                 type="password"
-                placeholder="Пароль"
+                placeholder={
+                  errors.password ? errors.password.message : "Пароль"
+                }
               />
               <br />
               <button type="submit" className={s.buttonLogin}>

@@ -14,8 +14,8 @@ import {
 } from "../../redux/slices/user";
 import moment from "moment";
 import io from "socket.io-client";
-import axios from "../../axios";
 import Loading from "../../componets/Loading/Loading";
+import { Navigate } from "react-router-dom";
 
 const Message = () => {
   const [connected, setConnected] = useState(false);
@@ -29,6 +29,7 @@ const Message = () => {
   const [messages, setMessages] = useState([]);
   const socket = useRef();
   const messagesEndRef = useRef();
+  const isAuth = useSelector(selectIsAuth);
 
   const dispatch = useDispatch();
   const isUserLoading = dataUser.status === "loaded";
@@ -73,13 +74,11 @@ const Message = () => {
     const fullNameSurName = friend.fullName + " " + friend.surName;
 
     if (room) {
-      console.log(room);
       setMessages(room.historyMessage);
     }
     setName(fullNameSurName);
     dispatch(fetchJoinRoom(params));
   };
-  // console.log(room);
   useEffect(() => {
     if (room) {
       setMessages(room.historyMessage);
@@ -109,12 +108,14 @@ const Message = () => {
     setValue("");
   };
   const scrollToBottom = () => {
-    console.log(messagesEndRef);
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" }); // Плавная прокрутка вниз
   };
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+  if (!window.localStorage.getItem("token") && !isAuth) {
+    return <Navigate to="/" />;
+  }
   return (
     <>
       {!isUserLoading ? (
@@ -128,27 +129,37 @@ const Message = () => {
                 <div className={s.blockSearch}>
                   <Search />
                 </div>
-                {dataUser.data.map((friend) => (
-                  <div
-                    key={friend._id} // добавляем уникальный ключ для каждого друга
-                    onClick={() => {
-                      joinRoom(friend);
-                    }}
-                    className={s.positionBlockUser}
-                  >
-                    <img className={s.imgStyle} src={ava} alt="ava friends" />
-                    <div className={s.displayBlock}>
-                      <div className={s.positionBlockName}>
-                        <div className={s.positionBlockStatus}>
-                          <span className={s.nameFriends}>
-                            {friend.fullName} {friend.surName}
-                          </span>
-                          <div className={s.ellips}></div>
+                {data.friend.length == 0 && (
+                  <span className={s.invitation}>У вас пока нет друзей</span>
+                )}
+                {dataUser.data.map(
+                  (friend) =>
+                    friend.fullName && (
+                      <div
+                        key={friend._id} // добавляем уникальный ключ для каждого друга
+                        onClick={() => {
+                          joinRoom(friend);
+                        }}
+                        className={s.positionBlockUser}
+                      >
+                        <img
+                          className={s.imgStyle}
+                          src={ava}
+                          alt="ava friends"
+                        />
+                        <div className={s.displayBlock}>
+                          <div className={s.positionBlockName}>
+                            <div className={s.positionBlockStatus}>
+                              <span className={s.nameFriends}>
+                                {friend.fullName} {friend.surName}
+                              </span>
+                              <div className={s.ellips}></div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                ))}
+                    )
+                )}
               </div>
               <div className={s.messageFriends}>
                 {showChat ? (
@@ -241,7 +252,6 @@ const Message = () => {
                 )}
               </div>
             </div>
-            <div></div>
           </div>
         </>
       )}

@@ -5,10 +5,12 @@ import MusicPlay from "../../componets/MusicPlay/MusicPlay";
 import Search from "../../componets/Search/Search";
 import axios from "../../axios";
 import React from "react";
+import { Navigate } from "react-router-dom";
 import { useRef } from "react";
 import { useSelector } from "react-redux";
 import MusicPlayMe from "../../componets/MusicPlayMe/MusicPlayMe";
 import Loading from "../../componets/Loading/Loading";
+import { selectIsAuth } from "../../redux/slices/login";
 
 const Music = () => {
   const { data } = useSelector((state) => state.music);
@@ -16,6 +18,8 @@ const Music = () => {
   const inputRef = useRef("");
   const [musicList, setMusicList] = React.useState(data);
   const shuffleArray = (arr) => [...arr].sort(() => Math.random() - 0.5);
+  const isAuth = useSelector(selectIsAuth);
+
   const handleChangeFile = async (event) => {
     try {
       const formData = new FormData();
@@ -26,7 +30,9 @@ const Music = () => {
       console.log(error);
     }
   };
-
+  if (!window.localStorage.getItem("token") && !isAuth) {
+    return <Navigate to="/" />;
+  }
   return (
     <>
       {user.data === null ? (

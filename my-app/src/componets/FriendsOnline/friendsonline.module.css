@@ -19,7 +19,8 @@
     background-color: #1E1E1E;
     transition: 0.7s;
 }
-.friends:hover > .friendsName{
+
+.friends:hover>.friendsName {
     transition: 0.7s;
     color: white;
 }
@@ -46,4 +47,8 @@
     position: absolute;
     top: 20px;
     right: 15px;
+}
+
+.style {
+    font-size: 18px;
 }

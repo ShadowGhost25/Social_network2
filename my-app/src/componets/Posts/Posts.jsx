@@ -129,11 +129,11 @@ const Posts = () => {
                     <div>{obj.viewsCount}</div>
                     <img src={eyes} alt="eyes" />
                   </div>
-                  <CustomButton
+                  {/* <CustomButton
                     typeStyle="assessment"
                     centerImage={true}
                     imageName="share"
-                  />
+                  /> */}
                 </div>
               </div>
             </div>

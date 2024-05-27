@@ -3,8 +3,10 @@ import s from "./allfriends.module.css";
 import CustomButton from "../CustomButton/CustomButton";
 import { useDispatch } from "react-redux";
 import { fetchAddFriends } from "../../redux/slices/friends";
+import { useNavigate } from "react-router-dom";
 const AllFriends = ({ data, userMeId }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const addFriends = (userFriendId, userMeId) => {
     // console.log(id, userMeId)
     const params = {
@@ -24,7 +26,11 @@ const AllFriends = ({ data, userMeId }) => {
   const subscription = data.filter((user) =>
     user.subscription.includes(userMeId)
   );
-  console.log(filteredUsers, "dataFriends");
+  const cliсkMe = (userId) => {
+    // console.log(userId);
+    navigate(`/profile/${userId}`);
+  };
+  // console.log(filteredUsers, "dataFriends");
   return (
     <>
       <span className={s.friendsText}>Искать друзей</span>
@@ -34,7 +40,11 @@ const AllFriends = ({ data, userMeId }) => {
         {filteredUsers.map((friends, index) => {
           return (
             <>
-              <div key={index} className={s.card}>
+              <div
+                onClick={() => cliсkMe(friends._id)}
+                key={index}
+                className={s.card}
+              >
                 <div className={s.cardHeader}></div>
                 <img className={s.ava} src={ava} alt="ava" />
                 <div className={s.displayFriends}>
@@ -50,18 +60,12 @@ const AllFriends = ({ data, userMeId }) => {
                     size="average"
                   />
                 </div>
-                {/* {console.log(userMeId)} */}
               </div>
             </>
           );
         })}
       </div>
-      
-      {subscribers.length === 0 && (
-        <span className={s.invitation}>
-          Вы никому не кинули приглашение в друзья
-        </span>
-      )}
+
       <span className={s.friendsText}>Запросы в друзья</span>
       <div className={s.cardBlog}>
         {subscription.map((friends, index) => {
@@ -84,7 +88,6 @@ const AllFriends = ({ data, userMeId }) => {
                   />
                 </div>
               )}
-              {/* {console.log(userMeId)} */}
             </div>
           );
         })}
@@ -125,6 +128,11 @@ const AllFriends = ({ data, userMeId }) => {
           );
         })}
       </div>
+      {subscribers.length === 0 && (
+        <span className={s.invitation}>
+          Вы никому не кинули приглашение в друзья
+        </span>
+      )}
     </>
   );
 };

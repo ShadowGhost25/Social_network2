@@ -91,9 +91,15 @@
     color: white;
     text-decoration: none;
 }
-.inputWithError{
+
+.inputWithError {
     border: 2px solid red;
 }
-.inputWithError::placeholder{
+
+.inputWithError::placeholder {
     color: red;
+}
+
+.display {
+    width: 200px;
 }
