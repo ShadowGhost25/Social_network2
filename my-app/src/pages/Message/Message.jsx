@@ -18,8 +18,6 @@ import Loading from "../../componets/Loading/Loading";
 import { Navigate } from "react-router-dom";
 
 const Message = () => {
-  const [connected, setConnected] = useState(false);
-  const [roomId, setRoomId] = useState("");
   const [showChat, setShowChat] = useState(false);
   const [value, setValue] = useState("");
   const [name, setName] = useState("");
@@ -58,7 +56,7 @@ const Message = () => {
     if (data !== null) {
       dispatch(fetchUser(data.friend));
     }
-  }, [data]);
+  }, [data, dispatch]);
 
   useEffect(() => {
     socket.current.on("message", (message) => {
@@ -129,7 +127,7 @@ const Message = () => {
                 <div className={s.blockSearch}>
                   <Search />
                 </div>
-                {data.friend.length == 0 && (
+                {data.friend.length === 0 && (
                   <span className={s.invitation}>У вас пока нет друзей</span>
                 )}
                 {dataUser.data.map(

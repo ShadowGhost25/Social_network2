@@ -8,7 +8,6 @@ const AllFriends = ({ data, userMeId }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const addFriends = (userFriendId, userMeId) => {
-    // console.log(id, userMeId)
     const params = {
       userFriendId,
       userMeId,
@@ -27,16 +26,12 @@ const AllFriends = ({ data, userMeId }) => {
     user.subscription.includes(userMeId)
   );
   const cliсkMe = (userId) => {
-    // console.log(userId);
     navigate(`/profile/${userId}`);
   };
-  // console.log(filteredUsers, "dataFriends");
   return (
     <>
       <span className={s.friendsText}>Искать друзей</span>
       <div className={s.cardBlog}>
-        {/* <span className={s.friendsText}>Поиск друзей</span> */}
-
         {filteredUsers.map((friends, index) => {
           return (
             <>

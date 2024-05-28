@@ -1,0 +1,55 @@
+.mainFriends {
+  position: relative;
+  text-align: center;
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.friends {
+  padding: 5px;
+  height: 40px;
+  transition: 0.7s;
+  border-radius: 5px;
+  margin-top: 10px;
+  position: relative;
+}
+
+.friends:hover {
+  background-color: #1E1E1E;
+  transition: 0.7s;
+}
+
+.friends:hover>.friendsName {
+  transition: 0.7s;
+  color: white;
+}
+
+.h3Foto {
+  margin: 0px;
+}
+
+.test {
+  float: left;
+  width: 40px;
+  border-radius: 5px;
+}
+
+.friendsName {
+  padding: 10px 0px 0px 10px;
+  color: #1e1e1e;
+  font-weight: 500;
+  font-size: 18px;
+  float: left;
+}
+
+.ellipse {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+}
+
+.style {
+  display: flex;
+  justify-content: center;
+}

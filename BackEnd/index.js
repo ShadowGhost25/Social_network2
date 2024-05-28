@@ -73,7 +73,8 @@ app.post(
   userController.register
 );
 app.get("/me", cheakAuth, userController.getMe);
-
+app.get("/admin", cheakAuth, userController.allUsers);
+app.delete("/delete/:id", cheakAuth, userController.deleteUser);
 app.post("/upload", cheakAuth, upload.single("image"), (req, res) => {
   res.json({
     url: `/uploads/${req.file.originalname}`,

@@ -1,7 +1,9 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import userModel from "../models/User.js";
-
+import postModel from "../models/Post.js";
+import groupModel from "../models/Group.js";
+import messageModel from "../models/Message.js"
 export const register = async (req, res) => {
   try {
     const salt = await bcrypt.genSalt(10);
@@ -289,6 +291,35 @@ export const getOneUser = async (req, res) => {
     console.log("err => ", error);
     res.status(500).json({
       message: "Не удалось получить пользователя",
+    });
+  }
+}
+export const allUsers = async (req, res) => {
+  try {
+    const users = await userModel.find().exec();
+    const filteredUsers = users.filter(user => user.fullName !== 'admin');
+    res.json(filteredUsers)
+  } catch (error) {
+    console.log("err => ", error);
+    res.status(500).json({
+      message: "Не удалось получить пользователей",
+    });
+  }
+}
+export const deleteUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    await postModel.deleteMany({ user: userId }).exec();
+    await groupModel.deleteMany({ user: userId }).exec();
+    await messageModel.deleteMany({ firstUserId: userId })
+    await messageModel.deleteMany({ secondUserId: userId })
+    await userModel.findByIdAndDelete(userId).exec();
+    console.log(userId)
+    res.json(userId)
+  } catch (error) {
+    console.log("err => ", error);
+    res.status(500).json({
+      message: "Не удалось удалить пользователя",
     });
   }
 }

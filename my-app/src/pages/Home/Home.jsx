@@ -11,6 +11,7 @@ import Loading from "../../componets/Loading/Loading";
 import foto from "./img/qwe.png";
 import user from "./img/Vector.svg";
 import s from "./home.module.css";
+import FormAdmin from "../../componets/FormAdmin/FormAdmin";
 
 const Home = () => {
   const { data, status } = useSelector((state) => state.login);
@@ -22,7 +23,6 @@ const Home = () => {
   const clicLogin = () => {
     navigate("/login");
   };
-
   return (
     <>
       {!isLoadingHome && window.localStorage.getItem("token") ? (
@@ -80,6 +80,7 @@ const Home = () => {
               </div>
             </div>
             <div className={s.rightBlock}>
+              {data._id === "66558dd967572a2a1d8bdc7a" && <FormAdmin />}
               <FriendsOnline />
               <GroupNotification />
             </div>

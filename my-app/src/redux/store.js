@@ -6,6 +6,7 @@ import { groupReducers } from './slices/group';
 import { musicReducers } from './slices/music';
 import { friendsReducers } from './slices/friends';
 import { userReducers } from './slices/user';
+import { adminReducers } from './slices/admin';
 
 const store = configureStore({
     reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
         music: musicReducers,
         friend: friendsReducers,
         user: userReducers,
+        admin: adminReducers
     }
 })
 

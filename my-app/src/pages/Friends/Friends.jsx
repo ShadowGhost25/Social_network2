@@ -14,7 +14,6 @@ import MeFriends from "../../componets/MeFriends/MeFriends";
 const Friends = () => {
   const dispatch = useDispatch();
   const { id } = useSelector((state) => state.login);
-  const dataMe = useSelector((state) => state.login);
   const { data, status } = useSelector((state) => state.friend);
   const isAuth = useSelector(selectIsAuth);
   const [friends, setFriends] = useState(true);
@@ -22,12 +21,7 @@ const Friends = () => {
   const isLoading = "loaded" === status;
   useEffect(() => {
     id && dispatch(fetchFriends(id));
-  }, [id]);
-  // useEffect(() => {
-  //   if (dataMe !== null) {
-  //     console.log(dataMe.data);
-  //   }
-  // }, [dataMe]);
+  }, [id, dispatch]);
   if (!isAuth && !window.localStorage.getItem("token")) {
     return <Navigate to="/" />;
   }
@@ -75,9 +69,6 @@ const Friends = () => {
               )}
               {meAllFriends && <MeFriends data={data} userMeId={id} />}
             </div>
-            {/* <div className={s.mainBlog2}>
-              <Options />
-            </div> */}
           </div>
         </>
       )}

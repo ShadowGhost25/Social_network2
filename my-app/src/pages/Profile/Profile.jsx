@@ -8,11 +8,13 @@ import { Navigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { fetchUser } from "../../redux/slices/user";
 import { navigationButtons } from "../../Route/route";
+import { useState } from "react";
 import Loading from "../../componets/Loading/Loading";
 import CustomButton from "../../componets/CustomButton/CustomButton";
 import GroupNotification from "../../componets/GroupNotification/GroupNotification";
 import FriendsOnline from "../../componets/FriendsOnline/FriendsOnline";
 const Profile = () => {
+  const [user, setUser] = useState(null); // Использование useState для управления состоянием user
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
   const location = window.location.pathname;
@@ -21,11 +23,20 @@ const Profile = () => {
   const dataUser = useSelector((state) => state.user);
   const isProfileLoading = status === "loaded";
   const isUserLoading = dataUser.status === "loaded";
+
   useEffect(() => {
     if (id) {
       dispatch(fetchUser(id));
     }
-  }, [location]);
+  }, [id, dispatch, location]);
+
+  useEffect(() => {
+    if (location === "/profile" && data !== null) {
+      setUser(data);
+    } else if (location !== "/profile" && dataUser && dataUser.data !== null) {
+      setUser(dataUser.data[0]);
+    }
+  }, [location, data, dataUser]);
   const onClickLogout = () => {
     if (window.confirm("Вы действительно хотите выйти.")) {
       dispatch(logout());
@@ -35,11 +46,6 @@ const Profile = () => {
   if (!window.localStorage.getItem("token") && !isAuth) {
     return <Navigate to="/" />;
   }
-  const user = dataUser.data
-    ? location === "/profile"
-      ? data
-      : dataUser.data[0]
-    : null;
   return (
     <>
       {!isProfileLoading && !isUserLoading ? (

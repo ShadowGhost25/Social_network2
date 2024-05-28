@@ -12,6 +12,7 @@ import Register from "../pages/Register/Register";
 
 import Settings from "../pages/Settings/Settings";
 import GroupProfile from "../pages/GroupProfile/GroupProfile";
+import Admin from "../pages/Admin/Admin";
 
 export const route = [
   {
@@ -98,6 +99,10 @@ export const route = [
     path: "/settings/delete",
     element: <Settings />,
   },
+  {
+    path: "/admin",
+    element: <Admin />
+  }
 ];
 
 export const navigationButtons = [
