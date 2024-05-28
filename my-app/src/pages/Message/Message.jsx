@@ -16,6 +16,7 @@ import moment from "moment";
 import io from "socket.io-client";
 import Loading from "../../componets/Loading/Loading";
 import { Navigate } from "react-router-dom";
+import { localHost } from "../../Route/route";
 
 const Message = () => {
   const [showChat, setShowChat] = useState(false);
@@ -33,7 +34,7 @@ const Message = () => {
   const isUserLoading = dataUser.status === "loaded";
   useEffect(() => {
     // socket.current = io("https://social-network2.vercel.app", {
-    socket.current = io("http://localhost:3002", {
+    socket.current = io(localHost, {
       reconnectionAttempts: Infinity, // Количество попыток переподключения
       reconnectionDelay: 1000, // Задержка перед следующей попыткой переподключения
       reconnectionDelayMax: 5000, // Максимальная задержка перед переподключением
