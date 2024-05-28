@@ -26,9 +26,10 @@ import userModel from "./models/User.js";
 
 const app = express();
 
-const MONGODB_URI = process.env.MONGODB_URI || "your-default-mongodb-uri";
 mongoose
-  .connect(MONGODB_URI)
+  .connect(
+    "mongodb+srv://admin:wwwwww@practic.gpq4sx8.mongodb.net/blog?retryWrites=true&w=majority"
+  )
   .then(() => {
     console.log("Db Ok");
   })
@@ -58,12 +59,7 @@ const upload = multer({ storage });
 const music = multer({ storage });
 
 app.use(express.json());
-app.use(cors({
-  origin: 'https://my-app-bay-omega-14.vercel.app', // Добавьте ваш frontend URL здесь
-  methods: ["GET", "POST", "PATCH", "DELETE"],
-  credentials: true // Если вы используете куки
-}));
-
+app.use(cors({ origin: "*", methods: ["GET", "POST", "PATCH", "DELETE"] }));
 app.use("/uploads", express.static("uploads"));
 app.use("/music", express.static("musics"));
 
@@ -191,10 +187,9 @@ io.on('connection', (socket) => {
   });
 });
 
-const PORT = process.env.PORT || 3002;
-server.listen(PORT, (err) => {
+server.listen(3002, (err) => {
   if (err) {
     return console.log("=>", err);
   }
-  console.log(`Express Server Ok on port ${PORT}`);
+  console.log("Express Server Ok");
 });
