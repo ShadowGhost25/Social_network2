@@ -13,19 +13,15 @@ function App() {
     dispatch(fetchAuthMe());
     dispatch(fetchMusic());
   }, []);
-  const { data } = useSelector((state) => state.music);
   return (
     <>
-      {data === null ? (
-        <Loading />
-      ) : (
-        <Routes>
-          {route.map(({ path, element }) => (
-            <Route key={path} path={path} element={element} exact />
-          ))}
-          <Route path="*" element={<Navigate to="/error" />} />
-        </Routes>
-      )}
+      <Routes>
+        {route.map(({ path, element }) => (
+          <Route key={path} path={path} element={element} exact />
+        ))}
+        <Route path="*" element={<Navigate to="/error" />} />
+      </Routes>
+
     </>
   );
 }
