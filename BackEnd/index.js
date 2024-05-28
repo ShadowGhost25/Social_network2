@@ -4,7 +4,6 @@ import multer from "multer";
 import cors from "cors";
 import fs from "fs";
 import http from "http";
-// import { WebSocketServer } from "ws";
 import { Server } from 'socket.io';
 
 import {
@@ -24,10 +23,12 @@ import {
 
 import { handleValidationEror, cheakAuth } from "./utils/Utils.js";
 import userModel from "./models/User.js";
+
+const app = express();
+
+const MONGODB_URI = process.env.MONGODB_URI || "your-default-mongodb-uri";
 mongoose
-  .connect(
-    "mongodb+srv://admin:wwwwww@practic.gpq4sx8.mongodb.net/blog?retryWrites=true&w=majority"
-  )
+  .connect(MONGODB_URI)
   .then(() => {
     console.log("Db Ok");
   })
@@ -35,20 +36,15 @@ mongoose
     console.log("Db err =>", err);
   });
 
-const app = express();
-
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     let uploadPath;
-    // Проверяем тип файла
     if (file.mimetype.startsWith("audio")) {
       uploadPath = "musics";
     } else {
       uploadPath = "uploads";
     }
-    // Проверяем, существует ли указанная папка
     if (!fs.existsSync(uploadPath)) {
-      // Если папка не существует, создаем ее
       fs.mkdirSync(uploadPath);
     }
     cb(null, uploadPath);
@@ -59,10 +55,11 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
-const music = multer({ storage }); //multer({ storage }): Это создает экземпляр объекта multer, который настраивается с опциями.
+const music = multer({ storage });
+
 app.use(express.json());
 app.use(cors({ origin: "*", methods: ["GET", "POST", "PATCH", "DELETE"] }));
-app.use("/uploads", express.static("uploads")); //express.static("uploads"): Это middleware Express.js, который предоставляет статические файлы из указанной директории.
+app.use("/uploads", express.static("uploads"));
 app.use("/music", express.static("musics"));
 
 app.post("/login", loginValidator, handleValidationEror, userController.login);
@@ -93,7 +90,6 @@ app.post(
   }
 );
 app.get("/music", (req, res) => {
-  // Чтение названия файла из папки music
   fs.readdir("musics", (err, files) => {
     if (err || !files.length) {
       return res.status(500).send("Ошибка чтения папки с музыкой");
@@ -157,19 +153,19 @@ app.patch(
   handleValidationEror,
   userController.updateUser
 );
-app.post("/friends", userController.friends)
-app.post("/add-friends", userController.addFriends)
-app.post("/delete-friends", userController.deleteFriends)
-app.get("/profile/:id", userController.getOneUser)
-app.post("/roomId", messagecontroller.room)
-app.post("/add-message", messagecontroller.messages)
+app.post("/friends", userController.friends);
+app.post("/add-friends", userController.addFriends);
+app.post("/delete-friends", userController.deleteFriends);
+app.get("/profile/:id", userController.getOneUser);
+app.post("/roomId", messagecontroller.room);
+app.post("/add-message", messagecontroller.messages);
 
-const server = http.createServer(app)
+const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
     origin: "*",
-    methods: ["GET", "POST", "PATCH", "DELETE"]
+    methods: ["GET", "POST", "PATCH", "DELETE"],
   },
   pingInterval: 25000,
   pingTimeout: 60000,
@@ -182,20 +178,18 @@ io.on('connection', (socket) => {
     console.log(`${userName} joined room: ${roomId}`);
   });
   socket.on('message', (message) => {
-    console.log(message)
-    // Отправляем сообщение всем пользователям в комнате, кроме отправителя
+    console.log(message);
     io.to(message.roomId).emit('message', message);
   });
-  // io.to
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
 });
 
-
-server.listen(3002, (err) => {
+const PORT = process.env.PORT || 3002;
+server.listen(PORT, (err) => {
   if (err) {
     return console.log("=>", err);
   }
-  console.log("Express Server Ok");
+  console.log(`Express Server Ok on port ${PORT}`);
 });
