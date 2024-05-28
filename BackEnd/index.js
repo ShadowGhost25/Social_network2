@@ -58,7 +58,12 @@ const upload = multer({ storage });
 const music = multer({ storage });
 
 app.use(express.json());
-app.use(cors({ origin: "*", methods: ["GET", "POST", "PATCH", "DELETE"] }));
+app.use(cors({
+  origin: 'https://my-app-bay-omega-14.vercel.app', // Добавьте ваш frontend URL здесь
+  methods: ["GET", "POST", "PATCH", "DELETE"],
+  credentials: true // Если вы используете куки
+}));
+
 app.use("/uploads", express.static("uploads"));
 app.use("/music", express.static("musics"));
 
