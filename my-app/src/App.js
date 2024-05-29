@@ -21,7 +21,6 @@ function App() {
         ))}
         <Route path="*" element={<Navigate to="/error" />} />
       </Routes>
-
     </>
   );
 }

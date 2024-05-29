@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { selectIsAuth } from "../../redux/slices/login";
 import Header from "../../componets/Header/Header";
 import History from "../../componets/History/History";
 import Posts from "../../componets/Posts/Posts";
@@ -15,6 +16,7 @@ import FormAdmin from "../../componets/FormAdmin/FormAdmin";
 
 const Home = () => {
   const { data, status } = useSelector((state) => state.login);
+  const isAuth = useSelector(selectIsAuth);
   const isLoadingHome = status === "loaded";
   const navigate = useNavigate();
   const cliclProfile = () => {
@@ -23,6 +25,7 @@ const Home = () => {
   const clicLogin = () => {
     navigate("/login");
   };
+  console.log(isAuth);
   return (
     <>
       {!isLoadingHome && window.localStorage.getItem("token") ? (
@@ -80,7 +83,9 @@ const Home = () => {
               </div>
             </div>
             <div className={s.rightBlock}>
-              {data._id === "66558dd967572a2a1d8bdc7a" && <FormAdmin />}
+              {isAuth && data._id === "66558dd967572a2a1d8bdc7a" && (
+                <FormAdmin />
+              )}
               <FriendsOnline />
               <GroupNotification />
             </div>

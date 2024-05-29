@@ -9,7 +9,7 @@
     ],
     "routes": [
         {
-            "src": "/(.*)",
+             "src": "/socket.io/(.*)",
             "dest": "index.js"
         }
     ]
