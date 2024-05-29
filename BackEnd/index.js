@@ -24,8 +24,19 @@ import {
 import { handleValidationEror, cheakAuth } from "./utils/Utils.js";
 import userModel from "./models/User.js";
 
+const allowedOrigins = ['https://social-network2-5nrr.vercel.app'];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
 const app = express();
-
+app.use(cors(corsOptions));
+app.options('/login', cors(corsOptions));
 mongoose
   .connect(
     "mongodb+srv://admin:wwwwww@practic.gpq4sx8.mongodb.net/blog?retryWrites=true&w=majority"
@@ -59,11 +70,10 @@ const upload = multer({ storage });
 const music = multer({ storage });
 
 app.use(express.json());
-app.use(cors({ origin: "*", methods: ["GET", "POST", "PATCH", "DELETE"] }));
 app.use("/uploads", express.static("uploads"));
 app.use("/music", express.static("musics"));
 
-app.post("/login", loginValidator, handleValidationEror, userController.login);
+app.post("/login", cors(corsOptions), loginValidator, handleValidationEror, userController.login);
 app.post(
   "/register",
   registerValidator,
