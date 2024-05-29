@@ -33,16 +33,19 @@ const Message = () => {
   const dispatch = useDispatch();
   const isUserLoading = dataUser.status === "loaded";
   useEffect(() => {
-    socket.current = io('wss://social-network2.vercel.app/socket.io/?EIO=4&transport=websocket' {
-    // socket.current = io(localHost, {
-      reconnectionAttempts: Infinity, // Количество попыток переподключения
-      reconnectionDelay: 1000, // Задержка перед следующей попыткой переподключения
-      reconnectionDelayMax: 5000, // Максимальная задержка перед переподключением
-      timeout: 20000, // Таймаут подключения в миллисекундах (по умолчанию 20000)
-      transports: ["websocket"], // Использовать только WebSocket транспорт
-      pingTimeout: 60000, // Таймаут пинга
-      pingInterval: 25000, // Интервал пинга
-    });
+    socket.current = io(
+      "wss://social-network2.vercel.app/socket.io/?EIO=4&transport=websocket",
+      {
+        // socket.current = io(localHost, {
+        reconnectionAttempts: Infinity, // Количество попыток переподключения
+        reconnectionDelay: 1000, // Задержка перед следующей попыткой переподключения
+        reconnectionDelayMax: 5000, // Максимальная задержка перед переподключением
+        timeout: 20000, // Таймаут подключения в миллисекундах (по умолчанию 20000)
+        transports: ["websocket"], // Использовать только WebSocket транспорт
+        pingTimeout: 60000, // Таймаут пинга
+        pingInterval: 25000, // Интервал пинга
+      }
+    );
 
     socket.current.on("connect_error", (error) => {
       console.error("Connection error:", error);
