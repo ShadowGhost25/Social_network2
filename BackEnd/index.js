@@ -59,7 +59,7 @@ const upload = multer({ storage });
 const music = multer({ storage });
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: "*" }));
 app.use("/uploads", express.static("uploads"));
 app.use("/music", express.static("musics"));
 
