@@ -11,7 +11,7 @@ function App() {
   React.useEffect(() => {
     dispatch(fetchAuthMe());
     dispatch(fetchMusic());
-  }, []);
+  }, [dispatch]);
   return (
     <>
       <Routes>
