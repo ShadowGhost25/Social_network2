@@ -162,8 +162,9 @@ app.post("/roomId", messagecontroller.room);
 app.post("/add-message", messagecontroller.messages);
 
 const port = process.env.PORT || 3002;
-// const server = http.createServer(app);
-const io = new Server(port, {
+
+const server = http.createServer(app);
+const io = new Server(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST", "PATCH", "DELETE"],
@@ -187,9 +188,9 @@ io.on('connection', (socket) => {
   });
 });
 
-app.listen(port, "0.0.0.0", (err) => {
+server.listen(port, "0.0.0.0", (err) => {
   if (err) {
     return console.log("=>", err);
   }
-  console.log("Express Server Ok");
+  console.log(`Express Server Ok on port ${port}`);
 });
