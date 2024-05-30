@@ -4,7 +4,7 @@ import axios from "../../axios";
 export const fetchFriends = createAsyncThunk(
   "friends/fetchFriends",
   async (id) => {
-    const { data } = await axios.post("/friends", {id:id});
+    const { data } = await axios.post("/friends", { id: id });
     return data;
   }
 );
@@ -13,7 +13,6 @@ export const fetchAddFriends = createAsyncThunk(
   "friends/fetchAddFriends",
   async (params) => {
     const { data } = await axios.post("/add-friends", params);
-    console.log(data)
     return data;
   }
 );
@@ -21,7 +20,6 @@ export const fetchDeleteFriends = createAsyncThunk(
   "friends/fetchDeleteFriends",
   async (params) => {
     const { data } = await axios.post("/delete-friends", params);
-    console.log(data)
     return data;
   }
 );

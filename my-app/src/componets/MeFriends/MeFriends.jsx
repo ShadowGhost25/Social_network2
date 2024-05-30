@@ -6,12 +6,9 @@ import { fetchDeleteFriends } from "../../redux/slices/friends";
 import { useNavigate } from "react-router-dom";
 
 const MeFriends = ({ data, userMeId }) => {
-  // console.log(userMeId);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // console.log(data);
   const deleteFriends = (userFriendId, userMeId) => {
-    // console.log(id, userMeId)
     const params = {
       userFriendId,
       userMeId,
@@ -22,7 +19,6 @@ const MeFriends = ({ data, userMeId }) => {
   const profileFriend = (data, idUser) => {
     const userFriends = data.filter((user) => user._id.includes(idUser));
     navigate(`/profile/${idUser}`);
-    console.log(userFriends);
   };
   const subscribers = data.filter((user) => user.friend.includes(userMeId));
 

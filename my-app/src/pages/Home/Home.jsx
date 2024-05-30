@@ -25,7 +25,6 @@ const Home = () => {
   const clicLogin = () => {
     navigate("/login");
   };
-  console.log(isAuth);
   return (
     <>
       {!isLoadingHome && window.localStorage.getItem("token") ? (

@@ -94,8 +94,6 @@ const AllFriends = ({ data, userMeId }) => {
       )}
       <span className={s.friendsText}>Ваши запросы кому-то в друзья</span>
       <div className={s.cardBlog}>
-        {/* <span className={s.friendsText}>Поиск друзей</span> */}
-
         {subscribers.map((friends, index) => {
           return (
             <div key={index} className={s.card}>
@@ -118,7 +116,6 @@ const AllFriends = ({ data, userMeId }) => {
               ) : (
                 <h4 className={s.h4}>Ждём добавление в друзья...</h4>
               )}
-              {/* {console.log(userMeId)} */}
             </div>
           );
         })}

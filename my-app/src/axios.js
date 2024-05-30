@@ -1,7 +1,6 @@
 import axios from "axios";
 import { localHost } from "./Route/route";
 const instance = axios.create({
-  // baseURL: "https://social-network2.vercel.app",
   baseURL: localHost,
 });
 
