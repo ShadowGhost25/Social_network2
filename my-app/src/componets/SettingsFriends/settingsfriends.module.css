@@ -3,46 +3,57 @@
   font-size: 24px;
   padding: 20px;
 }
+
 .hr {
   margin: 0px;
 }
+
 .img {
   width: 50px;
 }
+
 .displayNotification {
   display: flex;
   align-items: center;
   padding: 8px 20px;
 }
+
 .textName {
   display: block;
   font-size: 20px;
   margin-left: 10px;
   font-weight: 500;
 }
+
 .com {
   font-size: 18px;
   font-weight: 400;
 }
+
 .textTime {
   display: block;
   text-decoration: underline;
   text-underline-offset: 5px;
   margin-right: auto;
 }
+
 .textInfo {
   margin-left: 10px;
 }
+
 .scrollableDiv {
   overflow: auto;
   max-height: 297px;
 }
+
 .scrollableDiv::-webkit-scrollbar {
   width: 5px;
 }
+
 .scrollableDiv::-webkit-scrollbar-thumb {
   background-color: #7da1fd;
 }
+
 .scrollableDiv::-webkit-scrollbar-track {
   background-color: #f8f8f8;
 }
@@ -56,11 +67,14 @@
   height: 40px;
 
 }
-.positionButton{
+
+.positionButton {
   margin-left: auto;
 
 }
+
 .imgPlus {
-  display: block; /* Устанавливаем изображение как блочный элемент */
+  display: block;
+  /* Устанавливаем изображение как блочный элемент */
   margin: auto;
 }

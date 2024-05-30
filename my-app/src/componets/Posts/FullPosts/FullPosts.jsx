@@ -25,7 +25,7 @@ const FullPosts = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [id]);
   const handleClick = () => {
     setIsActive(!isActive);
   };

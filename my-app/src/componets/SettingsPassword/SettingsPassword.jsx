@@ -25,8 +25,8 @@ const SettingsPassword = () => {
             // value={data.surName}
           />
         </label>
-        <div className={s.positionButton}> 
-        <CustomButton title="Сохранить" typeStyle="primary" size="small"/>
+        <div className={s.positionButton}>
+          <CustomButton title="Сохранить" typeStyle="primary" size="small" />
         </div>
       </form>
     </>

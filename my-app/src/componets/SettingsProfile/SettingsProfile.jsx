@@ -4,11 +4,11 @@ import CustomButton from "../CustomButton/CustomButton";
 import s from "./settingsprofile.module.css";
 import axios from "../../axios";
 import { fetchSettings } from "../../redux/slices/settings";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const SettingsProfile = () => {
   const { id } = useSelector((state) => state.login);
   const dispatch = useDispatch();
-  const [isLoading, setLoading] = React.useState(false);
+  const [setLoading] = React.useState(false);
   const [fullName, setFullName] = React.useState("");
   const [surName, setSurName] = React.useState("");
   const [email, setEmail] = React.useState("");

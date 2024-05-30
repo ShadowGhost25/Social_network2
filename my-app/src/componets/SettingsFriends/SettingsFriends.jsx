@@ -11,7 +11,12 @@ const SettingsFriends = () => {
           <img className={s.img} src={img} alt="no ava" />
           <span className={s.textName}>Илья Вавилин</span>
           <div className={s.positionButton}>
-          <CustomButton size="button" centerImage={true} imageName="plus" typeStyle="primary"/>
+            <CustomButton
+              size="button"
+              centerImage={true}
+              imageName="plus"
+              typeStyle="primary"
+            />
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@ const Posts = () => {
   React.useEffect(() => {
     dispatch(fetchPosts());
     dispatch(fetchPostsProfile());
-  }, []);
+  }, [dispatch]);
 
   const clickDelete = (id) => {
     if (window.confirm("Вы действительно хотите удалить пост ?")) {
