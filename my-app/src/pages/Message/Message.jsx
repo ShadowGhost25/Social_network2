@@ -56,6 +56,7 @@ const Message = () => {
     if (data !== null) {
       dispatch(fetchUser(data.friend));
     }
+    console.log(data);
   }, [data, dispatch]);
 
   useEffect(() => {
@@ -130,6 +131,7 @@ const Message = () => {
                 {data.friend.length === 0 && (
                   <span className={s.invitation}>У вас пока нет друзей</span>
                 )}
+                {console.log(dataUser)}
                 {dataUser.data.map(
                   (friend) =>
                     friend.fullName && (

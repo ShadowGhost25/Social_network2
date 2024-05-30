@@ -3,8 +3,6 @@ import CustomButton from "../CustomButton/CustomButton";
 import { fetchDeleteMusicMe } from "../../redux/slices/music";
 import s from "./MusicPlayMe.module.css";
 import Loading from "../Loading/Loading";
-import { useState } from "react";
-import axios from "../../axios";
 import { localHost } from "../../Route/route";
 
 const MusicPlayMe = () => {

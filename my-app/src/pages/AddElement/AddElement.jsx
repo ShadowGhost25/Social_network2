@@ -17,7 +17,6 @@ const AddElement = () => {
   const url = window.location.pathname;
   const navigate = useNavigate();
   const isEdditing = Boolean(id);
-  const [isLoading, setLoading] = React.useState(false);
   const [title, setTitle] = React.useState("");
   const [tags, setTags] = React.useState("");
   const [text, setText] = React.useState("");
@@ -56,8 +55,9 @@ const AddElement = () => {
         return "<p>" + plainText.replace(/\n/g, "</p><p>") + "</p>";
       },
     }),
-    []
+    [id, url]
   );
+
   const handleChangeFile = async (event) => {
     try {
       const formData = new FormData();
@@ -76,7 +76,6 @@ const AddElement = () => {
 
   const onSubmit = async () => {
     try {
-      setLoading(true);
       let data;
 
       const fields = {
@@ -150,7 +149,7 @@ const AddElement = () => {
         });
       <Navigate to="/group" />;
     }
-  }, []);
+  }, [id, url]);
 
   if (!window.localStorage.getItem("token") && !isAuth) {
     return <Navigate to="/" />;

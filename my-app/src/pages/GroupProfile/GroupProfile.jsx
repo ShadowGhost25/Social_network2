@@ -23,56 +23,60 @@ const GroupProfile = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
-  return (<>{!isLoading ? <Loading /> : ( <div>
-    <Header />
-    <div className={s.profileMain}>
-      <div className={s.headerProfile}>
-          <div className={s.positionButton2}>
-            <CustomButton
-              typeStyle="primary"
-              title="Изменить обложку"
-              size="average"
-              imageName="pencil"
-              rightImage={true}
-            />
-          </div>
-      </div>
-      <div className={s.main}>
-        <div className={s.main1}>
-          <div className={s.blogProfileUser}>
-            <img className={s.ava} src={ava} alt="ava" />
-            <hr />
-            <span className={s.friendsInput}>{data.title}</span>
-            <div className={s.positionButton}>
-              <CustomButton
-                title="Отписаться"
-                size="small"
-                typeStyle="primary"
-              />
+  }, [id]);
+  return (
+    <>
+      {!isLoading ? (
+        <Loading />
+      ) : (
+        <div>
+          <Header />
+          <div className={s.profileMain}>
+            <div className={s.headerProfile}>
+              <div className={s.positionButton2}>
+                <CustomButton
+                  typeStyle="primary"
+                  title="Изменить обложку"
+                  size="average"
+                  imageName="pencil"
+                  rightImage={true}
+                />
+              </div>
+            </div>
+            <div className={s.main}>
+              <div className={s.main1}>
+                <div className={s.blogProfileUser}>
+                  <img className={s.ava} src={ava} alt="ava" />
+                  <hr />
+                  <span className={s.friendsInput}>{data.title}</span>
+                  <div className={s.positionButton}>
+                    <CustomButton
+                      title="Отписаться"
+                      size="small"
+                      typeStyle="primary"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className={s.main2}>
+                <div className={s.user}>
+                  <span className={s.userFio}>{data.text}</span>
+                </div>
+                <div className={s.postsPosition}>
+                  <Posts />
+                </div>
+              </div>
+              <div className={s.margin}>
+                <FriendsOnline />
+                <div>
+                  <GroupNotification />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className={s.main2}>
-          <div className={s.user}>
-            <span className={s.userFio}>
-                {data.text}
-            </span>
-          </div>
-          <div className={s.postsPosition}>
-            <Posts />
-          </div>
-        </div>
-        <div className={s.margin}>
-          <FriendsOnline />
-          <div>
-            <GroupNotification />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>)}
-  </>   
+      )}
+    </>
   );
 };
 

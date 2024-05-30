@@ -18,7 +18,7 @@ const Options = () => {
         {measurementAge.map((obj, index) => {
           return (
             <CustomButton
-            key={index}
+              key={index}
               title={obj.title}
               typeStyle={obj.typeStyle}
               size={obj.size}

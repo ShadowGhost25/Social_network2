@@ -5,8 +5,8 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
     const { data } = await axios.get('/posts')
     return data
 })
-export const fetchPostsProfile = createAsyncThunk('posts/fetchPostsProfile', async()=>{
-    const {data} = await axios.get('/profile')
+export const fetchPostsProfile = createAsyncThunk('posts/fetchPostsProfile', async () => {
+    const { data } = await axios.get('/profile')
     return data
 })
 
@@ -56,7 +56,7 @@ const postsSlice = createSlice({
                 state.postsProfile.items = []
                 state.postsProfile.status = 'error'
             })
-            .addCase(fetchDelete.pending, (state, action) =>{
+            .addCase(fetchDelete.pending, (state, action) => {
                 state.posts.items = state.posts.items.filter((obj) => obj._id !== action.meta.arg)
             })
     }

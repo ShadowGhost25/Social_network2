@@ -9,7 +9,7 @@ export const fetchRegister = createAsyncThunk(
       const { data } = await axios.post("/register", params);
       return data;
     } catch (error) {
-      return(error);
+      return (error);
     }
   }
 );

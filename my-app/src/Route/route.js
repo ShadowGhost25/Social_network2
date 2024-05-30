@@ -222,4 +222,4 @@ export const buttonHeader = [
   },
 ];
 
-export const localHost = "https://socialnetwork2-production.up.railway.app/";
+export const localHost = "https://socialnetwork2-production.up.railway.app";

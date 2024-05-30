@@ -18,7 +18,7 @@ import music from "../Header/img/Music.png";
 import settings from "../Header/img/Setings.png";
 import vector from "../../pages/Music/img/Vector.png";
 import user from "../Header/img/user.svg";
-import cross from "../MusicPlayMe/img/cross.svg"
+import cross from "../MusicPlayMe/img/cross.svg";
 import me from "../Header/img/Ava.png";
 
 const CustomButton = ({
@@ -79,8 +79,8 @@ const CustomButton = ({
         return user;
       case "me":
         return me;
-        case "cross":
-          return cross;
+      case "cross":
+        return cross;
       default:
     }
   };

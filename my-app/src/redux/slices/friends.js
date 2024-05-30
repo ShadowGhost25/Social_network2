@@ -31,13 +31,7 @@ const initialState = {
 const friendsSlice = createSlice({
   name: "friend",
   initialState,
-  reducers: {
-    friend: (state, action) => {
-      const SubUser = action.payload;
-      // const indexSubUser = state.data.indexOf((user) = user.id === SubUser.id)
-      // state.data.splice(indexSubUser, 1, SubUser)
-    },
-  },
+  reducers: {},
   extraReducers: (friends) => {
     friends
       .addCase(fetchFriends.pending, (state) => {

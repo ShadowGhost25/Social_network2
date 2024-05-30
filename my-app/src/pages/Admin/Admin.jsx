@@ -6,9 +6,11 @@ import ava from "./img/ava.png";
 import { fetchAdmin, fetchDeleteAdmin } from "../../redux/slices/admin";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(fetchAdmin());
   }, [dispatch]);
@@ -18,6 +20,9 @@ const Admin = () => {
     if (window.confirm("Вы действительно хотите удалить пользователя ?")) {
       dispatch(fetchDeleteAdmin(userId));
     }
+  };
+  const cliсkMe = (userId) => {
+    navigate(`/profile/${userId}`);
   };
   return (
     <>
@@ -34,7 +39,7 @@ const Admin = () => {
                   return (
                     <>
                       <div
-                        // onClick={() => cliсkMe(friends._id)}
+                        onClick={() => cliсkMe(friends._id)}
                         key={index}
                         className={s.card}
                       >

@@ -17,7 +17,6 @@ const MeFriends = ({ data, userMeId }) => {
     window.location.reload();
   };
   const profileFriend = (data, idUser) => {
-    const userFriends = data.filter((user) => user._id.includes(idUser));
     navigate(`/profile/${idUser}`);
   };
   const subscribers = data.filter((user) => user.friend.includes(userMeId));

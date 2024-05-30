@@ -1,5 +1,4 @@
 import s from "./musicplay.module.css";
-import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CustomButton from "../CustomButton/CustomButton";
 import { localHost } from "../../Route/route";
