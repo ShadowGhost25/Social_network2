@@ -46,7 +46,7 @@ const Home = () => {
                   <span className={s.status}>{data.status}</span>
                   <hr />
                   <span className={s.friends}>Друзья</span>
-                  <span className={s.kolFriends}>14</span>
+                  <span className={s.kolFriends}>{data.friend.length}</span>
                   <hr />
                   <div className={s.displayButton}>
                     <CustomButton
