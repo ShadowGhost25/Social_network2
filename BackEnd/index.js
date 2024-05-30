@@ -161,9 +161,9 @@ app.get("/profile/:id", userController.getOneUser);
 app.post("/roomId", messagecontroller.room);
 app.post("/add-message", messagecontroller.messages);
 
-const server = http.createServer(app);
-
-const io = new Server(server, {
+const port = process.env.PORT || 3002;
+// const server = http.createServer(app);
+const io = new Server(port, {
   cors: {
     origin: "*",
     methods: ["GET", "POST", "PATCH", "DELETE"],
@@ -187,7 +187,7 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(3002, (err) => {
+app.listen(port, "0.0.0.0", (err) => {
   if (err) {
     return console.log("=>", err);
   }
