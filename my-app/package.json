@@ -25,11 +25,11 @@
     "ws": "^8.17.0"
   },
   "scripts": {
-    "start": "node --max-old-space-size=2048 node_modules/.bin/react-scripts start",
+    "start": "serve -s build",
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build": "webpack --mode production",
-    "install-prod": "npm install --omit=dev"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
