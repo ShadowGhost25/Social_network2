@@ -25,7 +25,7 @@
     "ws": "^8.17.0"
   },
   "scripts": {
-    "start": "node --max-old-space-size=1024 node_modules/.bin/react-scripts start",
+    "start": "node --max-old-space-size=2048 node_modules/.bin/react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
